@@ -54,6 +54,14 @@ const Container = styled.div`
     align-items: center;
 
     gap: 10px;
+
+    @media (min-width: 1280px) {
+        max-width: 1280px;
+    }
+    
+    @media (min-width: 1440px) {
+        max-width: 1440px;
+    }
 `
 
 const DivGridType = styled.div`
@@ -68,6 +76,15 @@ const DivGridType = styled.div`
 
     gap: 10px;
 
+    @media (min-width: 1280px) {
+        max-width: 1164.44px;
+
+        grid-template-columns: repeat(6, 1fr);
+    }
+
+    @media (min-width: 1440px) {
+        max-width: 1310px;
+    }
 `
 
 const BoxType = styled.div`
@@ -99,6 +116,16 @@ const DivGridPro = styled.div`
 
     @media (min-width: 744px) {
         grid-template-columns: repeat(4, 2fr);
+    }
+
+    @media (min-width: 1280px) {
+        max-width: 1164.44px;
+
+        grid-template-columns: repeat(8, 1fr);
+    }
+
+    @media (min-width: 1440px) {
+        max-width: 1310px;
     }
 `
 
@@ -139,6 +166,14 @@ const DivFlexGame = styled.div`
     align-items: center;
 
     gap: 10px;
+
+    @media (min-width: 1280px) {
+        max-width: 1164.44px;
+    }
+
+    @media (min-width: 1440px) {
+        max-width: 1310px;
+    }
 `
 
 const DivTitle = styled.div`
@@ -152,6 +187,16 @@ const DivTitle = styled.div`
     align-items: center;
 
     background-color: grey;
+
+    @media (min-width: 1280px) {
+        width: 100%;
+        aspect-ratio: 1164.44/35.56;
+        max-width: 1164.44px;
+    }
+
+    @media (min-width: 1440px) {
+        max-width: 1310px;
+    }
 `
 
 const DivGrid = styled.div`
@@ -167,6 +212,16 @@ const DivGrid = styled.div`
 
     @media (min-width: 744px) {
         grid-template-columns: repeat(3, 4fr);
+    }
+
+    @media (min-width: 1280px) {
+        max-width: 1164.44px;
+
+        grid-template-columns: repeat(6, 4fr);
+    }
+
+    @media (min-width: 1440px) {
+        max-width: 1310px;
     }
 `
 

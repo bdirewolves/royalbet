@@ -33,6 +33,14 @@ const Container = styled.div`
     align-items: center;
 
     gap: 10px;
+
+    @media (min-width: 1280px) {
+        max-width: 1280px;
+    }
+    
+    @media (min-width: 1440px) {
+        max-width: 1440px;
+    }
 `
 
 const DivGrid = styled.div`
@@ -48,7 +56,13 @@ const DivGrid = styled.div`
     gap: 10px;
 
     @media (min-width: 1280px) {
+        max-width: 1164.44px;
+
         grid-template-columns: repeat(4, 2fr);
+    }
+
+    @media (min-width: 1440px) {
+        max-width: 1310px;
     }
 `
 
@@ -64,7 +78,7 @@ const GridFrBanner = styled.div`
 `
 
 const GridFrPopu = styled.div`
-    width: 95%;
+    width: 100%;
     height: auto;
 
     display: flex;
@@ -81,7 +95,14 @@ const GridFrPopu = styled.div`
     }
 
     @media (min-width: 1280px) {
+        aspect-ratio: 871.11/284.77;
+        max-width: 1164.64px;
+
         grid-area: 2 / 1 / 3 / 4; 
+    }
+    
+    @media (min-width: 1280px) {
+        max-width: 1310px;
     }
 `
 
@@ -96,6 +117,16 @@ const DivTitle = styled.div`
     align-items: center;
 
     background-color: grey;
+
+    @media (min-width: 1280px) {
+        width: 100%;
+        aspect-ratio: 1164.44/35.56;
+        max-width: 1164.44px;
+    }
+
+    @media (min-width: 1440px) {
+        max-width: 1310px;
+    }
 `
 
 const DivFlex = styled.div`
@@ -123,6 +154,11 @@ const DivGame = styled.div`
     overflow: hidden;
 
     background-color: grey;
+
+    @media (min-width: 1280px) {
+        max-width: 320px;
+        aspect-ratio: 284.444/239.44;
+    }
 `
 
 const DivGame1 = styled.div`
@@ -144,6 +180,11 @@ const DivGame1 = styled.div`
     @media (min-width: 744px) {
         display: block;
     }
+
+    @media (min-width: 1280px) {
+        max-width: 320px;
+        aspect-ratio: 284.444/239.44;
+    }
 `
  
 const GridFrJak = styled.div`
@@ -164,6 +205,8 @@ const GridFrJak = styled.div`
     }
 
     @media (min-width: 1280px) {
+        width: 100%;
+
         flex-direction: column;
         grid-area: 1 / 4 / 3 / 5;
     }
