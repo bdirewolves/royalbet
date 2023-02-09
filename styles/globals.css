@@ -1,0 +1,361 @@
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
+:root {
+  --max-width: 1100px;
+  --border-radius: 12px;
+  --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
+    'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
+    'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
+
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+
+  --primary-glow: conic-gradient(
+    from 180deg at 50% 50%,
+    #16abff33 0deg,
+    #0885ff33 55deg,
+    #54d6ff33 120deg,
+    #0071ff33 160deg,
+    transparent 360deg
+  );
+  --secondary-glow: radial-gradient(
+    rgba(255, 255, 255, 1),
+    rgba(255, 255, 255, 0)
+  );
+
+  --tile-start-rgb: 239, 245, 249;
+  --tile-end-rgb: 228, 232, 233;
+  --tile-border: conic-gradient(
+    #fff80,
+    #fff40,
+    #fff30,
+    #fff20,
+    #fff10,
+    #fff10,
+    #fff80
+  );
+
+  --callout-rgb: 238, 240, 241;
+  --callout-border-rgb: 172, 175, 176;
+  --card-rgb: 180, 185, 188;
+  --card-border-rgb: 131, 134, 135;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+
+    --primary-glow: radial-gradient(rgba(1, 65, 255, 0.4), rgba(1, 65, 255, 0));
+    --secondary-glow: linear-gradient(
+      to bottom right,
+      rgba(1, 65, 255, 0),
+      rgba(1, 65, 255, 0),
+      rgba(1, 65, 255, 0.3)
+    );
+
+    --tile-start-rgb: 2, 13, 46;
+    --tile-end-rgb: 2, 5, 19;
+    --tile-border: conic-gradient(
+      #ffffff80,
+      #ffffff40,
+      #ffffff30,
+      #ffffff20,
+      #ffffff10,
+      #ffffff10,
+      #ffffff80
+    );
+
+    --callout-rgb: 20, 20, 20;
+    --callout-border-rgb: 108, 108, 108;
+    --card-rgb: 100, 100, 100;
+    --card-border-rgb: 200, 200, 200;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: "Sukhumvit Set";
+  color: #E9E9E9 ;
+  background-color: #0E0E0E ;
+}
+
+body{
+  margin-top: 100px;
+  background-color: #202020;
+}
+
+a{
+  text-decoration: none;
+}
+
+.slick-dots li button:before {
+  color: #FFFF6B !important;
+}
+
+.custom-dots{
+  bottom: 140px !important;
+}
+
+@media (min-width: 1024px) {
+  .custom-dots{
+    bottom: 95px !important;
+  }
+}
+
+.custom-dots-DK{
+  bottom: 100px !important;
+}
+
+.knowlegde-dots{
+  bottom: -33px !important;
+}
+
+.custom-dots1{
+  bottom: 190px !important;
+}
+
+.custom-dots2{
+  bottom: 145px !important;
+}
+
+@media (min-width: 1440px) {
+  .custom-dots2 {
+    bottom: -20px !important;
+  }
+}
+
+.custom-dots3{
+  bottom: -60px !important;
+}
+
+.slide {
+  transform: scale(0.8);
+  transition: transform 0.6s;
+}
+
+.activeSlide {
+  transform: scale(1);
+}
+
+/* animation test Burger */
+
+.container {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  margin: auto;
+}
+
+.item {
+  width: 50%;
+  height: 50%;
+  position: absolute;
+}
+
+
+.item-1 {
+  background-image: url(/assets/img/burger/mini-spade.svg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  animation: item-1_move 3s cubic-bezier(.6,.01,.4,1) infinite;
+}
+
+.item-2 {
+  background-image: url(/assets/img/burger/mini-diamond.svg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  top: 0;
+  right: 0;
+  animation: item-2_move 3s cubic-bezier(.6,.01,.4,1) infinite;
+}
+
+.item-3 {
+
+  background-image: url(/assets/img/burger/mini-heart.svg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+  animation: item-3_move 3s cubic-bezier(.6,.01,.4,1) infinite;
+}
+
+.item-4 {
+  background-image: url(/assets/img/burger/mini-club.svg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  bottom: 0;
+  left: 0;
+  animation: item-4_move 3s cubic-bezier(.6,.01,.4,1) infinite;
+}
+
+@keyframes item-1_move {
+  0%, 100% {
+    transform: translate(0, 0)
+  }
+
+  25% {
+    transform: translate(0, 50%)
+  }
+
+  50% {
+    transform: translate(50%, 50%)
+  }
+
+  75% {
+    transform: translate(50%, 0)
+  }
+}
+
+@keyframes item-2_move {
+  0%, 100% {
+    transform: translate(0, 0)
+  }
+
+  25% {
+    transform: translate(-50%, 0)
+  }
+
+  50% {
+    transform: translate(-50%, 50%)
+  }
+
+  75% {
+    transform: translate(0, 50%)
+  }
+}
+
+@keyframes item-3_move {
+  0%, 100% {
+    transform: translate(0, 0)
+  }
+
+  25% {
+    transform: translate(0, -50%)
+  }
+
+  50% {
+    transform: translate(-50%, -50%)
+  }
+
+  75% {
+    transform: translate(-50%, 0)
+  }
+}
+
+@keyframes item-4_move {
+  0%, 100% {
+    transform: translate(0, 0)
+  }
+
+  25% {
+    transform: translate(50%, 0)
+  }
+
+  50% {
+    transform: translate(50%, -50%)
+  }
+
+  75% {
+    transform: translate(0, -50%)
+  }
+}
+
+/* animation test Button */
+
+.buttontest {
+  align-items: center;
+  background-image:  linear-gradient(180deg, #FACE63 0%, #FFFF6B 100%); 
+  border: 0;
+  border-radius: 8px;
+  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  display: flex;
+  font-family: Phantomsans, sans-serif;
+  font-size: 18px;
+  justify-content: center;
+  line-height: 1em;
+  max-width: 100%;
+  min-width: 140px;
+  padding: 3px;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all .3s;
+ }
+ 
+ .buttontest:active,
+ .buttontest:hover {
+  outline: 0;
+  color: #000;
+ }
+ 
+ .buttontest span {
+  background-color: rgb(5, 6, 45);
+  padding: 16px 24px;
+  border-radius: 30px;
+  width: 100%;
+  height: 100%;
+  transition: 300ms;
+ }
+ 
+ .buttontest:hover span {
+  background: none;
+ }
+ 
+ .buttontest:active {
+  transform: scale(0.9);
+ }
+
+ .rating { 
+  border: none;
+  float: left;
+}
+
+.rating > input { display: none; } 
+.rating > label:before { 
+  margin: 5px;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.rating > .half:before { 
+  content: "\f089";
+  position: absolute;
+}
+
+.rating > label { 
+  color: #ddd; 
+ float: right; 
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.rating > input:checked ~ label, /* show gold star when clicked */
+.rating:not(:checked) > label:hover, /* hover current star */
+.rating:not(:checked) > label:hover ~ label { color: #FFD700; cursor: pointer;  } /* hover previous stars in list */
+
+.rating > input:checked + label:hover, /* hover current star when changing rating */
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.rating > input:checked ~ label:hover ~ label { color: #FFED85;  } 
