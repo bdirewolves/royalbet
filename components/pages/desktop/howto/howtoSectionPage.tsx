@@ -5,11 +5,24 @@ export default function HowtoSectionPage(){
         <Container>
             <DivTitle />
             <DivFlex>
-                <Box />
-                <Box />
-                <Box />
-                <Box />
-                <Box />
+                <Box>
+                    <Text>ขั้นตอนสมัครสมาชิก</Text>
+                </Box>
+                <Box>
+                    <Text>ขั้นตอนสมัครสมาชิก</Text>
+                </Box>
+                <Box>
+                    <Text>ขั้นตอนสมัครสมาชิก</Text>
+                </Box>
+                <Box>
+                    <Text>ขั้นตอนสมัครสมาชิก</Text>
+                </Box>
+                <Box>
+                    <Text>ขั้นตอนสมัครสมาชิก</Text>
+                </Box>
+                <Box>
+                    <Text>ขั้นตอนสมัครสมาชิก</Text>
+                </Box>
             </DivFlex>
         </Container>
     )
@@ -85,5 +98,23 @@ const Box = styled.div`
     width: 100%;
     height: 80px;
 
-    background-color: grey;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+
+    background-color: #100F14;
+`
+
+const Text = styled.p`
+    font-family: 'Prompt';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 30px;
+
+    margin: 0;
+
+    color: #FFFFFF;
 `

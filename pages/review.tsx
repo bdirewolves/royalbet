@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import ReviewSection from "@/components/pages/desktop/home/reviewSection";
+import ReviewPromotionPageSection from "@/components/pages/desktop/review/reviewpromotionSectionPage";
+import ReviewMainSectionPage from "@/components/pages/desktop/review/reviewmainSectionPage";
 import Head from "next/head";
 import CheckDevice from "@/services";
 
@@ -14,7 +15,8 @@ export default function ReviewPage(){
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <Content>
-                <ReviewSection />
+                <ReviewPromotionPageSection />
+                <ReviewMainSectionPage />
             </Content>
         </>
     )
@@ -31,6 +33,6 @@ const Content = styled.main`
   justify-content: center;
   align-items: center;
 
-  gap: 10px;
+  gap: 30px;
   margin: auto;
 ` 

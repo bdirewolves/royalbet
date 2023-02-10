@@ -253,6 +253,10 @@ const BoxType = styled.div`
 
     background: #100F14;
 
+    &:active{
+        border: 1px solid #ECD559;
+    }
+    
     &:hover{
         border: 1px solid #ECD559;
     }
@@ -299,6 +303,10 @@ const BoxPro = styled.div`
 
     background: #100F14;
 
+    &:active{
+        border: 1px solid #ECD559;
+    }
+    
     &:hover{
         border: 1px solid #ECD559;
     }

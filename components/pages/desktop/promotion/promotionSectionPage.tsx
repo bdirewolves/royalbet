@@ -91,7 +91,11 @@ const Box = styled.div`
     aspect-ratio: 300/177.78;
     max-width: 650px;
 
-    background-color: grey;
+    background-color: #100F14;
+
+    &:hover{
+        opacity: 0.5;
+    }
 `
 
 const Box1 = styled.div`
@@ -101,7 +105,11 @@ const Box1 = styled.div`
 
     display: none;
 
-    background-color: grey;
+    background-color:#100F14;
+
+    &:hover{
+        opacity: 0.5;
+    }
 
     @media (min-width: 744px) {
         display: block;

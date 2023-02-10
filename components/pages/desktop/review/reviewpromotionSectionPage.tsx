@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from "styled-components"
 
-export default function PromotionMainSectionPage() {
+export default function ReviewPromotionPageSection() {
     return(
         <Container>
             <DivFlex>
@@ -15,7 +15,7 @@ export default function PromotionMainSectionPage() {
     )
 }
 
-const Container = styled.div`
+const Container = styled.section`
     width: 100%;
     height: fit-content;
     max-width: 744px;
@@ -30,7 +30,7 @@ const Container = styled.div`
     @media (min-width: 1280px) {
         max-width: 1280px;
     }
-
+    
     @media (min-width: 1440px) {
         max-width: 1440px;
     }
@@ -53,9 +53,11 @@ const DivFlex = styled.div`
 
         flex-direction: row;
     }
-
+    
     @media (min-width: 1440px) {
         max-width: 1310px;
+
+        flex-direction: row;
     }
 `
 
