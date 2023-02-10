@@ -125,7 +125,7 @@ const DivTextContent = styled.div`
     height: 30px;
 
 
-    background-color: grey;
+    background-color: #050505;
 `
 
 const GoldPic = styled.div`

@@ -7,7 +7,7 @@ import Iframe from "@/components/_reduce/iframe";
 
 export default function NewsSection () {
     const settings = {
-        dots: true,
+        dots: false,
         infinite: true,
         speed: 500,
         slidesToShow: 1,
@@ -21,6 +21,20 @@ export default function NewsSection () {
             <DivTitle />
             <ContainerCarousel>
                 <Slider {...settings}>
+                    <div>
+                        <Link href="/">
+                            <Box>
+                            <Iframe path="https://www.youtube-nocookie.com/embed/M4pv13mFTGM?start=60" title="title" />
+                            </Box>
+                        </Link>
+                    </div>
+                    <div>
+                        <Link href="/">
+                            <Box>
+                            <Iframe path="https://www.youtube-nocookie.com/embed/M4pv13mFTGM?start=60" title="title" />
+                            </Box>
+                        </Link>
+                    </div>
                     <div>
                         <Link href="/">
                             <Box>

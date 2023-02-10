@@ -9,12 +9,26 @@ export default function ReviewSection() {
         dots: false,
         infinite: true,
         speed: 500,
-        slidesToShow: 1,
+        slidesToShow: 5,
         slidesToScroll: 1,
         autoplay: true,
         autoplaySpeed: 2000,
         dotsClass: `slick-dots`,
         arrows: false,
+        responsive: [
+            {
+                breakpoint: 1280,
+                settings: {
+                    slidesToShow: 3,
+                }
+            },
+            {
+                breakpoint: 744,
+                settings: {
+                    slidesToShow: 1,
+                }
+            }
+        ]
     };
     return(
         <Container>
@@ -22,6 +36,74 @@ export default function ReviewSection() {
             {/* Carousel */}
             <ContainerCarousel>
                 <Slider {...settings}>
+                    <div>
+                        <DivFlex>
+                            <Box>
+                                <PicBox src="" />
+                                {/* Img Carousel */}
+                            </Box>
+                            <DivText>
+                                {/* Carousel Title */}
+                                <SliderTitle>User : 11234xxx21</SliderTitle>
+                                {/* Carousel Content */}
+                                <SliderContent>
+                                    <SliderContent1>“รายละเอียดข้อความแสดงความคิดเห็น”่รายละเอียดข้อความ..........</SliderContent1>
+                                </SliderContent>
+                            </DivText>
+                            <GoldPic />
+                        </DivFlex>
+                    </div>
+                    <div>
+                        <DivFlex>
+                            <Box>
+                                <PicBox src="" />
+                                {/* Img Carousel */}
+                            </Box>
+                            <DivText>
+                                {/* Carousel Title */}
+                                <SliderTitle>User : 11234xxx21</SliderTitle>
+                                {/* Carousel Content */}
+                                <SliderContent>
+                                    <SliderContent1>“รายละเอียดข้อความแสดงความคิดเห็น”่รายละเอียดข้อความ..........</SliderContent1>
+                                </SliderContent>
+                            </DivText>
+                            <GoldPic />
+                        </DivFlex>
+                    </div>
+                    <div>
+                        <DivFlex>
+                            <Box>
+                                <PicBox src="" />
+                                {/* Img Carousel */}
+                            </Box>
+                            <DivText>
+                                {/* Carousel Title */}
+                                <SliderTitle>User : 11234xxx21</SliderTitle>
+                                {/* Carousel Content */}
+                                <SliderContent>
+                                    <SliderContent1>“รายละเอียดข้อความแสดงความคิดเห็น”่รายละเอียดข้อความ..........</SliderContent1>
+                                </SliderContent>
+                            </DivText>
+                            <GoldPic />
+                        </DivFlex>
+                    </div>
+                    <div>
+                        <DivFlex>
+                            <Box>
+                                <PicBox src="" />
+                                {/* Img Carousel */}
+                            </Box>
+                            <DivText>
+                                {/* Carousel Title */}
+                                <SliderTitle>User : 11234xxx21</SliderTitle>
+                                {/* Carousel Content */}
+                                <SliderContent>
+                                    <SliderContent1>“รายละเอียดข้อความแสดงความคิดเห็น”่รายละเอียดข้อความ..........</SliderContent1>
+                                </SliderContent>
+                            </DivText>
+                            <GoldPic />
+                        </DivFlex>
+                    </div>
                     <div>
                         <DivFlex>
                             <Box>

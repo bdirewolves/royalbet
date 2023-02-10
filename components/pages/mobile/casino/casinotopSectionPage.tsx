@@ -1,32 +1,73 @@
 import styled from "styled-components";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 export default function CasinoTopSectionPage() {
+    const settings = {
+        dots: false,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        arrows: false,
+    };
     return (
         <Container>
            <DivGrid>
                 <GridFrBanner />
                 <GridFrPopu>
                     <DivTitle />
-                    <DivFlex>
-                        <DivGame>
-                            <DivPicPro>
-                                <PicPro src="/assets/img/test.png" />
-                            </DivPicPro>
-                            <BoxText />
-                        </DivGame>
-                        <DivGame>
-                            <DivPicPro>
-                                <PicPro src="/assets/img/test.png" />
-                            </DivPicPro>
-                            <BoxText />
-                        </DivGame>
-                        <DivGame1>
-                            <DivPicPro>
-                                <PicPro src="/assets/img/test.png" />
-                            </DivPicPro>
-                            <BoxText />
-                        </DivGame1>
-                    </DivFlex>
+                    <ContainerCarousel>
+                        <Slider {...settings}>
+                            <div>
+                                <DivFlex>
+                                    <DivGame>
+                                        <DivPicPro>
+                                            <PicPro src="/assets/img/test.png" />
+                                        </DivPicPro>
+                                        <BoxText />
+                                    </DivGame>
+                                    <DivGame>
+                                        <DivPicPro>
+                                            <PicPro src="/assets/img/test.png" />
+                                        </DivPicPro>
+                                        <BoxText />
+                                    </DivGame>
+                                    <DivGame1>
+                                        <DivPicPro>
+                                            <PicPro src="/assets/img/test.png" />
+                                        </DivPicPro>
+                                        <BoxText />
+                                    </DivGame1>
+                                </DivFlex>
+                            </div>
+                            <div>
+                                <DivFlex>
+                                    <DivGame>
+                                        <DivPicPro>
+                                            <PicPro src="/assets/img/test.png" />
+                                        </DivPicPro>
+                                        <BoxText />
+                                    </DivGame>
+                                    <DivGame>
+                                        <DivPicPro>
+                                            <PicPro src="/assets/img/test.png" />
+                                        </DivPicPro>
+                                        <BoxText />
+                                    </DivGame>
+                                    <DivGame1>
+                                        <DivPicPro>
+                                            <PicPro src="/assets/img/test.png" />
+                                        </DivPicPro>
+                                        <BoxText />
+                                    </DivGame1>
+                                </DivFlex>
+                            </div>
+                        </Slider>
+                    </ContainerCarousel>
                 </GridFrPopu>
                 <GridFrJak>
                     <DivJack />
@@ -111,6 +152,11 @@ const DivFlex = styled.div`
     align-items: center;
 
     gap: 10px;
+`
+
+const ContainerCarousel = styled.div`
+    width: 100%;
+    height: fit-content;
 `
 
 const DivGame = styled.div`

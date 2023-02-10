@@ -1,98 +1,114 @@
 import styled from "styled-components"
-import Image from "next/legacy/image"
-import Link from "next/link"
-
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 export default function GameCasinoSection () {
+    const settings = {
+        dots: false,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        arrows: false,
+    };
     return(
         <Container>
             <DivTitle />
-            <DivGrid>
-                <GridFr>
-                    <DivPicPro>
-                        <PicPro src="/assets/img/test.png" />
-                    </DivPicPro>
-                    <BoxText />
-                    <GoldPic />
-                </GridFr>
-                <GridFr>
-                    <DivPicPro>
-                        <PicPro src="/assets/img/test.png" />
-                    </DivPicPro>
-                    <BoxText />
-                    <GoldPic />
-                </GridFr>
-                <GridFr>
-                    <DivPicPro>
-                        <PicPro src="/assets/img/test.png" />
-                    </DivPicPro>
-                    <BoxText />
-                    <GoldPic />
-                </GridFr>
-                <GridFr>
-                    <DivPicPro>
-                        <PicPro src="/assets/img/test.png" />
-                    </DivPicPro>
-                    <BoxText />
-                    <GoldPic />
-                </GridFr>
-                <GridFr>
-                    <DivPicPro>
-                        <PicPro src="/assets/img/test.png" />
-                    </DivPicPro>
-                    <BoxText />
-                    <GoldPic />
-                </GridFr>
-                <GridFr>
-                    <DivPicPro>
-                        <PicPro src="/assets/img/test.png" />
-                    </DivPicPro>
-                    <BoxText />
-                    <GoldPic />
-                </GridFr>
-                <GridFr1>
-                    <DivPicPro>
-                        <PicPro src="/assets/img/test.png" />
-                    </DivPicPro>
-                    <BoxText />
-                    <GoldPic />
-                </GridFr1>
-                <GridFr1>
-                    <DivPicPro>
-                        <PicPro src="/assets/img/test.png" />
-                    </DivPicPro>
-                    <BoxText />
-                    <GoldPic />
-                </GridFr1>
-                <GridFr1>
-                    <DivPicPro>
-                        <PicPro src="/assets/img/test.png" />
-                    </DivPicPro>
-                    <BoxText />
-                    <GoldPic />
-                </GridFr1>
-                <GridFr1>
-                    <DivPicPro>
-                        <PicPro src="/assets/img/test.png" />
-                    </DivPicPro>
-                    <BoxText />
-                    <GoldPic />
-                </GridFr1>
-                <GridFr1>
-                    <DivPicPro>
-                        <PicPro src="/assets/img/test.png" />
-                    </DivPicPro>
-                    <BoxText />
-                    <GoldPic />
-                </GridFr1>
-                <GridFr1>
-                    <DivPicPro>
-                        <PicPro src="/assets/img/test.png" />
-                    </DivPicPro>
-                    <BoxText />
-                    <GoldPic />
-                </GridFr1>
-            </DivGrid>
+            <ContainerCarousel>
+                <Slider {...settings}>
+                    <div>
+                        <DivGrid>
+                            <GridFr>
+                                <DivPicPro>
+                                    <PicPro src="/assets/img/test.png" />
+                                </DivPicPro>
+                                <BoxText />
+                                <GoldPic />
+                            </GridFr>
+                            <GridFr>
+                                <DivPicPro>
+                                    <PicPro src="/assets/img/test.png" />
+                                </DivPicPro>
+                                <BoxText />
+                                <GoldPic />
+                            </GridFr>
+                            <GridFr>
+                                <DivPicPro>
+                                    <PicPro src="/assets/img/test.png" />
+                                </DivPicPro>
+                                <BoxText />
+                                <GoldPic />
+                            </GridFr>
+                            <GridFr>
+                                <DivPicPro>
+                                    <PicPro src="/assets/img/test.png" />
+                                </DivPicPro>
+                                <BoxText />
+                                <GoldPic />
+                            </GridFr>
+                            <GridFr>
+                                <DivPicPro>
+                                    <PicPro src="/assets/img/test.png" />
+                                </DivPicPro>
+                                <BoxText />
+                                <GoldPic />
+                            </GridFr>
+                            <GridFr>
+                                <DivPicPro>
+                                    <PicPro src="/assets/img/test.png" />
+                                </DivPicPro>
+                                <BoxText />
+                                <GoldPic />
+                            </GridFr>
+                            <GridFr1>
+                                <DivPicPro>
+                                    <PicPro src="/assets/img/test.png" />
+                                </DivPicPro>
+                                <BoxText />
+                                <GoldPic />
+                            </GridFr1>
+                            <GridFr1>
+                                <DivPicPro>
+                                    <PicPro src="/assets/img/test.png" />
+                                </DivPicPro>
+                                <BoxText />
+                                <GoldPic />
+                            </GridFr1>
+                            <GridFr1>
+                                <DivPicPro>
+                                    <PicPro src="/assets/img/test.png" />
+                                </DivPicPro>
+                                <BoxText />
+                                <GoldPic />
+                            </GridFr1>
+                            <GridFr1>
+                                <DivPicPro>
+                                    <PicPro src="/assets/img/test.png" />
+                                </DivPicPro>
+                                <BoxText />
+                                <GoldPic />
+                            </GridFr1>
+                            <GridFr1>
+                                <DivPicPro>
+                                    <PicPro src="/assets/img/test.png" />
+                                </DivPicPro>
+                                <BoxText />
+                                <GoldPic />
+                            </GridFr1>
+                            <GridFr1>
+                                <DivPicPro>
+                                    <PicPro src="/assets/img/test.png" />
+                                </DivPicPro>
+                                <BoxText />
+                                <GoldPic />
+                            </GridFr1>
+                        </DivGrid>
+                    </div>
+                </Slider>
+            </ContainerCarousel>
         </Container>
     )
 }
@@ -116,6 +132,11 @@ const Container = styled.section`
     @media (min-width: 1440px) {
         max-width: 1440px;
     }
+`
+
+const ContainerCarousel = styled.div`
+    width: 100%;
+    height: fit-content;
 `
 
 const DivTitle = styled.div`
@@ -151,6 +172,7 @@ const DivGrid = styled.div`
     justify-content: center;
     align-items: center;
 
+    margin: auto;
     gap: 10px;
 
     @media (min-width: 744px) {
