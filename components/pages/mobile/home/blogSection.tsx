@@ -8,7 +8,9 @@ export default function BlogSection() {
                 <PicBox src="/assets/img/blog/blogbanner-m.png"/>
             </Box>
             <DivFlex>
-                <Title>บทความ</Title>
+                <DivText>
+                    <Title>บทความ</Title>
+                </DivText>
                 <DivFlexContent>
                     <DivTextContent />
                     <DivTextContent />
@@ -69,8 +71,8 @@ const DivFlex = styled.div`
 
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
 
     gap: 10px;
 
@@ -79,8 +81,18 @@ const DivFlex = styled.div`
 
     @media (min-width: 744px) {
         height: 386px;
-        padding: 30px 0 0 30px;
+
+        justify-content: flex-start;
+
+        padding-top: 30px;
     }
+`
+
+const DivText = styled.div`
+    width: 90%;
+    height: 34px;
+
+    border-bottom: 1px solid white;
 `
 
 const Title = styled.h2`
@@ -92,11 +104,10 @@ const Title = styled.h2`
 
     color: #ECD559;
 
-    padding-left: 10px;
 `
 
 const DivFlexContent = styled.div`
-    width: 90%;
+    width: 80%;
     height: fit-content;
 
     display: flex;

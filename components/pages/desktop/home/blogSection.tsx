@@ -5,9 +5,13 @@ export default function BlogSection() {
         <Container>
             <DivTitle />
             <DivFlexrow>
-                <Box />
+                <Box>
+                    <PicBox src="/assets/img/blog/blogbanner-m.png"/>
+                </Box>
                 <DivFlex>
-                    <Title>บทความ</Title>
+                    <DivText>
+                        <Title>บทความ</Title>
+                    </DivText>
                     <DivFlexContent>
                         <DivTextContent />
                         <DivTextContent />
@@ -94,8 +98,11 @@ const Box = styled.div`
     width: 95%;
     aspect-ratio: 300/179;
     max-width: 650px;
+`
 
-    background-color: grey;
+const PicBox = styled.img`
+    width: 100%;
+    height: 100%;
 `
 
 const DivFlex = styled.div`
@@ -107,8 +114,8 @@ const DivFlex = styled.div`
 
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
 
     gap: 10px;
 
@@ -117,7 +124,10 @@ const DivFlex = styled.div`
 
     @media (min-width: 744px) {
         height: 386px;
-        padding: 30px 0 0 30px;
+
+        justify-content: flex-start;
+
+        padding-top: 30px;
     }
 
     @media (min-width: 1280px) {
@@ -128,6 +138,13 @@ const DivFlex = styled.div`
         height: 386px;
     }
     
+`
+
+const DivText = styled.div`
+    width: 90%;
+    height: 34px;
+
+    border-bottom: 1px solid white;
 `
 
 const Title = styled.h2`
@@ -143,7 +160,7 @@ const Title = styled.h2`
 `
 
 const DivFlexContent = styled.div`
-    width: 90%;
+    width: 80%;
     height: fit-content;
 
     display: flex;

@@ -2,7 +2,6 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
-import Button from "@/components/_reduce/Button";
 import Link from "next/link";
 
 export default function HeroSection () {
@@ -22,10 +21,34 @@ export default function HeroSection () {
             {/* Carousel */}
             <ContainerCarousel>
                 <Slider {...settings}>
-                    <div>
-                        <Link href="/">
+                <div>
+                        <Link href="/promotion">
                             <Box>
-                                <PicProMobile />
+                                <PicProMobile src="/assets/img/promotion/promotionbanner1-m.png" />
+                                {/* Content Carousel */}
+                            </Box>
+                        </Link>
+                    </div>
+                    <div>
+                        <Link href="/promotion">
+                            <Box>
+                                <PicProMobile src="/assets/img/promotion/promotionbanner2-m.png" />
+                                {/* Content Carousel */}
+                            </Box>
+                        </Link>
+                    </div>
+                    <div>
+                        <Link href="/promotion">
+                            <Box>
+                                <PicProMobile src="/assets/img/promotion/promotionbanner3-m.png" />
+                                {/* Content Carousel */}
+                            </Box>
+                        </Link>
+                    </div>
+                    <div>
+                        <Link href="/promotion">
+                            <Box>
+                                <PicProMobile src="/assets/img/promotion/promotionbanner4-m.png" />
                                 {/* Content Carousel */}
                             </Box>
                         </Link>
@@ -105,8 +128,6 @@ const Box = styled.div`
 
     border-radius: 2.52632px;
 
-    background-color: grey;
-
     @media (min-width: 1280px) {
         border-radius: 6px;
     }
@@ -125,7 +146,7 @@ const TextContent = styled.div`
     
     border-radius: 6px;
 
-    background-color: grey;
+    background-color: #100F14;
 
     @media (min-width: 1280px) {
         width: 480px;

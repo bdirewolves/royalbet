@@ -25,92 +25,7 @@ export default function ReviewSection() {
                     <div>
                         <DivFlex>
                             <Box>
-                                <PicBox  />
-                                {/* Img Carousel */}
-                            </Box>
-                            <DivText>
-                                {/* Carousel Title */}
-                                <SliderTitle>User : 11234xxx21</SliderTitle>
-                                {/* Carousel Content */}
-                                <SliderContent>
-                                    <SliderContent1>“รายละเอียดข้อความแสดงความคิดเห็น”่รายละเอียดข้อความ..........</SliderContent1>
-                                </SliderContent>
-                            </DivText>
-                            <GoldPic />
-                        </DivFlex>
-                    </div>
-                    <div>
-                        <DivFlex>
-                            <Box>
-                                <PicBox  />
-                                {/* Img Carousel */}
-                            </Box>
-                            <DivText>
-                                {/* Carousel Title */}
-                                <SliderTitle>User : 11234xxx21</SliderTitle>
-                                {/* Carousel Content */}
-                                <SliderContent>
-                                    <SliderContent1>“รายละเอียดข้อความแสดงความคิดเห็น”่รายละเอียดข้อความ..........</SliderContent1>
-                                </SliderContent>
-                            </DivText>
-                            <GoldPic />
-                        </DivFlex>
-                    </div>
-                    <div>
-                        <DivFlex>
-                            <Box>
-                                <PicBox  />
-                                {/* Img Carousel */}
-                            </Box>
-                            <DivText>
-                                {/* Carousel Title */}
-                                <SliderTitle>User : 11234xxx21</SliderTitle>
-                                {/* Carousel Content */}
-                                <SliderContent>
-                                    <SliderContent1>“รายละเอียดข้อความแสดงความคิดเห็น”่รายละเอียดข้อความ..........</SliderContent1>
-                                </SliderContent>
-                            </DivText>
-                            <GoldPic />
-                        </DivFlex>
-                    </div>
-                    <div>
-                        <DivFlex>
-                            <Box>
-                                <PicBox  />
-                                {/* Img Carousel */}
-                            </Box>
-                            <DivText>
-                                {/* Carousel Title */}
-                                <SliderTitle>User : 11234xxx21</SliderTitle>
-                                {/* Carousel Content */}
-                                <SliderContent>
-                                    <SliderContent1>“รายละเอียดข้อความแสดงความคิดเห็น”่รายละเอียดข้อความ..........</SliderContent1>
-                                </SliderContent>
-                            </DivText>
-                            <GoldPic />
-                        </DivFlex>
-                    </div>
-                    <div>
-                        <DivFlex>
-                            <Box>
-                                <PicBox  />
-                                {/* Img Carousel */}
-                            </Box>
-                            <DivText>
-                                {/* Carousel Title */}
-                                <SliderTitle>User : 11234xxx21</SliderTitle>
-                                {/* Carousel Content */}
-                                <SliderContent>
-                                    <SliderContent1>“รายละเอียดข้อความแสดงความคิดเห็น”่รายละเอียดข้อความ..........</SliderContent1>
-                                </SliderContent>
-                            </DivText>
-                            <GoldPic />
-                        </DivFlex>
-                    </div>
-                    <div>
-                        <DivFlex>
-                            <Box>
-                                <PicBox  />
+                                <PicBox src="" />
                                 {/* Img Carousel */}
                             </Box>
                             <DivText>
@@ -213,7 +128,7 @@ const DivFlex = styled.div`
     gap: 0px;
     margin: auto;
 
-    background: grey;
+    background: linear-gradient(0deg, #000000 0%, rgba(0, 0, 0, 0) 100%), #666666;
 `
 
 const SliderContent1 = styled.p`

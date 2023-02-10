@@ -4,11 +4,21 @@ export default function TypeCasinoSection () {
     return (
         <Container>
             <DivFlex>
-                <Box />
-                <Box />
-                <Box />
-                <Box />
-                <Box />
+                <Box>
+                    <PicBox src="/assets/img/casino/royalr-m.png" />
+                </Box>
+                <Box>
+                    <PicBox src="/assets/img/casino/royalo-m.png" />
+                </Box>
+                <Box>
+                    <PicBox src="/assets/img/casino/royaly-m.png" />
+                </Box>
+                <Box>
+                    <PicBox src="/assets/img/casino/royala-m.png" />
+                </Box>
+                <Box>
+                    <PicBox src="/assets/img/casino/royall-m.png" />
+                </Box>
             </DivFlex>
         </Container>
     )
@@ -63,9 +73,12 @@ const Box = styled.div`
 
     border-radius: 1.91176px;
 
-    background-color: grey;
-
     @media (min-width: 1280px) {
         border-radius: 5px;
     }
+`
+
+const PicBox = styled.img`
+    width: 100%;
+    height: 100%;
 `

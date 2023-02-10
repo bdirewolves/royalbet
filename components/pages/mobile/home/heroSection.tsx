@@ -2,7 +2,6 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
-import Button from "@/components/_reduce/Button";
 import Link from "next/link";
 
 export default function HeroSection () {

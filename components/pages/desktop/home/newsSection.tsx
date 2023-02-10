@@ -2,8 +2,8 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
-import Button from "@/components/_reduce/Button";
 import Link from "next/link";
+import Iframe from "@/components/_reduce/iframe";
 
 export default function NewsSection () {
     const settings = {
@@ -23,7 +23,9 @@ export default function NewsSection () {
                 <Slider {...settings}>
                     <div>
                         <Link href="/">
-                            <Box />
+                            <Box>
+                            <Iframe path="https://www.youtube-nocookie.com/embed/M4pv13mFTGM?start=60" title="title" />
+                            </Box>
                         </Link>
                     </div>
                 </Slider>

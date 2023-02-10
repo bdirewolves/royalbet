@@ -108,8 +108,6 @@ const GridFr = styled.div`
 
     overflow: hidden;
 
-    background-color: grey;
-
     @media (min-width: 744px) {
         aspect-ratio: 210/150;
     }
