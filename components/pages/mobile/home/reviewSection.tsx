@@ -109,8 +109,7 @@ const DivFlex = styled.div`
     gap: 0px;
     margin: auto;
 
-    background: grey;
-
+    background: linear-gradient(0deg, #000000 0%, rgba(0, 0, 0, 0) 100%), #666666;
 `
 
 const SliderContent1 = styled.p`
