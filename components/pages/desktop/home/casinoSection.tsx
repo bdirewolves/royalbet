@@ -4,7 +4,7 @@ export default function CasinoSection() {
     return(
         <Container>
             <DivGrid>
-            <BoxContainer>
+                <BoxContainer>
                     <PicBox src="/assets/img/card/provider/iconsbobet-m.png" />
                     <DivPicPro>
                         <PicPro src="/assets/img/card/provider/picsbobet-m.png" />

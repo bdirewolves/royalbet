@@ -8,9 +8,24 @@ export default function CasinoTopSectionPage() {
                 <GridFrPopu>
                     <DivTitle />
                     <DivFlex>
-                        <DivGame />
-                        <DivGame />
-                        <DivGame1 />
+                        <DivGame>
+                            <DivPicPro>
+                                <PicPro src="/assets/img/test.png" />
+                            </DivPicPro>
+                            <BoxText />
+                        </DivGame>
+                        <DivGame>
+                            <DivPicPro>
+                                <PicPro src="/assets/img/test.png" />
+                            </DivPicPro>
+                            <BoxText />
+                        </DivGame>
+                        <DivGame1>
+                            <DivPicPro>
+                                <PicPro src="/assets/img/test.png" />
+                            </DivPicPro>
+                            <BoxText />
+                        </DivGame1>
                     </DivFlex>
                 </GridFrPopu>
                 <GridFrJak>
@@ -70,7 +85,7 @@ const GridFrBanner = styled.div`
     width: 100%;
     aspect-ratio: 320/104;
 
-    background-color: grey;
+    background: #100F14;
 
     @media (min-width: 1280px) {
         grid-area: 1 / 1 / 2 / 4;
@@ -146,6 +161,8 @@ const DivGame = styled.div`
     aspect-ratio: 145/122.06;
     max-width: 210px;
 
+    position: relative;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -153,7 +170,7 @@ const DivGame = styled.div`
 
     overflow: hidden;
 
-    background-color: grey;
+    border: 1.01266px solid #959595;
 
     @media (min-width: 1280px) {
         max-width: 320px;
@@ -166,6 +183,8 @@ const DivGame1 = styled.div`
     aspect-ratio: 145/122.06;
     max-width: 210px;
 
+    position: relative;
+
     display: none;
 
     display: flex;
@@ -175,7 +194,7 @@ const DivGame1 = styled.div`
 
     overflow: hidden;
 
-    background-color: grey;
+    border: 1.01266px solid #959595;
 
     @media (min-width: 744px) {
         display: block;
@@ -217,7 +236,7 @@ const DivJack = styled.div`
     aspect-ratio: 1/1;
     max-width: 320px;
     
-    background-color: grey;  
+    background: #100F14;
 `
 
 const DivAds = styled.div`
@@ -227,11 +246,38 @@ const DivAds = styled.div`
 
     display: none;
     
-    background-color: grey;  
+    background: #100F14; 
 
     @media (min-width: 425px) {
         max-width: 320px;
         
         display: block;
     }
+`
+
+const DivPicPro = styled.div`
+    width: 100%;
+    height: 100%;
+
+    position: absolute;
+
+    z-index: 1;
+`
+
+const PicPro = styled.img`
+    width: 100%;
+    height: 100%;
+`
+
+const BoxText = styled.div`
+    width: 100%;
+    aspect-ratio: 145/17.26;
+
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    z-index: 2;
+
+    background: linear-gradient(180deg, #3E3E3E 0%, #100F14 100%);
 `

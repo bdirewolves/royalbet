@@ -21,7 +21,7 @@ export default function HeroSection () {
             {/* Carousel */}
             <ContainerCarousel>
                 <Slider {...settings}>
-                <div>
+                    <div>
                         <Link href="/promotion">
                             <Box>
                                 <PicProMobile src="/assets/img/promotion/promotionbanner1-m.png" />
