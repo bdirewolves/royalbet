@@ -4,7 +4,9 @@ export default function BlogSection() {
     return(
         <Container>
             <DivTitle />
-            <Box />
+            <Box>
+                <PicBox src="/assets/img/blog/blogbanner-m.png"/>
+            </Box>
             <DivFlex>
                 <Title>บทความ</Title>
                 <DivFlexContent>
@@ -51,8 +53,11 @@ const Box = styled.div`
     width: 95%;
     aspect-ratio: 300/179;
     max-width: 650px;
+`
 
-    background-color: grey;
+const PicBox = styled.img`
+    width: 100%;
+    height: 100%;
 `
 
 const DivFlex = styled.div`

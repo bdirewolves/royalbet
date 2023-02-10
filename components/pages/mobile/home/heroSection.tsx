@@ -7,7 +7,7 @@ import Link from "next/link";
 
 export default function HeroSection () {
     const settings = {
-        dots: true,
+        dots: false,
         infinite: true,
         speed: 500,
         slidesToShow: 1,
@@ -23,9 +23,33 @@ export default function HeroSection () {
             <ContainerCarousel>
                 <Slider {...settings}>
                     <div>
-                        <Link href="/">
+                        <Link href="/promotion">
                             <Box>
-                                <PicProMobile />
+                                <PicProMobile src="/assets/img/promotion/promotionbanner1-m.png" />
+                                {/* Content Carousel */}
+                            </Box>
+                        </Link>
+                    </div>
+                    <div>
+                        <Link href="/promotion">
+                            <Box>
+                                <PicProMobile src="/assets/img/promotion/promotionbanner2-m.png" />
+                                {/* Content Carousel */}
+                            </Box>
+                        </Link>
+                    </div>
+                    <div>
+                        <Link href="/promotion">
+                            <Box>
+                                <PicProMobile src="/assets/img/promotion/promotionbanner3-m.png" />
+                                {/* Content Carousel */}
+                            </Box>
+                        </Link>
+                    </div>
+                    <div>
+                        <Link href="/promotion">
+                            <Box>
+                                <PicProMobile src="/assets/img/promotion/promotionbanner4-m.png" />
                                 {/* Content Carousel */}
                             </Box>
                         </Link>
@@ -84,8 +108,6 @@ const Box = styled.div`
     overflow: hidden;
 
     border-radius: 2.52632px;
-
-    background-color: grey;
     
 `
 
@@ -101,7 +123,7 @@ const TextContent = styled.div`
 
     border-radius: 6px;
 
-    background-color: grey;
+    background-color: #100F14;
 
 `
 

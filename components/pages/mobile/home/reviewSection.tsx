@@ -24,7 +24,7 @@ export default function ReviewSection() {
                     <div>
                         <DivFlex>
                             <Box>
-                                <PicBox  />
+                                <PicBox src="" />
                                 {/* Img Carousel */}
                             </Box>
                             <DivText>
