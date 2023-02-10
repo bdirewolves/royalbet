@@ -1,6 +1,7 @@
 import styled from "styled-components"
 
 export default function CasinoSection() {
+    
     return(
         <Container>
             <DivGrid>
