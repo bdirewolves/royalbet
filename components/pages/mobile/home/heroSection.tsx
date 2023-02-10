@@ -3,6 +3,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
 import Link from "next/link";
+import { promotionFebruary } from "@/constants/promotion";
+import Button from "@/components/_reduce/Button";
 
 export default function HeroSection () {
     const settings = {
@@ -19,58 +21,39 @@ export default function HeroSection () {
         <Container>
 
             {/* Carousel */}
-            <ContainerCarousel>
+            <ContainerCarousel data-aos="fade-up" data-aos-duration="500">
                 <Slider {...settings}>
-                    <div>
-                        <Link href="/promotion">
-                            <Box>
-                                <PicProMobile src="/assets/img/promotion/promotionbanner1-m.png" />
-                                {/* Content Carousel */}
-                            </Box>
-                        </Link>
-                    </div>
-                    <div>
-                        <Link href="/promotion">
-                            <Box>
-                                <PicProMobile src="/assets/img/promotion/promotionbanner2-m.png" />
-                                {/* Content Carousel */}
-                            </Box>
-                        </Link>
-                    </div>
-                    <div>
-                        <Link href="/promotion">
-                            <Box>
-                                <PicProMobile src="/assets/img/promotion/promotionbanner3-m.png" />
-                                {/* Content Carousel */}
-                            </Box>
-                        </Link>
-                    </div>
-                    <div>
-                        <Link href="/promotion">
-                            <Box>
-                                <PicProMobile src="/assets/img/promotion/promotionbanner4-m.png" />
-                                {/* Content Carousel */}
-                            </Box>
-                        </Link>
-                    </div>
+                    {
+                        promotionFebruary.squre.map((item, index) => (
+                            <div key={index} >
+                                <Link href="/m/promotion">
+                                    <Box>
+                                        <PicProMobile src={item.img} alt={item.alt}/>
+                                    </Box>
+                                </Link>
+                            </div>
+                        ))
+                    }
                 </Slider>
             </ContainerCarousel>
 
             <TextContent>
-                {/* Title */}
-                {/* <Title>
-                
-                </Title> */}
+                    {/* Title */}
+                <Title data-aos="fade-up" data-aos-duration="500">
+                    บาคาร่าเว็บตรง<br />สมัครบาคาร่า ออนไลน์<br/>RoyalBet
+                </Title>
+
                 {/* Content */}
-                {/* <Content>
-                
-                </Content> */}
+                <Content data-aos="fade-up" data-aos-duration="500">
+                    “vincebet” คุณจะสามารถสมัครบาคาร่า และ สามารถเล่น บาคาร่าด้วยระบบออโต้ผ่านทางหน้าเว็บไซต์ได้จากทุกช่องทาง อยู่ที่ไหนก็สามารถเล่นได้ มีครบทุกค่ายดัง SA Game | Pretty Gaming Baccarat | Sexy Baccarat หรือ เซ็กซี่ บาคาร่า
+                </Content>
+
                 {/* Button */}
-                {/* <ContainerButton>
+                <ContainerButton data-aos="fade-up" data-aos-duration="500">
                     <Button isBorder>
-                
+                        สมัครบาคาร่า
                     </Button>
-                </ContainerButton> */}
+                </ContainerButton>
             </TextContent>
         </Container>
     )

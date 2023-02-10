@@ -20,54 +20,26 @@ export default function CasinoTopSectionPage() {
                 <GridFrBanner />
                 <GridFrPopu>
                     <DivTitle />
-                    <ContainerCarousel>
-                        <Slider {...settings}>
-                            <div>
-                                <DivFlex>
-                                    <DivGame>
-                                        <DivPicPro>
-                                            <PicPro src="/assets/img/test.png" />
-                                        </DivPicPro>
-                                        <BoxText />
-                                    </DivGame>
-                                    <DivGame>
-                                        <DivPicPro>
-                                            <PicPro src="/assets/img/test.png" />
-                                        </DivPicPro>
-                                        <BoxText />
-                                    </DivGame>
-                                    <DivGame1>
-                                        <DivPicPro>
-                                            <PicPro src="/assets/img/test.png" />
-                                        </DivPicPro>
-                                        <BoxText />
-                                    </DivGame1>
-                                </DivFlex>
-                            </div>
-                            <div>
-                                <DivFlex>
-                                    <DivGame>
-                                        <DivPicPro>
-                                            <PicPro src="/assets/img/test.png" />
-                                        </DivPicPro>
-                                        <BoxText />
-                                    </DivGame>
-                                    <DivGame>
-                                        <DivPicPro>
-                                            <PicPro src="/assets/img/test.png" />
-                                        </DivPicPro>
-                                        <BoxText />
-                                    </DivGame>
-                                    <DivGame1>
-                                        <DivPicPro>
-                                            <PicPro src="/assets/img/test.png" />
-                                        </DivPicPro>
-                                        <BoxText />
-                                    </DivGame1>
-                                </DivFlex>
-                            </div>
-                        </Slider>
-                    </ContainerCarousel>
+                    <DivFlex>
+                        <DivGame>
+                            <DivPicPro>
+                                <PicPro src="/assets/img/test.png" />
+                            </DivPicPro>
+                            <BoxText />
+                        </DivGame>
+                        <DivGame>
+                            <DivPicPro>
+                                <PicPro src="/assets/img/test.png" />
+                            </DivPicPro>
+                            <BoxText />
+                        </DivGame>
+                        <DivGame1>
+                            <DivPicPro>
+                                <PicPro src="/assets/img/test.png" />
+                            </DivPicPro>
+                            <BoxText />
+                        </DivGame1>
+                    </DivFlex>
                 </GridFrPopu>
                 <GridFrJak>
                     <DivJack />

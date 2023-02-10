@@ -1,45 +1,20 @@
+import { casinoContent } from "@/constants/casino"
 import styled from "styled-components"
 
 export default function CasinoSection() {
     return(
         <Container>
             <DivGrid>
-                <BoxContainer>
-                    <PicBox src="/assets/img/card/provider/iconsbobet-m.png" />
-                    <DivPicPro>
-                        <PicPro src="/assets/img/card/provider/picsbobet-m.png" />
-                    </DivPicPro>
-                </BoxContainer>
-                <BoxContainer>
-                    <PicBox src="/assets/img/card/provider/icondigmaan-m.png" />
-                    <DivPicPro>
-                        <PicPro src="/assets/img/card/provider/picdigmaan-m.png" />
-                    </DivPicPro>
-                </BoxContainer>
-                <BoxContainer>
-                    <PicBox src="/assets/img/card/provider/iconibc-m.png" />
-                    <DivPicPro>
-                        <PicPro src="/assets/img/card/provider/picibc-m.png" />
-                    </DivPicPro>
-                </BoxContainer>
-                <BoxContainer>
-                    <PicBox src="/assets/img/card/provider/iconaksport-m.png" />
-                    <DivPicPro>
-                        <PicPro src="/assets/img/card/provider/picaksport-m.png" />
-                    </DivPicPro>
-                </BoxContainer>
-                <BoxContainer>
-                    <PicBox src="/assets/img/card/provider/iconsbo-m.png" />
-                    <DivPicPro>
-                        <PicPro src="/assets/img/card/provider/picsbo-m.png" />
-                    </DivPicPro>
-                </BoxContainer>
-                <BoxContainer>
-                    <PicBox src="/assets/img/card/provider/iconts911-m.png" />
-                    <DivPicPro>
-                        <PicPro src="/assets/img/card/provider/picts911-m.png" />
-                    </DivPicPro>
-                </BoxContainer>
+                    {
+                        casinoContent.show.map((item, index) => (
+                            <BoxContainer key={index}>
+                                <PicBox src={item.bgimg} />
+                                <DivPicPro>
+                                    <PicPro src={item.img} />
+                                </DivPicPro>
+                            </BoxContainer>
+                        ))
+                    }
             </DivGrid>
         </Container>
     )
