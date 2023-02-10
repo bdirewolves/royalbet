@@ -3,7 +3,7 @@ import Image from "next/legacy/image"
 import Link from "next/link"
 
 
-export default function GameSlotSection () {
+export default function GameCasinoSection () {
     return(
         <Container>
             <DivTitle />
@@ -176,6 +176,8 @@ const GridFr = styled.div`
 
     border-radius: 5px;
 
+    overflow: hidden;
+
     @media (min-width: 744px) {
         aspect-ratio: 210/150;
     }
@@ -190,6 +192,8 @@ const GridFr1 = styled.div`
     display: none;
 
     border-radius: 5px;
+
+    overflow: hidden;
 
     @media (min-width: 744px) {
         aspect-ratio: 210/150;

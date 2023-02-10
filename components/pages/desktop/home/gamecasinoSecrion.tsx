@@ -176,6 +176,8 @@ const GridFr = styled.div`
 
     border-radius: 5px;
 
+    overflow: hidden;
+
     @media (min-width: 744px) {
         aspect-ratio: 210/150;
     }
@@ -190,6 +192,8 @@ const GridFr1 = styled.div`
     display: none;
 
     border-radius: 5px;
+
+    overflow: hidden;
 
     @media (min-width: 744px) {
         aspect-ratio: 210/150;
