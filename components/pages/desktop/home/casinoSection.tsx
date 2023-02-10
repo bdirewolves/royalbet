@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 export default function CasinoSection() {
-    
+
     return(
         <Container>
             <DivGrid>
@@ -89,7 +89,7 @@ const DivGrid = styled.div`
 `
 
 const DivPicPro = styled.div`
-    width: 57%;
+    width: 57%!important;
     aspect-ratio: 1/1;
 
     display: flex;
@@ -102,7 +102,7 @@ const DivPicPro = styled.div`
     left: 50%;
     transform: translate(-50%, -50%);
 
-    z-index: 2;
+    z-index: 2!important;
 `
 
 const PicPro = styled.img`
