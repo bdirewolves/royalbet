@@ -116,6 +116,7 @@ const ContainerCarousel = styled.div`
 
 const Box = styled.div`
     width: 100%;
+    height: auto;
     aspect-ratio: 320/133.33;
 
     display: flex;

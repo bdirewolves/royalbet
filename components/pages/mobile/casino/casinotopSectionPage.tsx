@@ -78,6 +78,7 @@ const DivGrid = styled.div`
 
 const GridFrBanner = styled.div`
     width: 100%;
+    height: auto;
     aspect-ratio: 320/104;
 
     background: #100F14;
@@ -103,6 +104,7 @@ const GridFrPopu = styled.div`
 
 const DivTitle = styled.div`
     width: 100%;
+    height: auto;
     aspect-ratio: 300/40;
     max-width: 650px;
 
@@ -133,6 +135,7 @@ const ContainerCarousel = styled.div`
 
 const DivGame = styled.div`
     width: 100%;
+    height: auto;
     aspect-ratio: 145/122.06;
     max-width: 210px;
 
@@ -150,6 +153,7 @@ const DivGame = styled.div`
 
 const DivGame1 = styled.div`
     width: 100%;
+    height: auto;
     aspect-ratio: 145/122.06;
     max-width: 210px;
 
@@ -191,6 +195,7 @@ const GridFrJak = styled.div`
 
 const DivJack = styled.div`
     width: 100%;
+    height: auto;
     aspect-ratio: 1/1;
     max-width: 320px;
     
@@ -199,6 +204,7 @@ const DivJack = styled.div`
 
 const DivAds = styled.div`
     width: 100%;
+    height: auto;
     aspect-ratio: 1/1;
     max-width: 425px;
 
@@ -229,6 +235,7 @@ const PicPro = styled.img`
 
 const BoxText = styled.div`
     width: 100%;
+    height: auto;
     aspect-ratio: 145/17.26;
 
     position: absolute;

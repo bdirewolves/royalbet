@@ -48,6 +48,7 @@ const DivGrid = styled.div`
 
 const DivPicPro = styled.div`
     width: 57%;
+    height: auto;
     aspect-ratio: 1/1;
 
     display: flex;
@@ -70,6 +71,7 @@ const PicPro = styled.img`
 
 const BoxContainer = styled.div`
     width: 100%;
+    height: auto;
     aspect-ratio: 93/55.15;
 
     position: relative;

@@ -112,6 +112,7 @@ const PicPro = styled.img`
 
 const BoxContainer = styled.div`
     width: 100%;
+    height: auto;
     aspect-ratio: 93/55.15;
 
     position: relative;

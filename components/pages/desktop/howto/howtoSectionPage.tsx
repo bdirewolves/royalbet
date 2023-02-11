@@ -51,6 +51,7 @@ const Container = styled.div`
 
 const DivTitle = styled.div`
     width: 95%;
+    height: auto;
     aspect-ratio: 300/40;
     max-width: 650px;
 

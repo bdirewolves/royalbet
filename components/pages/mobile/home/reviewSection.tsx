@@ -2,18 +2,24 @@ import styled from "styled-components"
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Titletype from "@/components/_reduce/Divtitle";
+import { useState } from "react";
+import { reviewContent } from "@/constants/review";
 
 export default function ReviewSection() {
+    const [ current, setCurrent ] = useState(0)
     const settings = {
-        dots: false,
-        infinite: true,
-        speed: 500,
+        centerMode: true,
+        centerPadding: '55px',
         slidesToShow: 3,
         slidesToScroll: 1,
-        autoplay: true,
+        focusOnSelect: true,
+        infinite: true,
+        dotsClass: `slick-dots knowlegde-dots slick-slide`,
+        autoplay: false,
         autoplaySpeed: 2000,
-        dotsClass: `slick-dots`,
         arrows: false,
+        beforeChange: (_current: any, next: any) => setCurrent(next),
         responsive: [
             {
                 breakpoint: 744,
@@ -25,61 +31,31 @@ export default function ReviewSection() {
     };
     return(
         <Container>
-            <DivTitle />
+            <Titletype header="REVIEW จากลูกค้า" subhead="ดูทั้งหมด" />
             {/* Carousel */}
             <ContainerCarousel>
                 <Slider {...settings}>
-                    <div>
-                        <DivFlex>
-                            <Box>
-                                <PicBox src="" />
-                                {/* Img Carousel */}
-                            </Box>
-                            <DivText>
-                                {/* Carousel Title */}
-                                <SliderTitle>User : 11234xxx21</SliderTitle>
-                                {/* Carousel Content */}
-                                <SliderContent>
-                                    <SliderContent1>“รายละเอียดข้อความแสดงความคิดเห็น”่รายละเอียดข้อความ..........</SliderContent1>
-                                </SliderContent>
-                            </DivText>
-                            <GoldPic />
-                        </DivFlex>
-                    </div>
-                    <div>
-                        <DivFlex>
-                            <Box>
-                                <PicBox src="" />
-                                {/* Img Carousel */}
-                            </Box>
-                            <DivText>
-                                {/* Carousel Title */}
-                                <SliderTitle>User : 11234xxx21</SliderTitle>
-                                {/* Carousel Content */}
-                                <SliderContent>
-                                    <SliderContent1>“รายละเอียดข้อความแสดงความคิดเห็น”่รายละเอียดข้อความ..........</SliderContent1>
-                                </SliderContent>
-                            </DivText>
-                            <GoldPic />
-                        </DivFlex>
-                    </div>
-                    <div>
-                        <DivFlex>
-                            <Box>
-                                <PicBox src="" />
-                                {/* Img Carousel */}
-                            </Box>
-                            <DivText>
-                                {/* Carousel Title */}
-                                <SliderTitle>User : 11234xxx21</SliderTitle>
-                                {/* Carousel Content */}
-                                <SliderContent>
-                                    <SliderContent1>“รายละเอียดข้อความแสดงความคิดเห็น”่รายละเอียดข้อความ..........</SliderContent1>
-                                </SliderContent>
-                            </DivText>
-                            <GoldPic />
-                        </DivFlex>
-                    </div>
+                        {
+                            reviewContent.map((item, index) => (
+                            <div key={index}>
+                                <DivFlex>
+                                    <Box opacity={current === index}>
+                                        <PicBox src={item.img} />
+                                        {/* Img Carousel */}
+                                    </Box>
+                                    <DivText>
+                                        {/* Carousel Title */}
+                                        <SliderTitle>{item.title}</SliderTitle>
+                                        {/* Carousel Content */}
+                                        <SliderContent>
+                                            <SliderContent1>{item.subtitle}</SliderContent1>
+                                        </SliderContent>
+                                    </DivText>
+                                    <GoldPic />
+                                </DivFlex>
+                            </div>
+                            ))
+                        }
                 </Slider>
             </ContainerCarousel>
         </Container>
@@ -101,6 +77,7 @@ const Container = styled.section`
 
 const DivTitle = styled.div`
     width: 95%;
+    height: auto;
     aspect-ratio: 300/40;
     max-width: 650px;
 
@@ -134,8 +111,9 @@ const GoldPic = styled.div`
 
 const DivFlex = styled.div`
     width: 95%;
-    aspect-ratio: 239.81/320;
-    max-width: 210px;
+    max-width: 196px;
+    height: auto;
+    aspect-ratio: 196/261.54;
 
     position: relative;
 
@@ -145,13 +123,15 @@ const DivFlex = styled.div`
     align-items: center;
 
     overflow: hidden;
-
     border-radius: 10px;
-    
-    gap: 0px;
-    margin: auto;
 
     background: linear-gradient(0deg, #000000 0%, rgba(0, 0, 0, 0) 100%), #666666;
+
+    @media (min-width: 744px) {
+        max-width: 210px;
+
+    }
+    
 `
 
 const SliderContent1 = styled.p`
@@ -180,11 +160,20 @@ const SliderTitle = styled.h3`
     color: white;
 `
 
-const Box = styled.div`
+const Box = styled.div<{ opacity: boolean }>`
     width: 100%;
-    height: 100%;
+    min-width: 196px;
+    max-width: 261.54px;
+    height: auto;
+    aspect-ratio: 196/261.54;
 
     position: absolute;
+
+    ${props => props.opacity ?
+        `opacity: 1;`
+    :
+        `opacity: 0.4;`
+    }
 `
 
 const PicBox = styled.img`
@@ -193,7 +182,9 @@ const PicBox = styled.img`
 `
 
 const ContainerCarousel = styled.div`
-    width: 95%;
-    height: auto;
-`
 
+    width: 100%;
+    height: auto;
+
+    padding: 0% 0%;
+`

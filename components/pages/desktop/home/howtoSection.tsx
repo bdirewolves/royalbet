@@ -60,6 +60,7 @@ const Container = styled.section`
 
 const DivGrid = styled.div`
     width: 100%;
+    height: auto;
     aspect-ratio: 320/59.35;
 
     position: relative;
@@ -119,6 +120,7 @@ const Gridfr1 = styled.div`
 
 const DivIcon = styled.div`
     width: 20%;
+    height: auto;
     aspect-ratio: 1/1;
 `
 
@@ -176,6 +178,7 @@ const Gridfr2 = styled.div`
 
 const ButtonGold = styled.div`
     width: 33%;
+    height: auto;
     aspect-ratio: 97/30;
 
     display: flex;

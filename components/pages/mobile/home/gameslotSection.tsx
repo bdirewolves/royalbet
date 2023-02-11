@@ -2,8 +2,11 @@ import styled from "styled-components"
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { casinoContent } from "@/constants/casino";
+import React from "react";
+import Titletype from "@/components/_reduce/Divtitle";
 
-export default function GameCasinoSection () {
+export default function GameSlotSection () {
     const settings = {
         dots: false,
         infinite: true,
@@ -14,107 +17,47 @@ export default function GameCasinoSection () {
         autoplaySpeed: 2000,
         arrows: false,
     };
-    return(
+
+    const oddCasinos = casinoContent.slot.filter((_, index) => index % 2 !== 0);
+    const evenCasinos = casinoContent.slot.filter((_, index) => index % 2 === 0);
+
+    return (
         <Container>
-            <DivTitle />
+            <Titletype header="SLOT" subhead="เกมทั้งหมด" />
             <ContainerCarousel>
                 <Slider {...settings}>
                     <div>
                         <DivGrid>
-                            <GridFr>
-                                <DivPicPro>
-                                    <PicPro src="/assets/img/test.png" />
-                                </DivPicPro>
-                                <BoxText />
-                                <GoldPic />
-                            </GridFr>
-                            <GridFr>
-                                <DivPicPro>
-                                    <PicPro src="/assets/img/test.png" />
-                                </DivPicPro>
-                                <BoxText />
-                                <GoldPic />
-                            </GridFr>
-                            <GridFr>
-                                <DivPicPro>
-                                    <PicPro src="/assets/img/test.png" />
-                                </DivPicPro>
-                                <BoxText />
-                                <GoldPic />
-                            </GridFr>
-                            <GridFr>
-                                <DivPicPro>
-                                    <PicPro src="/assets/img/test.png" />
-                                </DivPicPro>
-                                <BoxText />
-                                <GoldPic />
-                            </GridFr>
-                            <GridFr>
-                                <DivPicPro>
-                                    <PicPro src="/assets/img/test.png" />
-                                </DivPicPro>
-                                <BoxText />
-                                <GoldPic />
-                            </GridFr>
-                            <GridFr>
-                                <DivPicPro>
-                                    <PicPro src="/assets/img/test.png" />
-                                </DivPicPro>
-                                <BoxText />
-                                <GoldPic />
-                            </GridFr>
+                            {oddCasinos.slice(0, 6).map((item, index) => (
+                                <GridFr key={index}>
+                                    <DivPicPro>
+                                        <PicPro src={item.img} />
+                                    </DivPicPro>
+                                    <BoxText />
+                                    <GoldPic />
+                                </GridFr>
+                            ))}
                         </DivGrid>
                     </div>
                     <div>
                         <DivGrid>
-                            <GridFr>
-                                <DivPicPro>
-                                    <PicPro src="/assets/img/test.png" />
-                                </DivPicPro>
-                                <BoxText />
-                                <GoldPic />
-                            </GridFr>
-                            <GridFr>
-                                <DivPicPro>
-                                    <PicPro src="/assets/img/test.png" />
-                                </DivPicPro>
-                                <BoxText />
-                                <GoldPic />
-                            </GridFr>
-                            <GridFr>
-                                <DivPicPro>
-                                    <PicPro src="/assets/img/test.png" />
-                                </DivPicPro>
-                                <BoxText />
-                                <GoldPic />
-                            </GridFr>
-                            <GridFr>
-                                <DivPicPro>
-                                    <PicPro src="/assets/img/test.png" />
-                                </DivPicPro>
-                                <BoxText />
-                                <GoldPic />
-                            </GridFr>
-                            <GridFr>
-                                <DivPicPro>
-                                    <PicPro src="/assets/img/test.png" />
-                                </DivPicPro>
-                                <BoxText />
-                                <GoldPic />
-                            </GridFr>
-                            <GridFr>
-                                <DivPicPro>
-                                    <PicPro src="/assets/img/test.png" />
-                                </DivPicPro>
-                                <BoxText />
-                                <GoldPic />
-                            </GridFr>
+                            {evenCasinos.slice(0, 6).map((item, index) => (
+                                <GridFr key={index}>
+                                    <DivPicPro>
+                                        <PicPro src={item.img} />
+                                    </DivPicPro>
+                                    <BoxText />
+                                    <GoldPic />
+                                </GridFr>
+                            ))}
                         </DivGrid>
                     </div>
                 </Slider>
             </ContainerCarousel>
         </Container>
-    )
+    );
+
+
 }
 
 const Container = styled.section`
@@ -133,19 +76,6 @@ const Container = styled.section`
 const ContainerCarousel = styled.div`
     width: 100%;
     height: fit-content;
-`
-
-const DivTitle = styled.div`
-    width: 95%;
-    aspect-ratio: 300/40;
-    max-width: 650px;
-
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-
-    background-color: grey;
 `
 
 const DivGrid = styled.div`
@@ -168,6 +98,7 @@ const DivGrid = styled.div`
 
 const GridFr = styled.div`
     width: 100%;
+    height: auto;
     aspect-ratio: 145/130;
 
     position: relative;
@@ -197,6 +128,7 @@ const PicPro = styled.img`
 
 const BoxText = styled.div`
     width: 100%;
+    height: auto;
     aspect-ratio: 145/17.26;
 
     position: absolute;
@@ -210,6 +142,7 @@ const BoxText = styled.div`
 
 const GoldPic = styled.div`
     width: 14%;
+    height: auto;
     aspect-ratio: 20.71/17.26;
 
     position: absolute;

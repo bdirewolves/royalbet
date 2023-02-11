@@ -141,6 +141,7 @@ const ContainerCarousel = styled.div`
 
 const DivTitle = styled.div`
     width: 95%;
+    height: auto;
     aspect-ratio: 300/40;
     max-width: 650px;
 
@@ -192,6 +193,7 @@ const DivGrid = styled.div`
 
 const GridFr = styled.div`
     width: 100%;
+    height: auto;
     aspect-ratio: 145/130;
 
     position: relative;
@@ -207,6 +209,7 @@ const GridFr = styled.div`
 
 const GridFr1 = styled.div`
     width: 100%;
+    height: auto;
     aspect-ratio: 145/130;
 
     position: relative;
@@ -242,6 +245,7 @@ const PicPro = styled.img`
 
 const BoxText = styled.div`
     width: 100%;
+    height: auto;
     aspect-ratio: 145/17.26;
 
     position: absolute;
@@ -255,6 +259,7 @@ const BoxText = styled.div`
 
 const GoldPic = styled.div`
     width: 14%;
+    height: auto;
     aspect-ratio: 20.71/17.26;
 
     position: absolute;

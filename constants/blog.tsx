@@ -1,7 +1,5 @@
-import type { ReactNode } from "react";
-import styled from "styled-components";
 
-interface IContent {
+export interface IContent {
     title: string;
     content: string;
     img: string;
@@ -16,17 +14,17 @@ export interface IBlogContent {
     content: IContent[]
 }
 
-export const blogContent: IBlogContent[] = [
+export const BlogContent: IBlogContent[] = [
     {
-        title: "เทคนิคการเล่นบาคาร่า เล่นยังไงให้เก่งเหมือนเซียน 1",
+        title: "หัวข้อบทความ 1",
         subtitle: "สูตรเดินไม้ แบบเซียนมาเก๊า เดินยังไงให้เจ้าเจ๊ง!!",
-        img: "/assets/img/knowhow/knowhow1-d.png",
+        img: "/assets/img/blog/blogbanner-m.png",
         img_alt: "",
         img_desc: "สูตรเดินไม้ แบบเซียนมาเก๊า เดินยังไงให้เจ้าเจ๊ง!!1",
         slug: "สวัสดี",
         content: [
             {
-                title: "เทคนิคการเล่นบาคาร่า เล่นยังไงให้เก่งเหมือนเซียน",
+                title: "หัวข้อบทความ 1",
                 content: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequuntur at dicta numquam accusamus ratione consequatur dolore enim fuga a ex.",
                 img: "/assets/img/blog/blog1.jpg"
             },

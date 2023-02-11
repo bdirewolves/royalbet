@@ -84,6 +84,7 @@ const DivFlex = styled.div`
 
 const Box = styled.div`
     width: 100%;
+    height: auto;
     aspect-ratio: 52/58.31;
 
     position: relative;
@@ -101,6 +102,7 @@ const Box = styled.div`
 
 const PicBox = styled.img`
     width: 100%;
+    height: auto;
     aspect-ratio: 133/126.84;
 
     position: absolute;
@@ -114,6 +116,7 @@ const PicBox = styled.img`
 
 const DivText = styled.div`
     width: 100%;
+    height: auto;
     aspect-ratio: 132.51/19.89;
 
     position: absolute;

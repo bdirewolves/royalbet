@@ -150,6 +150,7 @@ const Container = styled.section`
 
 const DivTitle = styled.div`
     width: 95%;
+    height: auto;
     aspect-ratio: 300/40;
     max-width: 650px;
 
@@ -193,6 +194,7 @@ const GoldPic = styled.div`
 
 const DivFlex = styled.div`
     width: 95%;
+    height: auto;
     aspect-ratio: 239.81/320;
     max-width: 210px;
 

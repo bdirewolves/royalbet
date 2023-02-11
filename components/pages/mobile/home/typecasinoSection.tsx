@@ -6,39 +6,43 @@ export default function TypeCasinoSection () {
             <DivFlex>
                 <Box>
                     <DivText>
-                        <Text>CASINO ROYAL</Text>
+                        <TextF>CASINO<TextB>ROYAL</TextB></TextF>
                     </DivText>
                     <PicBox src="/assets/img/casino/royalr-m.png" />
+                    <LineGolden />
                 </Box>
                 <Box>
-                    <DivText>   
-                        <Text>SLOT ROYAL</Text>
+                    <DivText>
+                        <TextF>SLOT<TextB>ROYAL</TextB></TextF>
                     </DivText>
                     <PicBox src="/assets/img/casino/royalo-m.png" />
+                    <LineGolden />
                 </Box>
                 <Box>
                     <DivText>
-                        <Text>SPORT ROYAL</Text>
+                        <TextF>SPORT<TextB>ROYAL</TextB></TextF>
                     </DivText>
                     <PicBox src="/assets/img/casino/royaly-m.png" />
+                    <LineGolden />
                 </Box>
                 <Box>
                     <DivText>
-                        <Text>E-SPORT ROYAL</Text>
+                        <TextF>E-SPORT<TextB>ROYAL</TextB></TextF>
                     </DivText>
                     <PicBox src="/assets/img/casino/royala-m.png" />
+                    <LineGolden />
                 </Box>
                 <Box>
                     <DivText>
-                        <Text>GAME ROYAL</Text>
+                        <TextF>GAME<TextB>ROYAL</TextB></TextF>
                     </DivText>
                     <PicBox src="/assets/img/casino/royall-m.png" />
+                    <LineGolden />
                 </Box>
             </DivFlex>
         </Container>
     )
 }
-
 
 const Container = styled.section`
     width: 100%;
@@ -68,6 +72,7 @@ const DivFlex = styled.div`
 
 const Box = styled.div`
     width: 100%;
+    height: auto;
     aspect-ratio: 52/58.31;
 
     position: relative;
@@ -81,7 +86,7 @@ const Box = styled.div`
 
 const DivText = styled.div`
     width: 100%;
-    aspect-ratio: 132.51/19.89;
+    height: auto;
 
     position: absolute;
 
@@ -89,13 +94,28 @@ const DivText = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+   
 `
 
-const Text = styled.p`
+const TextF = styled.p`
     font-family: 'Prompt';
     font-style: normal;
     font-weight: 700;
-    font-size: 9.77939px;
+    font-size: 6.77939px;
+    line-height: 15px;
+
+    margin: 0;
+
+    color: white;
+`
+const TextB = styled.em`
+    display: none;
+
+    font-family: 'Prompt';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 6.77939px;
     line-height: 15px;
 
     margin: 0;
@@ -103,15 +123,41 @@ const Text = styled.p`
     color: white;
 `
 
+const LineGolden = styled.div`
+
+    width: 33.3%;
+    height: auto;
+    aspect-ratio: 90/3;
+
+    background: linear-gradient(90deg, #D2BB6E 0%, #F6E79A 100%);
+
+    position: absolute;
+    left: 50%;
+    bottom: 0%;
+
+    transform: translateX(-50%);
+
+    /* Gold solf */
+
+
+   
+`
+
 const PicBox = styled.img`
-    width: 100%;
+    width: 90%;
+    height: auto;
     aspect-ratio: 133/126.84;
 
     position: absolute;
-    bottom: 0;
+    left: 50%;
+    bottom: 0%;
 
-    &:hover {
+    transform: translateX(-50%);
+
+   
+
+    ${Box}:hover & {
         transition-duration: 300ms;
-        transform: scale(1.1);
+        transform: scale(1.2) translateX(-40%);
     }
 `

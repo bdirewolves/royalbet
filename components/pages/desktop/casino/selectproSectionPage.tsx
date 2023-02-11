@@ -245,6 +245,7 @@ const DivGridType = styled.div`
 
 const BoxType = styled.div`
     width: 100%;
+    height: auto;
     aspect-ratio: 92/47;
 
     border-radius: 5px;
@@ -295,6 +296,7 @@ const DivGridPro = styled.div`
 
 const BoxPro = styled.div`
     width: 100%;
+    height: auto;
     aspect-ratio: 86/28;
 
     border-radius: 5px;
@@ -314,6 +316,7 @@ const BoxPro = styled.div`
 
 const BoxPro1 = styled.div`
     width: 100%;
+    height: auto;
     aspect-ratio: 86/28;
 
     border-radius: 5px;
@@ -350,6 +353,7 @@ const DivFlexGame = styled.div`
 
 const DivTitle = styled.div`
     width: 100%;
+    height: auto;
     aspect-ratio: 300/40;
     max-width: 650px;
 
@@ -399,6 +403,7 @@ const DivGrid = styled.div`
 
 const GridFr = styled.div`
     width: 100%;
+    height: auto;
     aspect-ratio: 145/130;
 
     position: relative;
@@ -426,6 +431,7 @@ const PicPro = styled.img`
 
 const BoxText = styled.div`
     width: 100%;
+    height: auto;
     aspect-ratio: 145/17.26;
 
     position: absolute;
@@ -439,6 +445,7 @@ const BoxText = styled.div`
 
 const GoldPic = styled.div`
     width: 14%;
+    height: auto;
     aspect-ratio: 20.71/17.26;
 
     position: absolute;

@@ -9,6 +9,7 @@ import { useEffect, useState } from "react"
 import ButtonGradient from "@/components/_reduce/ButtonGradient"
 import moment from "moment"
 import { useRouter } from "next/router"
+import Logo from "@/components/_reduce/Logo"
 
 export default function Navbar() {
 
@@ -32,9 +33,7 @@ export default function Navbar() {
             <Nav>
                 <NavTop>
                     <DivLogo href="/">
-                        <Logo>
-                            <Image src="/assets/img/logo.png" alt="" layout="fill" />
-                        </Logo>
+                        <Logo />
                     </DivLogo>
                     <FlexStatus>
                         <Statusbar>
@@ -473,12 +472,6 @@ const Statusbar = styled.div`
     display: flex;
     align-items: center;
     gap: 9px;
-`
-
-const Logo = styled.div`
-    position: relative;
-    width: 100%;
-    height: 100%;
 `
 
 const NavTop = styled.div`

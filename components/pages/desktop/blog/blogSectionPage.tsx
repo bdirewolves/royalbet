@@ -37,6 +37,7 @@ const Container = styled.section`
 
 const DivTitle = styled.div`
     width: 95%;
+    height: auto;
     aspect-ratio: 300/40;
     max-width: 650px;
 
@@ -54,6 +55,7 @@ const DivTitle = styled.div`
 
 const Box = styled.div`
     width: 95%;
+    height: auto;
     aspect-ratio: 300/179;
     max-width: 650px;
 
