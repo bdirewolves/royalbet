@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useState } from "react";
 import { BlogContent } from "@/constants/blog";
+import { Container, FixWidth } from "@/components/_reduce/Reduce";
 
 export default function BlogupgateSection() {
     const [ active, setActive ] = useState(0)
@@ -15,57 +16,44 @@ export default function BlogupgateSection() {
 
     return(
         <Container>
-            <DivFlex>
-                <DivText>
-                    <Title>บทความ</Title>
-                </DivText>
-                <DivFlexContent>
-                    {
-                        BlogContent.reverse().slice(0, 2).map((item, index) => (
-                            <DivBlogContent key={index}  isActive={active == index} onClick={() => handleActive(index)}>
-                                <DivContentBlog>
-                                    <DivTextContentBlog>
-                                        <TextContentBlog isActive={active === index}>
-                                            {item.title}
-                                        </TextContentBlog>
-                                    </DivTextContentBlog>
-                                </DivContentBlog>
-                                <DivTextContentDetailBlog>
-                                    {
-                                        BlogContent.slice(0, 4).map((_item, index) => (
-                                            <DivTextContentBlog1 key={index}>
-                                                <TextContentBlog1>
-                                                        {_item.title}
-                                                </TextContentBlog1>
-                                            </DivTextContentBlog1>
-                                        ))
-                                    }
-                                </DivTextContentDetailBlog>
-                            </DivBlogContent>
-                        ))
-                    }
-                </DivFlexContent>
-                <GoldPic />
-            </DivFlex>
+                <DivFlex>
+                    <DivText>
+                        <Title>บทความ</Title>
+                    </DivText>
+                    <DivFlexContent>
+                        {
+                            BlogContent.reverse().slice(0, 2).map((item, index) => (
+                                <DivBlogContent key={index}  isActive={active == index} onClick={() => handleActive(index)}>
+                                    <DivContentBlog>
+                                        <DivTextContentBlog>
+                                            <TextContentBlog isActive={active === index}>
+                                                {item.title}
+                                            </TextContentBlog>
+                                        </DivTextContentBlog>
+                                    </DivContentBlog>
+                                    <DivTextContentDetailBlog>
+                                        {
+                                            BlogContent.slice(0, 4).map((_item, index) => (
+                                                <DivTextContentBlog1 key={index}>
+                                                    <TextContentBlog1>
+                                                            {_item.title}
+                                                    </TextContentBlog1>
+                                                </DivTextContentBlog1>
+                                            ))
+                                        }
+                                    </DivTextContentDetailBlog>
+                                </DivBlogContent>
+                            ))
+                        }
+                    </DivFlexContent>
+                    <GoldPic />
+                </DivFlex>
         </Container>
     )
 }
 
-const Container = styled.section`
-    width: 100%;
-    height: fit-content;
-    max-width: 744px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    gap: 10px;
-`
-
 const DivFlex = styled.div`
-    width: 95%;
+    width: 100%;
     height: 302px;
     max-width: 650px;
 

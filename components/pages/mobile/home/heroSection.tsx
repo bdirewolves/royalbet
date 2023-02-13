@@ -5,6 +5,7 @@ import styled from "styled-components";
 import Link from "next/link";
 import { promotionFebruary } from "@/constants/promotion";
 import Button from "@/components/_reduce/Button";
+import { Container } from "@/components/_reduce/Reduce";
 
 export default function HeroSection () {
     const settings = {
@@ -58,19 +59,6 @@ export default function HeroSection () {
         </Container>
     )
 }
-
-const Container = styled.section`
-    width: 100%;
-    height: fit-content;
-    max-width: 744px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    gap: 10px;
-`
 
 const ContainerCarousel = styled.div`
     width: 100%;

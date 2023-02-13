@@ -27,6 +27,120 @@ export const casinoContent = {
             bgimg: "/assets/img/card/bg/iconts911-m.png"
         },
     ],
+    providergs: [
+        {
+            img: "/assets/img/test.png",
+            desc: "slot"
+        },
+        {
+            img: "/assets/img/test.png",
+            desc: "slot"
+        },
+        {
+            img: "/assets/img/test.png",
+            desc: "slot"
+        },
+        {
+            img: "/assets/img/test.png",
+            desc: "slot"
+        },
+        {
+            img: "/assets/img/test.png",
+            desc: "slot"
+        },
+        {
+            img: "/assets/img/test.png",
+            desc: "slot"
+        },
+        {
+            img: "/assets/img/test.png",
+            desc: "slot"
+        },
+        {
+            img: "/assets/img/test.png",
+            desc: "slot"
+        },
+        {
+            img: "/assets/img/test.png",
+            desc: "slot"
+        },
+        {
+            img: "/assets/img/test.png",
+            desc: "slot"
+        },
+        {
+            img: "/assets/img/test.png",
+            desc: "slot"
+        },
+        {
+            img: "/assets/img/test.png",
+            desc: "slot"
+        },
+        {
+            img: "/assets/img/test.png",
+            desc: "slot"
+        },
+        {
+            img: "/assets/img/test.png",
+            desc: "slot"
+        },
+        {
+            img: "/assets/img/test.png",
+            desc: "slot"
+        },
+        {
+            img: "/assets/img/test.png",
+            desc: "slot"
+        },
+        {
+            img: "/assets/img/test.png",
+            desc: "slot"
+        },
+        {
+            img: "/assets/img/test.png",
+            desc: "slot"
+        },
+        {
+            img: "/assets/img/test.png",
+            desc: "slot"
+        },
+        {
+            img: "/assets/img/test.png",
+            desc: "slot"
+        },
+        {
+            img: "/assets/img/test.png",
+            desc: "slot"
+        },
+        {
+            img: "/assets/img/test.png",
+            desc: "slot"
+        },
+        {
+            img: "/assets/img/test.png",
+            desc: "slot"
+        },
+        {
+            img: "/assets/img/test.png",
+            desc: "slot"
+        },
+        {
+            img: "/assets/img/test.png",
+            desc: "slot"
+        },
+        {
+            img: "/assets/img/test.png",
+            desc: "slot"
+        },
+        {
+            img: "/assets/img/test.png",
+            desc: "slot"
+        },
+        {
+            img: "/assets/img/test.png",
+            desc: "slot"
+        },
+    ],
     casino: [
         {
             img: "/assets/img/test.png",

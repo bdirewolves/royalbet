@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { casinoContent } from "@/constants/casino";
 import React from "react";
 import Titletype from "@/components/_reduce/Divtitle";
+import { Container, FixWidth } from "@/components/_reduce/Reduce";
 
 export default function GameCasinoSection () {
     const settings = {
@@ -23,55 +24,44 @@ export default function GameCasinoSection () {
 
     return (
         <Container>
-            <Titletype header="CASINO" subhead="เกมทั้งหมด" />
-            <ContainerCarousel>
-                <Slider {...settings}>
-                    <div>
-                        <DivGrid>
-                            {oddCasinos.slice(0, 6).map((item, index) => (
-                                <GridFr key={index}>
-                                    <DivPicPro>
-                                        <PicPro src={item.img} />
-                                    </DivPicPro>
-                                    <BoxText />
-                                    <GoldPic />
-                                </GridFr>
-                            ))}
-                        </DivGrid>
-                    </div>
-                    <div>
-                        <DivGrid>
-                            {evenCasinos.slice(0, 6).map((item, index) => (
-                                <GridFr key={index}>
-                                    <DivPicPro>
-                                        <PicPro src={item.img} />
-                                    </DivPicPro>
-                                    <BoxText />
-                                    <GoldPic />
-                                </GridFr>
-                            ))}
-                        </DivGrid>
-                    </div>
-                </Slider>
-            </ContainerCarousel>
+            <FixWidth>
+                <Titletype header="CASINO" subhead="เกมทั้งหมด" />
+                <ContainerCarousel>
+                    <Slider {...settings}>
+                        <div>
+                            <DivGrid>
+                                {oddCasinos.slice(0, 6).map((item, index) => (
+                                    <GridFr key={index}>
+                                        <DivPicPro>
+                                            <PicPro src={item.img} />
+                                        </DivPicPro>
+                                        <BoxText />
+                                        <GoldPic />
+                                    </GridFr>
+                                ))}
+                            </DivGrid>
+                        </div>
+                        <div>
+                            <DivGrid>
+                                {evenCasinos.slice(0, 6).map((item, index) => (
+                                    <GridFr key={index}>
+                                        <DivPicPro>
+                                            <PicPro src={item.img} />
+                                        </DivPicPro>
+                                        <BoxText />
+                                        <GoldPic />
+                                    </GridFr>
+                                ))}
+                            </DivGrid>
+                        </div>
+                    </Slider>
+                </ContainerCarousel>
+            </FixWidth>
         </Container>
     );
 
 
 }
-
-const Container = styled.section`
-    width: 100%;
-    height: fit-content;
-    max-width: 744px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    gap: 10px;
-`
 
 const ContainerCarousel = styled.div`
     width: 100%;
@@ -79,7 +69,7 @@ const ContainerCarousel = styled.div`
 `
 
 const DivGrid = styled.div`
-    width: 95%;
+    width: 100%;
     height: fit-content;
     max-width: 650px;
 

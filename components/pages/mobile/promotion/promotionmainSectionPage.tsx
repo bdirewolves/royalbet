@@ -1,35 +1,30 @@
+import { Container, FixWidth } from "@/components/_reduce/Reduce";
+import { promotionFebruary } from "@/constants/promotion";
+import Link from "next/link";
 import styled from "styled-components";
 
 export default function PromotionMainSectionPage() {
     return(
         <Container>
-            <DivFlex>
-                <Box>
-                    <PicBox src="/assets/img/promotion/promotionbanner1-m.png"/>
-                </Box>
-                <Box>
-                    <PicBox src="/assets/img/promotion/promotionbanner2-m.png"/>
-                </Box>
-            </DivFlex>
+            <FixWidth>
+                <DivFlex>
+                    {
+                        promotionFebruary.squre.reverse().slice(0, 2).map((item, index) => (
+                        <Box key={index}>
+                            <Link href="/m/promotion">
+                                <PicBox src={item.img} alt={item.alt}/>
+                            </Link>
+                        </Box>
+                        ))
+                    }
+                </DivFlex>
+            </FixWidth>
         </Container>
     )
 }
 
-const Container = styled.div`
-    width: 100%;
-    height: fit-content;
-    max-width: 744px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    gap: 10px;
-`
-
 const DivFlex = styled.div`
-    width: 95%;
+    width: 100%;
     height: fit-content;
     max-width: 650px;
 

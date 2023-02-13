@@ -5,7 +5,7 @@ import styled from "styled-components";
 import Link from "next/link";
 import Iframe from "@/components/_reduce/iframe";
 import Titletype from "@/components/_reduce/Divtitle";
-import { PicBox } from "@/components/_reduce/Reduce";
+import { Container, FixWidth, PicBox } from "@/components/_reduce/Reduce";
 import { newsContent } from "@/constants/news";
 import { useState } from "react";
 
@@ -36,53 +36,28 @@ export default function NewsSection () {
     };
     return (
         <Container>
-            <Titletype header="NEWS" subhead="ดูทั้งหมด" />
-            <ContainerCarousel>
-                <Slider {...settings}>
-                        {
-                            newsContent.map((item, index) => (
-                                <div key={index}>
-                                    <Link href="/">
-                                        <Box opacity={current === index}>
-                                            {/* Content Carousel */}
-                                            <Iframe path={item.video_url} title={item.title} />
-                                        </Box>
-                                    </Link>
-                                </div>
-                            ))
-                        }
-                </Slider>
-            </ContainerCarousel>
+            <FixWidth>
+                <Titletype header="NEWS" subhead="ดูทั้งหมด" />
+                <ContainerCarousel>
+                    <Slider {...settings}>
+                            {
+                                newsContent.map((item, index) => (
+                                    <div key={index}>
+                                        <Link href="/">
+                                            <Box opacity={current === index}>
+                                                {/* Content Carousel */}
+                                                <Iframe path={item.video_url} title={item.title} />
+                                            </Box>
+                                        </Link>
+                                    </div>
+                                ))
+                            }
+                    </Slider>
+                </ContainerCarousel>
+            </FixWidth>
         </Container>
     )
 }
-
-const Container = styled.section`
-    width: 100%;
-    height: fit-content;
-    max-width: 744px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    gap: 10px;
-`
-
-const DivTitle = styled.div`
-    width: 95%;
-    height: auto;
-    aspect-ratio: 300/40;
-    max-width: 650px;
-
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-
-    background-color: grey;
-`
 
 const Desc = styled.p`
     padding: 10px;

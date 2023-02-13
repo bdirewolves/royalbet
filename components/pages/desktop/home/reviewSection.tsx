@@ -2,9 +2,14 @@ import styled from "styled-components"
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Titletype from "@/components/_reduce/Divtitle";
+import { Container, FixWidth } from "@/components/_reduce/Reduce";
+import { reviewContent } from "@/constants/review";
+import { useState } from "react";
 
 
 export default function ReviewSection() {
+    const [ current, setCurrent ] = useState(0)
     const settings = {
         dots: false,
         infinite: true,
@@ -15,6 +20,7 @@ export default function ReviewSection() {
         autoplaySpeed: 2000,
         dotsClass: `slick-dots`,
         arrows: false,
+        beforeChange: (_current: any, next: any) => setCurrent(next),
         responsive: [
             {
                 breakpoint: 1280,
@@ -32,145 +38,38 @@ export default function ReviewSection() {
     };
     return(
         <Container>
-            <DivTitle />
-            {/* Carousel */}
-            <ContainerCarousel>
-                <Slider {...settings}>
-                    <div>
-                        <DivFlex>
-                            <Box>
-                                <PicBox src="" />
-                                {/* Img Carousel */}
-                            </Box>
-                            <DivText>
-                                {/* Carousel Title */}
-                                <SliderTitle>User : 11234xxx21</SliderTitle>
-                                {/* Carousel Content */}
-                                <SliderContent>
-                                    <SliderContent1>“รายละเอียดข้อความแสดงความคิดเห็น”่รายละเอียดข้อความ..........</SliderContent1>
-                                </SliderContent>
-                            </DivText>
-                            <GoldPic />
-                        </DivFlex>
-                    </div>
-                    <div>
-                        <DivFlex>
-                            <Box>
-                                <PicBox src="" />
-                                {/* Img Carousel */}
-                            </Box>
-                            <DivText>
-                                {/* Carousel Title */}
-                                <SliderTitle>User : 11234xxx21</SliderTitle>
-                                {/* Carousel Content */}
-                                <SliderContent>
-                                    <SliderContent1>“รายละเอียดข้อความแสดงความคิดเห็น”่รายละเอียดข้อความ..........</SliderContent1>
-                                </SliderContent>
-                            </DivText>
-                            <GoldPic />
-                        </DivFlex>
-                    </div>
-                    <div>
-                        <DivFlex>
-                            <Box>
-                                <PicBox src="" />
-                                {/* Img Carousel */}
-                            </Box>
-                            <DivText>
-                                {/* Carousel Title */}
-                                <SliderTitle>User : 11234xxx21</SliderTitle>
-                                {/* Carousel Content */}
-                                <SliderContent>
-                                    <SliderContent1>“รายละเอียดข้อความแสดงความคิดเห็น”่รายละเอียดข้อความ..........</SliderContent1>
-                                </SliderContent>
-                            </DivText>
-                            <GoldPic />
-                        </DivFlex>
-                    </div>
-                    <div>
-                        <DivFlex>
-                            <Box>
-                                <PicBox src="" />
-                                {/* Img Carousel */}
-                            </Box>
-                            <DivText>
-                                {/* Carousel Title */}
-                                <SliderTitle>User : 11234xxx21</SliderTitle>
-                                {/* Carousel Content */}
-                                <SliderContent>
-                                    <SliderContent1>“รายละเอียดข้อความแสดงความคิดเห็น”่รายละเอียดข้อความ..........</SliderContent1>
-                                </SliderContent>
-                            </DivText>
-                            <GoldPic />
-                        </DivFlex>
-                    </div>
-                    <div>
-                        <DivFlex>
-                            <Box>
-                                <PicBox src="" />
-                                {/* Img Carousel */}
-                            </Box>
-                            <DivText>
-                                {/* Carousel Title */}
-                                <SliderTitle>User : 11234xxx21</SliderTitle>
-                                {/* Carousel Content */}
-                                <SliderContent>
-                                    <SliderContent1>“รายละเอียดข้อความแสดงความคิดเห็น”่รายละเอียดข้อความ..........</SliderContent1>
-                                </SliderContent>
-                            </DivText>
-                            <GoldPic />
-                        </DivFlex>
-                    </div>
-                </Slider>
-            </ContainerCarousel>
+            <FixWidth>
+                <Titletype header="REVIEW จากลูกค้า" subhead="ดูทั้งหมด" />
+                {/* Carousel */}
+                <ContainerCarousel>
+                    <Slider {...settings}>
+                        {
+                            reviewContent.map((item, index) => (
+                            <div key={index}>
+                                <DivFlex>
+                                    <Box opacity={current === index}>
+                                        <PicBox src={item.img} />
+                                        {/* Img Carousel */}
+                                    </Box>
+                                    <DivText>
+                                        {/* Carousel Title */}
+                                        <SliderTitle>{item.title}</SliderTitle>
+                                        {/* Carousel Content */}
+                                        <SliderContent>
+                                            <SliderContent1>{item.subtitle}</SliderContent1>
+                                        </SliderContent>
+                                    </DivText>
+                                    <GoldPic />
+                                </DivFlex>
+                            </div>
+                            ))
+                        }
+                    </Slider>
+                </ContainerCarousel>
+            </FixWidth>
         </Container>
     )
 }
-
-const Container = styled.section`
-    width: 100%;
-    height: fit-content;
-    max-width: 744px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    gap: 10px;
-
-    @media (min-width: 1280px) {
-        max-width: 1280px;
-    }
-    
-    @media (min-width: 1440px) {
-        max-width: 1440px;
-    }
-`
-
-const DivTitle = styled.div`
-    width: 95%;
-    height: auto;
-    aspect-ratio: 300/40;
-    max-width: 650px;
-
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-
-    background-color: grey;
-
-    @media (min-width: 1280px) {
-        width: 91%;
-        aspect-ratio: 1164.44/35.56;
-        max-width: 1164.44px;
-    }
-
-    @media (min-width: 1440px) {
-        max-width: 1310px;
-    }
-`
 
 const DivText = styled.div`
     width: 90%;
@@ -241,11 +140,20 @@ const SliderTitle = styled.h3`
     color: white;
 `
 
-const Box = styled.div`
+const Box = styled.div<{ opacity: boolean }>`
     width: 100%;
-    height: 100%;
+    min-width: 196px;
+    max-width: 261.54px;
+    height: auto;
+    aspect-ratio: 196/261.54;
 
     position: absolute;
+
+    ${props => props.opacity ?
+        `opacity: 1;`
+    :
+        `opacity: 0.4;`
+    }
 `
 
 const PicBox = styled.img`
@@ -258,7 +166,7 @@ const ContainerCarousel = styled.div`
     height: auto;
 
     @media (min-width: 1280px) {
-        width: 91%;
+        width: 100%;
         
         max-width: 1164.44px;
     }

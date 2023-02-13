@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Titletype from "@/components/_reduce/Divtitle";
 import { useState } from "react";
 import { reviewContent } from "@/constants/review";
+import { Container, FixWidth } from "@/components/_reduce/Reduce";
 
 export default function ReviewSection() {
     const [ current, setCurrent ] = useState(0)
@@ -31,63 +32,38 @@ export default function ReviewSection() {
     };
     return(
         <Container>
-            <Titletype header="REVIEW จากลูกค้า" subhead="ดูทั้งหมด" />
-            {/* Carousel */}
-            <ContainerCarousel>
-                <Slider {...settings}>
-                        {
-                            reviewContent.map((item, index) => (
-                            <div key={index}>
-                                <DivFlex>
-                                    <Box opacity={current === index}>
-                                        <PicBox src={item.img} />
-                                        {/* Img Carousel */}
-                                    </Box>
-                                    <DivText>
-                                        {/* Carousel Title */}
-                                        <SliderTitle>{item.title}</SliderTitle>
-                                        {/* Carousel Content */}
-                                        <SliderContent>
-                                            <SliderContent1>{item.subtitle}</SliderContent1>
-                                        </SliderContent>
-                                    </DivText>
-                                    <GoldPic />
-                                </DivFlex>
-                            </div>
-                            ))
-                        }
-                </Slider>
-            </ContainerCarousel>
+            <FixWidth>
+                <Titletype header="REVIEW จากลูกค้า" subhead="ดูทั้งหมด" />
+                {/* Carousel */}
+                <ContainerCarousel>
+                    <Slider {...settings}>
+                            {
+                                reviewContent.map((item, index) => (
+                                <div key={index}>
+                                    <DivFlex>
+                                        <Box opacity={current === index}>
+                                            <PicBox src={item.img} />
+                                            {/* Img Carousel */}
+                                        </Box>
+                                        <DivText>
+                                            {/* Carousel Title */}
+                                            <SliderTitle>{item.title}</SliderTitle>
+                                            {/* Carousel Content */}
+                                            <SliderContent>
+                                                <SliderContent1>{item.subtitle}</SliderContent1>
+                                            </SliderContent>
+                                        </DivText>
+                                        <GoldPic />
+                                    </DivFlex>
+                                </div>
+                                ))
+                            }
+                    </Slider>
+                </ContainerCarousel>
+            </FixWidth>
         </Container>
     )
 }
-
-const Container = styled.section`
-    width: 100%;
-    height: fit-content;
-    max-width: 744px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    gap: 10px;
-`
-
-const DivTitle = styled.div`
-    width: 95%;
-    height: auto;
-    aspect-ratio: 300/40;
-    max-width: 650px;
-
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-
-    background-color: grey;
-`
 
 const DivText = styled.div`
     width: 90%;

@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import styled from "styled-components"
 
-interface Titletype {
+interface TitletypePage {
 
     header?: string;
     subhead?: string;
@@ -9,7 +9,7 @@ interface Titletype {
     onClick?: () => void;
 }
 
-export default function Titletype ({  onClick, header, subhead }: Titletype) {
+export default function TitletypePage ({  onClick, header, subhead }: TitletypePage) {
     return (
 
         <DivTitle onClick={onClick}>
@@ -17,7 +17,6 @@ export default function Titletype ({  onClick, header, subhead }: Titletype) {
                 <TextTitle>{header}</TextTitle>
             </Title>
             <AllGame>
-                <TextAllgame>{subhead}</TextAllgame>
                 <LineTitle />
             </AllGame>
         </DivTitle>
@@ -38,16 +37,17 @@ const DivTitle = styled.div<{ ISqure?: boolean , Nm?: any }>`
 
     ${props => props.ISqure ?
     `
-        width: 95%;
+        width: 100%;
     `
     :
     `
-        width: 100%;
+        width: 95%;
         
     `
     }
 
     @media (min-width: 1280px) {
+        width: 100%;
         aspect-ratio: 1164.44/35.56;
         max-width: 1164.44px;
     }
@@ -74,7 +74,6 @@ const AllGame = styled.div`
     position: relative;
     padding: 1px 10px;
 
-    background: rgba(0, 0, 0, 0.5);
     border-radius: 5px;
     
     z-index: 1;

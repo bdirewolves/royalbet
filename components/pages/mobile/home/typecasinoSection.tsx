@@ -1,64 +1,54 @@
+import { Container, FixWidth } from "@/components/_reduce/Reduce"
 import styled from "styled-components"
 
 export default function TypeCasinoSection () {
     return (
         <Container>
-            <DivFlex>
-                <Box>
-                    <DivText>
-                        <TextF>CASINO<TextB>ROYAL</TextB></TextF>
-                    </DivText>
-                    <PicBox src="/assets/img/casino/royalr-m.png" />
-                    <LineGolden />
-                </Box>
-                <Box>
-                    <DivText>
-                        <TextF>SLOT<TextB>ROYAL</TextB></TextF>
-                    </DivText>
-                    <PicBox src="/assets/img/casino/royalo-m.png" />
-                    <LineGolden />
-                </Box>
-                <Box>
-                    <DivText>
-                        <TextF>SPORT<TextB>ROYAL</TextB></TextF>
-                    </DivText>
-                    <PicBox src="/assets/img/casino/royaly-m.png" />
-                    <LineGolden />
-                </Box>
-                <Box>
-                    <DivText>
-                        <TextF>E-SPORT<TextB>ROYAL</TextB></TextF>
-                    </DivText>
-                    <PicBox src="/assets/img/casino/royala-m.png" />
-                    <LineGolden />
-                </Box>
-                <Box>
-                    <DivText>
-                        <TextF>GAME<TextB>ROYAL</TextB></TextF>
-                    </DivText>
-                    <PicBox src="/assets/img/casino/royall-m.png" />
-                    <LineGolden />
-                </Box>
-            </DivFlex>
+            <FixWidth>
+                <DivFlex>
+                    <Box>
+                        <DivText>
+                            <TextF>CASINO<TextB>ROYAL</TextB></TextF>
+                        </DivText>
+                        <PicBox src="/assets/img/casino/royalr-m.png" />
+                        <LineGolden />
+                    </Box>
+                    <Box>
+                        <DivText>
+                            <TextF>SLOT<TextB>ROYAL</TextB></TextF>
+                        </DivText>
+                        <PicBox src="/assets/img/casino/royalo-m.png" />
+                        <LineGolden />
+                    </Box>
+                    <Box>
+                        <DivText>
+                            <TextF>SPORT<TextB>ROYAL</TextB></TextF>
+                        </DivText>
+                        <PicBox src="/assets/img/casino/royaly-m.png" />
+                        <LineGolden />
+                    </Box>
+                    <Box>
+                        <DivText>
+                            <TextF>E-SPORT<TextB>ROYAL</TextB></TextF>
+                        </DivText>
+                        <PicBox src="/assets/img/casino/royala-m.png" />
+                        <LineGolden />
+                    </Box>
+                    <Box>
+                        <DivText>
+                            <TextF>GAME<TextB>ROYAL</TextB></TextF>
+                        </DivText>
+                        <PicBox src="/assets/img/casino/royall-m.png" />
+                        <LineGolden />
+                    </Box>
+                </DivFlex>
+            </FixWidth>
         </Container>
     )
 }
 
-const Container = styled.section`
-    width: 100%;
-    height: fit-content;
-    max-width: 744px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    gap: 10px;
-`
-
 const DivFlex = styled.div`
-    width: 95%;
+    width: 100%;
     height: fit-content;
     max-width: 650px;
 

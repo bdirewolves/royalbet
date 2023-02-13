@@ -1,9 +1,14 @@
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
-import { useState } from "react";
-import { BlogContent } from "@/constants/blog";
+import Button from "@/components/_reduce/Button";
+import Link from "next/link";
 import { Container, FixWidth } from "@/components/_reduce/Reduce";
+import { BlogContent } from "@/constants/blog";
+import { useState } from "react";
 
-export default function BlogupgateSection() {
+export default function BlogMainSectionPage () {
     const [ active, setActive ] = useState(0)
 
     const handleActive = (index: number) => {
@@ -14,9 +19,9 @@ export default function BlogupgateSection() {
         }
     }
 
-
     return(
         <Container>
+            <FixWidth>
                 <DivFlex>
                     <DivText>
                         <Title>บทความ</Title>
@@ -47,8 +52,8 @@ export default function BlogupgateSection() {
                             ))
                         }
                     </DivFlexContent>
-                    <GoldPic />
                 </DivFlex>
+            </FixWidth>
         </Container>
     )
 }
@@ -77,14 +82,6 @@ const DivFlex = styled.div`
 
         padding-top: 30px;
     }
-
-    @media (min-width: 1280px) {
-        height: 353.11px;
-    }
-    
-    @media (min-width: 1440px) {
-        height: 394px;
-    }
 `
 
 const DivText = styled.div`
@@ -97,8 +94,6 @@ const Title = styled.h2`
 
     width: 87.5%;
     height: 34px;
-
-    border-bottom: 1px solid white;
 
     font-size: 18px;    
     font-family: 'Prompt';
@@ -128,26 +123,6 @@ const DivFlexContent = styled.div`
     
 `
 
-
-const GoldPic = styled.div`
-    display: none;
-
-    width: 120px;
-    height: 30px;
-
-    position: absolute;
-    right: 0;
-    bottom: 0;
-
-    background: linear-gradient(90deg, #D2BB6E 0%, #F6E79A 100%);
-    border-radius: 19px 0px 10px;
-
-    @media (min-width: 744px) {
-        display: block;
-    }
-`
-
-
 const DivContentBlog = styled.div`
     width: 100%;
     height: fit-content;
@@ -159,6 +134,7 @@ const DivContentBlog = styled.div`
 
     transition: all ease-in-out 500ms;
 `
+
 const DivTextContentBlog = styled.div`
     width: 90%;
     height: 40px;
@@ -171,6 +147,7 @@ const DivTextContentBlog = styled.div`
     overflow: hidden;
 
 `
+
 const DivTextContentBlog1 = styled.div`
     width: 100%;
     height: 40px;
@@ -208,6 +185,7 @@ const TextContentBlog = styled.h2<{isActive: boolean}>`
         color: #FFFFFF;
     `}
 `
+
 const TextContentBlog1 = styled.h3`
     width: 100%;
     height: fit-content;

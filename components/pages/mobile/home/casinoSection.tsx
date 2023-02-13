@@ -1,40 +1,31 @@
+import { Container, FixWidth } from "@/components/_reduce/Reduce"
 import { casinoContent } from "@/constants/casino"
 import styled from "styled-components"
 
 export default function CasinoSection() {
     return(
         <Container>
-            <DivGrid>
-                    {
-                        casinoContent.show.map((item, index) => (
-                            <BoxContainer key={index}>
-                                <PicBox src={item.bgimg} />
-                                <DivPicPro>
-                                    <PicPro src={item.img} />
-                                </DivPicPro>
-                            </BoxContainer>
-                        ))
-                    }
-            </DivGrid>
+            <FixWidth>
+                <DivGrid>
+                        {
+                            casinoContent.show.map((item, index) => (
+                                <BoxContainer key={index}>
+                                    <PicBox src={item.bgimg} />
+                                    <DivPicPro>
+                                        <PicPro src={item.img} />
+                                    </DivPicPro>
+                                </BoxContainer>
+                            ))
+                        }
+                </DivGrid>
+            </FixWidth>
         </Container>
     )
 }
 
-const Container = styled.section`
-    width: 100%;
-    height: fit-content;
-    max-width: 744px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-`
-
 const DivGrid = styled.div`
-    width: 95%;
-    height: fit-content;
+    width: 100%;
+    height: auto;
     max-width: 650px;
 
     display: grid;

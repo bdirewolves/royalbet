@@ -11,7 +11,7 @@ interface IProps {
 
 export default function Logo({ onClick , ISqure }: IProps) {
     return (
-        <DivWolves ISqure={ISqure} type="button" onClick={onClick}>
+        <DivWolves ISqure={ISqure}  onClick={onClick}>
             <Wolves src="/assets/logo/logo-wolves.svg" />
             <Wolvesimg src="/assets/logo/logo-text.svg" />
         </DivWolves>
@@ -33,7 +33,7 @@ const Wolves = styled.img`
     height: 100%;
 `
 
-const DivWolves = styled.button<{ ISqure?: boolean , Nm?: any }>`
+const DivWolves = styled.div<{ ISqure?: boolean , Nm?: any }>`
     width: 100%;
     height: 100%;
 

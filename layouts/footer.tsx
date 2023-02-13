@@ -3,6 +3,7 @@ import styled from "styled-components"
 import moment from "moment"
 import Image from "next/legacy/image"
 import { partner } from "@/constants/partner"
+import Logo from "@/components/_reduce/Logo"
 
 export default function Footer() {
     return(
@@ -10,9 +11,9 @@ export default function Footer() {
             
             <FlexGroup1>
                 <FooterFlexContent>
-                    <Logo>
-                        <Image src="/assets/img/logo.png" layout="fill" alt="" />
-                    </Logo>
+                    <DivLogo>
+                        <Logo />
+                    </DivLogo>
                     <FooterContent>
                         <FooterContentTitle>
                             เกี่ยวกับเรา vincebet
@@ -38,37 +39,7 @@ export default function Footer() {
                 </FooterMenu>
             </FlexGroup1>
 
-            <FooterPayment>
-                <FooterPaymentTitle>
-                    ช่องทางการชำระเงิน
-                </FooterPaymentTitle>
-                <FooterPaymentContent>
-                    <FooterPaymentIcon>
-                        <Image src="/assets/img/payment/payment-1.png" alt="" layout="fill" />
-                    </FooterPaymentIcon>
-                    <FooterPaymentIcon>
-                        <Image src="/assets/img/payment/payment-2.png" alt="" layout="fill" />
-                    </FooterPaymentIcon>
-                    <FooterPaymentIcon>
-                        <Image src="/assets/img/payment/payment-3.png" alt="" layout="fill" />
-                    </FooterPaymentIcon>
-                    <FooterPaymentIcon>
-                        <Image src="/assets/img/payment/payment-4.png" alt="" layout="fill" />
-                    </FooterPaymentIcon>
-                    <FooterPaymentIcon>
-                        <Image src="/assets/img/payment/payment-5.png" alt="" layout="fill" />
-                    </FooterPaymentIcon>
-                    <FooterPaymentIcon>
-                        <Image src="/assets/img/payment/payment-6.png" alt="" layout="fill" />
-                    </FooterPaymentIcon>
-                    <FooterPaymentIcon>
-                        <Image src="/assets/img/payment/payment-7.png" alt="" layout="fill" />
-                    </FooterPaymentIcon>
-                    <FooterPaymentIcon>
-                        <Image src="/assets/img/payment/payment-8.png" alt="" layout="fill" />
-                    </FooterPaymentIcon>
-                </FooterPaymentContent>
-            </FooterPayment>
+            
             <FooterProvider>
                 <FooterProviderTitle>
                     ค่ายเกม
@@ -198,39 +169,11 @@ const FooterProvider = styled.div`
     
 `
 
-const FooterPaymentIcon = styled.div`
-    position: relative;
-    width: 67px;
-    height: 20px;
-    mix-blend-mode: luminosity;
-`
 
-const FooterPaymentContent = styled.div`
-    padding: 10px 0;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    justify-items: center;
-    gap: 10px;
 
-    @media (min-width: 744px) {
-        grid-template-columns: repeat(8, 1fr);
-    }
-`
 
-const FooterPaymentTitle = styled.h2`
-    padding: 10px 0;
-    font-family: "Sukhumvit Set";
-    font-size: 14px;
-    font-weight: 700;
-    color: #fff;
-    text-align: center;
-`
 
-const FooterPayment = styled.div`
-    
-`
-
-const Logo = styled.div`
+const DivLogo = styled.div`
     position: relative;
     min-width: 120px;
     min-height: 80px;
@@ -298,13 +241,6 @@ const FooterListContent = styled.div`
     gap: 10px;
 `
 
-const FooterListTitle = styled.h2`
-    font-family: "Sukhumvit Set";
-    font-size: 14px;
-    font-weight: 700;
-    color: #fff;
-    text-align: center;
-`
 
 const FooterList = styled.div`
     width: 100%;

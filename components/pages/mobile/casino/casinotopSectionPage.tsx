@@ -2,6 +2,8 @@ import styled from "styled-components";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import TitletypePage from "@/components/_reduce/DivtitlePage";
+import { Container, FixWidth } from "@/components/_reduce/Reduce";
 
 export default function CasinoTopSectionPage() {
     const settings = {
@@ -16,52 +18,41 @@ export default function CasinoTopSectionPage() {
     };
     return (
         <Container>
-           <DivGrid>
-                <GridFrBanner />
-                <GridFrPopu>
-                    <DivTitle />
-                    <DivFlex>
-                        <DivGame>
-                            <DivPicPro>
-                                <PicPro src="/assets/img/test.png" />
-                            </DivPicPro>
-                            <BoxText />
-                        </DivGame>
-                        <DivGame>
-                            <DivPicPro>
-                                <PicPro src="/assets/img/test.png" />
-                            </DivPicPro>
-                            <BoxText />
-                        </DivGame>
-                        <DivGame1>
-                            <DivPicPro>
-                                <PicPro src="/assets/img/test.png" />
-                            </DivPicPro>
-                            <BoxText />
-                        </DivGame1>
-                    </DivFlex>
-                </GridFrPopu>
-                <GridFrJak>
-                    <DivJack />
-                    <DivAds />
-                </GridFrJak>
-           </DivGrid>
+           <FixWidth>
+               <DivGrid>
+                    <GridFrBanner />
+                    <GridFrPopu>
+                        <TitletypePage header="POPULAR GAME" />
+                        <DivFlex>
+                            <DivGame>
+                                <DivPicPro>
+                                    <PicPro src="/assets/img/test.png" />
+                                </DivPicPro>
+                                <BoxText />
+                            </DivGame>
+                            <DivGame>
+                                <DivPicPro>
+                                    <PicPro src="/assets/img/test.png" />
+                                </DivPicPro>
+                                <BoxText />
+                            </DivGame>
+                            <DivGame1>
+                                <DivPicPro>
+                                    <PicPro src="/assets/img/test.png" />
+                                </DivPicPro>
+                                <BoxText />
+                            </DivGame1>
+                        </DivFlex>
+                    </GridFrPopu>
+                    <GridFrJak>
+                        <DivJack />
+                        <DivAds />
+                    </GridFrJak>
+               </DivGrid>
+           </FixWidth>
         </Container>
     )
 }
-
-const Container = styled.div`
-    width: 100%;
-    height: fit-content;
-    max-width: 744px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    gap: 10px;
-`
 
 const DivGrid = styled.div`
     width: 100%;
@@ -100,20 +91,6 @@ const GridFrPopu = styled.div`
         aspect-ratio: 650/227.77;
         max-width: 650px;
     }
-`
-
-const DivTitle = styled.div`
-    width: 100%;
-    height: auto;
-    aspect-ratio: 300/40;
-    max-width: 650px;
-
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-
-    background-color: grey;
 `
 
 const DivFlex = styled.div`

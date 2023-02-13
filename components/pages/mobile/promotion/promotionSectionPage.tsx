@@ -1,49 +1,33 @@
+import TitletypePage from "@/components/_reduce/DivtitlePage"
+import { Container, FixWidth, PicBox } from "@/components/_reduce/Reduce"
+import { promotionFebruary } from "@/constants/promotion"
+import Link from "next/link"
 import styled from "styled-components"
 
 
 export default function PromotionPageSection() {
     return(
         <Container>
-            <DivTitle />
-            <DivGrid>
-                <Box />
-                <Box />
-                <Box />
-                <Box1 />
-            </DivGrid>
+            <FixWidth>
+                <TitletypePage header="PROMOTION" />
+                <DivGrid>
+                    {
+                        promotionFebruary.squre.reverse().slice(0, 3).map((item, index) => (
+                        <Box key={index}>
+                            <Link href="/m/promotion">
+                                <PicBox src={item.img} alt={item.alt}/>
+                            </Link>
+                        </Box>
+                        ))
+                    }
+                </DivGrid>
+            </FixWidth>
         </Container>
     )
 }
 
-const Container = styled.section`
-    width: 100%;
-    height: fit-content;
-    max-width: 744px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    gap: 10px;
-`
-
-const DivTitle = styled.div`
-    width: 95%;
-    height: auto;
-    aspect-ratio: 300/40;
-    max-width: 650px;
-
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-
-    background-color: grey;
-`
-
 const DivGrid = styled.div`
-    width: 95%;
+    width: 100%;
     height: fit-content;
     max-width: 650px;
 

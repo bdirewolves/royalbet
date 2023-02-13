@@ -1,62 +1,45 @@
+import TitletypePage from "@/components/_reduce/DivtitlePage";
+import { Container, FixWidth } from "@/components/_reduce/Reduce";
 import styled from "styled-components";
 
 export default function CasinoTopSectionPage() {
     return (
         <Container>
-           <DivGrid>
-                <GridFrBanner />
-                <GridFrPopu>
-                    <DivTitle />
-                    <DivFlex>
-                        <DivGame>
-                            <DivPicPro>
-                                <PicPro src="/assets/img/test.png" />
-                            </DivPicPro>
-                            <BoxText />
-                        </DivGame>
-                        <DivGame>
-                            <DivPicPro>
-                                <PicPro src="/assets/img/test.png" />
-                            </DivPicPro>
-                            <BoxText />
-                        </DivGame>
-                        <DivGame1>
-                            <DivPicPro>
-                                <PicPro src="/assets/img/test.png" />
-                            </DivPicPro>
-                            <BoxText />
-                        </DivGame1>
-                    </DivFlex>
-                </GridFrPopu>
-                <GridFrJak>
-                    <DivJack />
-                    <DivAds />
-                </GridFrJak>
-           </DivGrid>
+           <FixWidth>
+               <DivGrid>
+                    <GridFrBanner />
+                    <GridFrPopu>
+                        <TitletypePage header="POPULAR GAME" />
+                        <DivFlex>
+                            <DivGame>
+                                <DivPicPro>
+                                    <PicPro src="/assets/img/test.png" />
+                                </DivPicPro>
+                                <BoxText />
+                            </DivGame>
+                            <DivGame>
+                                <DivPicPro>
+                                    <PicPro src="/assets/img/test.png" />
+                                </DivPicPro>
+                                <BoxText />
+                            </DivGame>
+                            <DivGame1>
+                                <DivPicPro>
+                                    <PicPro src="/assets/img/test.png" />
+                                </DivPicPro>
+                                <BoxText />
+                            </DivGame1>
+                        </DivFlex>
+                    </GridFrPopu>
+                    <GridFrJak>
+                        <DivJack />
+                        <DivAds />
+                    </GridFrJak>
+               </DivGrid>
+           </FixWidth>
         </Container>
     )
 }
-
-const Container = styled.div`
-    width: 100%;
-    height: fit-content;
-    max-width: 744px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    gap: 10px;
-
-    @media (min-width: 1280px) {
-        max-width: 1280px;
-    }
-    
-    @media (min-width: 1440px) {
-        max-width: 1440px;
-    }
-`
 
 const DivGrid = styled.div`
     width: 100%;
@@ -118,30 +101,6 @@ const GridFrPopu = styled.div`
     }
     
     @media (min-width: 1280px) {
-        max-width: 1310px;
-    }
-`
-
-const DivTitle = styled.div`
-    width: 100%;
-    height: auto;
-    aspect-ratio: 300/40;
-    max-width: 650px;
-
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-
-    background-color: grey;
-
-    @media (min-width: 1280px) {
-        width: 100%;
-        aspect-ratio: 1164.44/35.56;
-        max-width: 1164.44px;
-    }
-
-    @media (min-width: 1440px) {
         max-width: 1310px;
     }
 `

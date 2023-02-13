@@ -1,73 +1,32 @@
+import { Container, FixWidth } from "@/components/_reduce/Reduce"
+import { casinoContent } from "@/constants/casino"
 import styled from "styled-components"
 
 export default function CasinoSection() {
 
     return(
         <Container>
-            <DivGrid>
-                <BoxContainer>
-                    <PicBox src="/assets/img/card/provider/iconsbobet-m.png" />
-                    <DivPicPro>
-                        <PicPro src="/assets/img/card/provider/picsbobet-m.png" />
-                    </DivPicPro>
-                </BoxContainer>
-                <BoxContainer>
-                    <PicBox src="/assets/img/card/provider/icondigmaan-m.png" />
-                    <DivPicPro>
-                        <PicPro src="/assets/img/card/provider/picdigmaan-m.png" />
-                    </DivPicPro>
-                </BoxContainer>
-                <BoxContainer>
-                    <PicBox src="/assets/img/card/provider/iconibc-m.png" />
-                    <DivPicPro>
-                        <PicPro src="/assets/img/card/provider/picibc-m.png" />
-                    </DivPicPro>
-                </BoxContainer>
-                <BoxContainer>
-                    <PicBox src="/assets/img/card/provider/iconaksport-m.png" />
-                    <DivPicPro>
-                        <PicPro src="/assets/img/card/provider/picaksport-m.png" />
-                    </DivPicPro>
-                </BoxContainer>
-                <BoxContainer>
-                    <PicBox src="/assets/img/card/provider/iconsbo-m.png" />
-                    <DivPicPro>
-                        <PicPro src="/assets/img/card/provider/picsbo-m.png" />
-                    </DivPicPro>
-                </BoxContainer>
-                <BoxContainer>
-                    <PicBox src="/assets/img/card/provider/iconts911-m.png" />
-                    <DivPicPro>
-                        <PicPro src="/assets/img/card/provider/picts911-m.png" />
-                    </DivPicPro>
-                </BoxContainer>
-            </DivGrid>
+            <FixWidth>
+                <DivGrid>
+                    {
+                        casinoContent.show.map((item, index) => (
+                            <BoxContainer key={index}>
+                                <PicBox src={item.bgimg} />
+                                <DivPicPro>
+                                    <PicPro src={item.img} />
+                                </DivPicPro>
+                            </BoxContainer>
+                        ))
+                    }
+                </DivGrid>
+            </FixWidth>
         </Container>
     )
 }
 
-const Container = styled.section`
-    width: 100%;
-    height: fit-content;
-    max-width: 744px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    @media (min-width: 1280px) {
-        max-width: 1280px;
-    }
-
-    @media (min-width: 1440px) {
-        max-width: 1440px;
-    }
-`
-
 const DivGrid = styled.div`
-    width: 95%;
-    height: fit-content;
+    width: 100%;
+    height: auto;
     max-width: 650px;
 
     display: grid;

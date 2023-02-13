@@ -1,135 +1,54 @@
+import TitletypePage from "@/components/_reduce/DivtitlePage";
+import { Container, FixWidth } from "@/components/_reduce/Reduce";
+import { casinoContent } from "@/constants/casino";
 import styled from "styled-components";
 
 export default function SelectProSectionPage() {
     return(
         <Container>
-            <DivGridType>
-                <BoxType />
-                <BoxType />
-                <BoxType />
-                <BoxType />
-                <BoxType />
-                <BoxType />
-            </DivGridType>
-            <DivGridPro>
-                <BoxPro />
-                <BoxPro />
-                <BoxPro />
-                <BoxPro />
-                <BoxPro />
-                <BoxPro />
-                <BoxPro />
-                <BoxPro />
-                <BoxPro1 />
-            </DivGridPro>
-            <DivFlexGame>
-                <DivTitle />
-                <DivGrid>
-                    <GridFr>
-                        <DivPicPro>
-                            <PicPro src="/assets/img/test.png" />
-                        </DivPicPro>
-                        <BoxText />
-                        <GoldPic />
-                    </GridFr>
-                    <GridFr>
-                        <DivPicPro>
-                            <PicPro src="/assets/img/test.png" />
-                        </DivPicPro>
-                        <BoxText />
-                        <GoldPic />
-                    </GridFr>
-                    <GridFr>
-                        <DivPicPro>
-                            <PicPro src="/assets/img/test.png" />
-                        </DivPicPro>
-                        <BoxText />
-                        <GoldPic />
-                    </GridFr>
-                    <GridFr>
-                        <DivPicPro>
-                            <PicPro src="/assets/img/test.png" />
-                        </DivPicPro>
-                        <BoxText />
-                        <GoldPic />
-                    </GridFr>
-                    <GridFr>
-                        <DivPicPro>
-                            <PicPro src="/assets/img/test.png" />
-                        </DivPicPro>
-                        <BoxText />
-                        <GoldPic />
-                    </GridFr>
-                    <GridFr>
-                        <DivPicPro>
-                            <PicPro src="/assets/img/test.png" />
-                        </DivPicPro>
-                        <BoxText />
-                        <GoldPic />
-                    </GridFr>
-                    <GridFr>
-                        <DivPicPro>
-                            <PicPro src="/assets/img/test.png" />
-                        </DivPicPro>
-                        <BoxText />
-                        <GoldPic />
-                    </GridFr>
-                    <GridFr>
-                        <DivPicPro>
-                            <PicPro src="/assets/img/test.png" />
-                        </DivPicPro>
-                        <BoxText />
-                        <GoldPic />
-                    </GridFr>
-                    <GridFr>
-                        <DivPicPro>
-                            <PicPro src="/assets/img/test.png" />
-                        </DivPicPro>
-                        <BoxText />
-                        <GoldPic />
-                    </GridFr>
-                    <GridFr>
-                        <DivPicPro>
-                            <PicPro src="/assets/img/test.png" />
-                        </DivPicPro>
-                        <BoxText />
-                        <GoldPic />
-                    </GridFr>
-                    <GridFr>
-                        <DivPicPro>
-                            <PicPro src="/assets/img/test.png" />
-                        </DivPicPro>
-                        <BoxText />
-                        <GoldPic />
-                    </GridFr>
-                    <GridFr>
-                        <DivPicPro>
-                            <PicPro src="/assets/img/test.png" />
-                        </DivPicPro>
-                        <BoxText />
-                        <GoldPic />
-                    </GridFr>
-                </DivGrid>
-            </DivFlexGame>
+            <FixWidth>
+                <DivGridType>
+                    <BoxType />
+                    <BoxType />
+                    <BoxType />
+                    <BoxType />
+                    <BoxType />
+                    <BoxType />
+                </DivGridType>
+                <DivGridPro>
+                    <BoxPro />
+                    <BoxPro />
+                    <BoxPro />
+                    <BoxPro />
+                    <BoxPro />
+                    <BoxPro />
+                    <BoxPro />
+                    <BoxPro />
+                    <BoxPro1 />
+                </DivGridPro>
+                <DivFlexGame>
+                    <TitletypePage header="PROVIDER GAME SLOT" />
+                    <DivGrid>
+                        {
+                            casinoContent.providergs.slice(0, 12).map((item, index) => (
+                            <GridFr key={index}>
+                                <DivPicPro>
+                                    <PicPro src={item.img} />
+                                </DivPicPro>
+                                <BoxText />
+                                <GoldPic />
+                            </GridFr>
+                        ))}
+                    </DivGrid>
+                </DivFlexGame>
+            </FixWidth>
         </Container>
     )
 }
 
-const Container = styled.div`
-    width: 100%;
-    height: fit-content;
-    max-width: 744px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    gap: 10px;
-`
 
 const DivGridType = styled.div`
-    width: 95%;
+    width: 100%;
     height: fit-content;
     max-width: 650px;
 
@@ -156,6 +75,7 @@ const BoxType = styled.div`
     &:hover{
         border: 1px solid #ECD559;
     }
+    
 
     @media (min-width: 744px) {
         aspect-ratio: 210/69;
@@ -163,7 +83,7 @@ const BoxType = styled.div`
 `
 
 const DivGridPro = styled.div`
-    width: 95%;
+    width: 100%;
     height: fit-content;
     max-width: 650px;
 
@@ -212,7 +132,7 @@ const BoxPro1 = styled.div`
 `
 
 const DivFlexGame = styled.div`
-    width: 95%;
+    width: 100%;
     height: fit-content;
     max-width: 650px;
 
@@ -222,20 +142,6 @@ const DivFlexGame = styled.div`
     align-items: center;
 
     gap: 10px;
-`
-
-const DivTitle = styled.div`
-    width: 100%;
-    height: auto;
-    aspect-ratio: 300/40;
-    max-width: 650px;
-
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-
-    background-color: grey;
 `
 
 const DivGrid = styled.div`

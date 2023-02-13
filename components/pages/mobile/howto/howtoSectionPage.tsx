@@ -1,62 +1,40 @@
+import Titletype from "@/components/_reduce/Divtitle";
+
+import { Container, FixWidth } from "@/components/_reduce/Reduce";
 import styled from "styled-components";
 
 export default function HowtoSectionPage(){
     return(
         <Container>
-            <DivTitle />
-            <DivFlex>
-                <Box>
-                    <Text>ขั้นตอนสมัครสมาชิก</Text>
-                </Box>
-                <Box>
-                    <Text>ขั้นตอนสมัครสมาชิก</Text>
-                </Box>
-                <Box>
-                    <Text>ขั้นตอนสมัครสมาชิก</Text>
-                </Box>
-                <Box>
-                    <Text>ขั้นตอนสมัครสมาชิก</Text>
-                </Box>
-                <Box>
-                    <Text>ขั้นตอนสมัครสมาชิก</Text>
-                </Box>
-                <Box>
-                    <Text>ขั้นตอนสมัครสมาชิก</Text>
-                </Box>
-            </DivFlex>
+            <FixWidth>
+                <Titletype header="Howto" subhead="เล่นเกม" />
+                <DivFlex>
+                    <Box>
+                        <Text>ขั้นตอนสมัครสมาชิก</Text>
+                    </Box>
+                    <Box>
+                        <Text>ขั้นตอนสมัครสมาชิก</Text>
+                    </Box>
+                    <Box>
+                        <Text>ขั้นตอนสมัครสมาชิก</Text>
+                    </Box>
+                    <Box>
+                        <Text>ขั้นตอนสมัครสมาชิก</Text>
+                    </Box>
+                    <Box>
+                        <Text>ขั้นตอนสมัครสมาชิก</Text>
+                    </Box>
+                    <Box>
+                        <Text>ขั้นตอนสมัครสมาชิก</Text>
+                    </Box>
+                </DivFlex>
+            </FixWidth>
         </Container>
     )
 }
-
-const Container = styled.div`
-    width: 100%;
-    height: fit-content;
-    max-width: 744px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    gap: 10px;
-`
-
-const DivTitle = styled.div`
-    width: 95%;
-    height: auto;
-    aspect-ratio: 300/40;
-    max-width: 650px;
-
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-
-    background-color: grey;
-`
-
+ 
 const DivFlex = styled.div`
-    width: 95%;
+    width: 100%;
     height: fit-content;
     max-width: 650px;
 

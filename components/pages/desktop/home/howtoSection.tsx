@@ -1,3 +1,4 @@
+import { Container } from "@/components/_reduce/Reduce";
 import styled from "styled-components";
 
 export default function HowtoSection(){
@@ -38,25 +39,6 @@ export default function HowtoSection(){
         </Container>
     )
 }
-
-const Container = styled.section`
-    width: 100%;
-    height: fit-content;
-    max-width: 744px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    @media (min-width: 1280px) {
-        max-width: 1280px;
-    }
-    
-    @media (min-width: 1440px) {
-        max-width: 1440px;
-    }
-`
 
 const DivGrid = styled.div`
     width: 100%;

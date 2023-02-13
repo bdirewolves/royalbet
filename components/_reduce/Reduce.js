@@ -27,6 +27,18 @@ export const PicBox = styled.img`
     height: 100%;
 `
 
+export const FixWidth = styled.div`
+    width: 95%;
+    height: auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    gap: 10px;
+`
+
 export const Pictitle = styled.img`
     width: auto;
     height: 100%;

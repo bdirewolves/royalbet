@@ -4,101 +4,67 @@ import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
 import Link from "next/link";
 import Iframe from "@/components/_reduce/iframe";
+import Titletype from "@/components/_reduce/Divtitle";
+import { Container, FixWidth } from "@/components/_reduce/Reduce";
+import { newsContent } from "@/constants/news";
+import { useState } from "react";
 
 export default function NewsSection () {
+    const [ current, setCurrent ] = useState(0)
     const settings = {
+        centerMode: true,
+        centerPadding: '55px',
         dots: false,
         infinite: true,
-        speed: 500,
-        slidesToShow: 1,
+        speed: 1200,
+        slidesToShow: 2,
         slidesToScroll: 1,
         autoplay: true,
         autoplaySpeed: 2000,
         arrows: false,
+        beforeChange: (_current: any, next: any) => setCurrent(next),
+        reponsive:[
+            {
+                breakpoint: 1280,
+                settings: {
+                    centerMode: true,
+                    slidesToShow: 1,
+                    centerPadding: '0px',
+                }
+            }
+        ]
     };
     return (
         <Container>
-            <DivTitle />
-            <ContainerCarousel>
-                <Slider {...settings}>
-                    <div>
-                        <Link href="/">
-                            <Box>
-                            <Iframe path="https://www.youtube-nocookie.com/embed/M4pv13mFTGM?start=60" title="title" />
-                            </Box>
-                        </Link>
-                    </div>
-                    <div>
-                        <Link href="/">
-                            <Box>
-                            <Iframe path="https://www.youtube-nocookie.com/embed/M4pv13mFTGM?start=60" title="title" />
-                            </Box>
-                        </Link>
-                    </div>
-                    <div>
-                        <Link href="/">
-                            <Box>
-                            <Iframe path="https://www.youtube-nocookie.com/embed/M4pv13mFTGM?start=60" title="title" />
-                            </Box>
-                        </Link>
-                    </div>
-                </Slider>
-            </ContainerCarousel>
+            <FixWidth>
+                <Titletype header="NEWS" subhead="ดูทั้งหมด" />
+                <ContainerCarousel>
+                    <Slider {...settings}>
+                        {
+                            newsContent.map((item, index) => (
+                                <div key={index}>
+                                    <Link href="/">
+                                        <Box opacity={current === index}>
+                                            {/* Content Carousel */}
+                                            <Iframe path={item.video_url} title={item.title} />
+                                        </Box>
+                                    </Link>
+                                </div>
+                            ))
+                        }
+                    </Slider>
+                </ContainerCarousel>
+            </FixWidth>
         </Container>
     )
 }
-
-const Container = styled.section`
-    width: 100%;
-    height: fit-content;
-    max-width: 744px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    gap: 10px;
-
-    @media (min-width: 1280px) {
-        max-width: 1280px;
-    }
-    
-    @media (min-width: 1440px) {
-        max-width: 1440px;
-    }
-`
-
-const DivTitle = styled.div`
-    width: 95%;
-    height: auto;
-    aspect-ratio: 300/40;
-    max-width: 650px;
-
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-
-    background-color: grey;
-
-    @media (min-width: 1280px) {
-        width: 91%;
-        aspect-ratio: 1164.44/35.56;
-        max-width: 1164.44px;
-    }
-
-    @media (min-width: 1440px) {
-        max-width: 1310px;
-    }
-`
 
 const ContainerCarousel = styled.div`
     width: 100%;
     height: fit-content;
 `
 
-const Box = styled.div`
+const Box = styled.div<{ opacity: boolean }>`
     width: 95%;
     height: auto;
     aspect-ratio: 300/168.69;
@@ -106,7 +72,20 @@ const Box = styled.div`
 
     margin: 0 auto;
 
-    background-color: grey;
+    overflow: hidden;
+
+    background: #100F14;
+    border-radius: 9.86806px;
+
+    ${props => props.opacity ?
+        `opacity: 1;`
+    :
+        `opacity: 0.4;`
+    }
+
+    @media (min-width: 744px) {
+        width: 97%;
+    }
 
     @media (min-width: 1280px) {
         aspect-ratio: 578.67/325.33;
