@@ -6,10 +6,12 @@ import { AiFillCaretDown, AiFillStar, AiFillQuestionCircle } from "react-icons/a
 import { FaBell } from "react-icons/fa"
 import { BsGearFill } from "react-icons/bs"
 import { useEffect, useState } from "react"
+import type { ReactNode } from "react"
 import ButtonGradient from "@/components/_reduce/ButtonGradient"
 import moment from "moment"
 import { useRouter } from "next/router"
 import Logo from "@/components/_reduce/Logo"
+import Main from "./modal/main"
 
 export default function Navbar() {
 
@@ -18,6 +20,9 @@ export default function Navbar() {
     const [ showHiddenNav, setShowHiddenNav ] = useState<boolean>(false)
     const [ time, setTime ] = useState("")
     const [ showHamburger, setShowHamburger ] = useState(false)
+    const [ access, setAccess ] = useState<any>(null)
+    const [ modal, setModal ] = useState<boolean>(false)
+    const [ modalPage, setModalPage ] = useState<ReactNode>(<Main />)
 
     const Goto = (path: string) => {
         setShowHamburger(false)
@@ -28,25 +33,79 @@ export default function Navbar() {
         setInterval(() => setTime(moment(new Date()).format("hh:mm:ss")), 1000)
     }, [])
 
+    useEffect(() => {
+        setAccess(localStorage.getItem("access"))
+    }, [])
+
     return(
-        <Background>
-            <Nav>
-                <NavTop>
-                    <DivLogo href="/">
-                        <Logo />
-                    </DivLogo>
-                    <FlexStatus>
-                        <Statusbar>
-                            <Button color="#fff">
-                                เข้าสู่ระบบ
-                            </Button>
-                            <Link href="https://liff.line.me/1645278921-kWRPP32q/?accountId=974vykgc">
-                                <ButtonGradient>
-                                    สมัครสมาชิก
-                                </ButtonGradient>
-                            </Link>
-                        </Statusbar>
-                        <MobileGroup>
+        <>  
+            { modal && modalPage }
+            <Background>
+                <Nav>
+                    <NavTop>
+                        <DivLogo href="/">
+                            <Logo />
+                        </DivLogo>
+                        <FlexStatus>
+                            {
+                                access ? 
+                                (
+                                    <Statusbar>
+                                        <Button color="#fff">
+                                            เข้าสู่ระบบ
+                                        </Button>
+                                        <Link href="https://liff.line.me/1645278921-kWRPP32q/?accountId=974vykgc">
+                                            <ButtonGradient>
+                                                สมัครสมาชิก
+                                            </ButtonGradient>
+                                        </Link>
+                                    </Statusbar>
+                                )
+                                :
+                                (
+                                    <Statusbar>
+                                        <Profile onClick={() => setModal(!modal)}>
+                                            <Button color="#fff">
+                                                Username
+                                            </Button>
+                                            <ProfileImg src={`https://via.placeholder.com/30x30?text=B`} alt="" />
+                                        </Profile>
+                                        <Balance>
+                                            <BalanceText>10,000.00</BalanceText>
+                                            <BalanceCoin src={`https://via.placeholder.com/20x20?text=C`} alt="" />
+                                        </Balance>
+                                    </Statusbar>
+                                )
+                            }
+                            
+                            <MobileGroup>
+                                <ButtonBorderRight type="button">
+                                    <FaBell size={20} />
+                                </ButtonBorderRight>
+                                <ButtonBorderRight type="button">
+                                    <AiFillStar size={20} />
+                                </ButtonBorderRight>
+                                <ButtonBorderRight type="button">
+                                    <AiFillQuestionCircle size={20} />
+                                </ButtonBorderRight>
+                                <ButtonBorderRight type="button">
+                                    <TimeSpan>{time}</TimeSpan>
+                                </ButtonBorderRight>
+                                <ButtonBorderRight type="button">
+                                    <LanguageSpan>TH</LanguageSpan>
+                                </ButtonBorderRight>
+                                <ButtonNoBorder>
+                                    <BsGearFill size={20} />
+                                </ButtonNoBorder>
+                            </MobileGroup>
+                            <Collapse type="button" showHiddenNav={showHiddenNav} onClick={() => setShowHiddenNav(!showHiddenNav)}>
+                                <AiFillCaretDown size={20} />
+                            </Collapse>
+                        </FlexStatus>
+                    </NavTop>
+
+                    <HiddenNav showHiddenNav={showHiddenNav}>
+                        <FlexHiddenNav>
                             <ButtonBorderRight type="button">
                                 <FaBell size={20} />
                             </ButtonBorderRight>
@@ -65,108 +124,119 @@ export default function Navbar() {
                             <ButtonNoBorder>
                                 <BsGearFill size={20} />
                             </ButtonNoBorder>
-                        </MobileGroup>
-                        <Collapse type="button" showHiddenNav={showHiddenNav} onClick={() => setShowHiddenNav(!showHiddenNav)}>
-                            <AiFillCaretDown size={20} />
-                        </Collapse>
-                    </FlexStatus>
-                </NavTop>
+                        </FlexHiddenNav>
+                    </HiddenNav>
 
-                <HiddenNav showHiddenNav={showHiddenNav}>
-                    <FlexHiddenNav>
-                        <ButtonBorderRight type="button">
-                            <FaBell size={20} />
-                        </ButtonBorderRight>
-                        <ButtonBorderRight type="button">
-                            <AiFillStar size={20} />
-                        </ButtonBorderRight>
-                        <ButtonBorderRight type="button">
-                            <AiFillQuestionCircle size={20} />
-                        </ButtonBorderRight>
-                        <ButtonBorderRight type="button">
-                            <TimeSpan>{time}</TimeSpan>
-                        </ButtonBorderRight>
-                        <ButtonBorderRight type="button">
-                            <LanguageSpan>TH</LanguageSpan>
-                        </ButtonBorderRight>
-                        <ButtonNoBorder>
-                            <BsGearFill size={20} />
-                        </ButtonNoBorder>
-                    </FlexHiddenNav>
-                </HiddenNav>
+                    <NavBottom>
+                        <FlexBox>
+                            <Menubar>
+                                <MenuGroup>
+                                    <ListMenu href="/casino">
+                                        <MenuItem>Live Casino</MenuItem>
+                                    </ListMenu>
+                                    <ListMenu href="/">
+                                        <MenuItem>Slot</MenuItem>
+                                    </ListMenu>
+                                    <ListMenu href="/">
+                                        <MenuItem>Sport</MenuItem>
+                                    </ListMenu>
+                                    <ListMenu href="/">
+                                        <MenuItem>E-Sport</MenuItem>
+                                    </ListMenu>
+                                    <ListMenu href="/">
+                                        <MenuItem>Cards</MenuItem>
+                                    </ListMenu>
+                                    <ListMenu href="/">
+                                        <MenuItem>Lottery</MenuItem>
+                                    </ListMenu>
+                                </MenuGroup>
 
-                <NavBottom>
-                    <FlexBox>
-                        <Menubar>
-                            <MenuGroup>
-                                <ListMenu href="/casino">
-                                    <MenuItem>Live Casino</MenuItem>
-                                </ListMenu>
-                                <ListMenu href="/">
-                                    <MenuItem>Slot</MenuItem>
-                                </ListMenu>
-                                <ListMenu href="/">
-                                    <MenuItem>Sport</MenuItem>
-                                </ListMenu>
-                                <ListMenu href="/">
-                                    <MenuItem>E-Sport</MenuItem>
-                                </ListMenu>
-                                <ListMenu href="/">
-                                    <MenuItem>Cards</MenuItem>
-                                </ListMenu>
-                                <ListMenu href="/">
-                                    <MenuItem>Lottery</MenuItem>
-                                </ListMenu>
-                            </MenuGroup>
-
-                            <GifList>
-                                <GifLive src="/assets/gif/live.gif" alt="" onClick={() => router.push("https://www.livescore.com/en/")}  />
-                                <GifSpin src="/assets/gif/spin.gif" alt="" />
-                                <GifPromotion src="/assets/gif/promotion.gif" alt="" onClick={() => router.push("/promotion")} />
-                            </GifList>
+                                <GifList>
+                                    <GifLive src="/assets/gif/live.gif" alt="" onClick={() => router.push("https://www.livescore.com/en/")}  />
+                                    <GifSpin src="/assets/gif/spin.gif" alt="" />
+                                    <GifPromotion src="/assets/gif/promotion.gif" alt="" onClick={() => router.push("/promotion")} />
+                                </GifList>
 
 
-                        </Menubar>
-                        <DivButton>
-                            <Button onClick={() => setShowHamburger(!showHamburger)}>
-                                {/* <GiHamburgerMenu size={25} /> */}
-                                <div className="container">
-                                    <div className="item item-1"></div>
-                                    <div className="item item-2"></div>
-                                    <div className="item item-3"></div>
-                                    <div className="item item-4"></div>
-                                </div>
-                                
-                            </Button>
-                        </DivButton>
-                    </FlexBox>
-                </NavBottom>
-                <Hamburger isActive={showHamburger}>
-                    <HamburgerContainer>
-                        <HamburgerItem onClick={() => Goto("/")}>
-                            หน้าแรก
-                        </HamburgerItem>
-                        <HamburgerItem onClick={() => Goto("/casino")}>
-                            คาสิโน
-                        </HamburgerItem>
-                        <HamburgerItem onClick={() => Goto("/promotion")}>
-                            โปรโมชั่น
-                        </HamburgerItem>
-                        <HamburgerItem onClick={() => Goto("/blog")}>
-                            บทความ
-                        </HamburgerItem>
-                        <HamburgerItem onClick={() => Goto("/howto")}>
-                            คู่มือ
-                        </HamburgerItem>
-                        <HamburgerItem onClick={() => Goto("/review")}>
-                            รีวิว
-                        </HamburgerItem>
-                    </HamburgerContainer>
-                </Hamburger>
-            </Nav>
-        </Background>
+                            </Menubar>
+                            <DivButton>
+                                <Button onClick={() => setShowHamburger(!showHamburger)}>
+                                    {/* <GiHamburgerMenu size={25} /> */}
+                                    <div className="container">
+                                        <div className="item item-1"></div>
+                                        <div className="item item-2"></div>
+                                        <div className="item item-3"></div>
+                                        <div className="item item-4"></div>
+                                    </div>
+                                    
+                                </Button>
+                            </DivButton>
+                        </FlexBox>
+                    </NavBottom>
+                    <Hamburger isActive={showHamburger}>
+                        <HamburgerContainer>
+                            <HamburgerItem onClick={() => Goto("/")}>
+                                หน้าแรก
+                            </HamburgerItem>
+                            <HamburgerItem onClick={() => Goto("/casino")}>
+                                คาสิโน
+                            </HamburgerItem>
+                            <HamburgerItem onClick={() => Goto("/promotion")}>
+                                โปรโมชั่น
+                            </HamburgerItem>
+                            <HamburgerItem onClick={() => Goto("/blog")}>
+                                บทความ
+                            </HamburgerItem>
+                            <HamburgerItem onClick={() => Goto("/howto")}>
+                                คู่มือ
+                            </HamburgerItem>
+                            <HamburgerItem onClick={() => Goto("/review")}>
+                                รีวิว
+                            </HamburgerItem>
+                        </HamburgerContainer>
+                    </Hamburger>
+                </Nav>
+            </Background>
+        </>
+        
     )
 }
+
+const BalanceCoin = styled.img`
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+`
+
+const BalanceText = styled.p`
+    font-size: 12px;
+    color: #fff;
+`
+
+const Balance = styled.div`
+    width: 100%;
+    height: 90%;
+    display: flex;
+    align-items: center;
+    background-color: #000;
+    border-radius: 5px;
+    gap: 10px;
+    border-right: 1px solid #414042;
+    padding-right: 10px;
+`
+
+const ProfileImg = styled.img`
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+`
+
+const Profile = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+`
 
 const GifList = styled.div`
     display: flex;
