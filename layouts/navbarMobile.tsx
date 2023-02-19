@@ -1,6 +1,7 @@
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
 import styled, { keyframes } from "styled-components"
+import { RiUserLine } from "react-icons/ri";
 
 
 export default function NavbarMobile () {
@@ -44,7 +45,7 @@ export default function NavbarMobile () {
             <MenuList>
                 <MenuItem onClick={() => Goto(0, "/")}>
                     <DivIcon>
-                        <Icon isActive={current == 0} src="/" />
+                        <RiUserLine size={30}/>
                     </DivIcon>
                     <Span>
                         โปรไฟล์
@@ -101,7 +102,8 @@ const Background = styled.div`
     justify-content: center;
     align-items: center;
 
-    background: #000000;
+    background: #121116;
+    border-radius: 20px 20px 0px 0px;
 
     @media (min-width: 1024px) {
         display: none;
@@ -118,7 +120,7 @@ const MenuList = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 15px;
+    gap: 3px;
     
     transition: gap 300ms;
 
@@ -128,12 +130,12 @@ const MenuList = styled.div`
 `
 
 const MenuItem = styled.div`
-    width: 45px;
+    width: 61px;
     height: 100%;
     
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 `
 
@@ -148,8 +150,6 @@ const DivIcon = styled.div`
     overflow: hidden;
 
     border-radius: 90%;
-    
-    background: grey;
 `
 
 const Icon = styled.img<{ isActive: boolean }>`
@@ -163,9 +163,18 @@ const Icon = styled.img<{ isActive: boolean }>`
 `
 
 const Span = styled.span`
-    font-family: "Sukhumvit Set";
+    font-family: 'Prompt';
+    font-style: normal;
+    font-weight: 400;
     font-size: 8px;
-    color: #fff;
+    line-height: 12px;
+    /* identical to box height */
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #FFFFFF;
 `
 
 const Gravity = keyframes`
