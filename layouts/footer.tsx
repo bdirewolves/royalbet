@@ -3,26 +3,15 @@ import styled from "styled-components"
 import moment from "moment"
 import Image from "next/legacy/image"
 import { partner } from "@/constants/partner"
-import Logo from "@/components/_reduce/Logo"
 
 export default function Footer() {
     return(
         <Background>
             
             <FlexGroup1>
-                <FooterFlexContent>
-                    <DivLogo>
-                        <Logo />
-                    </DivLogo>
-                    <FooterContent>
-                        <FooterContentTitle>
-                            เกี่ยวกับเรา vincebet
-                        </FooterContentTitle>
-                        <FooterContentDesc>
-                            vincebet ให้บริการบาคาร่าออนไลน์ และ บาคาร่าระบบอัตโนมัติ มีครบทุกเกม ทุกค่าย มีครบทุกค่ายดัง SA Game | Pretty Gaming Baccarat | Sexy Baccarat หรือ เซ็กซี่ บาคาร่า สะดวกปลอดภัยมั่นคงทางด้านการเงิน พร้อมคอยให้คำแนะนำปรึกษาได้ตลอด 24 ชั่วโมง
-                        </FooterContentDesc>
-                    </FooterContent>
-                </FooterFlexContent>
+                <DivLogo>
+                    <Logo src="/assets/img/logorow.png"/>
+                </DivLogo>
                 <FooterMenu>
                     <FooterMenuTitle>
                         หน้าทั้งหมด
@@ -30,13 +19,21 @@ export default function Footer() {
                     <Menu>
                         <MenuItem href="/">หน้าแรก</MenuItem>
                         <MenuItem href="/">เกี่ยวกับเรา</MenuItem>
-                        <MenuItem href="/">โปรโมชั่น</MenuItem>
+                        <MenuItem href="/promotion">โปรโมชั่น</MenuItem>
                         <MenuItem href="/">เกมส์</MenuItem>
                         <MenuItem href="/">คู่มือ</MenuItem>
                         <MenuItem href="/">บทความ</MenuItem>
                         <MenuItem href="/">รีวิว</MenuItem>
                     </Menu>
                 </FooterMenu>
+                <FooterPartner>
+                    <FooterProviderTitle>
+                        ช่องทางการชำระเงิน
+                    </FooterProviderTitle>
+                    <FooterProviderContent>
+                        <FooterProviderContentItem />
+                    </FooterProviderContent>
+                </FooterPartner>
             </FlexGroup1>
 
             
@@ -92,21 +89,31 @@ export default function Footer() {
             </FlexGroup>
 
             <FooterText>
-            © Copyright 2015 - {moment().format("YYYY")} WAS International N.V. Address: 9 VinceBet de Veerstraat, Willemstad - Curaçao P.O. Box 999 - All Rights Reserved.
+                © Copyright 2015 WAS International N.V. Address: 1 ROLAYBET de Veerstraat, Willemstad - Curaçao P.O. Box 777 - All Rights Reserved.
             </FooterText>
             <FooterText>
-                Royalbet, N.V. awarded to VinceBet Egaming. WAS International N.V. with registration number GLH-OCCHKTW079992015 registered in the Chamber of Commerce and Industry Trade Registry VinceBet with license number #999/JAZ. It is operated by and is authorized and regulated by its Government.
+                Elitebet, N.V. awarded to ROYALBET Egaming. WAS International N.V. with registration number GLH-OCCHKTW0777092017 registered in the Chamber of Commerce and Industry Trade Registry ROYALBET with license number #777/JAZ. It is operated by and is authorized and regulated by its Government.
             </FooterText>
         </Background>
     )
 }
 
 const FlexGroup1 = styled.div`
-    display: flex;
-    flex-direction: column;
+    width: 100%;
+    height: auto;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
 
     @media (min-width: 1440px) {
-        flex-direction: row;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
     }
 `
 
@@ -169,26 +176,52 @@ const FooterProvider = styled.div`
     
 `
 
+const FooterPartner = styled.div`
+    width: 100%;
+    height: auto;
 
-
-
-
-const DivLogo = styled.div`
-    position: relative;
-    min-width: 120px;
-    min-height: 80px;
-`
-
-const FooterFlexContent = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 
-    @media (min-width: 744px) {
-        flex-direction: row;
-        gap: 60px;
+    grid-area: 3 / 1 / 4 / 2;
+
+    @media (min-width: 1440px) {
+        justify-content: flex-end;
+        align-items: flex-end;
+
+        grid-area: 1 / 2 / 3 / 3;
     }
 `
+
+const DivLogo = styled.div`
+    width: 135px;
+    height: 120px;
+
+    grid-area: 1 / 1 / 2 / 2;
+
+    margin: auto;
+
+    @media (min-width: 744px) {
+        width: 186px;
+        height: 60px;
+    }
+
+    @media (min-width: 1440px) {
+        width: 248px;
+        height: 80px;
+
+        margin: 40px 0 0 50px;
+    }
+`
+
+const Logo = styled.img`
+    width: 100%;
+    height: 100%;
+`
+
+
 
 const Hr = styled.div`
     margin: 20px 0;
@@ -262,16 +295,18 @@ const Menu = styled.div`
     grid-template-columns: repeat(4, 1fr);
     justify-items: center;
     align-items: center;
+    
     @media (min-width: 744px) {
         display: flex;
-        gap: 20px;
         justify-content: center;
+        
+        gap: 20px;
     }
 
     @media (min-width: 1440px) {
-        width: 80%;
+        width: auto;
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(7, 1fr);
     }
 `
 
@@ -285,8 +320,15 @@ const FooterMenuTitle = styled.h2`
 
 const FooterMenu = styled.div`
     width: 100%;
+    height: auto;
+
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    grid-area: 2 / 1 / 3 / 2; 
+
     gap: 5px;
 
     @media (min-width: 744px) {
@@ -297,41 +339,13 @@ const FooterMenu = styled.div`
     }
 
     @media (min-width: 1440px) {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 40px;
+        flex-direction: row;
+        justify-content: flex-start;
+        
+        margin: 0px 0 0 50px;
+
+        gap: 20px;
     }
-`
-
-const FooterContentDesc = styled.p`
-    font-family: "Sukhumvit Set";
-    font-size: 13px;
-    font-weight: 300;
-    color: #fff;
-    text-align: center;
-    line-height: 21px;
-
-    @media (min-width: 744px) {
-        text-align: left;
-    }
-`
-
-const FooterContentTitle = styled.h3`
-    font-family: "Sukhumvit Set";
-    font-size: 20px;
-    color: #fff;
-    text-align: center;
-
-    @media (min-width: 744px) {
-        text-align: left;
-    }
-`
-
-const FooterContent = styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 15px 0;
 `
 
 const Background = styled.footer`

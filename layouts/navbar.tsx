@@ -10,7 +10,6 @@ import type { ReactNode } from "react"
 import ButtonGradient from "@/components/_reduce/ButtonGradient"
 import moment from "moment"
 import { useRouter } from "next/router"
-import Logo from "@/components/_reduce/Logo"
 import Main from "./modal/main"
 import Information from "./modal/information"
 import Setting from "./modal/setting"
@@ -126,10 +125,10 @@ export default function Navbar() {
             }
             <Background>
                 <Nav>
+                    <DivLogo href="/">
+                        <Logo src="/assets/img/logorow.png"/>
+                    </DivLogo>
                     <NavTop>
-                        <DivLogo href="/">
-                            <Logo />
-                        </DivLogo>
                         <FlexStatus>
                             {
                                 access ? 
@@ -235,26 +234,24 @@ export default function Navbar() {
                                     </ListMenu>
                                 </MenuGroup>
 
-                                <GifList>
-                                    <GifLive src="/assets/gif/live.gif" alt="" onClick={() => router.push("https://www.livescore.com/en/")}  />
-                                    <GifSpin src="/assets/gif/spin.gif" alt="" />
-                                    <GifPromotion src="/assets/gif/promotion.gif" alt="" onClick={() => router.push("/promotion")} />
-                                </GifList>
-
-
+                                <FlexRowRe>
+                                    <GifList>
+                                        <GifLive src="/assets/gif/live.gif" alt="" onClick={() => router.push("https://www.livescore.com/en/")}  />
+                                        <GifSpin src="/assets/gif/spin.gif" alt="" />
+                                    </GifList>
+                                    <DivButton>
+                                        <Button onClick={() => setShowHamburger(!showHamburger)}>
+                                            {/* <GiHamburgerMenu size={25} /> */}
+                                            <div className="container">
+                                                <div className="item item-1"></div>
+                                                <div className="item item-2"></div>
+                                                <div className="item item-3"></div>
+                                                <div className="item item-4"></div>
+                                            </div>
+                                        </Button>
+                                    </DivButton>
+                                </FlexRowRe>
                             </Menubar>
-                            <DivButton>
-                                <Button onClick={() => setShowHamburger(!showHamburger)}>
-                                    {/* <GiHamburgerMenu size={25} /> */}
-                                    <div className="container">
-                                        <div className="item item-1"></div>
-                                        <div className="item item-2"></div>
-                                        <div className="item item-3"></div>
-                                        <div className="item item-4"></div>
-                                    </div>
-                                    
-                                </Button>
-                            </DivButton>
                         </FlexBox>
                     </NavBottom>
                     <Hamburger isActive={showHamburger}>
@@ -262,20 +259,23 @@ export default function Navbar() {
                             <HamburgerItem onClick={() => Goto("/")}>
                                 หน้าแรก
                             </HamburgerItem>
-                            <HamburgerItem onClick={() => Goto("/casino")}>
-                                คาสิโน
+                            <HamburgerItem onClick={() => Goto("/")}>
+                                เล่นเกมส์
+                            </HamburgerItem>
+                            <HamburgerItem onClick={() => Goto("/")}>
+                                ฝาก
+                            </HamburgerItem>
+                            <HamburgerItem onClick={() => Goto("/")}>
+                                ถอน
                             </HamburgerItem>
                             <HamburgerItem onClick={() => Goto("/promotion")}>
                                 โปรโมชั่น
                             </HamburgerItem>
-                            <HamburgerItem onClick={() => Goto("/blog")}>
-                                บทความ
-                            </HamburgerItem>
                             <HamburgerItem onClick={() => Goto("/howto")}>
                                 คู่มือ
                             </HamburgerItem>
-                            <HamburgerItem onClick={() => Goto("/review")}>
-                                รีวิว
+                            <HamburgerItem onClick={() => Goto("/blog")}>
+                                บทความ
                             </HamburgerItem>
                         </HamburgerContainer>
                     </Hamburger>
@@ -472,8 +472,8 @@ const TextLogout = styled.p`
 `
 
 const BalanceCoin = styled.img`
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     border-radius: 50%;
 `
 
@@ -483,15 +483,18 @@ const BalanceText = styled.p`
 `
 
 const Balance = styled.div`
-    width: 100%;
-    height: 90%;
+    width: auto;
+    height: 32px;
+    min-width: 114px;
+
     display: flex;
+    justify-content: center;
     align-items: center;
+
+    gap: 10px;
+
     background-color: #000;
     border-radius: 5px;
-    gap: 10px;
-    border-right: 1px solid #414042;
-    padding-right: 10px;
 `
 
 const ProfileImg = styled.img`
@@ -501,49 +504,90 @@ const ProfileImg = styled.img`
 `
 
 const Profile = styled.div`
+    width: auto;
+    height: 100%;
+
+    display: none;
+
+    @media (min-width: 744px) {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        cursor: pointer;
+    }
+`
+
+const FlexRowRe = styled.div`
+    width: auto;
+    height: 100%;
+
     display: flex;
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
-    gap: 10px;
-    cursor: pointer;
+
+    gap: 0px;
+
+    @media (min-width: 744px) {
+        flex-direction: row-reverse;
+    }
 `
 
 const GifList = styled.div`
+    width: auto;
+    height: 100%;
+
     display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    gap: 0px;
 `
 
 const HamburgerItem = styled.button`
+    width: 100%;
+    height: 39px;
+
     border: none;
     background: none;
-    font-family: 'Sukhumvit Set';
+    
+    font-family: 'Prompt';
     font-style: normal;
-    font-weight: 600;
-    font-size: 20px;
-    line-height: 46px;
-
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
     text-align: center;
-    color: #fff;
+
+    color: #999999;     
 
     cursor: pointer;
 `
 
 const HamburgerContainer = styled.div`
+    width: 100%;
+    height: auto;
+
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 20px;
+    
+    gap: 10px;
 `
 
 const Hamburger = styled.div<{ isActive: boolean }>`
-    margin-top: -43px;
     width: 100%;
-    transition: height 300ms;
+
     display: flex;
     justify-content: center;
     align-items: center;
+    
+    margin-top: -43px;
+    transition: height 300ms;
     ${props => props.isActive ? 
     `
-        height: 90vh;
+        height: 100vh;
         ${HamburgerContainer} {
             display: flex;
         }
@@ -555,33 +599,54 @@ const Hamburger = styled.div<{ isActive: boolean }>`
             display: none;
         }
     `}
-    background: linear-gradient(180deg, #262626 0%, #707070 100%);
-    border-radius: 0px 0px 20px 20px;
+    background: #060606;
+    border-radius: 0px 0px 40px 0px;
     z-index: 0;
 
-    @media (min-width: 744px) {
-        width: 250px;
-        align-self: flex-end;
+    @media (min-width: 1280px) {
+        width: auto;
+
+        margin-left: 250px;
+        margin-top: 0px;
+
+        ${props => props.isActive ? 
+    `
+        height: auto;
+        ${HamburgerContainer} {
+            display: flex;
+        }
+    `
+    :
+    `
+        height: 0;
+        ${HamburgerContainer} {
+            display: none;
+        }
+    `}
     }
 `
 
 const MenuGroup = styled.div`
+    width: 100%;
+    height: 100%;
+
     display: flex;
+    justify-content: flex-end;
     align-items: center;
 
     @media (min-width: 744px) {
         width: 100%;
-        padding-left: 200px;
+        height: 100%;
+
+        justify-content: center;
+
+        padding: 0 32px 0 40px;
+
         overflow: scroll;
+
         &::-webkit-scrollbar {
             display: none;
         }
-    }
-
-    @media (min-width: 1440px) {
-        width: 35vw;
-        overflow: scroll;
-        margin-right: 110px;
     }
 `
 
@@ -599,11 +664,13 @@ const GifPromotion = styled.img`
 `
 
 const GifSpin = styled.img`
-    width: 50px;
+    width: 150px;
+    aspect-ratio: 150/40;
 `
 
 const GifLive = styled.img`
     width: 50px;
+    aspect-ratio: 50/40;
 `
 
 const LanguageSpan = styled.span`
@@ -650,7 +717,7 @@ const HiddenNav = styled.div<{ showHiddenNav: boolean }>`
     align-items: center;
 
     transition-duration: 300ms;
-    background-color: #000;
+    background-color: #121116;
 
     ${FlexHiddenNav} {
         display: none;
@@ -677,9 +744,14 @@ const FlexBottom = styled.div`
 `
 
 const NavBottom = styled.div`
+    width: 100%;
+    height: auto;
+
     display: flex;
     justify-content: flex-end;
     z-index: 10;
+
+    background: #121116;
 `
 
 const Box3 = styled.div`
@@ -703,9 +775,14 @@ const FlexStatus = styled.div`
 `
 
 const MenuItem = styled.p`
+    font-family: 'Prompt';
+    font-style: normal;
+    font-weight: 400;
     font-size: 14px;
-    font-weight: 700;
-    color: #fff;
+    line-height: 21px;
+    text-align: center;
+
+    color: #999999;
 `
 
 const DivButton = styled.div`
@@ -714,7 +791,7 @@ const DivButton = styled.div`
     padding-left: 16px;
     padding-right: 16px;
 
-    background: linear-gradient(180deg, #DDDDDD 0%, #E3E3E3 24.48%, #E4E4E4 51.04%, #AFAFAF 98.96%);
+    /* background: linear-gradient(180deg, #DDDDDD 0%, #E3E3E3 24.48%, #E4E4E4 51.04%, #AFAFAF 98.96%); */
 
     display: flex;
     justify-content: center;
@@ -722,8 +799,8 @@ const DivButton = styled.div`
 `
 
 const ListMenu = styled(Link)`
+    width: fit-content;
     min-width: 75px;
-    width: 75px;
     height: fit-content;
 
     display: flex;
@@ -741,32 +818,39 @@ const ListMenu = styled(Link)`
 const Nav = styled.div`
     width: 100%;
     height: auto;
+    
+    position: relative;
+
     display: flex;
     flex-direction: column;
-
-    @media (min-width: 744px) {
-
-    }
 `
 
 const DivLogo = styled(Link)<{ isdesktop?: string }>`
-    width: 76px;
-    aspect-ratio: 120/80;
-    padding: 10px;
-    transition-duration: 300ms;
+    width: 111.6px;
+    aspect-ratio: 111.6/36;
 
-    @media (min-width: 450px) {
-        width: 100px;
-        padding: 0;
-        margin-top: 35px;
-    }
+    position: absolute;
+    left: 10px;
+    top: 7px;
+    z-index: 999;
 
     @media (min-width: 744px) {
-        width: 120px;
-        padding: 0px;
-        margin-top: 35px;
+        width: 124px;
+
+        left: 20px;
+        top: 5px;
     }
 
+    @media (min-width: 1280px) {
+        width: 201.58px;
+        
+        top: 10px;
+    }
+`
+
+const Logo = styled.img`
+    width: 100%;
+    height: 100%;
 `
 
 const Menubar = styled.div`
@@ -806,8 +890,9 @@ const Collapse = styled.button<{ showHiddenNav: boolean }>`
 `
 
 const Statusbar = styled.div`
-    min-width: 180px;
     width: auto;
+    height: auto;
+
     display: flex;
     align-items: center;
     gap: 9px;
@@ -820,31 +905,37 @@ const NavTop = styled.div`
     z-index: 20;
     
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     gap: 8px;
 
-    background-color: #000;
-
-    /* @media (min-width: 744px) {
-        justify-content: flex-end;
-    } */
+    background-color: #121116;
 `
 
 const FlexBox = styled.div`
-    width: auto;
+    width: 100%;
     height: 40px;
-    background: linear-gradient(180deg, #262626 0%, #707070 100%);
-    border-radius: 0 0 20px 20px;
+
     display: flex;
     align-items: center;
     justify-content: center;
+    
     overflow: hidden;
+    border-radius: 0 50px 0px 0px;
+    
+    background: #060606;
     transition-duration: 300ms;
 
     @media (min-width: 744px) {
         width: 100%;
+
         justify-content: flex-end;
+
+        border-radius:50px 0px 0px 0px;
+    }
+
+    @media (min-width: 1280px) {
+        margin-left: 250px;
     }
 `
 
