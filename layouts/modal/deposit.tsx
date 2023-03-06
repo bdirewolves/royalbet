@@ -9,7 +9,6 @@ interface IProps {
 }
 
 export default function Deposit(props: IProps) {
-    
     return (
         <Modal>
             <BgGrey />
