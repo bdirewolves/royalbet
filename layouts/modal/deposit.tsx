@@ -27,7 +27,7 @@ export default function Deposit(props: IProps) {
                     <TextButtonType>ฝากเงิน</TextButtonType>
                 </ButtonType>
             </FlexButton>
-            <FlexMenu>
+            {/* <FlexMenu>
                 <DivTextMenu>
                     <Textmenu>บัญชีผู้ฝากที่ใช้สมัคร</Textmenu>
                 </DivTextMenu>
@@ -68,8 +68,8 @@ export default function Deposit(props: IProps) {
                 </GoldButton>
                 <TextTransfer>ประวัติธุรกรรม</TextTransfer>
                 <TextRemark2>- ยอดจะปรับอัตโนมัติภายใน 30 วินาที - <br/>งดโอนช่วงเวลา 00.00 - 01.00 ยอดอาจเข้าช้าเกิน 2 ชั่วโมง *</TextRemark2>
-            </FlexMenu>
-            {/* <FlexMenu>
+            </FlexMenu> */}
+            <FlexMenu>
                 <FlexDetailMoney>
                     <TextDetailMoney>จำนวนเครดิตทั้งหมด</TextDetailMoney>
                     <TextDetailMoney2>10,000฿</TextDetailMoney2>
@@ -100,7 +100,7 @@ export default function Deposit(props: IProps) {
                     </DivTextDetail>
                 </FlexDeatil>
                 <TextRemark2>ถ้าคุณรับโปรโมชั่นอยู่ ยอดเครดิตจะถูกตัดออกทั้งหมด</TextRemark2>
-            </FlexMenu> */}
+            </FlexMenu>
         </Modal>
     )
 }

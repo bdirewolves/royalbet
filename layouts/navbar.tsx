@@ -18,6 +18,9 @@ import Affilate from "./modal/affilate"
 import Promotion from "./modal/promotion"
 import Statement from "./modal/statement"
 import Deposit from "./modal/deposit"
+import Login from "./modal/login"
+import Register from "./modal/register"
+import Forget from "./modal/forget"
 import { IoIosSettings } from "react-icons/io"
 
 export default function Navbar() {
@@ -58,7 +61,7 @@ export default function Navbar() {
                             <Textinfo>Username</Textinfo>
                         </DivFlexinfo>
                         <Gridmenu>
-                            <GridFr onClick={() => setModalPage(<Deposit modalPage={modalPage} setModalPage={setModalPage} />)}>
+                            <GridFr onClick={() => setModalPage(<Forget />)}>
                                 <DivFlexMenu>
                                     <BoxMenu>
                                         <AiFillStar size={32} color="#9DA3AD" />
