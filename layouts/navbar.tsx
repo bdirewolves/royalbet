@@ -2,10 +2,11 @@ import styled from "styled-components"
 import Link from "next/link"
 import Image from "next/legacy/image"
 import Button from "@/components/_reduce/Button"
-import { AiFillCaretDown, AiFillStar, AiFillQuestionCircle } from "react-icons/ai"
+import { AiFillCaretDown, AiFillStar, AiFillQuestionCircle, AiOutlineUser, AiFillLock, AiOutlineUsergroupAdd, AiOutlineNotification, AiOutlineHistory } from "react-icons/ai"
+import { HiCash } from "react-icons/hi"
 import { FaBell } from "react-icons/fa"
 import { BsGearFill } from "react-icons/bs"
-import { useEffect, useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import type { ReactNode } from "react"
 import ButtonGradient from "@/components/_reduce/ButtonGradient"
 import moment from "moment"
@@ -21,6 +22,13 @@ import Login from "./modal/login"
 import Register from "./modal/register"
 import Forget from "./modal/forget"
 import { IoIosSettings } from "react-icons/io"
+import { AuthContext } from "@/pages/_app"
+import ChangePass from "./modal/changePass"
+
+interface IModalPage {
+    name: string;
+    element: any;
+}
 
 export default function Navbar() {
 
@@ -29,13 +37,21 @@ export default function Navbar() {
     const [ showHiddenNav, setShowHiddenNav ] = useState<boolean>(false)
     const [ time, setTime ] = useState("")
     const [ showHamburger, setShowHamburger ] = useState(false)
-    const [ access, setAccess ] = useState<any>(null)
+    const [ access, setAccess ] = useState<string>("")
     const [ modal, setModal ] = useState<boolean>(false)
-    const [ modalPage, setModalPage ] = useState<ReactNode>(null)
+    const [ modalPage, setModalPage ] = useState<IModalPage>({ name: "", element: null })
+    const { userAccess, userData, setUserAccess } = useContext(AuthContext)
 
     const Goto = (path: string) => {
         setShowHamburger(false)
         router.push(path)
+    }
+
+    const handleLogout = () => {
+        setUserAccess(null)
+        localStorage.removeItem("access")
+        localStorage.removeItem("telnum")
+        window.location.reload()
     }
 
     useEffect(() => {
@@ -43,85 +59,91 @@ export default function Navbar() {
     }, [])
 
     useEffect(() => {
-        setAccess(localStorage.getItem("access"))
-    }, [])
+        console.log(modalPage)
+    }, [modalPage])
+    
+    
 
     return(
         <>  
-            { modal && modalPage == null ?
+            { modalPage.name == "menu" ?
                 (
-                    <Modal>
-                        <BgGrey />
-                        <DivFlexHead>
-                            <TextHead>โปรไฟล์</TextHead>
-                        </DivFlexHead>
-                        <DivFlexinfo>
-                            <Boxinfo />
-                            <Textinfo>Username</Textinfo>
-                        </DivFlexinfo>
-                        <Gridmenu>
-                            <GridFr onClick={() => setModalPage(<Forget />)}>
-                                <DivFlexMenu>
-                                    <BoxMenu>
-                                        <AiFillStar size={32} color="#9DA3AD" />
-                                    </BoxMenu>
-                                    <TextMenu>ข้อมูลส่วนตัว</TextMenu>
-                                </DivFlexMenu>
-                                <GoldLine />
-                            </GridFr>
-                            <GridFr >{/* onClick={() => setModalPage(<Information />)} */}
-                                <DivFlexMenu>
-                                    <BoxMenu>
-                                        <AiFillStar size={32} color="#9DA3AD" />
-                                    </BoxMenu>
-                                    <TextMenu>เปลี่ยนรหัส</TextMenu>
-                                </DivFlexMenu>
-                                <GoldLine />
-                            </GridFr>
-                            <GridFr onClick={() => setModalPage(<Statement modalPage={modalPage} setModalPage={setModalPage}/>)}> 
-                                <DivFlexMenu>
-                                    <BoxMenu>
-                                        <AiFillStar size={32} color="#9DA3AD" />
-                                    </BoxMenu>
-                                    <TextMenu>ประวัติธุรกรรม</TextMenu>
-                                </DivFlexMenu>
-                                <GoldLine />
-                            </GridFr>
-                            <GridFr onClick={() => setModalPage(<Affilate modalPage={modalPage} setModalPage={setModalPage} />)}>
-                                <DivFlexMenu>
-                                    <BoxMenu>
-                                        <AiFillStar size={32} color="#9DA3AD" />
-                                    </BoxMenu>
-                                    <TextMenu>แนะนำเพือน</TextMenu>
-                                </DivFlexMenu>
-                                <GoldLine />
-                            </GridFr>
-                            <GridFr onClick={() => setModalPage(<Promotion modalPage={modalPage} setModalPage={setModalPage}/>)}>
-                                <DivFlexMenu>
-                                    <BoxMenu>
-                                        <AiFillStar size={32} color="#9DA3AD" />
-                                    </BoxMenu>
-                                    <TextMenu>โปรโมชั่น</TextMenu>
-                                </DivFlexMenu>
-                                <GoldLine />
-                            </GridFr>
-                            <GridFr onClick={() => setModalPage(<Setting modalPage={modalPage} setModalPage={setModalPage}/>)}>
-                                <DivFlexMenu>
-                                    <BoxMenu>
-                                        <IoIosSettings size={32} color="#9DA3AD" />
-                                    </BoxMenu>
-                                    <TextMenu>ตั้งค่า</TextMenu>
-                                </DivFlexMenu>
-                                <GoldLine />
-                            </GridFr>
-                        </Gridmenu>
-                        <DivFlexLogout>
-                            <TextLogout>ออกจากระบบ</TextLogout>
-                        </DivFlexLogout>
-                    </Modal>
+                    <>
+                        <Modal>
+                            <BgGrey />
+                            <DivFlexHead>
+                                <TextHead>โปรไฟล์</TextHead>
+                            </DivFlexHead>
+                            <DivFlexinfo>
+                                <Boxinfo src="/assets/img/users/profile.png" />
+                                <Textinfo>{ userData.name }</Textinfo>
+                            </DivFlexinfo>
+                            <Gridmenu>
+                                <GridFr onClick={() => setModalPage({ name: "information", element: <Information modalPage={modalPage} setModalPage={setModalPage} />})}>
+                                    <DivFlexMenu>
+                                        <BoxMenu>
+                                            <AiOutlineUser size={32} color="#9DA3AD" />
+                                        </BoxMenu>
+                                        <TextMenu>ข้อมูลส่วนตัว</TextMenu>
+                                    </DivFlexMenu>
+                                    <GoldLine />
+                                </GridFr>
+                                <GridFr onClick={() => setModalPage({ name: "changepass", element: <ChangePass modalPage={modalPage} setModalPage={setModalPage} />})}>
+                                    <DivFlexMenu>
+                                        <BoxMenu>
+                                            <AiFillLock size={32} color="#9DA3AD" />
+                                        </BoxMenu>
+                                        <TextMenu>เปลี่ยนรหัส</TextMenu>
+                                    </DivFlexMenu>
+                                    <GoldLine />
+                                </GridFr>
+                                <GridFr onClick={() => setModalPage({ name: "deposit", element: <Deposit modalPage={modalPage} setModalPage={setModalPage}/>})}> 
+                                    <DivFlexMenu>
+                                        <BoxMenu>
+                                            <HiCash size={32} color="#9DA3AD" />
+                                        </BoxMenu>
+                                        <TextMenu>ฝาก-ถอน</TextMenu>
+                                    </DivFlexMenu>
+                                    <GoldLine />
+                                </GridFr>
+                                <GridFr onClick={() => setModalPage({ name: "aff", element: <Affilate modalPage={modalPage} setModalPage={setModalPage} />})}>
+                                    <DivFlexMenu>
+                                        <BoxMenu>
+                                            <AiOutlineUsergroupAdd size={32} color="#9DA3AD" />
+                                        </BoxMenu>
+                                        <TextMenu>แนะนำเพือน</TextMenu>
+                                    </DivFlexMenu>
+                                    <GoldLine />
+                                </GridFr>
+                                <GridFr onClick={() => setModalPage({ name: "promotion", element: <Promotion modalPage={modalPage} setModalPage={setModalPage}/>})}>
+                                    <DivFlexMenu>
+                                        <BoxMenu>
+                                            <AiOutlineNotification size={32} color="#9DA3AD" />
+                                        </BoxMenu>
+                                        <TextMenu>โปรโมชั่น</TextMenu>
+                                    </DivFlexMenu>
+                                    <GoldLine />
+                                </GridFr>
+                                <GridFr onClick={() => setModalPage({ name: "statement", element: <Statement modalPage={modalPage} setModalPage={setModalPage}/>})}>
+                                    <DivFlexMenu>
+                                        <BoxMenu>
+                                            <AiOutlineHistory size={32} color="#9DA3AD" />
+                                        </BoxMenu>
+                                        <TextMenu>ประวัติธุรกรรม</TextMenu>
+                                    </DivFlexMenu>
+                                    <GoldLine />
+                                </GridFr>
+                            </Gridmenu>
+                            <DivFlexLogout onClick={handleLogout}>
+                                <TextLogout>ออกจากระบบ</TextLogout>
+                            </DivFlexLogout>
+                            
+                        </Modal>
+                        <Overlay onClick={() => setModalPage({ name: "", element: null })} />
+                    </>
                 )
                 :
-                modalPage
+                modalPage?.element
             }
             <Background>
                 <Nav>
@@ -131,31 +153,32 @@ export default function Navbar() {
                     <NavTop>
                         <FlexStatus>
                             {
-                                access ? 
+                                userAccess == null ? 
                                 (
                                     <Statusbar>
-                                        <Button color="#fff">
+                                        <Button color="#fff" onClick={() => modalPage.name == "login" ? setModalPage({ name: "", element: null }) : setModalPage({ name: "login", element: <Login modalPage={modalPage} setModalPage={setModalPage} /> })}>
                                             เข้าสู่ระบบ
                                         </Button>
-                                        <Link href="https://liff.line.me/1645278921-kWRPP32q/?accountId=974vykgc">
-                                            <ButtonGradient>
-                                                สมัครสมาชิก
-                                            </ButtonGradient>
-                                        </Link>
+                                        <ButtonGradient onClick={() => modalPage.name == "register" ? setModalPage({ name: "", element: null }) : setModalPage({ name: "register", element: <Register modalPage={modalPage} setModalPage={setModalPage} />})}>
+                                            สมัครสมาชิก
+                                        </ButtonGradient>
                                     </Statusbar>
                                 )
                                 :
                                 (
                                     <Statusbar>
-                                        <Profile onClick={() => { setModal(!modal) }}>
+                                        <Profile onClick={() => modalPage.name == "menu" ? setModalPage({ name: "", element: null }) : setModalPage({ name: "menu", element: null }) }>
                                             <Button color="#fff">
-                                                Username
+                                                { userData?.telnum }
                                             </Button>
-                                            <ProfileImg src={`https://via.placeholder.com/30x30?text=B`} alt="" />
+                                            <DivProfileImg>
+                                                <AiOutlineUser size={20} />
+                                            </DivProfileImg>
+                                           
                                         </Profile>
-                                        <Balance>
-                                            <BalanceText>10,000.00</BalanceText>
-                                            <BalanceCoin src={`https://via.placeholder.com/20x20?text=C`} alt="" />
+                                        <Balance onClick={() => modalPage.name == "menu" ? setModalPage({ name: "", element: null }) : setModalPage({ name: "menu", element: null }) }>
+                                            <BalanceText>{ userData?.wallsum.toFixed(2) }</BalanceText>
+                                            <BalanceCoin src="/assets/img/users/wallet.svg" alt="" />
                                         </Balance>
                                     </Statusbar>
                                 )
@@ -171,7 +194,7 @@ export default function Navbar() {
                                 <ButtonBorderRight type="button">
                                     <AiFillQuestionCircle size={20} />
                                 </ButtonBorderRight>
-                                <ButtonBorderRight type="button">
+                                <ButtonBorderRight type="button" style={{ width: "60px" }}>
                                     <TimeSpan>{time}</TimeSpan>
                                 </ButtonBorderRight>
                                 <ButtonBorderRight type="button">
@@ -236,8 +259,8 @@ export default function Navbar() {
 
                                 <FlexRowRe>
                                     <GifList>
-                                        <GifLive src="/assets/gif/live.gif" alt="" onClick={() => router.push("https://www.livescore.com/en/")}  />
-                                        <GifSpin src="/assets/gif/spin.gif" alt="" />
+                                        <GifLive src="https://placehold.jp/12/222222/ffffff/50x40.jpg?text=LIVE" alt="" onClick={() => router.push("https://www.livescore.com/en/")}  />
+                                        <GifSpin src="https://placehold.jp/12/222222/ffffff/150x40.jpg?text=Spin Bonus" alt="" />
                                     </GifList>
                                     <DivButton>
                                         <Button onClick={() => setShowHamburger(!showHamburger)}>
@@ -286,6 +309,32 @@ export default function Navbar() {
     )
 }
 
+const Overlay = styled.div`
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+
+    width: 100vw;
+    height: 100vh;
+
+    background: rgba(0, 0, 0, 0.4);
+`
+
+const DivProfileImg = styled.div`
+    width: 30px;
+    height: 30px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: #000;
+
+    border-radius: 50%;
+    background: linear-gradient(90deg, #D2BB6E 0%, #F6E79A 100%);
+`
+
 const Modal = styled.div`
     width: 320px;
     height: 450px;
@@ -307,7 +356,7 @@ const Modal = styled.div`
     
     background-color: #000000;
     color: #000;
-    z-index: 9999;
+    z-index: 150;
 `
 
 const BgGrey = styled.div`
@@ -361,7 +410,7 @@ const DivFlexinfo = styled.div`
     z-index: 2;
 `
 
-const Boxinfo = styled.div`
+const Boxinfo = styled.img`
     width: 80px;
     height: 80px;
 
@@ -432,7 +481,7 @@ const TextMenu = styled.p`
     font-size: 10px;
     line-height: 150%;
 
-    color: rgba(255, 255, 255, 0.8);
+    color: #fff;
 `
 
 const GoldLine = styled.div`
@@ -442,7 +491,7 @@ const GoldLine = styled.div`
     background: linear-gradient(90deg, #D2BB6E 0%, #F6E79A 100%);
 `
 
-const DivFlexLogout = styled.div`
+const DivFlexLogout = styled.button`
     width: 86px;
     height: 24px;
 
@@ -456,6 +505,9 @@ const DivFlexLogout = styled.div`
     align-items: center;
 
     gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
 `
 
 const TextLogout = styled.p`
@@ -474,7 +526,7 @@ const TextLogout = styled.p`
 const BalanceCoin = styled.img`
     width: 18px;
     height: 18px;
-    border-radius: 50%;
+    /* border-radius: 50%; */
 `
 
 const BalanceText = styled.p`
@@ -483,6 +535,7 @@ const BalanceText = styled.p`
 `
 
 const Balance = styled.div`
+    cursor: pointer;
     width: auto;
     height: 32px;
     min-width: 114px;
@@ -542,7 +595,7 @@ const GifList = styled.div`
     justify-content: center;
     align-items: center;
 
-    gap: 0px;
+    gap: 1px;
 `
 
 const HamburgerItem = styled.button`
@@ -947,5 +1000,5 @@ const Background = styled.nav`
     height: auto;
     display: flex;
     justify-content: space-between;
-    z-index: 999;
+    z-index: 100;
 `

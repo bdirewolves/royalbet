@@ -1,107 +1,147 @@
 import React, { Dispatch, ReactNode, SetStateAction } from 'react'
+import { AiOutlineClose } from 'react-icons/ai';
 import styled from 'styled-components'
+import Login from './login';
 
-export default function Register() {
+interface IPage {
+    name: string;
+    element: any;
+}
+
+interface IProps {
+    modalPage: IPage;
+    setModalPage: Dispatch<SetStateAction<IPage>>;
+}
+
+export default function Forget(props: IProps) {
     
   return (
-    <Modal>
-        <IconX />
-        {/* <FlexMains>
-            <DivLogo>
-                <Logo src='/assets/img/logo.png'/>
-            </DivLogo>
-            <FlexDetails>
-                <TextType>ลืมรหัสผ่าน</TextType>
-                <BoxDetail>
-                    <TextDetail>กรอกเบอร์มือถือที่ใช้สมัคร</TextDetail>
-                </BoxDetail>
-                <GoldButton>
-                    <TextButton>รับ OTP</TextButton>
-                </GoldButton>
-                <Line />
-                <ButtonCopy>
-                    <TextButtonCopy>มีบัญชีแล้ว / เข้าสู่ระบบ</TextButtonCopy>
-                </ButtonCopy>
-            </FlexDetails>
-        </FlexMains> */}
-        {/* <FlexMains>
-            <DivLogo>
-                <Logo src='/assets/img/logo.png'/>
-            </DivLogo>
-            <FlexDetails>
-                <TextType>ลืมรหัสผ่าน</TextType>
-                <TextOTP>กรอกรหัส OTP</TextOTP>
-                <DivBoxOTP>
-                    <BoxOTP />
-                    <BoxOTP />
-                    <BoxOTP />
-                    <BoxOTP />
-                    <BoxOTP />
-                    <BoxOTP />
-                </DivBoxOTP>
-                <GoldButton>
-                    <TextButton>ถัดไป</TextButton>
-                </GoldButton>
-                <Line />
-                <ButtonCopy>
-                    <TextButtonCopy>มีบัญชีแล้ว / เข้าสู่ระบบ</TextButtonCopy>
-                </ButtonCopy>
-            </FlexDetails>
-        </FlexMains> */}
-        {/* <FlexMains>
-            <DivLogo>
-                <Logo src='/assets/img/logo.png'/>
-            </DivLogo>
-            <FlexDetails>
-                <TextType>ลืมรหัสผ่าน</TextType>
-                <BoxDetail>
-                    <TextDetail>รหัสผ่านใหม่ : Password123</TextDetail>
-                </BoxDetail>
-                <BoxDetail>
-                    <TextDetail>ยืนยันรหัสผ่านใหม่</TextDetail>
-                </BoxDetail>
-                <GoldButton>
-                    <TextButton>เปลี่ยนรหัสผ่าน</TextButton>
-                </GoldButton>
-                <Line />
-                <ButtonCopy>
-                    <TextButtonCopy>มีบัญชีแล้ว / เข้าสู่ระบบ</TextButtonCopy>
-                </ButtonCopy>
-            </FlexDetails>
-        </FlexMains> */}
-        <FlexMains>
-            <DivLogo>
-                <Logo src='/assets/img/logo.png'/>
-            </DivLogo>
-            <FlexDetails>
-                <div className="loading">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="124" height="124" viewBox="0 0 124 124">
-                        <circle className="circle-loading" cx="62" cy="62" r="59" fill="none" stroke="#D2BB6E" stroke-width="6px"></circle>
-                        <circle className="circle" cx="62" cy="62" r="59" fill="none" stroke="#D2BB6E" stroke-width="6px" stroke-linecap="round"></circle>
-                        <polyline className="check" points="73.56 48.63 57.88 72.69 49.38 62" fill="none" stroke="#D2BB6E" stroke-width="6px" stroke-linecap="round"></polyline>
-                    </svg>
-                </div>
-                <TextDetailCom>เปลี่ยนรหัสผ่านสำเร็จ</TextDetailCom>
-                <GoldButton>
-                    <TextButton>เข้าสู่ระบบ</TextButton>
-                </GoldButton>
-            </FlexDetails>
-        </FlexMains>
-        <Contactme>
-            <TextLine>LINE : Royalbet </TextLine>
-            <DivSo>
-                <FlexSo>
-                    <Box />
-                    <Box />
-                    <Box />
-                    <Box />
-                    <Box />
-                </FlexSo>
-            </DivSo>
-        </Contactme>
-    </Modal>
+    <>
+        <Overlay onClick={() => props.setModalPage({ name: "", element: null })} />
+        <Modal>
+            
+            <IconX>
+                <AiOutlineClose size={20} onClick={() => props.setModalPage({ name: "", element: null })} />
+            </IconX>
+
+            {/* Step 1 */}
+            <FlexMains>
+                <DivLogo>
+                    <Logo src='/assets/img/logo.png'/>
+                </DivLogo>
+                <FlexDetails>
+                    <TextType>ลืมรหัสผ่าน</TextType>
+
+                    <BoxDetail type="text" placeholder='กรอกเบอร์มือถือที่ใช้สมัคร' />
+
+                    <GoldButton>
+                        <TextButton>รับ OTP</TextButton>
+                    </GoldButton>
+                    <Line />
+                    <ButtonCopy onClick={() => props.setModalPage({ name: "login", element: <Login modalPage={props.modalPage} setModalPage={props.setModalPage} /> })}>
+                        <TextButtonCopy>มีบัญชีแล้ว / เข้าสู่ระบบ</TextButtonCopy>
+                    </ButtonCopy>
+                </FlexDetails>
+            </FlexMains>
+
+            {/* Step 2 */}
+            {/* <FlexMains>
+                <DivLogo>
+                    <Logo src='/assets/img/logo.png'/>
+                </DivLogo>
+                <FlexDetails>
+                    <TextType>ลืมรหัสผ่าน</TextType>
+                    <TextOTP>กรอกรหัส OTP</TextOTP>
+                    <DivBoxOTP>
+                        <BoxOTP />
+                        <BoxOTP />
+                        <BoxOTP />
+                        <BoxOTP />
+                        <BoxOTP />
+                        <BoxOTP />
+                    </DivBoxOTP>
+                    <GoldButton>
+                        <TextButton>ถัดไป</TextButton>
+                    </GoldButton>
+                    <Line />
+                    <ButtonCopy>
+                        <TextButtonCopy>มีบัญชีแล้ว / เข้าสู่ระบบ</TextButtonCopy>
+                    </ButtonCopy>
+                </FlexDetails>
+            </FlexMains> */}
+
+            {/* Step 3 */}
+            {/* <FlexMains>
+                <DivLogo>
+                    <Logo src='/assets/img/logo.png'/>
+                </DivLogo>
+                <FlexDetails>
+                    <TextType>ลืมรหัสผ่าน</TextType>
+                    <BoxDetail>
+                        <TextDetail>รหัสผ่านใหม่ : Password123</TextDetail>
+                    </BoxDetail>
+                    <BoxDetail>
+                        <TextDetail>ยืนยันรหัสผ่านใหม่</TextDetail>
+                    </BoxDetail>
+                    <GoldButton>
+                        <TextButton>เปลี่ยนรหัสผ่าน</TextButton>
+                    </GoldButton>
+                    <Line />
+                    <ButtonCopy>
+                        <TextButtonCopy>มีบัญชีแล้ว / เข้าสู่ระบบ</TextButtonCopy>
+                    </ButtonCopy>
+                </FlexDetails>
+            </FlexMains> */}
+
+            {/* Step 4 */}
+            {/* <FlexMains>
+                <DivLogo>
+                    <Logo src='/assets/img/logo.png'/>
+                </DivLogo>
+                <FlexDetails>
+                    <div className="loading">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="124" height="124" viewBox="0 0 124 124">
+                            <circle className="circle-loading" cx="62" cy="62" r="59" fill="none" stroke="#D2BB6E" stroke-width="6px"></circle>
+                            <circle className="circle" cx="62" cy="62" r="59" fill="none" stroke="#D2BB6E" stroke-width="6px" stroke-linecap="round"></circle>
+                            <polyline className="check" points="73.56 48.63 57.88 72.69 49.38 62" fill="none" stroke="#D2BB6E" stroke-width="6px" stroke-linecap="round"></polyline>
+                        </svg>
+                    </div>
+                    <TextDetailCom>เปลี่ยนรหัสผ่านสำเร็จ</TextDetailCom>
+                    <GoldButton>
+                        <TextButton>เข้าสู่ระบบ</TextButton>
+                    </GoldButton>
+                </FlexDetails>
+            </FlexMains> */}
+
+
+            <Contactme>
+                <TextLine>LINE : Royalbet </TextLine>
+                <DivSo>
+                    <FlexSo>
+                        <Box />
+                        <Box />
+                        <Box />
+                        <Box />
+                        <Box />
+                    </FlexSo>
+                </DivSo>
+            </Contactme>
+        </Modal>
+    </>
   )
 }
+
+const Overlay = styled.div`
+    width: 100vw;
+    height: 100vh;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 30;
+
+    background: rgba(0,0,0,0.4);
+`
 
 const Modal = styled.div`
     width: 320px;
@@ -110,8 +150,10 @@ const Modal = styled.div`
     position: relative;
 
     position: fixed;
-    top: 50px;
-    right: 20vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 40;
 
     display: flex;
     flex-direction: column;
@@ -126,16 +168,21 @@ const Modal = styled.div`
 
     background: #121116;
     color: #000;
-    z-index: 9999;
+    z-index: 150;
 `
 
 const IconX = styled.div`
+    cursor: pointer;
     width: 30px;
     height: 30px;
 
     position: absolute;
     right: 0;
     top: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     background: linear-gradient(90deg, #D2BB6E 0%, #F6E79A 100%);
     border-radius: 0px 10px;
@@ -191,7 +238,10 @@ const TextType = styled.p`
     color: #FFFFFF;
 `
 
-const BoxDetail = styled.div`
+const BoxDetail = styled.input`
+    font-family: "Prompt";
+    border: none;
+    padding: 10px;
     width: 100%;
     height: 36px;
 
@@ -201,7 +251,12 @@ const BoxDetail = styled.div`
     align-items: center;
 
     background: #060606;
+    color: #fff;
     border-radius: 5px;
+
+    &:focus {
+        outline: none;
+    }
 `
 
 const TextDetail = styled.p`
@@ -221,6 +276,8 @@ const TextDetail = styled.p`
 `
 
 const GoldButton = styled.button`
+    cursor: pointer;
+    border: none;
     width: 100%;
     height: 29px;
 
@@ -256,6 +313,7 @@ const Line = styled.div`
 `
 
 const ButtonCopy = styled.button`
+    cursor: pointer;
     width: 100%;
     height: 29px;
 

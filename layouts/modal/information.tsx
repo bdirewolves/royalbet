@@ -1,53 +1,82 @@
-import React, { Dispatch, ReactNode, SetStateAction } from 'react'
+import React, { Dispatch, ReactNode, SetStateAction, useContext } from 'react'
 import styled from 'styled-components'
 import { TfiAngleLeft } from "react-icons/tfi";
 import { AiOutlineClose } from "react-icons/ai";
+import { AuthContext } from '@/pages/_app';
+import moment from 'moment';
+
+interface IPage {
+    name: string;
+    element: any;
+}
 
 interface IProps {
-    modalPage: ReactNode;
-    setModalPage: Dispatch<SetStateAction<ReactNode>>;
+    modalPage: IPage;
+    setModalPage: Dispatch<SetStateAction<IPage>>;
 }
 
 export default function Information(props: IProps) {
+    const { userData, setUserAccess } = useContext(AuthContext)
+
+    const handleLogout = () => {
+        setUserAccess(null)
+        localStorage.removeItem("access")
+        localStorage.removeItem("telnum")
+        window.location.reload()
+    }
     
-  return (
-    <Modal>
-        <BgGrey />
-        <DivFlexHead>
-            <TfiAngleLeft size={16}  color="Grey" onClick={() => props.setModalPage(null)}/>
-            <TextHead>ข้อมูลส่วนตัว</TextHead>
-            <AiOutlineClose size={14.67} color="Grey"/>
-        </DivFlexHead>
-        <DivFlexinfo>
-            <Boxinfo />
-            <Textinfo>Username</Textinfo>
-        </DivFlexinfo>
-        <Flexmenu>
-            <FlexFr>
-                <Textmenu>ชื่อ-สกุล : นาย สมจริง สนุกขาว</Textmenu>
-            </FlexFr>
-            <FlexFr>
-                <Textmenu>เบอร์มือถือ : 081-234-5678</Textmenu>
-            </FlexFr>
-            <FlexFr>
-                <Textmenu>ธนาคาร : กสิกรไทย</Textmenu>
-            </FlexFr>
-            <FlexFr>
-                <Textmenu1>เลขบัญชี : 1234567890</Textmenu1>
-            </FlexFr>
-            <FlexFr>
-                <Textmenu1>วันที่สมัคร : 01/01/01</Textmenu1>
-            </FlexFr>
-            <FlexFr>
-                <Textmenu1>รู้จักเราจาก : เพื่อนแนะนำ</Textmenu1>
-            </FlexFr>
-        </Flexmenu>
-        <DivFlexLogout>
-            <TextLogout>ออกจากระบบ</TextLogout>
-        </DivFlexLogout>
-    </Modal>
-  )
+    return (
+        <>
+            <Modal>
+                <BgGrey />
+                <DivFlexHead>
+                    <TfiAngleLeft style={{ cursor: "pointer" }} size={16} color="Grey" onClick={() => props.setModalPage({ name: "menu", element: null })} />
+                    <TextHead>ข้อมูลส่วนตัว</TextHead>
+                    <AiOutlineClose style={{ cursor: "pointer" }} size={14.67} color="Grey" onClick={() => props.setModalPage({ name: "", element: null })} />
+                </DivFlexHead>
+                <DivFlexinfo>
+                    <Boxinfo src="/assets/img/users/profile.png" />
+                    <Textinfo>{ userData.name }</Textinfo>
+                </DivFlexinfo>
+                <Flexmenu>
+                    <FlexFr>
+                        <Textmenu>ชื่อ-สกุล : {userData.name}</Textmenu>
+                    </FlexFr>
+                    <FlexFr>
+                        <Textmenu>เบอร์มือถือ : {userData.telnum.slice(0, 3)}-{userData.telnum.slice(3, 6)}-{userData.telnum.slice(6, 10)}</Textmenu>
+                    </FlexFr>
+                    <FlexFr>
+                        <Textmenu>ธนาคาร : {userData.bankname}</Textmenu>
+                    </FlexFr>
+                    <FlexFr>
+                        <Textmenu1>เลขบัญชี : {userData.banknum}</Textmenu1>
+                    </FlexFr>
+                    <FlexFr>
+                        <Textmenu1>วันที่สมัคร : {moment(userData.createdAt).format("DD/MM/YYYY")}</Textmenu1>
+                    </FlexFr>
+                    <FlexFr>
+                        <Textmenu1>รู้จักเราจาก : - </Textmenu1>
+                    </FlexFr>
+                </Flexmenu>
+                <DivFlexLogout onClick={handleLogout}>
+                    <TextLogout>ออกจากระบบ</TextLogout>
+                </DivFlexLogout>
+            </Modal>
+            <Overlay onClick={() => props.setModalPage({ name: "", element: null })} />
+        </>
+    )
 }
+const Overlay = styled.div`
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+
+    width: 100vw;
+    height: 100vh;
+
+    background: rgba(0, 0, 0, 0.4);
+`
 
 const Modal = styled.div`
     width: 320px;
@@ -70,7 +99,7 @@ const Modal = styled.div`
     
     background-color: #000000;
     color: #000;
-    z-index: 9999;
+    z-index: 150;
 `
 
 const BgGrey = styled.div`
@@ -124,7 +153,7 @@ const DivFlexinfo = styled.div`
     z-index: 2;
 `
 
-const Boxinfo = styled.div`
+const Boxinfo = styled.img`
     width: 80px;
     height: 80px;
 
@@ -191,6 +220,7 @@ const Textmenu1 = styled.p`
 `
 
 const DivFlexLogout = styled.div`
+    cursor: pointer;
     width: 86px;
     height: 24px;
 

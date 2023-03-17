@@ -1,113 +1,185 @@
-import React, { Dispatch, ReactNode, SetStateAction } from 'react'
+import { AuthContext } from '@/pages/_app';
+import axios from 'axios';
+import moment from 'moment';
+import React, { Dispatch, ReactNode, SetStateAction, useContext, useEffect, useState } from 'react'
 import { AiOutlineClose } from 'react-icons/ai';
 import { TfiAngleLeft } from 'react-icons/tfi';
 import styled from 'styled-components'
 
+interface IPage {
+    name: string;
+    element: any;
+}
+
 interface IProps {
-    modalPage: ReactNode;
-    setModalPage: Dispatch<SetStateAction<ReactNode>>;
+    modalPage: IPage;
+    setModalPage: Dispatch<SetStateAction<IPage>>;
 }
 
 export default function Statement(props: IProps) {
-    
-  return (
-    <Modal>
-        <BgGrey />
-        <DivFlexHead>
-            <TfiAngleLeft size={16}  color="Grey" onClick={() => props.setModalPage(null)}/>
-            <TextHead>ประวัติธุรกรรม</TextHead>
-            <AiOutlineClose size={14.67} color="Grey"/>
-        </DivFlexHead>
-        <Flexmenu>
-            <FlexButton>
-                <GoldLine />
-                <ButtonType>
-                    <TextButtonType>ทั้งหมด</TextButtonType>
-                </ButtonType>
-                <ButtonType>
-                    <TextButtonType>ฝาก</TextButtonType>
-                </ButtonType>
-                <ButtonType>
-                    <TextButtonType>ถอน</TextButtonType>
-                </ButtonType>
-                <ButtonType>
-                    <TextButtonType>โบนัส</TextButtonType>
-                </ButtonType>
-            </FlexButton>
-            <FlexTransaction>
-                <DivTextDate>
-                    <TextDate>วันที่ 12 มีนาคม 2564</TextDate>
-                </DivTextDate>
-                <Line />
-                <FlexRow>
-                    <Box />
-                    <FlexDetail>
-                        <TextHeadDetail>รายการฝากเงิน</TextHeadDetail>
-                        <TextDetail>+ 100,000.99฿</TextDetail>
-                    </FlexDetail>
-                    <FlexDetail2>
-                        <TextHeadDetail2>ณ เวลา 19:52 น.</TextHeadDetail2>
-                        <Status>
-                            <TextStatus>ทำรายการทำเร็จ</TextStatus>
-                        </Status>
-                    </FlexDetail2>
-                </FlexRow>
-                <Line />
-                <FlexRow>
-                    <Box />
-                    <FlexDetail>
-                        <TextHeadDetail>รายการฝากเงิน</TextHeadDetail>
-                        <TextDetail>+ 100,000.99฿</TextDetail>
-                    </FlexDetail>
-                    <FlexDetail2>
-                        <TextHeadDetail2>ณ เวลา 19:52 น.</TextHeadDetail2>
-                        <Status>
-                            <TextStatus>ทำรายการทำเร็จ</TextStatus>
-                        </Status>
-                    </FlexDetail2>
-                </FlexRow>
-                <Line />
-                <FlexRow>
-                    <Box />
-                    <FlexDetail>
-                        <TextHeadDetail>รายการฝากเงิน</TextHeadDetail>
-                        <TextDetail>+ 100,000.99฿</TextDetail>
-                    </FlexDetail>
-                    <FlexDetail2>
-                        <TextHeadDetail2>ณ เวลา 19:52 น.</TextHeadDetail2>
-                        <Status>
-                            <TextStatus>ทำรายการทำเร็จ</TextStatus>
-                        </Status>
-                    </FlexDetail2>
-                </FlexRow>
-                <Line />
-                <FlexRow>
-                    <Box />
-                    <FlexDetail>
-                        <TextHeadDetail>รายการฝากเงิน</TextHeadDetail>
-                        <TextDetail>+ 100,000.99฿</TextDetail>
-                    </FlexDetail>
-                    <FlexDetail2>
-                        <TextHeadDetail2>ณ เวลา 19:52 น.</TextHeadDetail2>
-                        <Status>
-                            <TextStatus>ทำรายการทำเร็จ</TextStatus>
-                        </Status>
-                    </FlexDetail2>
-                </FlexRow>
-            </FlexTransaction>
-        </Flexmenu>
-        <DivFlexLogout>
-            <TextLogout>ออกจากระบบ</TextLogout>
-        </DivFlexLogout>
-    </Modal>
-  )
+    const { setUserAccess } = useContext(AuthContext)
+    const [ transType, setTransType ] = useState<string>("all")
+    const [ transactions, setTransaction ] = useState<any[]>([])
+    const { userData, userAccess } = useContext(AuthContext)
+    const [ filters, setFilters ] = useState<any[]>([])
+
+    const fetchTransaction = async () => {
+        try {
+            const deposit: any[] = await axios.post(`${process.env.API_URL}/userdeposit/DepositCashReport`,
+                {
+                    nedate: moment(userData.createdAt).format("YYYY-MM-DD"), // newer date
+                    searchval: userData.banknum.slice(4, 10),
+                    todate: moment().format("YYYY-MM-DD") // older date
+                },
+                {
+                    headers: {
+                        "Authorization": `Bearer ${userAccess.accessToken}`
+                    }
+                }
+            ).then((res) => res.data.data)
+
+            const withdraw: any[] = await axios.post(`${process.env.API_URL}/userwithdraw/WithdrawCashReport`,
+                {
+                    nedate: moment(userData.createdAt).format("YYYY-MM-DD"), // newer date
+                    searchval: userData.telnum.slice(0),
+                    todate: moment().format("YYYY-MM-DD") // older date
+                },
+                {
+                    headers: {
+                        "Authorization": `Bearer ${userAccess.accessToken}`
+                    }
+                }
+            ).then((res) => res.data.data)
+
+            const tmp: any[] = []
+
+            deposit.length > 0 && deposit.map((item: any) => {
+                tmp.push(item.createdAt)
+            })
+
+            withdraw.length > 0 && withdraw.map((item: any) => {
+                tmp.push(item.createdAt)
+            })
+
+            setFilters(Array.from(new Set(tmp)))
+
+            setTransaction(deposit.concat(withdraw))
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const handleLogout = () => {
+        setUserAccess(null)
+        localStorage.removeItem("access")
+        localStorage.removeItem("telnum")
+        window.location.reload()
+    }
+
+    useEffect(() => {
+        fetchTransaction()
+    }, [])
+
+    return (
+        <>
+            <Modal>
+                <BgGrey />
+                <DivFlexHead>
+                    <TfiAngleLeft style={{ cursor: "pointer" }} size={16} color="Grey" onClick={() => props.setModalPage({ name: "menu", element: null })} />
+                    <TextHead>ประวัติธุรกรรม</TextHead>
+                    <AiOutlineClose style={{ cursor: "pointer" }} size={14.67} color="Grey" onClick={() => props.setModalPage({ name: "", element: null })} />
+                </DivFlexHead>
+                <Flexmenu>
+
+                    {/* Tabs */}
+                    <FlexButton>
+                        <GoldLine isType={transType} />
+                        <ButtonType onClick={() => setTransType("all")}>
+                            <TextButtonType>ทั้งหมด</TextButtonType>
+                        </ButtonType>
+                        <ButtonType onClick={() => setTransType("deposit")}>
+                            <TextButtonType>ฝาก</TextButtonType>
+                        </ButtonType>
+                        <ButtonType onClick={() => setTransType("withdraw")}>
+                            <TextButtonType>ถอน</TextButtonType>
+                        </ButtonType>
+                        <ButtonType onClick={() => setTransType("bonus")}>
+                            <TextButtonType>โบนัส</TextButtonType>
+                        </ButtonType>
+                    </FlexButton>
+
+                    {/* List */}
+                    <FlexTransaction>
+
+                        {
+                            transType === "all" &&
+                            (
+                                filters.length > 0 && filters.map((item_filters, index) => (
+                                    <>
+                                        <DivTextDate key={index}>
+                                            <TextDate>{ moment(item_filters).format("DD/MM/YYYY") }</TextDate>
+                                        </DivTextDate>
+                                        <Line />
+                                        {
+                                            transactions.filter((item, index) => moment(item.createdAt).format("DD/MM/YYYY") == moment(item_filters).format("DD/MM/YYYY")) && transactions.map((item) => (
+                                                <>
+                                                    <FlexRow key={index}>
+                                                        <Box />
+                                                        <FlexDetail>
+                                                            <TextHeadDetail>{ item.org_message ? "รายการฝากเงิน" : "รายการถอนเงิน" }</TextHeadDetail>
+                                                            <TextDetail> { item.org_message ? "++" : "--" } {item.amount} ฿</TextDetail>
+                                                        </FlexDetail>
+                                                        <FlexDetail2>
+                                                            <TextHeadDetail2>ณ เวลา { moment(item.createAt).format("hh:mm") } น.</TextHeadDetail2>
+                                                            <Status transtate={item.transtate}>
+                                                                <TextStatus>
+                                                                    {
+                                                                        (
+                                                                            (item.transtate === "SUCCESS" && "ทำรายการทำเร็จ") || 
+                                                                            (item.transtate === "COMPLETE" && "ทำรายการทำเร็จ") || 
+                                                                            (item.transtate === "PENDING" && "กำลังทำรายการ") ||
+                                                                            (item.transtate === "FAIL" && "ทำรายการไม่สำเร็จ")
+                                                                        ) || "รอดำเนินการ"
+                                                                    }
+                                                                </TextStatus>
+                                                            </Status>
+                                                        </FlexDetail2>
+                                                    </FlexRow>
+                                                    <Line />
+                                                </>
+                                            ))
+                                        }
+                                    </>
+                                ))
+                            )
+                        }
+
+                    </FlexTransaction>
+                </Flexmenu>
+                <DivFlexLogout onClick={handleLogout}>
+                    <TextLogout>ออกจากระบบ</TextLogout>
+                </DivFlexLogout>
+            </Modal>
+            <Overlay onClick={() => props.setModalPage({ name: "", element: null })} />
+        </>
+    )
 }
+
+const Overlay = styled.div`
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+
+    width: 100vw;
+    height: 100vh;
+
+    background: rgba(0, 0, 0, 0.4);
+`
 
 const Modal = styled.div`
     width: 320px;
     height: 450px;
-
-    position: relative;
 
     position: fixed;
     top: 50px;
@@ -124,7 +196,7 @@ const Modal = styled.div`
     
     background-color: #000000;
     color: #000;
-    z-index: 9999;
+    z-index: 150;
 `
 
 const BgGrey = styled.div`
@@ -196,18 +268,23 @@ const FlexButton = styled.div`
     border-radius: 5px;
 `
 
-const GoldLine = styled.div`
+const GoldLine = styled.div<{ isType: string }>`
     width: 25%;
     height: 3px;
 
     position: absolute;
-    left: 0px;
+    transition-duration: 300ms;
+    ${props => props.isType === "all" && `left: 0;`}
+    ${props => props.isType === "deposit" && `left: 25%;`}
+    ${props => props.isType === "withdraw" && `left: 50%;`}
+    ${props => props.isType === "bonus" && `left: 75%;`}
     bottom: 0px;
 
     background: linear-gradient(90deg, #D2BB6E 0%, #F6E79A 100%);
 `
 
 const ButtonType = styled.div`
+    cursor: pointer;
     width: 25%;
     height: 33px;
 
@@ -363,7 +440,7 @@ const TextHeadDetail2 = styled.p`
     color: #FFFFFF;
 `
 
-const Status = styled.div`
+const Status = styled.div<{ transtate: string }>`
     width: 87px;
     height: 17px;
 
@@ -372,7 +449,12 @@ const Status = styled.div`
     justify-content: center;
     align-items: center;
 
-    background: #34C759;
+    ${props => props.transtate === "SUCCESS" && `background: #198754;`}
+    ${props => props.transtate === "COMPLETE" && `background: #34C759;`}
+    ${props => props.transtate === "FAIL" && `background: #dc3545;`}
+    ${props => props.transtate === "PENDING" && `background: #ffc107;`}
+    ${props => props.transtate === "START" && `background: #0dcaf0;`}
+
     border-radius: 5px;
 `
 
@@ -391,6 +473,7 @@ const TextStatus = styled.p`
 `
 
 const DivFlexLogout = styled.div`
+    cursor: pointer;
     width: 86px;
     height: 24px;
 

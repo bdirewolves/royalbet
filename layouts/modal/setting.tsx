@@ -4,9 +4,14 @@ import { MdOutlineDriveFileRenameOutline } from "react-icons/md";
 import { AiOutlineClose } from 'react-icons/ai';
 import { TfiAngleLeft } from 'react-icons/tfi';
 
+interface IPage {
+    name: string;
+    element: any;
+}
+
 interface IProps {
-    modalPage: ReactNode;
-    setModalPage: Dispatch<SetStateAction<ReactNode>>;
+    modalPage: IPage;
+    setModalPage: Dispatch<SetStateAction<IPage>>;
 }
 
 export default function Setting(props: IProps) {
@@ -15,7 +20,7 @@ export default function Setting(props: IProps) {
     <Modal>
         <BgGrey />
         <DivFlexHead>
-            <TfiAngleLeft size={16}  color="Grey" onClick={() => props.setModalPage(null)}/>
+            <TfiAngleLeft size={16}  color="Grey" onClick={() => props.setModalPage({ name: "", element: null })}/>
             <TextHead>ตั้งค่า</TextHead>
             <AiOutlineClose size={14.67} color="Grey"/>
         </DivFlexHead>
@@ -71,7 +76,7 @@ const Modal = styled.div`
     
     background-color: #000000;
     color: #000;
-    z-index: 9999;
+    z-index: 150;
 `
 
 const BgGrey = styled.div`

@@ -1,68 +1,159 @@
-import React, { Dispatch, ReactNode, SetStateAction } from 'react'
+import { AuthContext } from '@/pages/_app';
+import axios from 'axios';
+import { useFormik } from 'formik';
+import React, { Dispatch, ReactNode, SetStateAction, useContext, useEffect, useState } from 'react'
+import { AiOutlineClose } from "react-icons/ai"
 import styled from 'styled-components'
+import Swal from 'sweetalert2';
+import Forget from './forget';
+import Register from './register';
 
-export default function Login() {
-    
-  return (
-    <Modal>
-        <IconX />
-        {/* <FlexMains>
-            <DivLogo>
-                <Logo src='/assets/img/logo.png'/>
-            </DivLogo>
-            <FlexDetails>
-                <TextType>เข้าสู่ระบบ</TextType>
-                <BoxDetail>
-                    <TextDetail>เบอร์มือถือ</TextDetail>
-                </BoxDetail>
-                <BoxDetail>
-                    <TextDetail>รหัสผ่าน</TextDetail>
-                </BoxDetail>
-                <GoldButton>
-                    <TextButton>เข้าสู่ระบบ</TextButton>
-                </GoldButton>
-                <DivTextRemark>
-                    <TextRemark>ลืมรหัสผ่าน ?</TextRemark>
-                </DivTextRemark>
-                <Line />
-                <ButtonCopy>
-                    <TextButtonCopy>สมัครสมาชิก</TextButtonCopy>
-                </ButtonCopy>
-            </FlexDetails>
-        </FlexMains> */}
-        <FlexMains>
-            <DivLogo>
-                <Logo src='/assets/img/logo.png'/>
-            </DivLogo>
-            <FlexDetails>
-                <div className="loading">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="124" height="124" viewBox="0 0 124 124">
-                        <circle className="circle-loading" cx="62" cy="62" r="59" fill="none" stroke="#D2BB6E" stroke-width="6px"></circle>
-                        <circle className="circle" cx="62" cy="62" r="59" fill="none" stroke="#D2BB6E" stroke-width="6px" stroke-linecap="round"></circle>
-                        <polyline className="check" points="73.56 48.63 57.88 72.69 49.38 62" fill="none" stroke="#D2BB6E" stroke-width="6px" stroke-linecap="round"></polyline>
-                    </svg>
-                </div>
-                <TextDetailCom>เข้าสู่ระบบสำเร็จ</TextDetailCom>
-                <GoldButton>
-                    <TextButton>เข้าสู่เว็ปไซต์</TextButton>
-                </GoldButton>
-            </FlexDetails>
-        </FlexMains>
-        <Contactme>
-            <TextLine>LINE : Royalbet </TextLine>
-            <DivSo>
-                <FlexSo>
-                    <Box />
-                    <Box />
-                    <Box />
-                    <Box />
-                    <Box />
-                </FlexSo>
-            </DivSo>
-        </Contactme>
-    </Modal>
-  )
+interface IPage {
+    name: string;
+    element: any;
 }
+
+interface IProps {
+    modalPage: IPage;
+    setModalPage: Dispatch<SetStateAction<IPage>>;
+}
+
+export default function Login(props: IProps) {
+
+    const { userAccess, setUserAccess } = useContext(AuthContext)
+    const [ steps, setSteps ] = useState<number>(1)
+
+    const formLogin = useFormik({
+        initialValues: {
+            telnum: "",
+            password: ""
+        },
+        onSubmit: async (values) => {
+            try {
+                await axios.post(`${process.env.API_URL}/auth/playerlogin`,
+                    {
+                        telnum: values.telnum,
+                        password: values.password
+                    }
+                ).then((res) => {
+                    const { data } = res
+                    if(data.accessToken!) {
+                        localStorage.setItem("access", JSON.stringify(data))
+                        localStorage.setItem("telnum", values.telnum)
+                        setUserAccess(data)
+                        setSteps(2)
+                    }else{
+                        Swal.fire({
+                            title: "Error",
+                            text: data,
+                            icon: "error",
+                            timer: 1000,
+                            showConfirmButton: false
+                        })
+                    }
+                    
+                })
+            } catch (error) {
+                console.log(error)
+            }
+        }
+    })
+
+    return (
+        <>
+            <Overlay onClick={() => props.setModalPage({ name: "", element: null })} />
+            <Modal>
+                <IconX>
+                    <AiOutlineClose size={20} onClick={() => props.setModalPage({ name: "", element: null })} />
+                </IconX>
+
+                {/* Form Login */}
+                {
+                    steps === 1 &&
+                    (
+                        <FlexMains>
+                            <DivLogo>
+                                <Logo src='/assets/img/logo.png' />
+                            </DivLogo>
+                            <FlexDetails>
+
+                                <TextType>เข้าสู่ระบบ</TextType>
+
+                                <BoxDetail type="text" name="telnum" value={formLogin.values.telnum} onChange={formLogin.handleChange} placeholder='เบอร์มือถือ' />
+                                
+                                <BoxDetail type="password" name="password" value={formLogin.values.password} onChange={formLogin.handleChange} placeholder='รหัสผ่าน' />
+
+                                <GoldButton onClick={formLogin.submitForm}>
+                                    <TextButton>เข้าสู่ระบบ</TextButton>
+                                </GoldButton>
+
+                                <DivTextRemark onClick={() => props.setModalPage({ name: "forget", element: <Forget modalPage={props.modalPage} setModalPage={props.setModalPage} /> })}>
+                                    <TextRemark>ลืมรหัสผ่าน ?</TextRemark>
+                                </DivTextRemark>
+
+                                <Line />
+                                <ButtonCopy onClick={() => props.setModalPage({ name: "forget", element: <Register modalPage={props.modalPage} setModalPage={props.setModalPage} /> })}>
+                                    <TextButtonCopy>สมัครสมาชิก</TextButtonCopy>
+                                </ButtonCopy>
+                            </FlexDetails>
+                        </FlexMains>
+                    )
+                }
+                
+                {/* Reponse Success */}
+                {
+                    steps === 2 &&
+                    (
+                        <FlexMains>
+                            <DivLogo>
+                                <Logo src='/assets/img/logo.png'/>
+                            </DivLogo>
+                            <FlexDetails>
+                                <div className="loading">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="124" height="124" viewBox="0 0 124 124">
+                                        <circle className="circle-loading" cx="62" cy="62" r="59" fill="none" stroke="#D2BB6E" stroke-width="6px"></circle>
+                                        <circle className="circle" cx="62" cy="62" r="59" fill="none" stroke="#D2BB6E" stroke-width="6px" stroke-linecap="round"></circle>
+                                        <polyline className="check" points="73.56 48.63 57.88 72.69 49.38 62" fill="none" stroke="#D2BB6E" stroke-width="6px" stroke-linecap="round"></polyline>
+                                    </svg>
+                                </div>
+                                <TextDetailCom>เข้าสู่ระบบสำเร็จ</TextDetailCom>
+                                <GoldButton onClick={() => props.setModalPage({ name: "", element: null })}>
+                                    <TextButton>เข้าสู่เว็ปไซต์</TextButton>
+                                </GoldButton>
+                            </FlexDetails>
+                        </FlexMains>
+                    )
+                }
+                
+                <Contactme>
+                    <TextLine>LINE : Royalbet </TextLine>
+                    <DivSo>
+                        <FlexSo>
+                            <Box />
+                            <Box />
+                            <Box />
+                            <Box />
+                            <Box />
+                        </FlexSo>
+                    </DivSo>
+                </Contactme>
+            </Modal>
+        </>
+        
+    )
+}
+
+const Overlay = styled.div`
+    width: 100vw;
+    height: 100vh;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 30;
+
+    background: rgba(0,0,0,0.4);
+`
 
 const Modal = styled.div`
     width: 320px;
@@ -71,8 +162,10 @@ const Modal = styled.div`
     position: relative;
 
     position: fixed;
-    top: 50px;
-    right: 20vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 40;
 
     display: flex;
     flex-direction: column;
@@ -87,16 +180,21 @@ const Modal = styled.div`
 
     background: #121116;
     color: #000;
-    z-index: 9999;
+    z-index: 150;
 `
 
 const IconX = styled.div`
+    cursor: pointer;
     width: 30px;
     height: 30px;
 
     position: absolute;
     right: 0;
     top: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     background: linear-gradient(90deg, #D2BB6E 0%, #F6E79A 100%);
     border-radius: 0px 10px;
@@ -150,7 +248,10 @@ const TextType = styled.p`
     color: #FFFFFF;
 `
 
-const BoxDetail = styled.div`
+const BoxDetail = styled.input`
+    font-family: 'Prompt';
+    border: none;
+    padding: 10px;
     width: 100%;
     height: 36px;
 
@@ -160,7 +261,12 @@ const BoxDetail = styled.div`
     align-items: center;
 
     background: #060606;
+    color: #fff;
     border-radius: 5px;
+
+    &:focus {
+        outline: none;
+    }
 `
 
 const TextDetail = styled.p`
@@ -180,6 +286,8 @@ const TextDetail = styled.p`
 `
 
 const GoldButton = styled.button`
+    cursor: pointer;
+    border: none;
     width: 100%;
     height: 29px;
 
@@ -189,7 +297,14 @@ const GoldButton = styled.button`
     align-items: center;
 
     background: linear-gradient(90deg, #D2BB6E 0%, #F6E79A 100%);
-    border-radius: 5px; 
+    border-radius: 5px;
+
+    transition-duration: 300ms;
+
+    &:hover {
+        box-shadow: rgba(255, 255, 255, 1) 0px 0px 10px;
+        transition-duration: 300ms;
+    }
 `
 
 const TextButton = styled.p`
@@ -205,7 +320,10 @@ const TextButton = styled.p`
     color: #000000;
 `
 
-const DivTextRemark = styled.div`
+const DivTextRemark = styled.button`
+    cursor: pointer;
+    border: none;
+    background: none;
     width: 100%;
     height: 18px;
 
@@ -238,6 +356,7 @@ const Line = styled.div`
 `
 
 const ButtonCopy = styled.button`
+    cursor: pointer;
     width: 100%;
     height: 29px;
 
