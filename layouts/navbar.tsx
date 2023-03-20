@@ -705,6 +705,10 @@ const MenuGroup = styled.div`
     justify-content: flex-end;
     align-items: center;
 
+    @media (max-width: 743px) {
+        display: none;
+    }
+
     @media (min-width: 744px) {
         width: 100%;
         height: 100%;
@@ -934,6 +938,10 @@ const Menubar = styled.div`
     align-items: center;
 
     /* overflow: scroll; */
+
+    @media (max-width: 743px) {
+        justify-content: space-around;
+    }
 
     @media (min-width: 744px) {
         width: 100%;

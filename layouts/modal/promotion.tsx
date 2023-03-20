@@ -216,6 +216,14 @@ const Modal = styled.div`
     background-color: #000000;
     color: #000;
     z-index: 150;
+
+    @media (max-width: 1024px) {
+        width: 100vw;
+        height: 89vh;
+
+        top: 50px;
+        left: 0;
+    }
 `
 
 const BgGrey = styled.div`
@@ -229,6 +237,10 @@ const BgGrey = styled.div`
     z-index: 1;
 
     background: #121116;
+
+    @media (max-width: 1024px) {
+        width: 100vw;
+    }
 `
 
 const DivFlexHead = styled.div`

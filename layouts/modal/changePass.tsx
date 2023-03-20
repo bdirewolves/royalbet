@@ -273,6 +273,14 @@ const Modal = styled.div`
     background: #121116;
     color: #000;
     z-index: 150;
+
+    @media (max-width: 1024px) {
+        width: 100vw;
+        height: 89vh;
+
+        top: 50px;
+        left: 0;
+    }
 `
 
 export default ChangePass
