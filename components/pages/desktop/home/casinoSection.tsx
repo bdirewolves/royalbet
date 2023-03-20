@@ -70,6 +70,7 @@ const PicPro = styled.img`
 `
 
 const BoxContainer = styled.div`
+    cursor: pointer;
     width: 100%;
     height: auto;
     aspect-ratio: 93/55.15;
@@ -81,6 +82,7 @@ const BoxContainer = styled.div`
     margin: 0 auto;
 
     overflow: hidden;
+    transition-duration: 300ms;
 
     &:hover ${PicPro} {
         filter: brightness(1);

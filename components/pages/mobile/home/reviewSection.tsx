@@ -155,6 +155,8 @@ const Box = styled.div<{ opacity: boolean }>`
 const PicBox = styled.img`
     width: 100%;
     height: 100%;
+    object-fit: cover;
+    object-position: 87% 100%;
 `
 
 const ContainerCarousel = styled.div`

@@ -2,35 +2,38 @@ import styled from "styled-components"
 import Link from "next/link"
 import Image from "next/legacy/image"
 import Button from "@/components/_reduce/Button"
-import { AiFillCaretDown, AiFillStar, AiFillQuestionCircle, AiOutlineUser, AiFillLock, AiOutlineUsergroupAdd, AiOutlineNotification, AiOutlineHistory } from "react-icons/ai"
+import { AiFillCaretDown, AiFillStar, AiFillQuestionCircle, AiOutlineUser, AiFillLock, AiOutlineUsergroupAdd, AiOutlineNotification, AiOutlineHistory, AiOutlineClose } from "react-icons/ai"
 import { HiCash } from "react-icons/hi"
 import { FaBell } from "react-icons/fa"
 import { BsGearFill } from "react-icons/bs"
-import React, { useContext, useEffect, useState } from "react"
+import React, { Dispatch, SetStateAction, useContext, useEffect, useState } from "react"
 import type { ReactNode } from "react"
 import ButtonGradient from "@/components/_reduce/ButtonGradient"
 import moment from "moment"
 import { useRouter } from "next/router"
 import Main from "./modal/main"
 import Information from "./modal/information"
-import Setting from "./modal/setting"
 import Affilate from "./modal/affilate"
 import Promotion from "./modal/promotion"
 import Statement from "./modal/statement"
 import Deposit from "./modal/deposit"
 import Login from "./modal/login"
 import Register from "./modal/register"
-import Forget from "./modal/forget"
-import { IoIosSettings } from "react-icons/io"
+import { GiHamburgerMenu } from "react-icons/gi"
 import { AuthContext } from "@/pages/_app"
 import ChangePass from "./modal/changePass"
 
-interface IModalPage {
+interface IPage {
     name: string;
     element: any;
 }
 
-export default function Navbar() {
+interface IProps {
+    modalPage: IPage;
+    setModalPage: Dispatch<SetStateAction<IPage>>;
+}
+
+export default function Navbar(props: IProps) {
 
     const router = useRouter()
 
@@ -39,7 +42,6 @@ export default function Navbar() {
     const [ showHamburger, setShowHamburger ] = useState(false)
     const [ access, setAccess ] = useState<string>("")
     const [ modal, setModal ] = useState<boolean>(false)
-    const [ modalPage, setModalPage ] = useState<IModalPage>({ name: "", element: null })
     const { userAccess, userData, setUserAccess } = useContext(AuthContext)
 
     const Goto = (path: string) => {
@@ -60,20 +62,24 @@ export default function Navbar() {
     
     return(
         <>  
-            { modalPage.name == "menu" ?
+            { props.modalPage.name == "menu" ?
                 (
                     <>
                         <Modal>
                             <BgGrey />
                             <DivFlexHead>
                                 <TextHead>โปรไฟล์</TextHead>
+                                <CloseBtn >
+                                    <AiOutlineClose style={{ cursor: "pointer" }} size={15} color="Grey" onClick={() => props.setModalPage({ name: "", element: null })} />
+                                </CloseBtn>
                             </DivFlexHead>
+
                             <DivFlexinfo>
                                 <Boxinfo src="/assets/img/users/profile.png" />
                                 <Textinfo>{ userData.name }</Textinfo>
                             </DivFlexinfo>
                             <Gridmenu>
-                                <GridFr onClick={() => setModalPage({ name: "information", element: <Information modalPage={modalPage} setModalPage={setModalPage} />})}>
+                                <GridFr onClick={() => props.setModalPage({ name: "information", element: <Information modalPage={props.modalPage} setModalPage={props.setModalPage} />})}>
                                     <DivFlexMenu>
                                         <BoxMenu>
                                             <AiOutlineUser size={32} color="#9DA3AD" />
@@ -82,7 +88,7 @@ export default function Navbar() {
                                     </DivFlexMenu>
                                     <GoldLine />
                                 </GridFr>
-                                <GridFr onClick={() => setModalPage({ name: "changepass", element: <ChangePass modalPage={modalPage} setModalPage={setModalPage} />})}>
+                                <GridFr onClick={() => props.setModalPage({ name: "changepass", element: <ChangePass modalPage={props.modalPage} setModalPage={props.setModalPage} />})}>
                                     <DivFlexMenu>
                                         <BoxMenu>
                                             <AiFillLock size={32} color="#9DA3AD" />
@@ -91,7 +97,7 @@ export default function Navbar() {
                                     </DivFlexMenu>
                                     <GoldLine />
                                 </GridFr>
-                                <GridFr onClick={() => setModalPage({ name: "deposit", element: <Deposit modalPage={modalPage} setModalPage={setModalPage}/>})}> 
+                                <GridFr onClick={() => props.setModalPage({ name: "deposit", element: <Deposit modalPage={props.modalPage} setModalPage={props.setModalPage}/>})}> 
                                     <DivFlexMenu>
                                         <BoxMenu>
                                             <HiCash size={32} color="#9DA3AD" />
@@ -100,7 +106,7 @@ export default function Navbar() {
                                     </DivFlexMenu>
                                     <GoldLine />
                                 </GridFr>
-                                <GridFr onClick={() => setModalPage({ name: "aff", element: <Affilate modalPage={modalPage} setModalPage={setModalPage} />})}>
+                                <GridFr onClick={() => props.setModalPage({ name: "aff", element: <Affilate modalPage={props.modalPage} setModalPage={props.setModalPage} />})}>
                                     <DivFlexMenu>
                                         <BoxMenu>
                                             <AiOutlineUsergroupAdd size={32} color="#9DA3AD" />
@@ -109,7 +115,7 @@ export default function Navbar() {
                                     </DivFlexMenu>
                                     <GoldLine />
                                 </GridFr>
-                                <GridFr onClick={() => setModalPage({ name: "promotion", element: <Promotion modalPage={modalPage} setModalPage={setModalPage}/>})}>
+                                <GridFr onClick={() => props.setModalPage({ name: "promotion", element: <Promotion modalPage={props.modalPage} setModalPage={props.setModalPage}/>})}>
                                     <DivFlexMenu>
                                         <BoxMenu>
                                             <AiOutlineNotification size={32} color="#9DA3AD" />
@@ -118,7 +124,7 @@ export default function Navbar() {
                                     </DivFlexMenu>
                                     <GoldLine />
                                 </GridFr>
-                                <GridFr onClick={() => setModalPage({ name: "statement", element: <Statement modalPage={modalPage} setModalPage={setModalPage}/>})}>
+                                <GridFr onClick={() => props.setModalPage({ name: "statement", element: <Statement modalPage={props.modalPage} setModalPage={props.setModalPage}/>})}>
                                     <DivFlexMenu>
                                         <BoxMenu>
                                             <AiOutlineHistory size={32} color="#9DA3AD" />
@@ -133,11 +139,11 @@ export default function Navbar() {
                             </DivFlexLogout>
                             
                         </Modal>
-                        <Overlay onClick={() => setModalPage({ name: "", element: null })} />
+                        <Overlay onClick={() => props.setModalPage({ name: "", element: null })} />
                     </>
                 )
                 :
-                modalPage?.element
+                props.modalPage?.element
             }
             <Background>
                 <Nav>
@@ -150,10 +156,10 @@ export default function Navbar() {
                                 userAccess == null ? 
                                 (
                                     <Statusbar>
-                                        <Button color="#fff" onClick={() => modalPage.name == "login" ? setModalPage({ name: "", element: null }) : setModalPage({ name: "login", element: <Login modalPage={modalPage} setModalPage={setModalPage} /> })}>
+                                        <Button color="#fff" onClick={() => props.modalPage.name == "login" ? props.setModalPage({ name: "", element: null }) : props.setModalPage({ name: "login", element: <Login modalPage={props.modalPage} setModalPage={props.setModalPage} /> })}>
                                             เข้าสู่ระบบ
                                         </Button>
-                                        <ButtonGradient onClick={() => modalPage.name == "register" ? setModalPage({ name: "", element: null }) : setModalPage({ name: "register", element: <Register modalPage={modalPage} setModalPage={setModalPage} />})}>
+                                        <ButtonGradient onClick={() => props.modalPage.name == "register" ? props.setModalPage({ name: "", element: null }) : props.setModalPage({ name: "register", element: <Register modalPage={props.modalPage} setModalPage={props.setModalPage} />})}>
                                             สมัครสมาชิก
                                         </ButtonGradient>
                                     </Statusbar>
@@ -161,7 +167,7 @@ export default function Navbar() {
                                 :
                                 (
                                     <Statusbar>
-                                        <Profile onClick={() => modalPage.name == "menu" ? setModalPage({ name: "", element: null }) : setModalPage({ name: "menu", element: null }) }>
+                                        <Profile onClick={() => props.modalPage.name == "menu" ? props.setModalPage({ name: "", element: null }) : props.setModalPage({ name: "menu", element: null }) }>
                                             <Button color="#fff">
                                                 { userData?.telnum }
                                             </Button>
@@ -170,7 +176,7 @@ export default function Navbar() {
                                             </DivProfileImg>
                                            
                                         </Profile>
-                                        <Balance onClick={() => modalPage.name == "menu" ? setModalPage({ name: "", element: null }) : setModalPage({ name: "menu", element: null }) }>
+                                        <Balance onClick={() => props.modalPage.name == "menu" ? props.setModalPage({ name: "", element: null }) : props.setModalPage({ name: "menu", element: null }) }>
                                             <BalanceText>{ userData?.wallsum.toFixed(2) }</BalanceText>
                                             <BalanceCoin src="/assets/img/users/wallet.svg" alt="" />
                                         </Balance>
@@ -258,13 +264,13 @@ export default function Navbar() {
                                     </GifList>
                                     <DivButton>
                                         <Button onClick={() => setShowHamburger(!showHamburger)}>
-                                            {/* <GiHamburgerMenu size={25} /> */}
-                                            <div className="container">
+                                            <GiHamburgerMenu color="#868686" size={25} />
+                                            {/* <div className="container">
                                                 <div className="item item-1"></div>
                                                 <div className="item item-2"></div>
                                                 <div className="item item-3"></div>
                                                 <div className="item item-4"></div>
-                                            </div>
+                                            </div> */}
                                         </Button>
                                     </DivButton>
                                 </FlexRowRe>
@@ -303,6 +309,15 @@ export default function Navbar() {
     )
 }
 
+const CloseBtn = styled.button`
+    position: absolute;
+    top: 11px;
+    right: 16px;
+
+    border: none;
+    background: none;
+`
+
 const Overlay = styled.div`
     position: fixed;
     top: 0;
@@ -333,8 +348,6 @@ const Modal = styled.div`
     width: 320px;
     height: 450px;
 
-    position: relative;
-
     position: fixed;
     top: 50px;
     right: 20vh;
@@ -351,6 +364,14 @@ const Modal = styled.div`
     background-color: #000000;
     color: #000;
     z-index: 150;
+
+    @media (max-width: 1024px) {
+        width: 100vw;
+        height: 89vh;
+
+        top: 50px;
+        left: 0;
+    }
 `
 
 const BgGrey = styled.div`
@@ -364,11 +385,19 @@ const BgGrey = styled.div`
     z-index: 1;
 
     background: #121116;
+
+    transition-duration: display 300ms;
+
+    @media (max-width: 1024px) {
+        width: 100vw;
+    }
 `
 
 const DivFlexHead = styled.div`
     width: 100%;
     height: 37px;
+
+    position: relative;
 
     display: flex;
     flex-direction: row;
@@ -631,7 +660,7 @@ const Hamburger = styled.div<{ isActive: boolean }>`
     align-items: center;
     
     margin-top: -43px;
-    transition: height 300ms;
+    transition-duration: 300ms;
     ${props => props.isActive ? 
     `
         height: 100vh;
@@ -655,17 +684,17 @@ const Hamburger = styled.div<{ isActive: boolean }>`
 
         margin-left: 250px;
         margin-top: 0px;
-
+        transition-duration: 300ms;
         ${props => props.isActive ? 
     `
-        height: auto;
+        max-height: 50vh;
         ${HamburgerContainer} {
             display: flex;
         }
     `
     :
     `
-        height: 0;
+        max-height: 0;
         ${HamburgerContainer} {
             display: none;
         }

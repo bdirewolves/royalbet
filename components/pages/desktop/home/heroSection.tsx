@@ -28,7 +28,7 @@ export default function HeroSection () {
                         {
                             promotionFebruary.squre.map((item, index) => (
                                 <div key={index} >
-                                    <Link href="/m/promotion">
+                                    <Link href="/promotion">
                                         <Box>
                                             <PicProMobile src={item.img} alt={item.alt}/>
                                         </Box>

@@ -118,11 +118,11 @@ export default function Forget(props: IProps) {
                 <TextLine>LINE : Royalbet </TextLine>
                 <DivSo>
                     <FlexSo>
-                        <Box />
-                        <Box />
-                        <Box />
-                        <Box />
-                        <Box />
+                        <Box src="/assets/img/icon/social/facebook.png" />
+                        <Box src="/assets/img/icon/social/instagram.png" />
+                        <Box src="/assets/img/icon/social/twitter.png" />
+                        <Box src="/assets/img/icon/social/youtube.png" />
+                        <Box src="/assets/img/icon/social/telegram.png" />
                     </FlexSo>
                 </DivSo>
             </Contactme>
@@ -396,12 +396,11 @@ const FlexSo = styled.div`
     margin: 0 35px;
 `
 
-const Box = styled.div`
+const Box = styled.img`
     width: 30px;
     height: 30px;
 
     border-radius: 90px;
-    background-color: grey;
 `
 
 const TextOTP = styled.p`

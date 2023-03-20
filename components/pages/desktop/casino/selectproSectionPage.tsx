@@ -5,8 +5,12 @@ import { AuthContext } from "@/pages/_app";
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
+import { AiOutlineCaretLeft, AiOutlineCaretRight, AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 import styled from "styled-components";
 import Swal from "sweetalert2";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 interface IProviders {
     id: number;
@@ -39,6 +43,17 @@ export default function SelectProSectionPage() {
     const router = useRouter()
     const { userAccess, userData, telnum } = useContext(AuthContext)
     const phone = typeof window !== "undefined" && localStorage.getItem("telnum")?.slice(1) || ""
+
+    const settings = {
+        dots: false,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        arrows: false,
+    };
 
     const handleOnError = (event: any, name: string) => {
         event.target.src =  `https://placehold.co/210x150/black/white/jpg/?text=${name}`;
@@ -175,13 +190,14 @@ export default function SelectProSectionPage() {
                 ).then((res) => {
                     const { data } = res.data
                     if(data.game_url.status === 1) {
-                        // window.location.href = res.data.data.game_url
-                        Swal.fire({
-                            title: "เล่นได้",
-                            icon: "success",
-                            timer: 1000,
-                            showConfirmButton: false
-                        })
+                        const { url } = data.game_url.data
+                        window.location.href = url
+                        // Swal.fire({
+                        //     title: "เล่นได้",
+                        //     icon: "success",
+                        //     timer: 1000,
+                        //     showConfirmButton: false
+                        // })
                     }else {
                         Swal.fire({
                             title: "Info",
@@ -206,11 +222,6 @@ export default function SelectProSectionPage() {
             console.log(error)
         }
     }
-
-    useEffect(() => {
-        console.log("gameList:")
-        console.log(gameLists)
-    }, [gameLists])
 
     useEffect(() => {
         setProviders("all")
@@ -248,6 +259,7 @@ export default function SelectProSectionPage() {
                         <BoxTypeSpan>CARD</BoxTypeSpan>
                     </BoxType>
                 </DivGridType>
+
                 <DivGridPro>
                     <BoxPro isActive={providers === "all"} onClick={() => setProviders("all")}>
                         <BoxProSpan>
@@ -265,15 +277,29 @@ export default function SelectProSectionPage() {
                         ))
                     }
 
-                    {/* <BoxPro1 /> */}
                 </DivGridPro>
+
                 <DivFlexGame>
-                    <TitletypePage header="PROVIDER GAME SLOT" />
+
+                    {/* Recreate Bar with Pagination */}
+                    <DivTitle onClick={() => console.log("handle Clicked!")}>
+                        <Title>
+                            <TextTitle>provider {type}</TextTitle>
+                        </Title>
+                        <LineTitle />
+                        <PageControl>
+                            <BackBtn onClick={() => pages.page != 1 && setPages({ page: pages.page-1, limit: 24 })}><AiOutlineCaretLeft size={14} /></BackBtn>
+                            <CurrentPage>{ pages.page }</CurrentPage>
+                            <NextBtn onClick={() => gameLists.length > 24 && setPages({ page: pages.page+1, limit: 24 })}><AiOutlineCaretRight size={14} /></NextBtn>
+                        </PageControl>
+                    </DivTitle>
+
+                    {/* Game List */}
                     <DivGrid>
 
+                        {/* Add Slider with pageination */}
                         {
-                            
-                            gameLists.length >= 2 ? gameLists.slice(0, Math.floor(pages.page * pages.limit)).map((item, index) => (
+                            gameLists.length >= 2 ? gameLists.slice(Math.floor((pages.page - 1) * pages.limit), Math.floor((pages.page - 1) * pages.limit + pages.limit)).map((item, index) => (
                                 <GridFr key={index} onClick={() => launchGame(item.game_code, item.provider_id)}>
                                     <DivPicPro>
                                         <PicPro loading="lazy" src={item.pic_url ? item.pic_url : `https://placehold.co/210x150/black/white?text=${item.provider_id}`} />
@@ -310,10 +336,125 @@ export default function SelectProSectionPage() {
 
                     </DivGrid>
                 </DivFlexGame>
+
             </FixWidth>
         </Container>
     )
 }
+
+const NextBtn = styled.button`
+    cursor: pointer;
+    width: 20px;
+    aspect-ratio: 1/1;
+    border-radius: 5px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.5);
+`
+
+const BackBtn = styled.button`
+    cursor: pointer;
+    width: 20px;
+    aspect-ratio: 1/1;
+    border-radius: 5px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.5);
+`
+
+const CurrentPage = styled.span`
+    font-size: 12px;
+    width: 20px;
+    aspect-ratio: 1/1;
+    border-radius: 5px;
+    text-align: center;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.5);
+`
+
+const PageControl = styled.div`
+    width: 70px;
+    display: flex;
+    justify-content: space-between;
+    gap: 7px;
+    align-items: center;
+`
+
+const DivTitle = styled.div<{ ISqure?: boolean , Nm?: any }>`
+    width: 100%;
+    height: auto;
+    aspect-ratio: 300/40;
+    max-width: 650px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    overflow: hidden;
+
+    @media (min-width: 1280px) {
+        width: 100%;
+        aspect-ratio: 1164.44/35.56;
+        max-width: 1164.44px;
+    }
+
+    @media (min-width: 1440px) {
+        max-width: 1310px;
+    }
+`
+
+const Title = styled.div`
+    min-width: 200px;
+    width: auto;
+    height: auto;
+    padding: 0px 10px;
+    background: #343434;
+    z-index: 2;
+`
+const AllGame = styled.div`
+    width: auto;
+    height: auto;
+
+    position: relative;
+    padding: 1px 10px;
+
+    border-radius: 5px;
+    
+    z-index: 1;
+`
+
+const LineTitle = styled.div`
+    margin: 0 20px;
+    width: 100%;
+    height: 1px;
+    background: #959595;
+
+    z-index: 0;
+`
+const TextTitle = styled.h2<{ header?: string}>`
+    font-family: 'Prompt';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 27px;
+    text-align: center;
+
+    text-transform: uppercase;
+
+    color: #ECD559;
+
+    ${props => props.header && `
+        content: ${props.header} !important;
+    `}
+    
+`
 
 const BoxProSpan = styled.span`
     font-weight: 500;
@@ -505,7 +646,9 @@ const GridFr = styled.div`
     aspect-ratio: 145/130;
 
     position: relative;
+    overflow: hidden;
 
+    border: 1px solid #959595;
     border-radius: 5px;
 
     @media (min-width: 744px) {
@@ -552,7 +695,7 @@ const GoldPic = styled.div`
     bottom: 0;
 
     background: linear-gradient(90deg, #D2BB6E 0%, #F6E79A 100%);
-    border-radius: 10px 0px;
+    border-radius: 5px 0px;
 
     z-index: 3;
 `

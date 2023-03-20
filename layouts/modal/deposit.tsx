@@ -264,10 +264,10 @@ export default function Deposit(props: IProps) {
 
                 <FlexButton>
                     <GoldLine isType={transType} />
-                    <ButtonType onClick={() => setTransType("withdraw")}>
+                    <ButtonType isActive={transType == "withdraw" ? "true" : "false"} onClick={() => setTransType("withdraw")}>
                         <TextButtonType>ถอนเงิน</TextButtonType>
                     </ButtonType>
-                    <ButtonType onClick={() => setTransType("deposit")}>
+                    <ButtonType isActive={transType == "deposit" ? "true" : "false"} onClick={() => setTransType("deposit")}>
                         <TextButtonType>ฝากเงิน</TextButtonType>
                     </ButtonType>
                 </FlexButton>
@@ -544,7 +544,7 @@ const GoldLine = styled.div<{ isType: string }>`
     background: linear-gradient(90deg, #D2BB6E 0%, #F6E79A 100%);
 `
 
-const ButtonType = styled.div`
+const ButtonType = styled.div<{ isActive: string }>`
     cursor: pointer;
     width: 50%;
     height: 33px;
@@ -553,6 +553,7 @@ const ButtonType = styled.div`
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    ${props => props.isActive === "true" && `background: #000;`}
 `
 
 const TextButtonType = styled.p`

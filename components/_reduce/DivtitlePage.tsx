@@ -22,6 +22,7 @@ export default function TitletypePage ({  onClick, header, subhead }: TitletypeP
         </DivTitle>
     )
 }
+
 const DivTitle = styled.div<{ ISqure?: boolean , Nm?: any }>`
     width: 95%;
     height: auto;
@@ -106,21 +107,4 @@ const TextTitle = styled.h2<{ header?: string}>`
         content: ${props.header} !important;
     `}
     
-`
-const TextAllgame = styled.h3<{ subhead?: string}>`
-
-    font-family: 'Prompt';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 18px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-
-    color: #959595;
-
-    ${props => props.subhead && `
-        content: ${props.subhead} !important;
-    `}
 `

@@ -47,7 +47,7 @@ export default function ReviewSection() {
                             reviewContent.map((item, index) => (
                             <div key={index}>
                                 <DivFlex>
-                                    <Box opacity={current === index}>
+                                    <Box opacity={current == index ? "true" : "false"}>
                                         <PicBox src={item.img} />
                                         {/* Img Carousel */}
                                     </Box>
@@ -140,7 +140,7 @@ const SliderTitle = styled.h3`
     color: white;
 `
 
-const Box = styled.div<{ opacity: boolean }>`
+const Box = styled.div<{ opacity: string }>`
     width: 100%;
     min-width: 196px;
     max-width: 261.54px;
@@ -149,16 +149,16 @@ const Box = styled.div<{ opacity: boolean }>`
 
     position: absolute;
 
-    ${props => props.opacity ?
-        `opacity: 1;`
-    :
-        `opacity: 0.4;`
-    }
+    ${props => props.opacity === "true" && `opacity: 1;`}
+    ${props => props.opacity === "false" && `opacity: 0.4;`}
+    
 `
 
 const PicBox = styled.img`
     width: 100%;
     height: 100%;
+    object-fit: cover;
+    object-position: 88% 100%;
 `
 
 const ContainerCarousel = styled.div`

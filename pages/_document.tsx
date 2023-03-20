@@ -5,7 +5,7 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+        
       </Head>
       <head>
         <style>
@@ -28,10 +28,6 @@ export default function Document() {
         </div>
         <Main />
         <NextScript />
-        <script lazy-load="true" src="https://unpkg.com/aos@next/dist/aos.js"></script>
-        <script>
-          AOS.init();
-        </script>
       </body>
     </Html>
   )

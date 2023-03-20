@@ -79,7 +79,7 @@ export default function Login(props: IProps) {
 
                                 <TextType>เข้าสู่ระบบ</TextType>
 
-                                <BoxDetail type="text" name="telnum" value={formLogin.values.telnum} onChange={formLogin.handleChange} placeholder='เบอร์มือถือ' />
+                                <BoxDetail type="text" name="telnum" autoFocus value={formLogin.values.telnum} onChange={formLogin.handleChange} placeholder='เบอร์มือถือ' />
                                 
                                 <BoxDetail type="password" name="password" value={formLogin.values.password} onChange={formLogin.handleChange} placeholder='รหัสผ่าน' />
 
@@ -129,11 +129,11 @@ export default function Login(props: IProps) {
                     <TextLine>LINE : Royalbet </TextLine>
                     <DivSo>
                         <FlexSo>
-                            <Box />
-                            <Box />
-                            <Box />
-                            <Box />
-                            <Box />
+                            <Box src="/assets/img/icon/social/facebook.png" />
+                            <Box src="/assets/img/icon/social/instagram.png" />
+                            <Box src="/assets/img/icon/social/twitter.png" />
+                            <Box src="/assets/img/icon/social/youtube.png" />
+                            <Box src="/assets/img/icon/social/telegram.png" />
                         </FlexSo>
                     </DivSo>
                 </Contactme>
@@ -439,12 +439,11 @@ const FlexSo = styled.div`
     margin: 0 35px;
 `
 
-const Box = styled.div`
+const Box = styled.img`
     width: 30px;
     height: 30px;
 
     border-radius: 90px;
-    background-color: grey;
 `
 
 const TextDetailCom = styled.p`

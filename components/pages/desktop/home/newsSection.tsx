@@ -44,7 +44,7 @@ export default function NewsSection () {
                             newsContent.map((item, index) => (
                                 <div key={index}>
                                     <Link href="/">
-                                        <Box opacity={current === index}>
+                                        <Box opacity={current == index ? "true" : "false"}>
                                             {/* Content Carousel */}
                                             <Iframe path={item.video_url} title={item.title} />
                                         </Box>
@@ -64,7 +64,7 @@ const ContainerCarousel = styled.div`
     height: fit-content;
 `
 
-const Box = styled.div<{ opacity: boolean }>`
+const Box = styled.div<{ opacity: string }>`
     width: 95%;
     height: auto;
     aspect-ratio: 300/168.69;
@@ -77,11 +77,8 @@ const Box = styled.div<{ opacity: boolean }>`
     background: #100F14;
     border-radius: 9.86806px;
 
-    ${props => props.opacity ?
-        `opacity: 1;`
-    :
-        `opacity: 0.4;`
-    }
+    ${props => props.opacity === "true" && `opacity: 1;`}
+    ${props => props.opacity === "false" && `opacity: 0.4;`}
 
     @media (min-width: 744px) {
         width: 97%;

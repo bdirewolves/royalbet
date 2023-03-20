@@ -75,6 +75,7 @@ const DivGrid = styled.div`
 `
 
 const Gridfr = styled.div`
+    cursor: auto;
     width: 100%;
     height: fit-content;
 

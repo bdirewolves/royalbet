@@ -67,21 +67,26 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Content>
+        
         <HeroSection />
+
+        {/* Prop className Error */}
         <CasinoSection />
+
         <TypeCasinoSection />
         
         <HowtoSection />
 
-        {/* Pass Props */}
         <GameCasinoSection />
 
-        {/* Pass Props */}
         <GameSlotSection />
 
         <PromotionSection />
         <BlogSection />
+
         <NewsSection />
+        
+        {/* Opacity Type Error */}
         <ReviewSection />
       </Content>
     </>

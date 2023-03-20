@@ -7,34 +7,34 @@ export default function TypeCasinoSection () {
             <FixWidth>
                 <DivFlex>
                     <Box>
-                        <DivText>
+                        {/* <DivText>
                             <Text>CASINO ROYAL</Text>
-                        </DivText>
-                        <PicBox src="/assets/img/casino/royalr-m.png" />
+                        </DivText> */}
+                        <PicBox src="/assets/img/casino/royal-r.jpg" />
                     </Box>
                     <Box>
-                        <DivText>
+                        {/* <DivText>
                             <Text>SLOT ROYAL</Text>
-                        </DivText>
-                        <PicBox src="/assets/img/casino/royalo-m.png" />
+                        </DivText> */}
+                        <PicBox src="/assets/img/casino/royal-o.jpg" />
                     </Box>
                     <Box>
-                        <DivText>
+                        {/* <DivText>
                             <Text>SPORT ROYAL</Text>
-                        </DivText>
-                        <PicBox src="/assets/img/casino/royaly-m.png" />
+                        </DivText> */}
+                        <PicBox src="/assets/img/casino/royal-y.jpg" />
                     </Box>
                     <Box>
-                        <DivText>
+                        {/* <DivText>
                             <Text>E-SPORT ROYAL</Text>
-                        </DivText>
-                        <PicBox src="/assets/img/casino/royala-m.png" />
+                        </DivText> */}
+                        <PicBox src="/assets/img/casino/royal-a.jpg" />
                     </Box>
                     <Box>
-                        <DivText>
+                        {/* <DivText>
                             <Text>GAME ROYAL</Text>
-                        </DivText>
-                        <PicBox src="/assets/img/casino/royall-m.png" />
+                        </DivText> */}
+                        <PicBox src="/assets/img/casino/royal-l.jpg" />
                     </Box>
                 </DivFlex>
             </FixWidth>
@@ -64,15 +64,20 @@ const DivFlex = styled.div`
 `
 
 const Box = styled.div`
+    cursor: pointer;
     width: 100%;
     height: auto;
     aspect-ratio: 52/58.31;
 
     position: relative;
 
-    border-radius: 1.91176px;
+    border-radius: 10px;
 
     overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     background: radial-gradient(50% 50% at 50% 50%, #3E3E3E 0%, #100F14 100%);
 
@@ -84,11 +89,10 @@ const Box = styled.div`
 const PicBox = styled.img`
     width: 100%;
     height: auto;
-    aspect-ratio: 133/126.84;
-
-    position: absolute;
-    bottom: 0;
-
+    border-radius: 10px;
+    /* aspect-ratio: 133/126.84; */
+    transition-duration: 300ms;
+    
     &:hover {
         transition-duration: 300ms;
         transform: scale(1.1);

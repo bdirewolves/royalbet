@@ -43,17 +43,17 @@ export default function NavbarMobile () {
     return(
         <Background>
             <MenuList>
-                <MenuItem onClick={() => Goto(0, "/")}>
+                <MenuItem onClick={() => Goto(1, "/")}>
                     <DivIcon>
-                        <RiUserLine size={30}/>
+                        <Icon isActive={current == 1} size={16} src="/assets/img/icon/user.svg" />
                     </DivIcon>
                     <Span>
                         โปรไฟล์
                     </Span>
                 </MenuItem>
-                <MenuItem onClick={() => Goto(1, "/")}>
+                <MenuItem onClick={() => Goto(2, "/")}>
                     <DivIcon>
-                        <Icon isActive={current == 1} src="/" />
+                        <Icon isActive={current == 2} size={16} src="/assets/img/icon/transactions.svg" />
                     </DivIcon>
                     <Span>
                         ประวัติธุรกรรม
@@ -61,7 +61,7 @@ export default function NavbarMobile () {
                 </MenuItem>
                 <MenuItem onClick={() => Goto(2, "/")}>
                     <DivIcon>
-                        <IconAnimation src="/" />
+                        <IconAnimation src="/assets/img/icon/games.png" />
                     </DivIcon>
                     <Span>
                         เล่นเกมส์
@@ -69,15 +69,15 @@ export default function NavbarMobile () {
                 </MenuItem>
                 <MenuItem onClick={() => Goto(3, "/")}>
                     <DivIcon>
-                        <Icon isActive={current == 3} src="/" />
+                        <Icon isActive={current == 3} src="/assets/img/icon/transfer.svg" />
                     </DivIcon>
                     <Span>
                         ฝาก-ถอน
                     </Span>
                 </MenuItem>
-                <MenuItem onClick={() => Goto(4, "/")}>
+                <MenuItem onClick={() => Goto(4, "https://line.me/th/")}>
                     <DivIcon>
-                        <Icon isActive={current == 4} src="/" />
+                        <Icon isActive={current == 4} src="/assets/img/icon/contact.svg" />
                     </DivIcon>
                     <Span>
                         ติดต่อแอดมิน
@@ -130,6 +130,7 @@ const MenuList = styled.div`
 `
 
 const MenuItem = styled.div`
+    cursor: pointer;
     width: 61px;
     height: 100%;
     
@@ -147,15 +148,15 @@ const DivIcon = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
 
     border-radius: 90%;
 `
 
-const Icon = styled.img<{ isActive: boolean }>`
-    width: 100%;
-    height: 100%;
+const Icon = styled.img<{ isActive: boolean, size?: number }>`
+    width: ${props => props.size && props.size};
+    height: auto;
     mix-blend-mode: luminosity;
+    object-fit: contain;
 
     ${props => props.isActive && `
         mix-blend-mode: normal;
@@ -179,16 +180,16 @@ const Span = styled.span`
 
 const Gravity = keyframes`
     0%, 100% {
-        transform: translateY(0%);
+        transform: translateY(-20%);
     }
     50% {
-        transform: translateY(-20%);
+        transform: translateY(-30%);
     }
 `
 
 const IconAnimation = styled.img`
     width: auto;
-    height: 25px;
+    height: 40px;
     
     //cubic-bezier(0.310, 0.440, 0.445, 1.650)
     animation: ${Gravity} 3s cubic-bezier(0.310, 0.440, 0.445, 1.650) infinite;

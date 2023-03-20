@@ -5,16 +5,17 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Image from "next/legacy/image"
 import ButtonHover from "@/components/_reduce/ButtonHover";
+import "aos/dist/aos.css";
+import AOS from "aos";
+import 'aos/dist/aos.css';
+import { useEffect } from "react";
 
 export default function RestPage(){
-    const settings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        arrows: false,
-      };
+
+    useEffect(() => {
+        AOS.init();
+    }, [])
+
     return(
         <>
             <Head>
@@ -24,22 +25,25 @@ export default function RestPage(){
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <Content>
-                <ButtonHover>เข้าสู่ระบบ</ButtonHover>
+                <Container>
+                    <TestImg data-aos="fade-up" src="https://placehold.co/500x500" />
+                </Container>
             </Content>
         </>
     )
 }
 
-const Box = styled.div`
-    width: 95%;
-    height: 300px;
+const TestImg = styled.img`
+    width: 500px;
+    height: 500px;
+`
+
+const Container = styled.div`
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-
-    font-size: 40px;
-
-    background-color: rgba(255, 0, 0, 0.5);
 `
 
 const Content = styled.main`

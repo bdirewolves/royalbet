@@ -3,6 +3,7 @@ import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import { useRouter } from "next/router";
 import { createContext, useEffect, useState } from "react";
+import AOS from "aos"
 import "aos/dist/aos.css";
 import axios from "axios";
 import moment from "moment";
@@ -172,6 +173,7 @@ export default function App({ Component, pageProps }: AppProps) {
       const loader = document.getElementById("globalLoader");
       if (loader) loader.style.display = "none";
     }
+    AOS.init()
   }, []);
 
   useEffect(() => {

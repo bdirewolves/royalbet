@@ -239,7 +239,7 @@ export default function Register(props: IProps) {
                             </DivLogo>
                             <FlexDetails>
                                 <TextType>สมัครสมาชิก</TextType>
-                                <BoxDetail type="text" name="telnum" value={formStep1.values.telnum} onChange={formStep1.handleChange} placeholder='เบอร์มือถือ' />
+                                <BoxDetail type="text" autoFocus name="telnum" value={formStep1.values.telnum} onChange={formStep1.handleChange} placeholder='เบอร์มือถือ' />
                                 <GoldButton onClick={formStep1.submitForm}>
                                     <TextButton>สมัครสมาชิก</TextButton>
                                 </GoldButton>
@@ -266,6 +266,7 @@ export default function Register(props: IProps) {
                                 <DivBoxOTP>
                                     <BoxOTP
                                         type="text"
+                                        autoFocus
                                         maxLength={1}
                                         onKeyUp={(event) => handleKeyUp(0, event)}
                                         ref={(el) => {
@@ -405,11 +406,11 @@ export default function Register(props: IProps) {
                     <TextLine>LINE : Royalbet </TextLine>
                     <DivSo>
                         <FlexSo>
-                            <Box />
-                            <Box />
-                            <Box />
-                            <Box />
-                            <Box />
+                            <Box src="/assets/img/icon/social/facebook.png" />
+                            <Box src="/assets/img/icon/social/instagram.png" />
+                            <Box src="/assets/img/icon/social/twitter.png" />
+                            <Box src="/assets/img/icon/social/youtube.png" />
+                            <Box src="/assets/img/icon/social/telegram.png" />
                         </FlexSo>
                     </DivSo>
                 </Contactme>
@@ -711,12 +712,11 @@ const FlexSo = styled.div`
     margin: 0 35px;
 `
 
-const Box = styled.div`
+const Box = styled.img`
     width: 30px;
     height: 30px;
 
     border-radius: 90px;
-    background-color: grey;
 `
 
 const TextOTP = styled.p`
