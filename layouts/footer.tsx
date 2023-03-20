@@ -64,19 +64,19 @@ export default function Footer() {
                     </FooterList>
                     <FlexCircle>
                         <Circle>
-                            <Image src="/assets/img/social/facebook.svg" alt="" layout="fill" />
+                            <Image src="/assets/img/icon/social/facebook.png" alt="" layout="fill" />
                         </Circle>
                         <Circle>
-                            <Image src="/assets/img/social/instagram.svg" alt="" layout="fill" />
+                            <Image src="/assets/img/icon/social/instagram.png" alt="" layout="fill" />
                         </Circle>
                         <Circle>
-                            <Image src="/assets/img/social/telegram.svg" alt="" layout="fill" />
+                            <Image src="/assets/img/icon/social/telegram.png" alt="" layout="fill" />
                         </Circle>
                         <Circle>
-                            <Image src="/assets/img/social/twitter.svg" alt="" layout="fill" />
+                            <Image src="/assets/img/icon/social/twitter.png" alt="" layout="fill" />
                         </Circle>
                         <Circle>
-                            <Image src="/assets/img/social/youtube.svg" alt="" layout="fill" />
+                            <Image src="/assets/img/icon/social/youtube.png" alt="" layout="fill" />
                         </Circle>
                     </FlexCircle>
                 </FlexGroupContent>
@@ -241,7 +241,7 @@ const FlexCircle = styled.div`
     flex-direction: row;
     justify-content: center;
     gap: 20px;
-    mix-blend-mode: luminosity;
+    /* mix-blend-mode: luminosity; */
 `
 
 const FooterText = styled.div`
