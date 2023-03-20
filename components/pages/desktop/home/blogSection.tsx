@@ -4,12 +4,14 @@ import Link from "next/link";
 import styled from "styled-components";
 import BlogupgateSection from "./blogupgateSection";
 import { Container, FixWidth } from "@/components/_reduce/Reduce";
+import { useRouter } from "next/router";
 
 export default function BlogSection() {
+    const router = useRouter()
     return(
         <Container>
             <FixWidth>
-                <Titletype header="BLOG" subhead="บทความทั้งหมด" />
+                <Titletype header="BLOG" subhead="บทความทั้งหมด" onClick={() => router.push("/blog")} />
                 <DivFlexRow>
                     <Box>
                             {

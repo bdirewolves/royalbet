@@ -6,9 +6,11 @@ import Titletype from "@/components/_reduce/Divtitle";
 import { Container, FixWidth } from "@/components/_reduce/Reduce";
 import { reviewContent } from "@/constants/review";
 import { useState } from "react";
+import { useRouter } from "next/router";
 
 
 export default function ReviewSection() {
+    const router = useRouter()
     const [ current, setCurrent ] = useState(0)
     const settings = {
         dots: false,
@@ -39,7 +41,7 @@ export default function ReviewSection() {
     return(
         <Container>
             <FixWidth>
-                <Titletype header="REVIEW จากลูกค้า" subhead="ดูทั้งหมด" />
+                <Titletype header="REVIEW จากลูกค้า" subhead="ดูทั้งหมด" onClick={() => router.push("/review")} />
                 {/* Carousel */}
                 <ContainerCarousel>
                     <Slider {...settings}>

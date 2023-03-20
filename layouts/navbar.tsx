@@ -31,6 +31,8 @@ interface IPage {
 interface IProps {
     modalPage: IPage;
     setModalPage: Dispatch<SetStateAction<IPage>>;
+    showHamburger: boolean;
+    setShowHamburger: Dispatch<SetStateAction<boolean>>;
 }
 
 export default function Navbar(props: IProps) {
@@ -39,13 +41,12 @@ export default function Navbar(props: IProps) {
 
     const [ showHiddenNav, setShowHiddenNav ] = useState<boolean>(false)
     const [ time, setTime ] = useState("")
-    const [ showHamburger, setShowHamburger ] = useState(false)
     const [ access, setAccess ] = useState<string>("")
     const [ modal, setModal ] = useState<boolean>(false)
     const { userAccess, userData, setUserAccess } = useContext(AuthContext)
 
     const Goto = (path: string) => {
-        setShowHamburger(false)
+        props.setShowHamburger(false)
         router.push(path)
     }
 
@@ -240,19 +241,19 @@ export default function Navbar(props: IProps) {
                                     <ListMenu href="/casino">
                                         <MenuItem>Live Casino</MenuItem>
                                     </ListMenu>
-                                    <ListMenu href="/">
+                                    <ListMenu href="/casino">
                                         <MenuItem>Slot</MenuItem>
                                     </ListMenu>
-                                    <ListMenu href="/">
+                                    <ListMenu href="/casino">
                                         <MenuItem>Sport</MenuItem>
                                     </ListMenu>
-                                    <ListMenu href="/">
+                                    <ListMenu href="/casino">
                                         <MenuItem>E-Sport</MenuItem>
                                     </ListMenu>
-                                    <ListMenu href="/">
+                                    <ListMenu href="/casino">
                                         <MenuItem>Cards</MenuItem>
                                     </ListMenu>
-                                    <ListMenu href="/">
+                                    <ListMenu href="/casino">
                                         <MenuItem>Lottery</MenuItem>
                                     </ListMenu>
                                 </MenuGroup>
@@ -263,32 +264,26 @@ export default function Navbar(props: IProps) {
                                         <GifSpin src="https://placehold.jp/12/222222/ffffff/150x40.jpg?text=Spin Bonus" alt="" />
                                     </GifList>
                                     <DivButton>
-                                        <Button onClick={() => setShowHamburger(!showHamburger)}>
+                                        <Button onClick={() => props.setShowHamburger(!props.showHamburger)}>
                                             <GiHamburgerMenu color="#868686" size={25} />
-                                            {/* <div className="container">
-                                                <div className="item item-1"></div>
-                                                <div className="item item-2"></div>
-                                                <div className="item item-3"></div>
-                                                <div className="item item-4"></div>
-                                            </div> */}
                                         </Button>
                                     </DivButton>
                                 </FlexRowRe>
                             </Menubar>
                         </FlexBox>
                     </NavBottom>
-                    <Hamburger isActive={showHamburger}>
+                    <Hamburger isActive={props.showHamburger}>
                         <HamburgerContainer>
                             <HamburgerItem onClick={() => Goto("/")}>
                                 หน้าแรก
                             </HamburgerItem>
-                            <HamburgerItem onClick={() => Goto("/")}>
+                            <HamburgerItem onClick={() => Goto("/casino")}>
                                 เล่นเกมส์
                             </HamburgerItem>
-                            <HamburgerItem onClick={() => Goto("/")}>
+                            <HamburgerItem onClick={() => props.setModalPage({ name: "deposit", element: <Deposit modalPage={props.modalPage} setModalPage={props.setModalPage} /> })}>
                                 ฝาก
                             </HamburgerItem>
-                            <HamburgerItem onClick={() => Goto("/")}>
+                            <HamburgerItem onClick={() => props.setModalPage({ name: "deposit", element: <Deposit modalPage={props.modalPage} setModalPage={props.setModalPage} /> })}>
                                 ถอน
                             </HamburgerItem>
                             <HamburgerItem onClick={() => Goto("/promotion")}>

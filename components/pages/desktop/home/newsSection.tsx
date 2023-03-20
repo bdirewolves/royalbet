@@ -8,8 +8,10 @@ import Titletype from "@/components/_reduce/Divtitle";
 import { Container, FixWidth } from "@/components/_reduce/Reduce";
 import { newsContent } from "@/constants/news";
 import { useState } from "react";
+import { useRouter } from "next/router";
 
 export default function NewsSection () {
+    const router = useRouter()
     const [ current, setCurrent ] = useState(0)
     const settings = {
         centerMode: true,
@@ -37,7 +39,7 @@ export default function NewsSection () {
     return (
         <Container>
             <FixWidth>
-                <Titletype header="NEWS" subhead="ดูทั้งหมด" />
+                <Titletype header="NEWS" subhead="ดูทั้งหมด" onClick={() => router.push("/blog")} />
                 <ContainerCarousel>
                     <Slider {...settings}>
                         {

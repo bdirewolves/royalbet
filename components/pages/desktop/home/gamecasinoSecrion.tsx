@@ -75,19 +75,6 @@ export default function GameCasinoSection () {
                                 }
                             </DivGrid>
                         </div>
-                        {/* <div>
-                            <DivGrid>
-                                {evenCasinos.slice(0, 12).map((item, index) => (
-                                    <GridFr key={index}>
-                                        <DivPicPro>
-                                            <PicPro src={item.img} />
-                                        </DivPicPro>
-                                        <BoxText />
-                                        <GoldPic />
-                                    </GridFr>
-                                ))}
-                            </DivGrid>
-                        </div> */}
                     </Slider>
                 </ContainerCarousel>
             </FixWidth>

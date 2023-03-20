@@ -1,10 +1,24 @@
 import { useRouter } from "next/router"
-import { useEffect, useState } from "react"
+import { Dispatch, SetStateAction, useEffect, useState } from "react"
 import styled, { keyframes } from "styled-components"
 import { RiUserLine } from "react-icons/ri";
+import Information from "./modal/information";
+import Statement from "./modal/statement";
+import Deposit from "./modal/deposit";
 
+interface IPage {
+    name: string;
+    element: any;
+}
 
-export default function NavbarMobile () {
+interface IProps {
+    modalPage: IPage;
+    setModalPage: Dispatch<SetStateAction<IPage>>;
+    showHamburger: boolean;
+    setShowHamburger: Dispatch<SetStateAction<boolean>>;
+}
+
+export default function NavbarMobile (props: IProps) {
     const router = useRouter()
     const [ current, setCurrent ] = useState<number>(0)
 
@@ -43,15 +57,15 @@ export default function NavbarMobile () {
     return(
         <Background>
             <MenuList>
-                <MenuItem onClick={() => Goto(1, "/")}>
+                <MenuItem onClick={() => props.setModalPage({ name: "infomation", element: <Information modalPage={props.modalPage} setModalPage={props.setModalPage} /> })}>
                     <DivIcon>
-                        <Icon isActive={current == 1} size={16} src="/assets/img/icon/user.svg" />
+                        <Icon size={16} src="/assets/img/icon/user.svg" />
                     </DivIcon>
                     <Span>
                         โปรไฟล์
                     </Span>
                 </MenuItem>
-                <MenuItem onClick={() => Goto(2, "/")}>
+                <MenuItem onClick={() => props.setModalPage({ name: "statement", element: <Statement modalPage={props.modalPage} setModalPage={props.setModalPage} /> })}>
                     <DivIcon>
                         <Icon isActive={current == 2} size={16} src="/assets/img/icon/transactions.svg" />
                     </DivIcon>
@@ -59,7 +73,7 @@ export default function NavbarMobile () {
                         ประวัติธุรกรรม
                     </Span>
                 </MenuItem>
-                <MenuItem onClick={() => Goto(2, "/")}>
+                <MenuItem onClick={() => router.push("/casino")}>
                     <DivIcon>
                         <IconAnimation src="/assets/img/icon/games.png" />
                     </DivIcon>
@@ -67,7 +81,7 @@ export default function NavbarMobile () {
                         เล่นเกมส์
                     </Span>
                 </MenuItem>
-                <MenuItem onClick={() => Goto(3, "/")}>
+                <MenuItem onClick={() => props.setModalPage({ name: "deposit", element: <Deposit modalPage={props.modalPage} setModalPage={props.setModalPage} /> })}>
                     <DivIcon>
                         <Icon isActive={current == 3} src="/assets/img/icon/transfer.svg" />
                     </DivIcon>
@@ -75,7 +89,7 @@ export default function NavbarMobile () {
                         ฝาก-ถอน
                     </Span>
                 </MenuItem>
-                <MenuItem onClick={() => Goto(4, "https://line.me/th/")}>
+                <MenuItem onClick={() => router.push("https://line.me")}>
                     <DivIcon>
                         <Icon isActive={current == 4} src="/assets/img/icon/contact.svg" />
                     </DivIcon>
@@ -152,7 +166,7 @@ const DivIcon = styled.div`
     border-radius: 90%;
 `
 
-const Icon = styled.img<{ isActive: boolean, size?: number }>`
+const Icon = styled.img<{ isActive?: boolean, size?: number }>`
     width: ${props => props.size && props.size};
     height: auto;
     mix-blend-mode: luminosity;

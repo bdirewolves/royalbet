@@ -230,6 +230,7 @@ export default function SelectProSectionPage() {
 
     useEffect(() => {
         fetchGame()
+        setPages({ page: 1, limit: 24 })
     }, [providers, providerLists])
 
     useEffect(() => {
@@ -282,14 +283,14 @@ export default function SelectProSectionPage() {
                 <DivFlexGame>
 
                     {/* Recreate Bar with Pagination */}
-                    <DivTitle onClick={() => console.log("handle Clicked!")}>
+                    <DivTitle>
                         <Title>
                             <TextTitle>provider {type}</TextTitle>
                         </Title>
                         <LineTitle />
                         <PageControl>
                             <BackBtn onClick={() => pages.page != 1 && setPages({ page: pages.page-1, limit: 24 })}><AiOutlineCaretLeft size={14} /></BackBtn>
-                            <CurrentPage>{ pages.page }</CurrentPage>
+                            <CurrentPage>{ pages.page }/{ Math.floor(gameLists.length / pages.limit) == 0 ? "1" : Math.floor(gameLists.length / pages.limit) }</CurrentPage>
                             <NextBtn onClick={() => gameLists.length > 24 && setPages({ page: pages.page+1, limit: 24 })}><AiOutlineCaretRight size={14} /></NextBtn>
                         </PageControl>
                     </DivTitle>
@@ -370,8 +371,8 @@ const BackBtn = styled.button`
 
 const CurrentPage = styled.span`
     font-size: 12px;
-    width: 20px;
-    aspect-ratio: 1/1;
+    width: 35px;
+    padding: 0 5px;
     border-radius: 5px;
     text-align: center;
     color: #fff;
@@ -379,7 +380,7 @@ const CurrentPage = styled.span`
 `
 
 const PageControl = styled.div`
-    width: 70px;
+    width: 100px;
     display: flex;
     justify-content: space-between;
     gap: 7px;
