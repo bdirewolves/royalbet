@@ -1,4 +1,4 @@
-import React, { Dispatch, ReactNode, SetStateAction, useContext } from 'react'
+import React, { Dispatch, ReactNode, SetStateAction, useContext, useEffect } from 'react'
 import styled from 'styled-components'
 import { TfiAngleLeft } from "react-icons/tfi";
 import { AiOutlineClose } from "react-icons/ai";

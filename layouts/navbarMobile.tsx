@@ -1,10 +1,12 @@
 import { useRouter } from "next/router"
-import { Dispatch, SetStateAction, useEffect, useState } from "react"
+import { Dispatch, SetStateAction, useContext, useEffect, useState } from "react"
 import styled, { keyframes } from "styled-components"
 import { RiUserLine } from "react-icons/ri";
 import Information from "./modal/information";
 import Statement from "./modal/statement";
 import Deposit from "./modal/deposit";
+import { AuthContext } from "@/pages/_app";
+import Swal from "sweetalert2";
 
 interface IPage {
     name: string;
@@ -21,43 +23,70 @@ interface IProps {
 export default function NavbarMobile (props: IProps) {
     const router = useRouter()
     const [ current, setCurrent ] = useState<number>(0)
-
+    const { userData } = useContext(AuthContext)
+ 
     const Goto = (index: number, path: string) => {
         setCurrent(index)
         router.push(path)
     }
 
-    useEffect(() => {
-        switch(router.asPath) {
-            case "/": setCurrent(0);
-                break;
-            case "/": setCurrent(1);
-                break;
-            case "/": setCurrent(2);
-                break;
-            case "/": setCurrent(3);
-                break;
-            case "/": setCurrent(4);
-                break;
-            case "/m": setCurrent(0);
-                break;
-            case "/m/": setCurrent(1);
-                break;
-            case "/m/": setCurrent(2);
-                break;
-            case "/m/": setCurrent(3);
-                break;
-            case "/m/": setCurrent(4);
-                break;
-            default: setCurrent(0);
-                break;
+    const checkAccess = async (name: string) => {
+        if(!userData) {
+            Swal.fire({
+                title: "กรุณาเข้าสู่ระบบก่อนทำรายการ",
+                timer: 1000,
+                icon: "info",
+                showConfirmButton: false
+            })
+        }else{
+            switch(name) {
+                case "information": props.setModalPage({ name: "information", element: <Information modalPage={props.modalPage} setModalPage={props.setModalPage} /> });
+                    break;
+                case "statement": props.setModalPage({ name: "statement", element: <Statement modalPage={props.modalPage} setModalPage={props.setModalPage} /> });
+                    break;
+                case "deposit": props.setModalPage({ name: "deposit", element: <Deposit modalPage={props.modalPage} setModalPage={props.setModalPage} /> })
+                    break;
+                case "game": router.push("/casino");
+                    break;
+                case "contact": router.push("https://line.me");
+                    break;
+                default: console.log("nothing")
+                    break;
+            }
         }
-    }, [router.isReady])
+    }
+
+    // useEffect(() => {
+    //     switch(router.asPath) {
+    //         case "/": setCurrent(0);
+    //             break;
+    //         case "/": setCurrent(1);
+    //             break;
+    //         case "/": setCurrent(2);
+    //             break;
+    //         case "/": setCurrent(3);
+    //             break;
+    //         case "/": setCurrent(4);
+    //             break;
+    //         case "/m": setCurrent(0);
+    //             break;
+    //         case "/m/": setCurrent(1);
+    //             break;
+    //         case "/m/": setCurrent(2);
+    //             break;
+    //         case "/m/": setCurrent(3);
+    //             break;
+    //         case "/m/": setCurrent(4);
+    //             break;
+    //         default: setCurrent(0);
+    //             break;
+    //     }
+    // }, [router.isReady])
 
     return(
         <Background>
             <MenuList>
-                <MenuItem onClick={() => props.setModalPage({ name: "infomation", element: <Information modalPage={props.modalPage} setModalPage={props.setModalPage} /> })}>
+                <MenuItem onClick={() => checkAccess("information")}>
                     <DivIcon>
                         <Icon size={16} src="/assets/img/icon/user.svg" />
                     </DivIcon>
@@ -65,7 +94,7 @@ export default function NavbarMobile (props: IProps) {
                         โปรไฟล์
                     </Span>
                 </MenuItem>
-                <MenuItem onClick={() => props.setModalPage({ name: "statement", element: <Statement modalPage={props.modalPage} setModalPage={props.setModalPage} /> })}>
+                <MenuItem onClick={() => checkAccess("statement")}>
                     <DivIcon>
                         <Icon isActive={current == 2} size={16} src="/assets/img/icon/transactions.svg" />
                     </DivIcon>
@@ -73,7 +102,7 @@ export default function NavbarMobile (props: IProps) {
                         ประวัติธุรกรรม
                     </Span>
                 </MenuItem>
-                <MenuItem onClick={() => router.push("/casino")}>
+                <MenuItem onClick={() => checkAccess("game")}>
                     <DivIcon>
                         <IconAnimation src="/assets/img/icon/games.png" />
                     </DivIcon>
@@ -81,7 +110,7 @@ export default function NavbarMobile (props: IProps) {
                         เล่นเกมส์
                     </Span>
                 </MenuItem>
-                <MenuItem onClick={() => props.setModalPage({ name: "deposit", element: <Deposit modalPage={props.modalPage} setModalPage={props.setModalPage} /> })}>
+                <MenuItem onClick={() => checkAccess("deposit")}>
                     <DivIcon>
                         <Icon isActive={current == 3} src="/assets/img/icon/transfer.svg" />
                     </DivIcon>
@@ -89,7 +118,7 @@ export default function NavbarMobile (props: IProps) {
                         ฝาก-ถอน
                     </Span>
                 </MenuItem>
-                <MenuItem onClick={() => router.push("https://line.me")}>
+                <MenuItem onClick={() => checkAccess("contact")}>
                     <DivIcon>
                         <Icon isActive={current == 4} src="/assets/img/icon/contact.svg" />
                     </DivIcon>

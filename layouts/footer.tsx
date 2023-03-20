@@ -10,6 +10,7 @@ export default function Footer() {
             
             <FlexGroup1>
                 <DivLogo>
+                    <LogoM src="/assets/img/logo.png"/>
                     <Logo src="/assets/img/logorow.png"/>
                 </DivLogo>
                 <FooterMenu>
@@ -31,7 +32,9 @@ export default function Footer() {
                         ช่องทางการชำระเงิน
                     </FooterProviderTitle>
                     <FooterProviderContent>
-                        <FooterProviderContentItem />
+                        <FooterProviderContentItem src='/assets/img/payment-1.png' />
+                        <FooterProviderContentItem src='/assets/img/payment-2.png' />
+                        <FooterProviderContentItem src='/assets/img/payment-3.png' />
                     </FooterProviderContent>
                 </FooterPartner>
             </FlexGroup1>
@@ -197,7 +200,7 @@ const FooterPartner = styled.div`
 
 const DivLogo = styled.div`
     width: 135px;
-    height: 120px;
+    height: auto;
 
     grid-area: 1 / 1 / 2 / 2;
 
@@ -205,20 +208,33 @@ const DivLogo = styled.div`
 
     @media (min-width: 744px) {
         width: 186px;
-        height: 60px;
+        height: auto;
     }
 
     @media (min-width: 1440px) {
         width: 248px;
-        height: 80px;
+        height: auto;
 
         margin: 40px 0 0 50px;
+    }
+`
+
+const LogoM = styled.img`
+    width: 100%;
+    height: 100%;
+
+    @media (min-width: 1440px) {
+        display: none;
     }
 `
 
 const Logo = styled.img`
     width: 100%;
     height: 100%;
+
+    @media (max-width: 1440px) {
+        display: none;
+    }
 `
 
 

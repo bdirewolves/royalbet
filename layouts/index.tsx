@@ -15,25 +15,7 @@ export default function Layouts({ children }: { children: ReactNode }) {
     const { userAccess, userData } = useContext(AuthContext)
     const [ modalPage, setModalPage ] = useState<IModalPage>({ name: "", element: null })
     const [ showHamburger, setShowHamburger ] = useState<boolean>(false)
-    const access =
-    typeof window !== "undefined"
-      ? JSON.parse(localStorage.getItem("access") as string)
-      : null;
-
-    useEffect(() => {
-        if(typeof window !== "undefined") {
-            if(!access) {
-                Swal.fire({
-                    title: "กรุณาเข้าสู่ระบบก่อนทำรายการ",
-                    icon: "info",
-                    timer: 1000,
-                    showConfirmButton: false
-                })
-            }else {
-                setShowHamburger(false)
-            }
-        }
-    }, [modalPage])
+    const access = typeof window !== "undefined" ? JSON.parse(localStorage.getItem("access") as string) : null;
 
     return(
         <>
