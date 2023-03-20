@@ -11,7 +11,6 @@ interface Titletype {
 
 export default function Titletype ({  onClick, header, subhead }: Titletype) {
     return (
-
         <DivTitle onClick={onClick}>
             <Title>
                 <TextTitle>{header}</TextTitle>
@@ -24,6 +23,7 @@ export default function Titletype ({  onClick, header, subhead }: Titletype) {
     )
 }
 const DivTitle = styled.div<{ ISqure?: boolean , Nm?: any }>`
+    cursor: pointer;
     width: 95%;
     height: auto;
     aspect-ratio: 300/40;

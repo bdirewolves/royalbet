@@ -20,6 +20,8 @@ export default function Statement(props: IProps) {
     const { setUserAccess } = useContext(AuthContext)
     const [ transType, setTransType ] = useState<string>("all")
     const [ transactions, setTransaction ] = useState<any[]>([])
+    const [ deposits, setDeposits ] = useState<any[]>([])
+    const [ withdraws, setWithdraws ] = useState<any[]>([])
     const { userData, userAccess } = useContext(AuthContext)
     const [ filters, setFilters ] = useState<any[]>([])
 
@@ -64,6 +66,8 @@ export default function Statement(props: IProps) {
             setFilters(Array.from(new Set(tmp)))
 
             setTransaction(deposit.concat(withdraw))
+            setDeposits(deposit)
+            setWithdraws(withdraw)
         } catch (error) {
             console.log(error)
         }
@@ -114,16 +118,16 @@ export default function Statement(props: IProps) {
                         {
                             transType === "all" &&
                             (
-                                filters.length > 0 && filters.map((item_filters, index) => (
+                                filters.length > 0 ? filters.map((item_filters, index_filters) => (
                                     <>
-                                        <DivTextDate key={index}>
+                                        <DivTextDate key={index_filters}>
                                             <TextDate>{ moment(item_filters).format("DD/MM/YYYY") }</TextDate>
                                         </DivTextDate>
                                         <Line />
                                         {
-                                            transactions.filter((item, index) => moment(item.createdAt).format("DD/MM/YYYY") == moment(item_filters).format("DD/MM/YYYY")) && transactions.map((item) => (
+                                            transactions.filter((item) => moment(item.createdAt).format("DD/MM/YYYY") == moment(item_filters).format("DD/MM/YYYY")) && transactions.map((item, index_transactions) => (
                                                 <>
-                                                    <FlexRow key={index}>
+                                                    <FlexRow key={index_transactions}>
                                                         <Box />
                                                         <FlexDetail>
                                                             <TextHeadDetail>{ item.org_message ? "รายการฝากเงิน" : "รายการถอนเงิน" }</TextHeadDetail>
@@ -151,9 +155,107 @@ export default function Statement(props: IProps) {
                                         }
                                     </>
                                 ))
+                                :
+                                <NullText>ไม่มีข้อมูลในขณะนี้</NullText>
                             )
                         }
 
+                        {
+                            transType === "deposit" &&
+                            (
+                                filters.length > 0 ? filters.map((item_filters, index_filters) => (
+                                    <>
+                                        <DivTextDate key={index_filters}>
+                                            <TextDate>{ moment(item_filters).format("DD/MM/YYYY") }</TextDate>
+                                        </DivTextDate>
+                                        <Line />
+                                        {
+                                            deposits.filter((item) => moment(item.createdAt).format("DD/MM/YYYY") == moment(item_filters).format("DD/MM/YYYY")) && deposits.map((item, index_deposit) => (
+                                                <>
+                                                    <FlexRow key={index_deposit}>
+                                                        <Box />
+                                                        <FlexDetail>
+                                                            <TextHeadDetail>{ item.org_message ? "รายการฝากเงิน" : "รายการถอนเงิน" }</TextHeadDetail>
+                                                            <TextDetail> { item.org_message ? "++" : "--" } {item.amount} ฿</TextDetail>
+                                                        </FlexDetail>
+                                                        <FlexDetail2>
+                                                            <TextHeadDetail2>ณ เวลา { moment(item.createAt).format("hh:mm") } น.</TextHeadDetail2>
+                                                            <Status transtate={item.transtate}>
+                                                                <TextStatus>
+                                                                    {
+                                                                        (
+                                                                            (item.transtate === "SUCCESS" && "ทำรายการทำเร็จ") || 
+                                                                            (item.transtate === "COMPLETE" && "ทำรายการทำเร็จ") || 
+                                                                            (item.transtate === "PENDING" && "กำลังทำรายการ") ||
+                                                                            (item.transtate === "FAIL" && "ทำรายการไม่สำเร็จ")
+                                                                        ) || "รอดำเนินการ"
+                                                                    }
+                                                                </TextStatus>
+                                                            </Status>
+                                                        </FlexDetail2>
+                                                    </FlexRow>
+                                                    <Line />
+                                                </>
+                                            ))
+                                        }
+                                    </>
+                                ))
+                                :
+                                <NullText>ไม่มีข้อมูลการฝากในขณะนี้</NullText>
+                            )
+                        }
+
+                        {
+                            transType === "withdraw" &&
+                            (
+                                filters.length > 0 ? filters.map((item_filters, index_filters) => (
+                                    <>
+                                        <DivTextDate key={index_filters}>
+                                            <TextDate>{ moment(item_filters).format("DD/MM/YYYY") }</TextDate>
+                                        </DivTextDate>
+                                        <Line />
+                                        {
+                                            withdraws.filter((item) => moment(item.createdAt).format("DD/MM/YYYY") == moment(item_filters).format("DD/MM/YYYY")) && withdraws.map((item, index_withdraw) => (
+                                                <>
+                                                    <FlexRow key={index_withdraw}>
+                                                        <Box />
+                                                        <FlexDetail>
+                                                            <TextHeadDetail>{ item.org_message ? "รายการฝากเงิน" : "รายการถอนเงิน" }</TextHeadDetail>
+                                                            <TextDetail> { item.org_message ? "++" : "--" } {item.amount} ฿</TextDetail>
+                                                        </FlexDetail>
+                                                        <FlexDetail2>
+                                                            <TextHeadDetail2>ณ เวลา { moment(item.createAt).format("hh:mm") } น.</TextHeadDetail2>
+                                                            <Status transtate={item.transtate}>
+                                                                <TextStatus>
+                                                                    {
+                                                                        (
+                                                                            (item.transtate === "SUCCESS" && "ทำรายการทำเร็จ") || 
+                                                                            (item.transtate === "COMPLETE" && "ทำรายการทำเร็จ") || 
+                                                                            (item.transtate === "PENDING" && "กำลังทำรายการ") ||
+                                                                            (item.transtate === "FAIL" && "ทำรายการไม่สำเร็จ")
+                                                                        ) || "รอดำเนินการ"
+                                                                    }
+                                                                </TextStatus>
+                                                            </Status>
+                                                        </FlexDetail2>
+                                                    </FlexRow>
+                                                    <Line />
+                                                </>
+                                            ))
+                                        }
+                                    </>
+                                ))
+                                :
+                                <NullText>ไม่มีข้อมูลการถอนในขณะนี้</NullText>
+                            )
+                        }
+
+                        {
+                            transType === "bonus" &&
+                            (
+                                <NullText>ไม่มีข้อมูลการถอนโบนัสในขณะนี้</NullText>
+                            )
+                        }
                     </FlexTransaction>
                 </Flexmenu>
                 <DivFlexLogout onClick={handleLogout}>
@@ -164,6 +266,11 @@ export default function Statement(props: IProps) {
         </>
     )
 }
+
+const NullText = styled.p`
+    font-size: 12px;
+    color: #fff;
+`
 
 const Overlay = styled.div`
     position: fixed;

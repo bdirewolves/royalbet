@@ -116,6 +116,7 @@ export default function Deposit(props: IProps) {
                     }
                 }
             ).then((res) => res.data[0].wallsum)
+            
             if(Math.floor(balance) > 0) {
                 const txnid = Math.floor(10000000000000000 + Math.random() * 90000000000000000);
                 Swal.fire({

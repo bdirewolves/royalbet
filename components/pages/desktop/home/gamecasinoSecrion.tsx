@@ -5,8 +5,20 @@ import "slick-carousel/slick/slick-theme.css";
 import Titletype from "@/components/_reduce/Divtitle";
 import { Container, FixWidth } from "@/components/_reduce/Reduce";
 import { casinoContent } from "@/constants/casino";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+
+interface IProviders {
+    id: number;
+    name: string;
+    wallet_code: string;
+    type: string | any;
+    createdAt: string;
+}
 
 export default function GameCasinoSection () {
+
     const settings = {
         dots: false,
         infinite: true,
@@ -18,29 +30,52 @@ export default function GameCasinoSection () {
         arrows: false,
     };
 
-    const oddCasinos = casinoContent.casino.filter((_, index) => index % 2 !== 0);
-    const evenCasinos = casinoContent.casino.filter((_, index) => index % 2 === 0);
+    const [ providers, setProviders ] = useState<IProviders[]>([])
+    const router = useRouter()
+
+    const handleOnError = (event: any, name: string) => {
+        event.target.src =  `https://placehold.co/210x150/black/white/jpg/?text=${name}`;
+    }
+
+    const fetchProvider = async () => {
+        try {
+            const tmp_providers: IProviders[] = await axios.get(`${process.env.API_URL}/gfservice/provider`).then((res) => res.data.data)
+            const filters = tmp_providers.filter((item) => item.type === "live")
+            setProviders(filters)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    useEffect(() => {
+        fetchProvider()
+    }, [])
 
     return(
         <Container>
             <FixWidth>
-                <Titletype header="CASINO" subhead="เกมทั้งหมด"  />
+                <Titletype header="CASINO" subhead="เกมทั้งหมด" onClick={() => router.push("/casino")} />
                 <ContainerCarousel>
                     <Slider {...settings}>
                         <div>
                             <DivGrid>
-                                {oddCasinos.slice(0, 12).map((item, index) => (
-                                    <GridFr key={index}>
-                                        <DivPicPro>
-                                            <PicPro src={item.img} />
-                                        </DivPicPro>
-                                        <BoxText />
-                                        <GoldPic />
-                                    </GridFr>
-                                ))}
+                                {
+                                    providers.slice(0, 12).map((item, index) => (
+                                        <GridFr key={index}>
+                                            <DivPicPro>
+                                                <PicPro
+                                                    src={`/assets/img/icon/providers/casino/${item.name}.png`}
+                                                    onError={ (e) => handleOnError(e, item.name)}
+                                                />
+                                            </DivPicPro>
+                                            <BoxText />
+                                            <GoldPic />
+                                        </GridFr>
+                                    ))
+                                }
                             </DivGrid>
                         </div>
-                        <div>
+                        {/* <div>
                             <DivGrid>
                                 {evenCasinos.slice(0, 12).map((item, index) => (
                                     <GridFr key={index}>
@@ -52,7 +87,7 @@ export default function GameCasinoSection () {
                                     </GridFr>
                                 ))}
                             </DivGrid>
-                        </div>
+                        </div> */}
                     </Slider>
                 </ContainerCarousel>
             </FixWidth>
@@ -94,18 +129,25 @@ const DivGrid = styled.div`
 `
 
 const GridFr = styled.div`
+    cursor: pointer;
     width: 100%;
     height: auto;
     aspect-ratio: 145/130;
 
     position: relative;
 
-    border-radius: 5px;
+    border-radius: 10px;
 
     overflow: hidden;
+    transition-duration: 300ms;
 
     @media (min-width: 744px) {
         aspect-ratio: 210/150;
+    }
+
+    &:hover {
+        transition-duration: 300ms;
+        box-shadow: rgba(255, 255, 255, 0.35) 0px 5px 15px;
     }
 `
 
@@ -143,6 +185,7 @@ const DivPicPro = styled.div`
 const PicPro = styled.img`
     width: 100%;
     height: 100%;
+    object-fit: contain;
 `
 
 const BoxText = styled.div`

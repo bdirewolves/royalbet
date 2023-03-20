@@ -57,13 +57,7 @@ export default function Navbar() {
     useEffect(() => {
         setInterval(() => setTime(moment(new Date()).format("hh:mm:ss")), 1000)
     }, [])
-
-    useEffect(() => {
-        console.log(modalPage)
-    }, [modalPage])
     
-    
-
     return(
         <>  
             { modalPage.name == "menu" ?
