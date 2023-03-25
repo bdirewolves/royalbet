@@ -154,7 +154,15 @@ const Modal = styled.div`
     
     background-color: #000000;
     color: #000;
-    z-index: 9999;
+    z-index: 150;
+
+    @media (max-width: 1024px) {
+        width: 100vw;
+        height: 89vh;
+
+        top: 50px;
+        left: 0;
+    }
 `
 
 const BgGrey = styled.div`

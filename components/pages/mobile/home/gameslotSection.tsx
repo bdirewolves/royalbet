@@ -2,7 +2,7 @@ import styled from "styled-components"
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { casinoContent } from "@/constants/casino";
+import { casinoContent, slotHomepage } from "@/constants/casino";
 import React from "react";
 import Titletype from "@/components/_reduce/Divtitle";
 import { Container, FixWidth } from "@/components/_reduce/Reduce";
@@ -30,12 +30,14 @@ export default function GameSlotSection () {
                     <Slider {...settings}>
                         <div>
                             <DivGrid>
-                                {oddCasinos.slice(0, 6).map((item, index) => (
+                                {slotHomepage.slice(0, 6).map((item, index) => (
                                     <GridFr key={index}>
                                         <DivPicPro>
                                             <PicPro src={item.img} />
                                         </DivPicPro>
-                                        <BoxText />
+                                        <BoxText>
+                                            {item.name}
+                                        </BoxText>
                                         <GoldPic />
                                     </GridFr>
                                 ))}
@@ -43,12 +45,14 @@ export default function GameSlotSection () {
                         </div>
                         <div>
                             <DivGrid>
-                                {evenCasinos.slice(0, 6).map((item, index) => (
+                                {slotHomepage.slice(6, 12).map((item, index) => (
                                     <GridFr key={index}>
                                         <DivPicPro>
                                             <PicPro src={item.img} />
                                         </DivPicPro>
-                                        <BoxText />
+                                        <BoxText>
+                                            {item.name}
+                                        </BoxText>
                                         <GoldPic />
                                     </GridFr>
                                 ))}
@@ -117,6 +121,7 @@ const PicPro = styled.img`
 `
 
 const BoxText = styled.div`
+    padding-left: 10px;
     width: 100%;
     height: auto;
     aspect-ratio: 145/17.26;
@@ -128,6 +133,7 @@ const BoxText = styled.div`
     z-index: 2;
 
     background: linear-gradient(180deg, #3E3E3E 0%, #100F14 100%);
+    color: #fff;
 `
 
 const GoldPic = styled.div`

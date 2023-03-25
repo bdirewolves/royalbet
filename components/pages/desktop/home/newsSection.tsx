@@ -1,59 +1,51 @@
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
 import Link from "next/link";
 import Iframe from "@/components/_reduce/iframe";
 import Titletype from "@/components/_reduce/Divtitle";
-import { Container, FixWidth } from "@/components/_reduce/Reduce";
+import { FixWidth, PicBox } from "@/components/_reduce/Reduce";
 import { newsContent } from "@/constants/news";
 import { useState } from "react";
-import { useRouter } from "next/router";
 
 export default function NewsSection () {
-    const router = useRouter()
     const [ current, setCurrent ] = useState(0)
     const settings = {
+        className: "center",
         centerMode: true,
-        centerPadding: '0',
-        dots: false,
         infinite: true,
-        speed: 1200,
-        slidesToShow: 2,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 2000,
-        arrows: false,
-        beforeChange: (_current: any, next: any) => setCurrent(next),
-        reponsive:[
-            {
-                breakpoint: 1280,
-                settings: {
-                    centerMode: true,
-                    slidesToShow: 1,
-                    centerPadding: '0px',
-                }
-            }
-        ]
+        centerPadding: "60px",
+        slidesToShow: 3,
+        speed: 500,
+        beforeChange: (_current: any, next: any) => setCurrent(next)
     };
     return (
         <Container>
             <FixWidth>
-                <Titletype header="NEWS" subhead="ดูทั้งหมด" onClick={() => router.push("/blog")} />
+                <Titletype header="NEWS" subhead="ดูทั้งหมด" />
                 <ContainerCarousel>
                     <Slider {...settings}>
-                        {
-                            newsContent.map((item, index) => (
-                                <div key={index}>
-                                    <Link href="/">
-                                        <Box opacity={current == index ? "true" : "false"}>
-                                            {/* Content Carousel */}
+                            {/* {
+                                newsContent.map((item, index) => (
+                                    <div key={index}>
+                                        <Link href="/">
+                                            <Box opacity={current === index}>
+                                                <Iframe path={item.video_url} title={item.title} />
+                                            </Box>
+                                        </Link>
+                                    </div>
+                                ))
+                            } */}
+                            {
+                                newsContent.map((item, index) => (
+                                    <div key={index}>
+                                        <Box opacity={current === index}>
                                             <Iframe path={item.video_url} title={item.title} />
                                         </Box>
-                                    </Link>
-                                </div>
-                            ))
-                        }
+                                    </div>
+                                ))
+                            }
                     </Slider>
                 </ContainerCarousel>
             </FixWidth>
@@ -61,12 +53,25 @@ export default function NewsSection () {
     )
 }
 
-const ContainerCarousel = styled.div`
+const Container = styled.section`
+    margin: auto;
     width: 100%;
     height: auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    gap: 10px;
 `
 
-const Box = styled.div<{ opacity: string }>`
+const ContainerCarousel = styled.div`
+    margin: auto;
+    width: 100%;
+`
+
+const Box = styled.div<{ opacity: boolean }>`
     width: 95%;
     height: auto;
     aspect-ratio: 300/168.69;
@@ -79,14 +84,14 @@ const Box = styled.div<{ opacity: string }>`
     background: #100F14;
     border-radius: 9.86806px;
 
-    ${props => props.opacity === "true" && `opacity: 1;`}
-    ${props => props.opacity === "false" && `opacity: 0.4;`}
+    ${props => props.opacity ?
+        `opacity: 1;`
+    :
+        `opacity: 0.4;`
+    }
 
     @media (min-width: 744px) {
         width: 97%;
     }
 
-    @media (min-width: 1280px) {
-        aspect-ratio: 578.67/325.33;
-    }
 `

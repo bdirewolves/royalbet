@@ -106,6 +106,7 @@ const ContainerCarousel = styled.div`
 `
 
 const DivGrid = styled.div`
+    padding: 20px 0;
     width: 100%;
     height: auto;
     max-width: 650px;

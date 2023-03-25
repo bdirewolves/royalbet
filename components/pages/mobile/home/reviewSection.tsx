@@ -10,8 +10,6 @@ import { Container, FixWidth } from "@/components/_reduce/Reduce";
 export default function ReviewSection() {
     const [ current, setCurrent ] = useState(0)
     const settings = {
-        centerMode: true,
-        centerPadding: '55px',
         slidesToShow: 3,
         slidesToScroll: 1,
         focusOnSelect: true,
@@ -86,6 +84,7 @@ const GoldPic = styled.div`
 `
 
 const DivFlex = styled.div`
+    margin: auto;
     width: 95%;
     max-width: 196px;
     height: auto;

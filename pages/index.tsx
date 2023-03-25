@@ -85,8 +85,12 @@ export default function Home() {
 
         <BlogSection />
 
-        <NewsSection />
-        
+      </Content>
+      
+      <NewsSection />
+
+      <Content>
+
         <ReviewSection />
 
       </Content>
@@ -95,7 +99,7 @@ export default function Home() {
   );
 }
 
-const Content = styled.main`
+const Content = styled.div`
   max-width: 1440px;
   width: 100%;
   height: auto;

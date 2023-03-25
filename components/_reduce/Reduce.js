@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 
 export const Container = styled.section`
+    margin: auto;
     width: 100%;
     height: auto;
     max-width: 744px;
@@ -28,7 +29,7 @@ export const PicBox = styled.img`
 `
 
 export const FixWidth = styled.div`
-    width: 95%;
+    width: 100%;
     height: auto;
 
     display: flex;

@@ -24,9 +24,9 @@ export default function Titletype ({  onClick, header, subhead }: Titletype) {
 }
 const DivTitle = styled.div<{ ISqure?: boolean , Nm?: any }>`
     cursor: pointer;
+    padding: 20px 0;
     width: 95%;
     height: auto;
-    aspect-ratio: 300/40;
     max-width: 650px;
 
     display: flex;
