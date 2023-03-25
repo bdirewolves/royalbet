@@ -24,7 +24,7 @@ export default function ReviewPage(){
 
 const Content = styled.main`
   width: 100%;
-  height: fit-content;
+  height: auto;
   max-width: 1440px;
   /* min-width: 1440px; */
 

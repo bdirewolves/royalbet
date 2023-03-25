@@ -28,7 +28,7 @@ export default function PromotionPageSection() {
 
 const DivGrid = styled.div`
     width: 100%;
-    height: fit-content;
+    height: auto;
     max-width: 650px;
 
     display: grid;

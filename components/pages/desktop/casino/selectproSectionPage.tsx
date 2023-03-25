@@ -471,7 +471,7 @@ const BoxTypeSpan = styled.span`
 
 const DivGridType = styled.div`
     width: 100%;
-    height: fit-content;
+    height: auto;
     max-width: 650px;
 
     display: grid;
@@ -522,7 +522,7 @@ const BoxType = styled.div<{ isActive: boolean }>`
 
 const DivGridPro = styled.div`
     width: 100%;
-    height: fit-content;
+    height: auto;
     max-width: 650px;
 
     display: flex;
@@ -595,7 +595,7 @@ const BoxPro1 = styled.div`
 
 const DivFlexGame = styled.div`
     width: 100%;
-    height: fit-content;
+    height: auto;
     max-width: 650px;
 
     display: flex;
@@ -616,7 +616,7 @@ const DivFlexGame = styled.div`
 
 const DivGrid = styled.div`
     width: 100%;
-    height: fit-content;
+    height: auto;
 
     display: grid;
     grid-template-columns: repeat(2, 6fr);

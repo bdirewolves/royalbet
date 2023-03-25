@@ -66,7 +66,9 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
       <Content>
+
         <HeroSection />
 
         <CasinoSection />
@@ -86,16 +88,17 @@ export default function Home() {
         <NewsSection />
         
         <ReviewSection />
+
       </Content>
+      
     </>
   );
 }
 
 const Content = styled.main`
-  width: 100%;
-  height: fit-content;
   max-width: 1440px;
-  /* min-width: 1440px; */
+  width: 100%;
+  height: auto;
 
   display: flex;
   flex-direction: column;

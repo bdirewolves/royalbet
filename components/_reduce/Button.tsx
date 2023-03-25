@@ -18,8 +18,8 @@ export default function Button ({ children, onClick, isBorder, color }: IButton)
 
 const Btn = styled.button<{ isBorder?: boolean, color?: string }>`
     border: none;
-    width: fit-content;
-    height: fit-content;
+    width: auto;
+    height: auto;
     font-family: "Sukhumvit Set";
     font-size: 14px;
     font-weight: 600;

@@ -49,7 +49,7 @@ const DivGrid = styled.div`
 
 const Gridfr = styled.div`
     width: 100%;
-    height: fit-content;
+    height: auto;
 
     display: flex;
     flex-direction: row;
@@ -63,7 +63,7 @@ const Gridfr = styled.div`
 
 const Gridfr1 = styled.div`
     width: 100%;
-    height: fit-content;
+    height: auto;
 
     display: flex;
     flex-direction: row;

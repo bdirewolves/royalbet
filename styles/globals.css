@@ -248,46 +248,6 @@ em {
   position: absolute;
 }
 
-
-.item-1 {
-  background-image: url(/assets/img/burger/mini-spade.svg);
-  background-repeat: no-repeat;
-  background-size: 100%;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  animation: item-1_move 3s cubic-bezier(.6,.01,.4,1) infinite;
-}
-
-.item-2 {
-  background-image: url(/assets/img/burger/mini-diamond.svg);
-  background-repeat: no-repeat;
-  background-size: 100%;
-  top: 0;
-  right: 0;
-  animation: item-2_move 3s cubic-bezier(.6,.01,.4,1) infinite;
-}
-
-.item-3 {
-
-  background-image: url(/assets/img/burger/mini-heart.svg);
-  background-repeat: no-repeat;
-  background-size: 100%;
-  bottom: 0;
-  right: 0;
-  z-index: 1;
-  animation: item-3_move 3s cubic-bezier(.6,.01,.4,1) infinite;
-}
-
-.item-4 {
-  background-image: url(/assets/img/burger/mini-club.svg);
-  background-repeat: no-repeat;
-  background-size: 100%;
-  bottom: 0;
-  left: 0;
-  animation: item-4_move 3s cubic-bezier(.6,.01,.4,1) infinite;
-}
-
 @keyframes item-1_move {
   0%, 100% {
     transform: translate(0, 0)

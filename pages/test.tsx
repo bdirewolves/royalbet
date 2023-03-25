@@ -8,9 +8,17 @@ import ButtonHover from "@/components/_reduce/ButtonHover";
 import "aos/dist/aos.css";
 import AOS from "aos";
 import 'aos/dist/aos.css';
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import ModalComponent from "@/layouts/modal"
+import Information from "@/layouts/modal/information";
+
+interface IModalPage {
+    name: string;
+    element: any;
+}
 
 export default function RestPage(){
+    const [ modalPage, setModalPage ] = useState<IModalPage>({ name: "", element: null })
 
     useEffect(() => {
         AOS.init();
@@ -26,24 +34,43 @@ export default function RestPage(){
             </Head>
             <Content>
                 <Container>
-                    <TestImg data-aos="fade-up" src="https://placehold.co/500x500" />
+                    <TestBtn onClick={() => setModalPage({ name: "info", element: <Information modalPage={modalPage} setModalPage={setModalPage} /> })}>Click</TestBtn>
+                    <ModalComponent open={modalPage.element != null} close={setModalPage}>
+                        {modalPage.element}
+                    </ModalComponent>
                 </Container>
             </Content>
         </>
     )
 }
 
-const TestImg = styled.img`
-    width: 500px;
-    height: 500px;
+const TestBtn = styled.button`
+    border: none;
+    border-radius: 5px;
+
+    width: 200px;
+    height: 50px;
+
+    text-transform: uppercase;
+    transition: transform .15s linear;
+
+    background: rgba(255, 0, 0, 1);
+    color: rgba(255, 255, 255, 1);
+    cursor: pointer;
+
+    &:hover {
+        transform: scale(1.1);
+    }
 `
 
 const Container = styled.div`
     width: 100%;
     height: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 10px;
 `
 
 const Content = styled.main`

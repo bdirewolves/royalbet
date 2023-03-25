@@ -1,5 +1,5 @@
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
 import Link from "next/link";
@@ -15,7 +15,7 @@ export default function NewsSection () {
     const [ current, setCurrent ] = useState(0)
     const settings = {
         centerMode: true,
-        centerPadding: '55px',
+        centerPadding: '0',
         dots: false,
         infinite: true,
         speed: 1200,
@@ -63,7 +63,7 @@ export default function NewsSection () {
 
 const ContainerCarousel = styled.div`
     width: 100%;
-    height: fit-content;
+    height: auto;
 `
 
 const Box = styled.div<{ opacity: string }>`

@@ -71,7 +71,7 @@ const Desc = styled.p`
 
 const ContainerCarousel = styled.div`
     width: 100%;
-    height: fit-content;
+    height: auto;
 `
 
 const Box = styled.div<{ opacity: boolean }>`

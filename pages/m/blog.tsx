@@ -26,7 +26,7 @@ export default function BlogPage() {
 
 const Content = styled.main`
     width: 100%;
-    height: fit-content;
+    height: auto;
     max-width: 744px;
 
     display: flex;

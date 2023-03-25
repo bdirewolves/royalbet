@@ -7,6 +7,8 @@ import AOS from "aos"
 import "aos/dist/aos.css";
 import axios from "axios";
 import moment from "moment";
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
 
 interface IUserAccess {
   tokenType: string;

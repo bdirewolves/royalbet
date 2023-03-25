@@ -35,7 +35,7 @@ export default function BlogSection() {
 
 const DivFlexRow = styled.div`
     width: 100%;
-    height: fit-content;
+    height: auto;
 
     display: flex;
     flex-direction: column;

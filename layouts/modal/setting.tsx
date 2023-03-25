@@ -118,7 +118,7 @@ const TextHead = styled.p`
 
 const DivFlexinfo = styled.div`
     width: 100%;
-    height: fit-content;
+    height: auto;
 
     display: flex;
     flex-direction: column;
@@ -172,7 +172,7 @@ const TextEditBox = styled.p`
 
 const FlexUser = styled.div`
     width: 100%;
-    height: fit-content;
+    height: auto;
 
     display: flex;
     flex-direction: row;
@@ -196,7 +196,7 @@ const Textinfo = styled.p`
 
 const Flexmenu = styled.div`
     width: 71%;
-    height: fit-content;
+    height: auto;
 
     display: flex;
     flex-direction: column;

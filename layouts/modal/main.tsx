@@ -1,81 +1,137 @@
-import React from 'react'
+import React, { Dispatch, SetStateAction, useContext } from 'react'
 import styled from 'styled-components'
-import {AiFillStar} from "react-icons/ai"
+import { AiFillLock, AiOutlineClose, AiOutlineHistory, AiOutlineNotification, AiOutlineUser, AiOutlineUsergroupAdd,  } from "react-icons/ai"
 import { IoIosSettings } from "react-icons/io";
+import { AuthContext } from '@/pages/_app';
+import { HiCash } from 'react-icons/hi';
+import Affilate from './affilate';
+import ChangePass from './changePass';
+import Deposit from './deposit';
+import Information from './information';
+import Promotion from './promotion';
+import Statement from './statement';
 
-export default function Main() {
-  return (
-    <Modal>
-        <BgGrey />
-        <DivFlexHead>
-            <TextHead>โปรไฟล์</TextHead>
-        </DivFlexHead>
-        <DivFlexinfo>
-            <Boxinfo />
-            <Textinfo>Username</Textinfo>
-        </DivFlexinfo>
-        <Gridmenu>
-            <GridFr>
-                <DivFlexMenu>
-                    <BoxMenu>
-                        <AiFillStar size={32} color="#9DA3AD" />
-                    </BoxMenu>
-                    <TextMenu>ข้อมูลส่วนตัว</TextMenu>
-                </DivFlexMenu>
-                <GoldLine />
-            </GridFr>
-            <GridFr>
-                <DivFlexMenu>
-                    <BoxMenu>
-                        <AiFillStar size={32} color="#9DA3AD" />
-                    </BoxMenu>
-                    <TextMenu>เปลี่ยนรหัส</TextMenu>
-                </DivFlexMenu>
-                <GoldLine />
-            </GridFr>
-            <GridFr>
-                <DivFlexMenu>
-                    <BoxMenu>
-                        <AiFillStar size={32} color="#9DA3AD" />
-                    </BoxMenu>
-                    <TextMenu>สถิติการเล่น</TextMenu>
-                </DivFlexMenu>
-                <GoldLine />
-            </GridFr>
-            <GridFr>
-                <DivFlexMenu>
-                    <BoxMenu>
-                        <AiFillStar size={32} color="#9DA3AD" />
-                    </BoxMenu>
-                    <TextMenu>แนะนำเพือน</TextMenu>
-                </DivFlexMenu>
-                <GoldLine />
-            </GridFr>
-            <GridFr>
-                <DivFlexMenu>
-                    <BoxMenu>
-                        <AiFillStar size={32} color="#9DA3AD" />
-                    </BoxMenu>
-                    <TextMenu>โปรโมชั่น</TextMenu>
-                </DivFlexMenu>
-                <GoldLine />
-            </GridFr>
-            <GridFr>
-                <DivFlexMenu>
-                    <BoxMenu>
-                        <IoIosSettings size={32} color="#9DA3AD" />
-                    </BoxMenu>
-                    <TextMenu>ตั้งค่า</TextMenu>
-                </DivFlexMenu>
-                <GoldLine />
-            </GridFr>
-        </Gridmenu>
-        <DivFlexLogout>
-            <TextLogout>ออกจากระบบ</TextLogout>
-        </DivFlexLogout>
-    </Modal>
-  )
+interface IPage {
+    name: string;
+    element: any;
 }
+
+interface IProps {
+    modalPage: IPage;
+    setModalPage: Dispatch<SetStateAction<IPage>>;
+}
+
+export default function Main(props: IProps) {
+    const { userData, setUserAccess } = useContext(AuthContext)
+
+    const handleLogout = () => {
+        setUserAccess(null)
+        localStorage.removeItem("access")
+        localStorage.removeItem("telnum")
+        window.location.reload()
+    }
+
+    return (
+        <>
+            <Modal>
+                <BgGrey />
+                <DivFlexHead>
+                    <TextHead>โปรไฟล์</TextHead>
+                    <CloseBtn >
+                        <AiOutlineClose style={{ cursor: "pointer" }} size={15} color="Grey" onClick={() => props.setModalPage({ name: "", element: null })} />
+                    </CloseBtn>
+                </DivFlexHead>
+
+                <DivFlexinfo>
+                    <Boxinfo src="/assets/img/users/profile.png" />
+                    <Textinfo>{ userData.name }</Textinfo>
+                </DivFlexinfo>
+                <Gridmenu>
+                    <GridFr onClick={() => props.setModalPage({ name: "information", element: <Information modalPage={props.modalPage} setModalPage={props.setModalPage} />})}>
+                        <DivFlexMenu>
+                            <BoxMenu>
+                                <AiOutlineUser size={32} color="#9DA3AD" />
+                            </BoxMenu>
+                            <TextMenu>ข้อมูลส่วนตัว</TextMenu>
+                        </DivFlexMenu>
+                        <GoldLine />
+                    </GridFr>
+                    <GridFr onClick={() => props.setModalPage({ name: "changepass", element: <ChangePass modalPage={props.modalPage} setModalPage={props.setModalPage} />})}>
+                        <DivFlexMenu>
+                            <BoxMenu>
+                                <AiFillLock size={32} color="#9DA3AD" />
+                            </BoxMenu>
+                            <TextMenu>เปลี่ยนรหัส</TextMenu>
+                        </DivFlexMenu>
+                        <GoldLine />
+                    </GridFr>
+                    <GridFr onClick={() => props.setModalPage({ name: "deposit", element: <Deposit modalPage={props.modalPage} setModalPage={props.setModalPage}/>})}> 
+                        <DivFlexMenu>
+                            <BoxMenu>
+                                <HiCash size={32} color="#9DA3AD" />
+                            </BoxMenu>
+                            <TextMenu>ฝาก-ถอน</TextMenu>
+                        </DivFlexMenu>
+                        <GoldLine />
+                    </GridFr>
+                    <GridFr onClick={() => props.setModalPage({ name: "aff", element: <Affilate modalPage={props.modalPage} setModalPage={props.setModalPage} />})}>
+                        <DivFlexMenu>
+                            <BoxMenu>
+                                <AiOutlineUsergroupAdd size={32} color="#9DA3AD" />
+                            </BoxMenu>
+                            <TextMenu>แนะนำเพือน</TextMenu>
+                        </DivFlexMenu>
+                        <GoldLine />
+                    </GridFr>
+                    <GridFr onClick={() => props.setModalPage({ name: "promotion", element: <Promotion modalPage={props.modalPage} setModalPage={props.setModalPage}/>})}>
+                        <DivFlexMenu>
+                            <BoxMenu>
+                                <AiOutlineNotification size={32} color="#9DA3AD" />
+                            </BoxMenu>
+                            <TextMenu>โปรโมชั่น</TextMenu>
+                        </DivFlexMenu>
+                        <GoldLine />
+                    </GridFr>
+                    <GridFr onClick={() => props.setModalPage({ name: "statement", element: <Statement modalPage={props.modalPage} setModalPage={props.setModalPage}/>})}>
+                        <DivFlexMenu>
+                            <BoxMenu>
+                                <AiOutlineHistory size={32} color="#9DA3AD" />
+                            </BoxMenu>
+                            <TextMenu>ประวัติธุรกรรม</TextMenu>
+                        </DivFlexMenu>
+                        <GoldLine />
+                    </GridFr>
+                </Gridmenu>
+                <DivFlexLogout onClick={handleLogout}>
+                    <TextLogout>ออกจากระบบ</TextLogout>
+                </DivFlexLogout>
+                
+            </Modal>
+            <Overlay onClick={() => props.setModalPage({ name: "", element: null })} />
+        </>
+    )
+}
+
+const Overlay = styled.div`
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+
+    width: 100vw;
+    height: 100vh;
+
+    background: rgba(0, 0, 0, 0.4);
+`
+
+const CloseBtn = styled.button`
+    position: absolute;
+    top: 11px;
+    right: 16px;
+
+    border: none;
+    background: none;
+`
 
 const Modal = styled.div`
     width: 320px;
@@ -140,7 +196,7 @@ const TextHead = styled.p`
 
 const DivFlexinfo = styled.div`
     width: 100%;
-    height: fit-content;
+    height: auto;
 
     display: flex;
     flex-direction: column;
@@ -152,7 +208,7 @@ const DivFlexinfo = styled.div`
     z-index: 2;
 `
 
-const Boxinfo = styled.div`
+const Boxinfo = styled.img`
     width: 80px;
     height: 80px;
 
@@ -175,7 +231,7 @@ const Textinfo = styled.p`
 
 const Gridmenu = styled.div`
     width: 85%;
-    height: fit-content;
+    height: auto;
 
     display: grid;
     grid-template-columns: repeat(3 ,1fr);
@@ -187,7 +243,7 @@ const Gridmenu = styled.div`
 
 const GridFr = styled.div`
     width: 100%;
-    height: fit-content;
+    height: auto;
 
     display: flex;
     flex-direction: column;

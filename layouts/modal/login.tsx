@@ -61,7 +61,7 @@ export default function Login(props: IProps) {
 
     return (
         <>
-            <Overlay onClick={() => props.setModalPage({ name: "", element: null })} />
+            <Overlay open={props.modalPage.name === "login"} onClick={() => props.setModalPage({ name: "", element: null })} />
             <Modal>
                 <IconX>
                     <AiOutlineClose size={20} onClick={() => props.setModalPage({ name: "", element: null })} />
@@ -143,7 +143,7 @@ export default function Login(props: IProps) {
     )
 }
 
-const Overlay = styled.div`
+const Overlay = styled.div<{ open: boolean }>`
     width: 100vw;
     height: 100vh;
 
@@ -152,7 +152,21 @@ const Overlay = styled.div`
     left: 0;
     z-index: 30;
 
-    background: rgba(0,0,0,0.4);
+    background: rgba(0,0,0,0.9);
+
+    ${props => props.open ?
+        `
+            visibility: visible;
+            opacity: 1;
+            transition: visibility 0.2s, opacity 0.2s linear;
+        `
+        :
+        `
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0.2s, opacity 0.2s linear;
+        `
+    }
 `
 
 const Modal = styled.div`

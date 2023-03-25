@@ -15,12 +15,6 @@ export default function ButtonGradient({ children, onClick }: IProps) {
     )
 }
 
-const slide = keyframes`
-    to {
-        background-position: 100% 50%;
-    }
-`
-
 const Button = styled.button`
     padding: 4px 13px;
     border: 0.5px solid #fff;

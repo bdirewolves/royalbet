@@ -1,5 +1,5 @@
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
 import Link from "next/link";
@@ -20,7 +20,6 @@ export default function HeroSection () {
     };
     return(
         <Container>
-
             <DivFlexRow>
                 {/* Carousel */}
                 <ContainerCarousel>
@@ -39,7 +38,7 @@ export default function HeroSection () {
                     </Slider>
                 </ContainerCarousel>
                 <TextContent>
-                        {/* Title */}
+                    {/* Title */}
                     <Title data-aos="fade-up" data-aos-duration="500">
                         บาคาร่าเว็บตรง<br />สมัครบาคาร่า ออนไลน์<br/>RoyalBet
                     </Title>
@@ -67,7 +66,6 @@ const DivFlexRow = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
     gap: 10px;
 
     @media (min-width: 1280px) {
@@ -77,7 +75,7 @@ const DivFlexRow = styled.div`
 
 const ContainerCarousel = styled.div`
     width: 100%;
-    height: fit-content;
+    height: auto;
 
     @media (min-width: 1280px) {
         width: 675.56px;
@@ -91,44 +89,39 @@ const ContainerCarousel = styled.div`
 `
 
 const Box = styled.div`
+    margin: 0 auto;
+    border-radius: 2.52632px;
     width: 100%;
     height: auto;
     aspect-ratio: 320/133.33;
+    overflow: hidden;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-    margin: 0 auto;
-    overflow: hidden;
-
-    border-radius: 2.52632px;
 
     @media (min-width: 1280px) {
         border-radius: 6px;
     }
-    
 `
 
 const TextContent = styled.div`
+    border-radius: 6px;
+    max-width: 650px;
     width: 95%;
     height: 315px;
-    max-width: 650px;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
-    border-radius: 6px;
 
     background-color: #100F14;
 
     @media (min-width: 1280px) {
         width: 480px;
         height: 279.71px;
-
     }
     
     @media (min-width: 1440px) {
@@ -138,26 +131,25 @@ const TextContent = styled.div`
 `
 
 const Title = styled.h1`
+    padding-top: 10px;
+
     font-family: 'Sukhumvit Set';
     font-weight: 700;
     font-size: 30px;
     line-height: 38px;
-
     text-align: center;
-
-    padding-top: 10px;
 `
 
 const Content = styled.p`
+    padding-top: 10px;
+
     font-family: 'Sukhumvit Set';
     font-weight: 400;
     font-size: 12px;
     line-height: 19px;
-    
     text-align: center;    
-    color: #fff;
 
-    padding-top: 10px;
+    color: #fff;
 `
 
 const ContainerButton = styled.div`
@@ -175,6 +167,5 @@ const ContainerButton = styled.div`
 const PicProMobile = styled.img`
     width: 100%;
     height: 100%;
-
 `
 

@@ -41,30 +41,28 @@ export default function HowtoSection(){
 }
 
 const DivGrid = styled.div`
+    position: relative;
+
     width: 100%;
     height: auto;
     aspect-ratio: 320/59.35;
-
-    position: relative;
+    overflow: hidden;
 
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     justify-content: center;
     align-items: center;
 
-    overflow: hidden;
-
     background: linear-gradient(90deg, #161616 -1.37%, #202020 100%);
 
     @media (min-width: 1280px) {
-        width: 91%;
-        aspect-ratio: 1164.44/124.44;
-        max-width: 1164.44px;
-
-        grid-template-columns: repeat(4, 1fr);
-
         border: 1px solid #000000;
         border-radius: 10px;
+        max-width: 1164.44px;
+        width: 91%;
+        aspect-ratio: 1164.44/124.44;
+
+        grid-template-columns: repeat(4, 1fr);
 
         background: linear-gradient(90deg, #161616 -1.37%, #202020 100%);
     }
@@ -75,29 +73,27 @@ const DivGrid = styled.div`
 `
 
 const Gridfr = styled.div`
-    cursor: auto;
+    border-right: 1px solid white;
     width: 100%;
-    height: fit-content;
-
+    height: auto;
+    
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-
     gap: 5px;
-
-    border-right: 1px solid white;
+    
+    cursor: auto;
 `
 
 const Gridfr1 = styled.div`
     width: 100%;
-    height: fit-content;
+    height: auto;
 
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-
     gap: 5px;
 `
 
@@ -150,8 +146,6 @@ const Gridfr2 = styled.div`
     z-index: 2;
 
     @media (min-width: 1280px) {
-        display: block;
-
         display: flex;
         flex-direction: row;
         justify-content: flex-end;
@@ -160,6 +154,8 @@ const Gridfr2 = styled.div`
 `
 
 const ButtonGold = styled.div`
+    margin-right: 15%;
+    border-radius: 5px;
     width: 33%;
     height: auto;
     aspect-ratio: 97/30;
@@ -169,23 +165,18 @@ const ButtonGold = styled.div`
     justify-content: center;
     align-items: center;
     
-    margin-right: 15%;
-
     background: linear-gradient(90deg, #D2BB6E 0%, #F6E79A 100%);
-    border-radius: 5px;
-    
 `
 
 const Dothow = styled.img`
+    position: absolute;
+    right: 0;
+    z-index: 1;
+
     width: 25%;
     height: 100%;
 
-    position: absolute;
-    right: 0;
-
     display: none;
-
-    z-index: 1;
 
     @media (min-width: 1280px) {
         display: block;

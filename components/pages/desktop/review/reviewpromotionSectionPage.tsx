@@ -17,7 +17,7 @@ export default function ReviewPromotionPageSection() {
 
 const Container = styled.section`
     width: 100%;
-    height: fit-content;
+    height: auto;
     max-width: 744px;
 
     display: flex;
@@ -38,7 +38,7 @@ const Container = styled.section`
 
 const DivFlex = styled.div`
     width: 95%;
-    height: fit-content;
+    height: auto;
     max-width: 650px;
 
     display: flex;

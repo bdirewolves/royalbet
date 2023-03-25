@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import Titletype from "@/components/_reduce/Divtitle";
 import { Container, FixWidth } from "@/components/_reduce/Reduce";
@@ -74,11 +74,12 @@ export default function ReviewSection() {
 }
 
 const DivText = styled.div`
+    position: absolute;
+    bottom: 10%;
+
     width: 90%;
     height: auto;
 
-    position: absolute;
-    bottom: 10%;
 `
 
 const GoldPic = styled.div`

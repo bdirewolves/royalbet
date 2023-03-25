@@ -62,7 +62,7 @@ export default function HeroSection () {
 
 const ContainerCarousel = styled.div`
     width: 100%;
-    height: fit-content;
+    height: auto;
 `
 
 const Box = styled.div`

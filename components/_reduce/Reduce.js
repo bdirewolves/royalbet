@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export const Container = styled.section`
     width: 100%;
-    height: fit-content;
+    height: auto;
     max-width: 744px;
 
     display: flex;
@@ -49,17 +49,6 @@ export const Pictitle = styled.img`
     transform: translateX(-50%);
 
     transition-duration: .3s;
-/* 
-    @media (min-width: 430px) {
-        width: 67.67px;
-        height: 63px;
-    }
-
-    @media (min-width: 744px) {
-        width: 78.25px;
-        height: 70px;
-    } */
-
 `
 
 export const ButtonNews = styled.button`
@@ -76,12 +65,8 @@ export const ButtonNews = styled.button`
     
 
     &:hover{
-
         background: rgba(97, 255, 189, 0.05), #00201E;
-        /* background: linear-gradient(0deg, rgba(97, 255, 189, 0.05), 
-        rgba(97, 255, 189, 0.05)), #00201E; */
         color: #61FFBD;
-
         transition: ease-out;
         transition-duration: 300ms;
 
@@ -90,7 +75,7 @@ export const ButtonNews = styled.button`
 
 export const Button = styled.button`
 
-    width: fit-content;
+    width: auto;
     padding: 0 23px;
 
     background: transparent;

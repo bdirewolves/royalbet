@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import Titletype from "@/components/_reduce/Divtitle";
 import { Container, FixWidth } from "@/components/_reduce/Reduce";
@@ -117,12 +117,12 @@ export default function GameSlotSection () {
 
 const ContainerCarousel = styled.div`
     width: 100%;
-    height: fit-content;
+    height: auto;
 `
 
 const DivGrid = styled.div`
     width: 100%;
-    height: fit-content;
+    height: auto;
     max-width: 650px;
 
     display: grid;

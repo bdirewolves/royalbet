@@ -112,7 +112,7 @@ const Title = styled.h2`
 
 const DivFlexContent = styled.div`
     width: 100%;
-    height: fit-content;
+    height: auto;
 
     display: flex;
     flex-direction: column;
@@ -125,7 +125,7 @@ const DivFlexContent = styled.div`
 
 const DivContentBlog = styled.div`
     width: 100%;
-    height: fit-content;
+    height: auto;
 
     display: flex;
     flex-direction: row;
@@ -163,7 +163,7 @@ const DivTextContentBlog1 = styled.div`
 
 const TextContentBlog = styled.h2<{isActive: boolean}>`
     width: 100%;
-    height: fit-content;
+    height: auto;
     
     font-family: 'Prompt';
     font-style: normal;
@@ -188,7 +188,7 @@ const TextContentBlog = styled.h2<{isActive: boolean}>`
 
 const TextContentBlog1 = styled.h3`
     width: 100%;
-    height: fit-content;
+    height: auto;
     
     font-family: 'Prompt';
     font-style: normal;
@@ -212,7 +212,7 @@ const DivBlogContent = styled.div<{ isActive?: boolean }>`
     width: 100%;
     height: 40px;
 
-    max-height: fit-content;
+    max-height: auto;
     padding-top: 7px;
 
     display: flex;

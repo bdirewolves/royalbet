@@ -357,7 +357,7 @@ const TextHead = styled.p`
 
 const Flexmenu = styled.div`
     width: 100%;
-    height: fit-content;
+    height: auto;
 
     display: flex;
     flex-direction: column;

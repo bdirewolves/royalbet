@@ -1,10 +1,9 @@
 import styled from "styled-components"
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import Titletype from "@/components/_reduce/Divtitle";
 import { Container, FixWidth } from "@/components/_reduce/Reduce";
-import { casinoContent } from "@/constants/casino";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
@@ -84,20 +83,20 @@ export default function GameCasinoSection () {
 
 const ContainerCarousel = styled.div`
     width: 100%;
-    height: fit-content;
+    height: auto;
 `
 
 const DivGrid = styled.div`
-    width: 100%;
-    height: fit-content;
+    margin: auto;
     max-width: 650px;
+    width: 100%;
+    height: auto;
 
     display: grid;
     grid-template-columns: repeat(2, 3fr);
     justify-content: center;
     align-items: center;
 
-    margin: auto;
     gap: 10px;
 
     @media (min-width: 744px) {
@@ -116,47 +115,25 @@ const DivGrid = styled.div`
 `
 
 const GridFr = styled.div`
-    cursor: pointer;
+    position: relative;
+
     width: 100%;
     height: auto;
     aspect-ratio: 145/130;
-
-    position: relative;
-
     border-radius: 10px;
-
     overflow: hidden;
+    
     transition-duration: 300ms;
-
+    
     @media (min-width: 744px) {
         aspect-ratio: 210/150;
     }
+
+    cursor: pointer;
 
     &:hover {
         transition-duration: 300ms;
         box-shadow: rgba(255, 255, 255, 0.35) 0px 5px 15px;
-    }
-`
-
-const GridFr1 = styled.div`
-    width: 100%;
-    height: auto;
-    aspect-ratio: 145/130;
-
-    position: relative;
-
-    display: none;
-
-    border-radius: 5px;
-
-    overflow: hidden;
-
-    @media (min-width: 744px) {
-        aspect-ratio: 210/150;
-    }
-
-    @media (min-width: 1280px) {
-        display: block;
     }
 `
 

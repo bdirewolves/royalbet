@@ -114,7 +114,7 @@ export default function ReviewMainSectionPage() {
 
 const Container = styled.section`
     width: 100%;
-    height: fit-content;
+    height: auto;
     max-width: 744px;
 
     display: flex;

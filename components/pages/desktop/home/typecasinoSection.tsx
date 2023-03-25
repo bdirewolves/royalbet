@@ -43,15 +43,14 @@ export default function TypeCasinoSection () {
 }
 
 const DivFlex = styled.div`
-    width: 100%;
-    height: fit-content;
     max-width: 650px;
+    width: 100%;
+    height: auto;
 
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-
     gap: 10px;
 
     @media (min-width: 1280px) {
@@ -64,22 +63,20 @@ const DivFlex = styled.div`
 `
 
 const Box = styled.div`
-    cursor: pointer;
-    width: 100%;
-    height: auto;
-    aspect-ratio: 52/58.31;
-
     position: relative;
 
     border-radius: 10px;
-
+    width: 100%;
+    height: auto;
+    aspect-ratio: 52/58.31;
     overflow: hidden;
-
+    
     display: flex;
     justify-content: center;
     align-items: center;
-
+    
     background: radial-gradient(50% 50% at 50% 50%, #3E3E3E 0%, #100F14 100%);
+    cursor: pointer;
 
     @media (min-width: 1280px) {
         border-radius: 5px;
@@ -87,39 +84,14 @@ const Box = styled.div`
 `
 
 const PicBox = styled.img`
+    border-radius: 10px;
     width: 100%;
     height: auto;
-    border-radius: 10px;
-    /* aspect-ratio: 133/126.84; */
+    
     transition-duration: 300ms;
     
     &:hover {
-        transition-duration: 300ms;
         transform: scale(1.1);
+        transition-duration: 300ms;
     }
-`
-
-const DivText = styled.div`
-    width: 100%;
-    height: auto;
-    aspect-ratio: 132.51/19.89;
-
-    position: absolute;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-`
-
-const Text = styled.p`
-    font-family: 'Prompt';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 9.77939px;
-    line-height: 15px;
-
-    margin: 0;
-
-    color: white;
 `

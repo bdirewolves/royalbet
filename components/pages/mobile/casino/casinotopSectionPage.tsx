@@ -56,7 +56,7 @@ export default function CasinoTopSectionPage() {
 
 const DivGrid = styled.div`
     width: 100%;
-    height: fit-content;
+    height: auto;
     max-width: 744px;
 
     display: grid;
@@ -107,7 +107,7 @@ const DivFlex = styled.div`
 
 const ContainerCarousel = styled.div`
     width: 100%;
-    height: fit-content;
+    height: auto;
 `
 
 const DivGame = styled.div`

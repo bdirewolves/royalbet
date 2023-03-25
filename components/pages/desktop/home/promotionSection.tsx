@@ -29,7 +29,7 @@ export default function PromotionSection() {
 
 const DivFlex = styled.div`
     width: 100%;
-    height: fit-content;
+    height: auto;
     max-width: 650px;
 
     display: flex;
