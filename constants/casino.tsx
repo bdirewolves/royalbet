@@ -1,4 +1,105 @@
 
+export const slotHomepage = [
+    {
+        name: "Treasures of Aztec",
+        img: "/assets/img/homepage/slot/slot-1.jpg"
+    },
+    {
+        name: "Buffalo Win",
+        img: "/assets/img/homepage/slot/slot-2.jpg"
+    },
+    {
+        name: "Rooster Rumble",
+        img: "/assets/img/homepage/slot/slot-3.jpg"
+    },
+    {
+        name: "Monkey King",
+        img: "/assets/img/homepage/slot/slot-4.jpg"
+    },
+    {
+        name: "Spaceman",
+        img: "/assets/img/homepage/slot/slot-5.jpg"
+    },
+    {
+        name: "Sweet Bonanza",
+        img: "/assets/img/homepage/slot/slot-6.jpg"
+    },
+    {
+        name: "Sugar Rush",
+        img: "/assets/img/homepage/slot/slot-7.jpg"
+    },
+    {
+        name: "Lucky Piggy",
+        img: "/assets/img/homepage/slot/slot-8.jpg"
+    },
+    {
+        name: "Money train 2",
+        img: "/assets/img/homepage/slot/slot-9.jpg"
+    },
+    {
+        name: "the Dog house",
+        img: "/assets/img/homepage/slot/slot-10.jpg"
+    },
+    {
+        name: "Wild West Gold",
+        img: "/assets/img/homepage/slot/slot-11.jpg"
+    },
+    {
+        name: "Bigger Bass",
+        img: "/assets/img/homepage/slot/slot-12.jpg"
+    },
+]
+
+export const casinoHomePage = [
+    {
+        name: "SA Baccarat",
+        img: "/assets/img/homepage/casino/casino-1.jpg"
+    },
+    {
+        name: "SA Dragon Tiger",
+        img: "/assets/img/homepage/casino/casino-2.jpg"
+    },
+    {
+        name: "PP Baccarat A",
+        img: "/assets/img/homepage/casino/casino-3.jpg"
+    },
+    {
+        name: "PP Baccarat B",
+        img: "/assets/img/homepage/casino/casino-4.jpg"
+    },
+    {
+        name: "PP Speed Baccarat A",
+        img: "/assets/img/homepage/casino/casino-5.jpg"
+    },
+    {
+        name: "PP Speed Baccarat B",
+        img: "/assets/img/homepage/casino/casino-6.jpg"
+    },
+    {
+        name: "SA Gaming",
+        img: "/assets/img/homepage/casino/casino-7.jpg"
+    },
+    {
+        name: "PP Blackjack A",
+        img: "/assets/img/homepage/casino/casino-8.jpg"
+    },
+    {
+        name: "PP Blackjack B",
+        img: "/assets/img/homepage/casino/casino-9.jpg"
+    },
+    {
+        name: "PP Blackjack C",
+        img: "/assets/img/homepage/casino/casino-10.jpg"
+    },
+    {
+        name: "PP Blackjack D",
+        img: "/assets/img/homepage/casino/casino-11.jpg"
+    },
+    {
+        name: "PP Blackjack E",
+        img: "/assets/img/homepage/casino/casino-12.jpg"
+    },
+]
 
 export const casinoContent = {
     show: [

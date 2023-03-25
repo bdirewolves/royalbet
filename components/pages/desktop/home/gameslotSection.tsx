@@ -8,6 +8,7 @@ import { casinoContent } from "@/constants/casino";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
+import { slotHomepage } from "@/constants/casino";
 
 interface IProviders {
     id: number;
@@ -62,33 +63,17 @@ export default function GameSlotSection () {
                         <div>
                             <DivGrid>
                                 {
-                                    providers.slice(0, 12).map((item, index) => (
+                                    slotHomepage.map((item, index) => (
                                         <GridFr key={index}>
                                             <DivPicPro>
                                                 <PicPro
-                                                    src={`/assets/img/icon/providers/slot/${item.name}.png`}
+                                                    src={item.img}
                                                     onError={ (e) => handleOnError(e, item.name)}
                                                 />
                                             </DivPicPro>
-                                            <BoxText />
-                                            <GoldPic />
-                                        </GridFr>
-                                    ))
-                                }
-                            </DivGrid>
-                        </div>
-                        <div>
-                            <DivGrid>
-                                {
-                                    providers.slice(12, 24).map((item, index) => (
-                                        <GridFr key={index}>
-                                            <DivPicPro>
-                                                <PicPro
-                                                    src={`/assets/img/icon/providers/slot/${item.name}.png`}
-                                                    onError={ (e) => handleOnError(e, item.name)}
-                                                />
-                                            </DivPicPro>
-                                            <BoxText />
+                                            <BoxText>
+                                                {item.name}
+                                            </BoxText>
                                             <GoldPic />
                                         </GridFr>
                                     ))
@@ -211,6 +196,7 @@ const PicPro = styled.img`
 `
 
 const BoxText = styled.div`
+    padding-left: 10px;
     width: 100%;
     height: auto;
     aspect-ratio: 145/17.26;
@@ -222,6 +208,7 @@ const BoxText = styled.div`
     z-index: 2;
 
     background: linear-gradient(180deg, #3E3E3E 0%, #100F14 100%);
+    color: #fff;
 `
 
 const GoldPic = styled.div`

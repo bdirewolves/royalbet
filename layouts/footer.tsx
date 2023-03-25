@@ -13,30 +13,34 @@ export default function Footer() {
                     <LogoM src="/assets/img/logo.png"/>
                     <Logo src="/assets/img/logorow.png"/>
                 </DivLogo>
-                <FooterMenu>
-                    <FooterMenuTitle>
-                        หน้าทั้งหมด
-                    </FooterMenuTitle>
-                    <Menu>
-                        <MenuItem href="/">หน้าแรก</MenuItem>
-                        <MenuItem href="/">เกี่ยวกับเรา</MenuItem>
-                        <MenuItem href="/promotion">โปรโมชั่น</MenuItem>
-                        <MenuItem href="/">เกมส์</MenuItem>
-                        <MenuItem href="/">คู่มือ</MenuItem>
-                        <MenuItem href="/">บทความ</MenuItem>
-                        <MenuItem href="/">รีวิว</MenuItem>
-                    </Menu>
-                </FooterMenu>
-                <FooterPartner>
-                    <FooterProviderTitle>
-                        ช่องทางการชำระเงิน
-                    </FooterProviderTitle>
-                    <FooterProviderContent>
-                        <FooterProviderContentItem src='/assets/img/payment-1.png' />
-                        <FooterProviderContentItem src='/assets/img/payment-2.png' />
-                        <FooterProviderContentItem src='/assets/img/payment-3.png' />
-                    </FooterProviderContent>
-                </FooterPartner>
+
+                <FlexUnderLogo>
+                    <FooterMenu>
+                        <FooterMenuTitle>
+                            หน้าทั้งหมด
+                        </FooterMenuTitle>
+                        <Menu>
+                            <MenuItem href="/">หน้าแรก</MenuItem>
+                            <MenuItem href="/">เกี่ยวกับเรา</MenuItem>
+                            <MenuItem href="/promotion">โปรโมชั่น</MenuItem>
+                            <MenuItem href="/">เกมส์</MenuItem>
+                            <MenuItem href="/">คู่มือ</MenuItem>
+                            <MenuItem href="/">บทความ</MenuItem>
+                            <MenuItem href="/">รีวิว</MenuItem>
+                        </Menu>
+                    </FooterMenu>
+                    <FooterPartner>
+                        <FooterProviderTitle>
+                            ช่องทางการชำระเงิน
+                        </FooterProviderTitle>
+                        <FooterProviderContent>
+                            <FooterProviderContentItem src='/assets/img/payment-1.png' />
+                            <FooterProviderContentItem src='/assets/img/payment-2.png' />
+                            <FooterProviderContentItem src='/assets/img/payment-3.png' />
+                        </FooterProviderContent>
+                    </FooterPartner>
+                </FlexUnderLogo>
+
             </FlexGroup1>
 
             <FooterProvider>
@@ -102,6 +106,15 @@ export default function Footer() {
         </Background>
     )
 }
+
+const FlexUnderLogo = styled.div`
+    display: flex;
+    flex-direction: column;
+
+    @media (min-width: 1440px) {
+        flex-direction: row;
+    }
+`
 
 const BigPart = styled.div`
     max-width: 250px;
@@ -219,6 +232,7 @@ const FooterPartner = styled.div`
     }
 
     @media (min-width: 1440px) {
+        transform: translateY(-40%);
         justify-content: flex-end;
         align-items: flex-end;
 
@@ -251,7 +265,7 @@ const LogoM = styled.img`
     width: 100%;
     height: 100%;
 
-    @media (min-width: 1440px) {
+    @media (min-width: 744px) {
         display: none;
     }
 `
@@ -260,7 +274,7 @@ const Logo = styled.img`
     width: 100%;
     height: 100%;
 
-    @media (max-width: 1440px) {
+    @media (max-width: 743px) {
         display: none;
     }
 `
@@ -342,12 +356,10 @@ const Menu = styled.div`
     align-items: center;
     
     @media (min-width: 744px) {
-        max-width: 400px;
+        max-width: 500px;
 
         display: flex;
-        justify-content: center;
-        
-        gap: 20px;
+        justify-content: space-around;
     }
 
     @media (min-width: 1440px) {

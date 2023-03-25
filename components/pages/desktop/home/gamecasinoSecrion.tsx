@@ -7,6 +7,7 @@ import { Container, FixWidth } from "@/components/_reduce/Reduce";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import { casinoHomePage } from "@/constants/casino";
 
 interface IProviders {
     id: number;
@@ -59,15 +60,15 @@ export default function GameCasinoSection () {
                         <div>
                             <DivGrid>
                                 {
-                                    providers.slice(0, 12).map((item, index) => (
+                                    casinoHomePage.map((item, index) => (
                                         <GridFr key={index}>
                                             <DivPicPro>
                                                 <PicPro
-                                                    src={`/assets/img/icon/providers/casino/${item.name}.png`}
+                                                    src={item.img}
                                                     onError={ (e) => handleOnError(e, item.name)}
                                                 />
                                             </DivPicPro>
-                                            <BoxText />
+                                            <BoxText>{item.name}</BoxText>
                                             <GoldPic />
                                         </GridFr>
                                     ))
@@ -153,6 +154,7 @@ const PicPro = styled.img`
 `
 
 const BoxText = styled.div`
+    padding-left: 10px;
     width: 100%;
     height: auto;
     aspect-ratio: 145/17.26;
@@ -164,6 +166,7 @@ const BoxText = styled.div`
     z-index: 2;
 
     background: linear-gradient(180deg, #3E3E3E 0%, #100F14 100%);
+    color: #fff;
 `
 
 const GoldPic = styled.div`
