@@ -39,7 +39,6 @@ export default function Footer() {
                 </FooterPartner>
             </FlexGroup1>
 
-            
             <FooterProvider>
                 <FooterProviderTitle>
                     ค่ายเกม
@@ -84,11 +83,14 @@ export default function Footer() {
                     </FlexCircle>
                 </FlexGroupContent>
                 <FlexPartner>
-                    <PartnerItem src="/assets/img/provider/provider-1.png" alt="" />
-                    <PartnerItem src="/assets/img/provider/provider-2.png" alt="" />
-                    <PartnerItem src="/assets/img/provider/provider-3.png" alt="" />
-                    <PartnerItem src="/assets/img/provider/provider-4.png" alt="" />
+                    <PartnerItem src="/assets/img/partner/ga.png" alt="" />
+                    <PartnerItem src="/assets/img/partner/bmm.png" alt="" />
+                    <PartnerItem src="/assets/img/partner/gc.png" alt="" />
+                    <PartnerItem src="/assets/img/partner/mga.png" alt="" />
                 </FlexPartner>
+                <BigPart>
+                    <PartnerItem style={{ minWidth: '200px', minHeight: "46px" }} src="/assets/img/partner/beg.png" alt="" />
+                </BigPart>
             </FlexGroup>
 
             <FooterText>
@@ -101,11 +103,29 @@ export default function Footer() {
     )
 }
 
+const BigPart = styled.div`
+    max-width: 250px;
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`
+
 const FlexGroup1 = styled.div`
     width: 100%;
     height: auto;
 
-    display: grid;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    @media (min-width: 744px) {
+        padding-bottom: 20px;
+    }
+
+    /* display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(3, 1fr);
     grid-column-gap: 0px;
@@ -117,7 +137,7 @@ const FlexGroup1 = styled.div`
         grid-template-rows: repeat(2, 1fr);
         grid-column-gap: 0px;
         grid-row-gap: 0px;
-    }
+    } */
 `
 
 const FlexGroupContent = styled.div`
@@ -153,6 +173,8 @@ const FlexPartner = styled.div`
 
 const FooterProviderContentItem = styled.img`
     position: relative;
+    min-width: 83px;
+    min-height: 26px;
     width: auto;
     height: 15px;
 `
@@ -176,7 +198,9 @@ const FooterProviderTitle = styled.h2`
 `
 
 const FooterProvider = styled.div`
-    
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 `
 
 const FooterPartner = styled.div`
@@ -189,6 +213,10 @@ const FooterPartner = styled.div`
     justify-content: center;
 
     grid-area: 3 / 1 / 4 / 2;
+
+    @media (min-width: 744px) {
+        gap: 20px;
+    }
 
     @media (min-width: 1440px) {
         justify-content: flex-end;
@@ -307,12 +335,15 @@ const MenuItem = styled(Link)`
 `
 
 const Menu = styled.div`
+    width: 100%;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     justify-items: center;
     align-items: center;
     
     @media (min-width: 744px) {
+        max-width: 400px;
+
         display: flex;
         justify-content: center;
         
@@ -327,11 +358,11 @@ const Menu = styled.div`
 `
 
 const FooterMenuTitle = styled.h2`
-    font-family: "Sukhumvit Set";
-    font-size: 14px;
+    font-family: 'Sukhumvit Set';
+    font-style: normal;
     font-weight: 700;
-    color: #fff;
-    text-align: center;
+    font-size: 14px;
+    line-height: 28px;
 `
 
 const FooterMenu = styled.div`
@@ -367,7 +398,13 @@ const FooterMenu = styled.div`
 const Background = styled.footer`
     padding: 30px 10px 0 10px;
     width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
     transition-duration: 300ms;
+
     background: linear-gradient(0deg, #1C1C1C 2.79%, #060606 95.77%);
 
     @media (max-width: 1023px) {

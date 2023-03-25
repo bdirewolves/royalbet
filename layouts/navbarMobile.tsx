@@ -7,6 +7,9 @@ import Statement from "./modal/statement";
 import Deposit from "./modal/deposit";
 import { AuthContext } from "@/pages/_app";
 import Swal from "sweetalert2";
+import Button from "@/components/_reduce/Button";
+import Login from "./modal/login";
+import Register from "./modal/register";
 
 interface IPage {
     name: string;
@@ -20,10 +23,10 @@ interface IProps {
     setShowHamburger: Dispatch<SetStateAction<boolean>>;
 }
 
-export default function NavbarMobile (props: IProps) {
+export default function NavbarMobile ({ modalPage, setModalPage, showHamburger, setShowHamburger }: IProps) {
     const router = useRouter()
     const [ current, setCurrent ] = useState<number>(0)
-    const { userData } = useContext(AuthContext)
+    const { userAccess, userData } = useContext(AuthContext)
  
     const Goto = (index: number, path: string) => {
         setCurrent(index)
@@ -40,11 +43,11 @@ export default function NavbarMobile (props: IProps) {
             })
         }else{
             switch(name) {
-                case "information": props.setModalPage({ name: "information", element: <Information modalPage={props.modalPage} setModalPage={props.setModalPage} /> });
+                case "information": setModalPage({ name: "information", element: <Information modalPage={modalPage} setModalPage={setModalPage} /> });
                     break;
-                case "statement": props.setModalPage({ name: "statement", element: <Statement modalPage={props.modalPage} setModalPage={props.setModalPage} /> });
+                case "statement": setModalPage({ name: "statement", element: <Statement modalPage={modalPage} setModalPage={setModalPage} /> });
                     break;
-                case "deposit": props.setModalPage({ name: "deposit", element: <Deposit modalPage={props.modalPage} setModalPage={props.setModalPage} /> })
+                case "deposit": setModalPage({ name: "deposit", element: <Deposit modalPage={modalPage} setModalPage={setModalPage} /> })
                     break;
                 case "game": router.push("/casino");
                     break;
@@ -56,84 +59,122 @@ export default function NavbarMobile (props: IProps) {
         }
     }
 
-    // useEffect(() => {
-    //     switch(router.asPath) {
-    //         case "/": setCurrent(0);
-    //             break;
-    //         case "/": setCurrent(1);
-    //             break;
-    //         case "/": setCurrent(2);
-    //             break;
-    //         case "/": setCurrent(3);
-    //             break;
-    //         case "/": setCurrent(4);
-    //             break;
-    //         case "/m": setCurrent(0);
-    //             break;
-    //         case "/m/": setCurrent(1);
-    //             break;
-    //         case "/m/": setCurrent(2);
-    //             break;
-    //         case "/m/": setCurrent(3);
-    //             break;
-    //         case "/m/": setCurrent(4);
-    //             break;
-    //         default: setCurrent(0);
-    //             break;
-    //     }
-    // }, [router.isReady])
-
     return(
         <Background>
-            <MenuList>
-                <MenuItem onClick={() => checkAccess("information")}>
-                    <DivIcon>
-                        <Icon size={16} src="/assets/img/icon/user.svg" />
-                    </DivIcon>
-                    <Span>
-                        โปรไฟล์
-                    </Span>
-                </MenuItem>
-                <MenuItem onClick={() => checkAccess("statement")}>
-                    <DivIcon>
-                        <Icon isActive={current == 2} size={16} src="/assets/img/icon/transactions.svg" />
-                    </DivIcon>
-                    <Span>
-                        ประวัติธุรกรรม
-                    </Span>
-                </MenuItem>
-                <MenuItem onClick={() => checkAccess("game")}>
-                    <DivIcon>
-                        <IconAnimation src="/assets/img/icon/games.png" />
-                    </DivIcon>
-                    <Span>
-                        เล่นเกมส์
-                    </Span>
-                </MenuItem>
-                <MenuItem onClick={() => checkAccess("deposit")}>
-                    <DivIcon>
-                        <Icon isActive={current == 3} src="/assets/img/icon/transfer.svg" />
-                    </DivIcon>
-                    <Span>
-                        ฝาก-ถอน
-                    </Span>
-                </MenuItem>
-                <MenuItem onClick={() => checkAccess("contact")}>
-                    <DivIcon>
-                        <Icon isActive={current == 4} src="/assets/img/icon/contact.svg" />
-                    </DivIcon>
-                    <Span>
-                        ติดต่อแอดมิน
-                    </Span>
-                </MenuItem>
-            </MenuList>
+
+            {
+                userAccess ?
+                (
+                    <MenuList>
+                        <MenuItem onClick={() => checkAccess("information")}>
+                            <DivIcon>
+                                <Icon size={16} src="/assets/img/icon/user.svg" />
+                            </DivIcon>
+                            <Span>
+                                โปรไฟล์
+                            </Span>
+                        </MenuItem>
+                        <MenuItem onClick={() => checkAccess("statement")}>
+                            <DivIcon>
+                                <Icon isActive={current == 2} size={16} src="/assets/img/icon/transactions.svg" />
+                            </DivIcon>
+                            <Span>
+                                ประวัติธุรกรรม
+                            </Span>
+                        </MenuItem>
+                        <MenuItem onClick={() => checkAccess("game")}>
+                            <DivIcon>
+                                <IconAnimation src="/assets/img/icon/games.png" />
+                            </DivIcon>
+                            <Span>
+                                เล่นเกมส์
+                            </Span>
+                        </MenuItem>
+                        <MenuItem onClick={() => checkAccess("deposit")}>
+                            <DivIcon>
+                                <Icon isActive={current == 3} src="/assets/img/icon/transfer.svg" />
+                            </DivIcon>
+                            <Span>
+                                ฝาก-ถอน
+                            </Span>
+                        </MenuItem>
+                        <MenuItem onClick={() => checkAccess("contact")}>
+                            <DivIcon>
+                                <Icon isActive={current == 4} src="/assets/img/icon/contact.svg" />
+                            </DivIcon>
+                            <Span>
+                                ติดต่อแอดมิน
+                            </Span>
+                        </MenuItem>
+                    </MenuList>
+                )
+                :
+                (
+                    <Statusbar>
+                        <Button color="#fff" onClick={() => modalPage.name == "login" ? setModalPage({ name: "", element: null }) : setModalPage({ name: "login", element: <Login modalPage={modalPage} setModalPage={setModalPage} /> })}>
+                            เข้าสู่ระบบ
+                        </Button>
+                        <GoldButton onClick={() => modalPage.name == "register" ? setModalPage({ name: "", element: null }) : setModalPage({ name: "register", element: <Register modalPage={modalPage} setModalPage={setModalPage} />})}>
+                            <TextButton>สมัครสมาชิก</TextButton>
+                        </GoldButton>
+                    </Statusbar>
+                )
+            }
+
         </Background>
     )
 }
 
+const TextButton = styled.p`
+    font-family: 'Prompt';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #000000;
+`
+
+const GoldButton = styled.button`
+    border: none;
+    border-radius: 5px;
+    width: 116px;
+    height: 30px;
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    
+    background: linear-gradient(90deg, #D2BB6E 0%, #F6E79A 100%);
+    
+    transition-duration: 300ms;
+    cursor: pointer;
+
+    &:hover {
+        box-shadow: rgba(255, 255, 255, 1) 0px 0px 10px;
+        transition-duration: 300ms;
+    }
+`
+
+
+const Statusbar = styled.div`
+    width: auto;
+    height: auto;
+
+    display: flex;
+    align-items: center;
+    gap: 20px;
+`
+
 const Background = styled.div`
+    padding-bottom: 10px;
     width: 100%;
-    height: 50px;
+    height: 60px;
 
     position: fixed;
     bottom: 0;
@@ -145,11 +186,17 @@ const Background = styled.div`
     justify-content: center;
     align-items: center;
 
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0.1s, opacity 0.1s linear;
+
     background: #121116;
     border-radius: 20px 20px 0px 0px;
 
-    @media (min-width: 1024px) {
-        display: none;
+    @media (min-width: 744px) {
+        visibility: hidden;
+        opacity: 0;
+        transition: visibility 0.1s, opacity 0.1s linear;
     }
 
 `
@@ -168,7 +215,7 @@ const MenuList = styled.div`
     transition: gap 300ms;
 
     @media (min-width: 430px) {
-        gap: 45px;
+        gap: 30px;
     }
 `
 

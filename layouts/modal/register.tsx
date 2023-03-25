@@ -442,7 +442,7 @@ const Overlay = styled.div`
     left: 0;
     z-index: 30;
 
-    background: rgba(0,0,0,0.4);
+    background: rgba(0,0,0,0.9);
 `
 
 const SelectBox = styled.select`

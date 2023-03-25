@@ -26,14 +26,14 @@ interface IProps {
     setShowHamburger: Dispatch<SetStateAction<boolean>>;
 }
 
-export default function Navbar(props: IProps) {
+export default function Navbar({ modalPage, setModalPage, showHamburger, setShowHamburger }: IProps) {
     const router = useRouter()
     const [ showHiddenNav, setShowHiddenNav ] = useState<boolean>(false)
     const [ time, setTime ] = useState("")
     const { userAccess, userData } = useContext(AuthContext)
 
     const Goto = (path: string) => {
-        props.setShowHamburger(false)
+        setShowHamburger(false)
         router.push(path)
     }
 
@@ -45,10 +45,10 @@ export default function Navbar(props: IProps) {
         <>  
 
             {
-                props.modalPage.name == "menu" ?
-                    <Main modalPage={props.modalPage} setModalPage={props.setModalPage} />
+                modalPage.name == "menu" ?
+                    <Main modalPage={modalPage} setModalPage={setModalPage} />
                 :
-                    props.modalPage?.element
+                    modalPage?.element
             }
 
             <Background>
@@ -62,10 +62,10 @@ export default function Navbar(props: IProps) {
                                 userAccess == null ? 
                                     (
                                         <Statusbar>
-                                            <Button color="#fff" onClick={() => props.modalPage.name == "login" ? props.setModalPage({ name: "", element: null }) : props.setModalPage({ name: "login", element: <Login modalPage={props.modalPage} setModalPage={props.setModalPage} /> })}>
+                                            <Button color="#fff" onClick={() => modalPage.name == "login" ? setModalPage({ name: "", element: null }) : setModalPage({ name: "login", element: <Login modalPage={modalPage} setModalPage={setModalPage} /> })}>
                                                 เข้าสู่ระบบ
                                             </Button>
-                                            <GoldButton onClick={() => props.modalPage.name == "register" ? props.setModalPage({ name: "", element: null }) : props.setModalPage({ name: "register", element: <Register modalPage={props.modalPage} setModalPage={props.setModalPage} />})}>
+                                            <GoldButton onClick={() => modalPage.name == "register" ? setModalPage({ name: "", element: null }) : setModalPage({ name: "register", element: <Register modalPage={modalPage} setModalPage={setModalPage} />})}>
                                                 <TextButton>สมัครสมาชิก</TextButton>
                                             </GoldButton>
                                         </Statusbar>
@@ -73,7 +73,7 @@ export default function Navbar(props: IProps) {
                                 :
                                     (
                                         <Statusbar>
-                                            <Profile onClick={() => props.modalPage.name == "menu" ? props.setModalPage({ name: "", element: null }) : props.setModalPage({ name: "menu", element: null }) }>
+                                            <Profile onClick={() => modalPage.name == "menu" ? setModalPage({ name: "", element: null }) : setModalPage({ name: "menu", element: null }) }>
                                                 <Button color="#fff">
                                                     { userData?.telnum }
                                                 </Button>
@@ -82,7 +82,7 @@ export default function Navbar(props: IProps) {
                                                 </DivProfileImg>
                                             
                                             </Profile>
-                                            <Balance onClick={() => props.modalPage.name == "menu" ? props.setModalPage({ name: "", element: null }) : props.setModalPage({ name: "menu", element: null }) }>
+                                            <Balance onClick={() => modalPage.name == "menu" ? setModalPage({ name: "", element: null }) : setModalPage({ name: "menu", element: null }) }>
                                                 <BalanceText>{ userData?.wallsum.toFixed(2) }</BalanceText>
                                                 <BalanceCoin src="/assets/img/users/wallet.svg" alt="" />
                                             </Balance>
@@ -167,7 +167,7 @@ export default function Navbar(props: IProps) {
                                         <GifSpin src="https://placehold.jp/12/222222/ffffff/150x40.jpg?text=Spin Bonus" alt="" />
                                     </GifList>
                                     <DivButton>
-                                        <Button onClick={() => props.setShowHamburger(!props.showHamburger)}>
+                                        <Button onClick={() => setShowHamburger(!showHamburger)}>
                                             <GiHamburgerMenu color="#868686" size={25} />
                                         </Button>
                                     </DivButton>
@@ -175,7 +175,7 @@ export default function Navbar(props: IProps) {
                             </Menubar>
                         </FlexBox>
                     </NavBottom>
-                    <Hamburger isActive={props.showHamburger}>
+                    <Hamburger isActive={showHamburger}>
                         <HamburgerContainer>
                             <HamburgerItem onClick={() => Goto("/")}>
                                 หน้าแรก
@@ -183,10 +183,10 @@ export default function Navbar(props: IProps) {
                             <HamburgerItem onClick={() => Goto("/casino")}>
                                 เล่นเกมส์
                             </HamburgerItem>
-                            <HamburgerItem onClick={() => props.setModalPage({ name: "deposit", element: <Deposit modalPage={props.modalPage} setModalPage={props.setModalPage} /> })}>
+                            <HamburgerItem onClick={() => setModalPage({ name: "deposit", element: <Deposit modalPage={modalPage} setModalPage={setModalPage} /> })}>
                                 ฝาก
                             </HamburgerItem>
-                            <HamburgerItem onClick={() => props.setModalPage({ name: "deposit", element: <Deposit modalPage={props.modalPage} setModalPage={props.setModalPage} /> })}>
+                            <HamburgerItem onClick={() => setModalPage({ name: "deposit", element: <Deposit modalPage={modalPage} setModalPage={setModalPage} /> })}>
                                 ถอน
                             </HamburgerItem>
                             <HamburgerItem onClick={() => Goto("/promotion")}>
@@ -676,9 +676,9 @@ const Statusbar = styled.div`
     align-items: center;
     gap: 9px;
 
-    @media (max-width: 743px) {
+    /* @media (max-width: 743px) {
         display: none;
-    }
+    } */
 `
 
 const NavTop = styled.div`

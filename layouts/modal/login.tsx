@@ -59,9 +59,13 @@ export default function Login(props: IProps) {
         }
     })
 
+    useEffect(() => {
+        console.log(props.modalPage.name)
+    }, [props.modalPage.name])
+
     return (
         <>
-            <Overlay open={props.modalPage.name === "login"} onClick={() => props.setModalPage({ name: "", element: null })} />
+            <Overlay onClick={() => props.setModalPage({ name: "", element: null })} />
             <Modal>
                 <IconX>
                     <AiOutlineClose size={20} onClick={() => props.setModalPage({ name: "", element: null })} />
@@ -111,9 +115,9 @@ export default function Login(props: IProps) {
                             <FlexDetails>
                                 <div className="loading">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="124" height="124" viewBox="0 0 124 124">
-                                        <circle className="circle-loading" cx="62" cy="62" r="59" fill="none" stroke="#D2BB6E" stroke-width="6px"></circle>
-                                        <circle className="circle" cx="62" cy="62" r="59" fill="none" stroke="#D2BB6E" stroke-width="6px" stroke-linecap="round"></circle>
-                                        <polyline className="check" points="73.56 48.63 57.88 72.69 49.38 62" fill="none" stroke="#D2BB6E" stroke-width="6px" stroke-linecap="round"></polyline>
+                                        <circle className="circle-loading" cx="62" cy="62" r="59" fill="none" stroke="#D2BB6E" strokeWidth="6px"></circle>
+                                        <circle className="circle" cx="62" cy="62" r="59" fill="none" stroke="#D2BB6E" strokeWidth="6px" strokeLinecap="round"></circle>
+                                        <polyline className="check" points="73.56 48.63 57.88 72.69 49.38 62" fill="none" stroke="#D2BB6E" strokeWidth="6px" strokeLinecap="round"></polyline>
                                     </svg>
                                 </div>
                                 <TextDetailCom>เข้าสู่ระบบสำเร็จ</TextDetailCom>
@@ -143,7 +147,7 @@ export default function Login(props: IProps) {
     )
 }
 
-const Overlay = styled.div<{ open: boolean }>`
+const Overlay = styled.div`
     width: 100vw;
     height: 100vh;
 
@@ -152,21 +156,11 @@ const Overlay = styled.div<{ open: boolean }>`
     left: 0;
     z-index: 30;
 
-    background: rgba(0,0,0,0.9);
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0.2s, opacity 0.2s linear;
 
-    ${props => props.open ?
-        `
-            visibility: visible;
-            opacity: 1;
-            transition: visibility 0.2s, opacity 0.2s linear;
-        `
-        :
-        `
-            visibility: hidden;
-            opacity: 0;
-            transition: visibility 0.2s, opacity 0.2s linear;
-        `
-    }
+    background: rgba(0,0,0,0.9);
 `
 
 const Modal = styled.div`
