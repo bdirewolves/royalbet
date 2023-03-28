@@ -25,7 +25,7 @@ export default function HeroSection () {
                 <ContainerCarousel>
                     <Slider {...settings}>
                         {
-                            promotionFebruary.squre.map((item, index) => (
+                            promotionFebruary.top.map((item, index) => (
                                 <div key={index} >
                                     <Link href="/promotion">
                                         <Box>

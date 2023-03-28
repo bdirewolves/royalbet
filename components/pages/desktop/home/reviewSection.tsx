@@ -7,6 +7,7 @@ import { Container, FixWidth } from "@/components/_reduce/Reduce";
 import { reviewContent } from "@/constants/review";
 import { useState } from "react";
 import { useRouter } from "next/router";
+import { BsFillPlayFill } from "react-icons/bs"
 
 
 export default function ReviewSection() {
@@ -61,7 +62,9 @@ export default function ReviewSection() {
                                             <SliderContent1>{item.subtitle}</SliderContent1>
                                         </SliderContent>
                                     </DivText>
-                                    <GoldPic />
+                                    <GoldPic>
+                                        <BsFillPlayFill color="#000" size={20} />
+                                    </GoldPic>
                                 </DivFlex>
                             </div>
                             ))
@@ -89,6 +92,10 @@ const GoldPic = styled.div`
     position: absolute;
     right: 0;
     bottom: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     background: linear-gradient(90deg, #D2BB6E 0%, #F6E79A 100%);
     border-radius: 10px 0px;
