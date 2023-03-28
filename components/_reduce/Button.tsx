@@ -20,7 +20,7 @@ const Btn = styled.button<{ isBorder?: boolean, color?: string }>`
     border: none;
     width: auto;
     height: auto;
-    font-family: "Sukhumvit Set";
+    font-family: "Prompt";
     font-size: 14px;
     font-weight: 600;
 

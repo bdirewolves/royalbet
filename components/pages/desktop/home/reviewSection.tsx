@@ -118,7 +118,7 @@ const DivFlex = styled.div`
 `
 
 const SliderContent1 = styled.p`
-    font-family: 'Sukhumvit Set';
+    font-family: 'Prompt';
     font-weight: 400;
     font-size: 12px;
     text-align: start;
@@ -135,7 +135,7 @@ const SliderTitle = styled.h3`
     width: 100%;
     height: auto;
 
-    font-family: 'Sukhumvit Set';
+    font-family: 'Prompt';
     font-weight: 700;
     font-size: 14px;
     line-height: 32px;

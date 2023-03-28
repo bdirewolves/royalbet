@@ -129,7 +129,7 @@ const Btn = styled.button`
     border: none;
     width: 116px;
     height: 30px;
-    font-family: "Sukhumvit Set";
+    font-family: "Prompt";
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;

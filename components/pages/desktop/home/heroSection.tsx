@@ -107,6 +107,7 @@ const Box = styled.div`
 `
 
 const TextContent = styled.div`
+    padding: 20px;
     border-radius: 6px;
     max-width: 650px;
     width: 95%;
@@ -117,7 +118,9 @@ const TextContent = styled.div`
     justify-content: center;
     align-items: center;
 
-    background-color: #100F14;
+    background-image: url(/assets/img/homepage/H1BG.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
 
     @media (min-width: 1280px) {
         width: 480px;
@@ -133,7 +136,7 @@ const TextContent = styled.div`
 const Title = styled.h1`
     padding-top: 10px;
 
-    font-family: 'Sukhumvit Set';
+    font-family: 'Prompt';
     font-weight: 700;
     font-size: 30px;
     line-height: 38px;
@@ -143,7 +146,7 @@ const Title = styled.h1`
 const Content = styled.p`
     padding-top: 10px;
 
-    font-family: 'Sukhumvit Set';
+    font-family: 'Prompt';
     font-weight: 400;
     font-size: 12px;
     line-height: 19px;

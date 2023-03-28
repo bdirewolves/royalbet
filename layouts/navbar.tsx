@@ -211,7 +211,7 @@ const Ham = styled.button`
     border: none;
     width: auto;
     height: auto;
-    font-family: "Sukhumvit Set";
+    font-family: "Prompt";
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;

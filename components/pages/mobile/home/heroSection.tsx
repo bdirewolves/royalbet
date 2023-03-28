@@ -99,7 +99,7 @@ const TextContent = styled.div`
 `
 
 const Title = styled.h1`
-    font-family: 'Sukhumvit Set';
+    font-family: 'Prompt';
     font-weight: 700;
     font-size: 30px;
     line-height: 38px;
@@ -110,7 +110,7 @@ const Title = styled.h1`
 `
 
 const Content = styled.p`
-    font-family: 'Sukhumvit Set';
+    font-family: 'Prompt';
     font-weight: 400;
     font-size: 12px;
     line-height: 19px;

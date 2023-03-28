@@ -19,7 +19,7 @@ const Button = styled.button`
     padding: 4px 13px;
     border: 0.5px solid #fff;
     border-radius: 38px;
-    font-family: 'Sukhumvit Set';
+    font-family: 'Prompt';
     font-weight: 700;
     font-size: 14px;
     line-height: 22px;

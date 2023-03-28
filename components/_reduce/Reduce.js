@@ -86,7 +86,7 @@ export const Button = styled.button`
 
     border-radius: 35.4777px;
 
-    font-family: 'Sukhumvit Set';
+    font-family: 'Prompt';
     font-size: 16;
 
     &:hover {

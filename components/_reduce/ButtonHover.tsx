@@ -35,7 +35,7 @@ const Button = styled.button`
     transition: 0.2s;
     border-radius: 20px;
     cursor: pointer;
-    font-family: "Sukhumvit Set";
+    font-family: "Prompt";
     font-size: 14px;
     font-weight: 600;
 

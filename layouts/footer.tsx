@@ -203,7 +203,7 @@ const FooterProviderContent = styled.div`
 
 const FooterProviderTitle = styled.h2`
     padding: 10px 0;
-    font-family: "Sukhumvit Set";
+    font-family: "Prompt";
     font-size: 14px;
     font-weight: 700;
     color: #fff;
@@ -304,7 +304,7 @@ const FlexCircle = styled.div`
 
 const FooterText = styled.div`
     padding: 10px 0;
-    font-family: "Sukhumvit Set";
+    font-family: "Prompt";
     font-size: 14px;
     font-weight: 500;
     color: #989898;
@@ -341,7 +341,7 @@ const FooterList = styled.div`
 `
 
 const MenuItem = styled(Link)`
-    font-family: "Sukhumvit Set";
+    font-family: "Prompt";
     font-size: 12px;
     font-weight: 400;
     color: #868686;
@@ -370,7 +370,7 @@ const Menu = styled.div`
 `
 
 const FooterMenuTitle = styled.h2`
-    font-family: 'Sukhumvit Set';
+    font-family: 'Prompt';
     font-style: normal;
     font-weight: 700;
     font-size: 14px;

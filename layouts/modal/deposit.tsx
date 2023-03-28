@@ -496,7 +496,7 @@ const DivFlexHead = styled.div`
 `
 
 const TextHead = styled.p`
-    font-family: 'Sukhumvit Set';
+    font-family: 'Prompt';
     font-style: normal;
     font-weight: 700;
     font-size: 14px;
