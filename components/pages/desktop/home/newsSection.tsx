@@ -77,7 +77,6 @@ const Box = styled.div<{ opacity: boolean }>`
     width: 95%;
     height: auto;
     aspect-ratio: 300/168.69;
-    max-width: 650px;
 
     margin: 0 auto;
 

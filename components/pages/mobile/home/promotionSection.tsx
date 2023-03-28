@@ -41,10 +41,13 @@ const DivFlex = styled.div`
 const Box = styled.div`
     width: 100%;
     height: auto;
-    aspect-ratio: 300/122.8;
+    aspect-ratio: 650/222;
+    overflow: hidden;
 `
 
 const PicBox = styled.img`
     width: 100%;
     height: 100%;
+
+    transform: scale(1.02);
 `
