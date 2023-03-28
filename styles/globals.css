@@ -94,7 +94,11 @@ body {
 
 body{
   padding-top: 100px;
-  background-color: #202020;
+  background-image: url(/assets/img/BG.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
 }
 
 a{

@@ -6,6 +6,7 @@ import { casinoContent, slotHomepage } from "@/constants/casino";
 import React from "react";
 import Titletype from "@/components/_reduce/Divtitle";
 import { Container, FixWidth } from "@/components/_reduce/Reduce";
+import { BsFillPlayFill } from "react-icons/bs"
 
 export default function GameSlotSection () {
     const settings = {
@@ -38,7 +39,9 @@ export default function GameSlotSection () {
                                         <BoxText>
                                             {item.name}
                                         </BoxText>
-                                        <GoldPic />
+                                        <GoldPic>
+                                            <BsFillPlayFill color="#000" size={20} />
+                                        </GoldPic>
                                     </GridFr>
                                 ))}
                             </DivGrid>
@@ -53,7 +56,9 @@ export default function GameSlotSection () {
                                         <BoxText>
                                             {item.name}
                                         </BoxText>
-                                        <GoldPic />
+                                        <GoldPic>
+                                            <BsFillPlayFill color="#000" size={20} />
+                                        </GoldPic>
                                     </GridFr>
                                 ))}
                             </DivGrid>
@@ -149,4 +154,8 @@ const GoldPic = styled.div`
     border-radius: 10px 0px;
 
     z-index: 3;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `

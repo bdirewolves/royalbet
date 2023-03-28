@@ -6,6 +6,7 @@ import Titletype from "@/components/_reduce/Divtitle";
 import { useState } from "react";
 import { reviewContent } from "@/constants/review";
 import { Container, FixWidth } from "@/components/_reduce/Reduce";
+import { BsFillPlayFill } from "react-icons/bs"
 
 export default function ReviewSection() {
     const [ current, setCurrent ] = useState(0)
@@ -51,7 +52,9 @@ export default function ReviewSection() {
                                                 <SliderContent1>{item.subtitle}</SliderContent1>
                                             </SliderContent>
                                         </DivText>
-                                        <GoldPic />
+                                        <GoldPic>
+                                            <BsFillPlayFill color="#000" size={20} />
+                                        </GoldPic>
                                     </DivFlex>
                                 </div>
                                 ))
@@ -81,6 +84,9 @@ const GoldPic = styled.div`
 
     background: linear-gradient(90deg, #D2BB6E 0%, #F6E79A 100%);
     border-radius: 10px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `
 
 const DivFlex = styled.div`
