@@ -136,13 +136,14 @@ const DivGrid = styled.div`
 
 const GridFr = styled.div`
     cursor: pointer;
+    border: 1px solid #fff;
     width: 100%;
     height: auto;
     aspect-ratio: 145/130;
 
     position: relative;
 
-    border-radius: 5px;
+    border-radius: 12px;
 
     overflow: hidden;
 

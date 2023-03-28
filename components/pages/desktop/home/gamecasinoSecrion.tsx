@@ -119,6 +119,7 @@ const DivGrid = styled.div`
 const GridFr = styled.div`
     position: relative;
 
+    border: 1px solid #fff;
     width: 100%;
     height: auto;
     aspect-ratio: 145/130;

@@ -56,9 +56,11 @@ const Box = styled.div`
     width: 100%;
     height: auto;
     aspect-ratio: 300/102.8;
+    overflow: hidden;
 `
 
 const PicBox = styled.img`
     width: 100%;
     height: 100%;
+    transform: scale(1.02);
 `

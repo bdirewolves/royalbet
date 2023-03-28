@@ -72,6 +72,8 @@ const ContainerCarousel = styled.div`
 `
 
 const Box = styled.div<{ opacity: boolean }>`
+    max-width: 651px;
+    max-height: 366px;
     width: 95%;
     height: auto;
     aspect-ratio: 300/168.69;
