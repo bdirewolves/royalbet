@@ -31,7 +31,7 @@ export default function HowtoSection(){
                 </Gridfr1>
                 <Gridfr2>
                     <ButtonGold>
-                        <TextButton>อ่านเพิ่่มเติม</TextButton>
+                        <TextButton>อ่านเพิ่มเติม</TextButton>
                     </ButtonGold>
                 </Gridfr2>
                 <Dothow src="/assets/img/howtouse/dothowto.png"/>

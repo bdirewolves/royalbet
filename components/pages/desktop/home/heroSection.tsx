@@ -49,7 +49,7 @@ export default function HeroSection () {
                     {/* Button */}
                     <ContainerButton data-aos="fade-up" data-aos-duration="500">
                         <GoldButton>
-                            สมัครบาคาร่า
+                            เล่นเกมส์
                         </GoldButton>
                     </ContainerButton>
                 </TextContent>

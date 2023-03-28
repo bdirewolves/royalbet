@@ -429,7 +429,7 @@ const LineTitle = styled.div`
     margin: 0 20px;
     width: 100%;
     height: 1px;
-    background: rgba(149, 149, 149, 0.5);
+    background: rgba(149, 149, 149, 0.25);
 
     z-index: 0;
 `

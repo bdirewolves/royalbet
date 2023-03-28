@@ -184,7 +184,7 @@ const GoldPic = styled.div`
     bottom: 0;
 
     background: linear-gradient(90deg, #D2BB6E 0%, #F6E79A 100%);
-    border-radius: 10px 0px;
+    border-radius: 10px 0px 0px 0px;
 
     z-index: 3;
 

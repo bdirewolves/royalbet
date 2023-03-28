@@ -89,7 +89,7 @@ const LineTitle = styled.div`
     top: 50%;
 
     transform: translate( -100% , -50%);
-    background: rgba(149, 149, 149, 0.5);
+    background: rgba(149, 149, 149, 0.25);
 
     z-index: 0;
 `
