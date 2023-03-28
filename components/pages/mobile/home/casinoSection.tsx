@@ -7,16 +7,16 @@ export default function CasinoSection() {
         <Container>
             <FixWidth>
                 <DivGrid>
-                        {
-                            casinoContent.show.map((item, index) => (
-                                <BoxContainer key={index}>
-                                    <PicBox src={item.bgimg} />
-                                    <DivPicPro>
-                                        <PicPro src={item.img} />
-                                    </DivPicPro>
-                                </BoxContainer>
-                            ))
-                        }
+                    {
+                        casinoContent.show.map((item, index) => (
+                            <BoxContainer key={index}>
+                                <PicBox src={item.bgimg} />
+                                <DivPicPro>
+                                    <PicPro src={item.img} />
+                                </DivPicPro>
+                            </BoxContainer>
+                        ))
+                    }
                 </DivGrid>
             </FixWidth>
         </Container>

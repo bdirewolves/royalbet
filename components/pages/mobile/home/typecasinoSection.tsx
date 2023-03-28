@@ -7,38 +7,23 @@ export default function TypeCasinoSection () {
             <FixWidth>
                 <DivFlex>
                     <Box>
-                        <DivText>
-                            <TextF>CASINO<TextB>ROYAL</TextB></TextF>
-                        </DivText>
-                        <PicBox src="/assets/img/casino/royalr-m.png" />
+                        <PicBox src="/assets/img/casino/royalr-m.jpg" />
                         <LineGolden />
                     </Box>
                     <Box>
-                        <DivText>
-                            <TextF>SLOT<TextB>ROYAL</TextB></TextF>
-                        </DivText>
-                        <PicBox src="/assets/img/casino/royalo-m.png" />
+                        <PicBox src="/assets/img/casino/royalo-m.jpg" />
                         <LineGolden />
                     </Box>
                     <Box>
-                        <DivText>
-                            <TextF>SPORT<TextB>ROYAL</TextB></TextF>
-                        </DivText>
-                        <PicBox src="/assets/img/casino/royaly-m.png" />
+                        <PicBox src="/assets/img/casino/royaly-m.jpg" />
                         <LineGolden />
                     </Box>
                     <Box>
-                        <DivText>
-                            <TextF>E-SPORT<TextB>ROYAL</TextB></TextF>
-                        </DivText>
-                        <PicBox src="/assets/img/casino/royala-m.png" />
+                        <PicBox src="/assets/img/casino/royala-m.jpg" />
                         <LineGolden />
                     </Box>
                     <Box>
-                        <DivText>
-                            <TextF>GAME<TextB>ROYAL</TextB></TextF>
-                        </DivText>
-                        <PicBox src="/assets/img/casino/royall-m.png" />
+                        <PicBox src="/assets/img/casino/royall-m.jpg" />
                         <LineGolden />
                     </Box>
                 </DivFlex>
