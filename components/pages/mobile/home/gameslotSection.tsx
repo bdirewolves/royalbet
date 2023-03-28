@@ -73,6 +73,7 @@ export default function GameSlotSection () {
 }
 
 const ContainerCarousel = styled.div`
+    padding: 0 10px;
     width: 100%;
     height: auto;
 `
@@ -98,7 +99,7 @@ const DivGrid = styled.div`
 const GridFr = styled.div`
     width: 100%;
     height: auto;
-    aspect-ratio: 145/130;
+    aspect-ratio: 145/103;
 
     position: relative;
 
