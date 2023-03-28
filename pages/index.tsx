@@ -67,6 +67,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      {/* <Background src="/assets/img/BG.jpg" /> */}
       <Content>
 
         <HeroSection />
@@ -98,6 +99,14 @@ export default function Home() {
     </>
   );
 }
+const Background = styled.img`
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+`
 
 const Content = styled.div`
   max-width: 1440px;

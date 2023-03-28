@@ -21,7 +21,14 @@ export default function PromotionPage(){
         </>
     )
 }
-
+const Background = styled.img`
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+`
 
 const Content = styled.main`
   width: 100%;
