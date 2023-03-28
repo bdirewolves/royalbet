@@ -94,7 +94,9 @@ const TextContent = styled.div`
 
     border-radius: 6px;
 
-    background-color: #100F14;
+    background-image: url(/assets/img/homepage/H1BG.jpg);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
 
 `
 
