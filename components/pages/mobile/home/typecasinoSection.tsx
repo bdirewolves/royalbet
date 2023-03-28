@@ -119,9 +119,8 @@ const LineGolden = styled.div`
 `
 
 const PicBox = styled.img`
-    width: 90%;
-    height: auto;
-    aspect-ratio: 133/126.84;
+    width: 100%;
+    height: 100%;
 
     position: absolute;
     left: 50%;
