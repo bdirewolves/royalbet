@@ -17,6 +17,7 @@ export default function CasinoPage() {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
+            <Background src="/assets/img/BG.jpg" />
             <Content>
                 <CasinoTopSectionPage />
                 <DivFlexRe>
@@ -31,6 +32,16 @@ export default function CasinoPage() {
         </>
     )
 }
+
+const Background = styled.img`
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+`
 
 const Content = styled.main`
     width: 100%;

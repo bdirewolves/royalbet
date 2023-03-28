@@ -419,6 +419,9 @@ const Background = styled.footer`
 
     background: linear-gradient(0deg, #1C1C1C 2.79%, #060606 95.77%);
 
+    position: relative;
+    z-index: 10;
+
     @media (max-width: 1023px) {
         padding: 30px 10px 65px 10px;
         transition-duration: 300ms;

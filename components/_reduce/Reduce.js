@@ -2,6 +2,9 @@ import styled from "styled-components";
 
 
 export const Container = styled.section`
+    position: relative;
+    z-index: 10;
+
     margin: auto;
     width: 100%;
     height: auto;
