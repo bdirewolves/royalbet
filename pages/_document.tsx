@@ -13,7 +13,7 @@ export default function Document() {
           {loader}
         </style>
       </head>
-      <body>
+      <body style={{ backgroundImage: "url(/assets/img/BG.jpg)", backgroundSize: "100% 100%", backgroundAttachment: "fixed" }}>
         <div id={'globalLoader'}>
           <div className="banter-loader">
             <div className="banter-loader__box"></div>

@@ -170,5 +170,6 @@ const ContainerButton = styled.div`
 const PicProMobile = styled.img`
     width: 100%;
     height: 100%;
+    transform: scale(1.02);
 `
 
