@@ -167,8 +167,6 @@ const Modal = styled.div`
     width: 320px;
     height: 500px;
 
-    position: relative;
-
     position: fixed;
     top: 50%;
     left: 50%;
@@ -189,6 +187,11 @@ const Modal = styled.div`
     background: #121116;
     color: #000;
     z-index: 150;
+
+    @media (max-width: 375px) {
+        top: 90px;
+        transform: translate(-50%, 0);
+    }
 `
 
 const IconX = styled.div`

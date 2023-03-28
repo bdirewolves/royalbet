@@ -485,6 +485,11 @@ const Modal = styled.div`
     background: #121116;
     color: #000;
     z-index: 150;
+
+    @media (max-width: 375px) {
+        top: 90px;
+        transform: translate(-50%, 0);
+    }
 `
 
 const IconX = styled.div`

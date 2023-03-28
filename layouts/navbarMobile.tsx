@@ -111,9 +111,9 @@ export default function NavbarMobile ({ modalPage, setModalPage, showHamburger, 
                 :
                 (
                     <Statusbar>
-                        <Button color="#fff" onClick={() => modalPage.name == "login" ? setModalPage({ name: "", element: null }) : setModalPage({ name: "login", element: <Login modalPage={modalPage} setModalPage={setModalPage} /> })}>
+                        <Btn color="#fff" onClick={() => modalPage.name == "login" ? setModalPage({ name: "", element: null }) : setModalPage({ name: "login", element: <Login modalPage={modalPage} setModalPage={setModalPage} /> })}>
                             เข้าสู่ระบบ
-                        </Button>
+                        </Btn>
                         <GoldButton onClick={() => modalPage.name == "register" ? setModalPage({ name: "", element: null }) : setModalPage({ name: "register", element: <Register modalPage={modalPage} setModalPage={setModalPage} />})}>
                             <TextButton>สมัครสมาชิก</TextButton>
                         </GoldButton>
@@ -124,6 +124,22 @@ export default function NavbarMobile ({ modalPage, setModalPage, showHamburger, 
         </Background>
     )
 }
+
+const Btn = styled.button`
+    border: none;
+    width: 116px;
+    height: 30px;
+    font-family: "Sukhumvit Set";
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    background: transparent;
+    color: #fff;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`
 
 const TextButton = styled.p`
     font-family: 'Prompt';
@@ -163,11 +179,12 @@ const GoldButton = styled.button`
 
 
 const Statusbar = styled.div`
-    width: auto;
+    width: 100%;
     height: auto;
 
     display: flex;
     align-items: center;
+    justify-content: space-around;
     gap: 20px;
 `
 

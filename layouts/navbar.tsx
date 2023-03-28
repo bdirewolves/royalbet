@@ -163,13 +163,13 @@ export default function Navbar({ modalPage, setModalPage, showHamburger, setShow
 
                                 <FlexRowRe>
                                     <GifList>
-                                        <GifLive src="https://placehold.jp/12/222222/ffffff/50x40.jpg?text=LIVE" alt="" onClick={() => router.push("https://www.livescore.com/en/")}  />
-                                        <GifSpin src="https://placehold.jp/12/222222/ffffff/150x40.jpg?text=Spin Bonus" alt="" />
+                                        <GifLive autoPlay muted loop src="/assets/video/live.mp4" onClick={() => router.push("https://www.livescore.com/en/")}  />
+                                        <GifSpin autoPlay muted loop src="/assets/video/spin.mp4" />
                                     </GifList>
                                     <DivButton>
-                                        <Button onClick={() => setShowHamburger(!showHamburger)}>
-                                            <GiHamburgerMenu color="#868686" size={25} />
-                                        </Button>
+                                        <Ham onClick={() => setShowHamburger(!showHamburger)}>
+                                            <GiHamburgerMenu color="#868686" size={28} />
+                                        </Ham>
                                     </DivButton>
                                 </FlexRowRe>
                             </Menubar>
@@ -206,6 +206,22 @@ export default function Navbar({ modalPage, setModalPage, showHamburger, setShow
         
     )
 }
+
+const Ham = styled.button`
+    border: none;
+    width: auto;
+    height: auto;
+    font-family: "Sukhumvit Set";
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    background: transparent;
+    color: #000;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`
 
 const TextButton = styled.p`
     font-family: 'Prompt';
@@ -300,6 +316,7 @@ const Profile = styled.div`
 `
 
 const FlexRowRe = styled.div`
+    padding-right: 20px;
     width: 100%;
     height: 100%;
 
@@ -453,12 +470,12 @@ const MobileGroup = styled.div`
 `
 
 
-const GifSpin = styled.img`
+const GifSpin = styled.video`
     width: 150px;
     aspect-ratio: 150/40;
 `
 
-const GifLive = styled.img`
+const GifLive = styled.video`
     width: 50px;
     aspect-ratio: 50/40;
 `
@@ -676,9 +693,9 @@ const Statusbar = styled.div`
     align-items: center;
     gap: 9px;
 
-    /* @media (max-width: 743px) {
+    @media (max-width: 743px) {
         display: none;
-    } */
+    }
 `
 
 const NavTop = styled.div`

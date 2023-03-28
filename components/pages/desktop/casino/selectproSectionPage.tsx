@@ -35,25 +35,14 @@ interface ILimit {
 
 export default function SelectProSectionPage() {
 
-    const [ type, setType ] = useState<string>("live")
-    const [ providers, setProviders ] = useState<string>("all")
+    const [ type, setType ] = useState<string>("")
+    const [ providers, setProviders ] = useState<string>("")
     const [ providerLists, setProviderLists ] = useState<IProviders[]>([])
     const [ gameLists, setGameLists ] = useState<IGames[]>([])
     const [ pages, setPages ] = useState<ILimit>({ page: 1, limit: 24 })
     const router = useRouter()
     const { userAccess, userData, telnum } = useContext(AuthContext)
     const phone = typeof window !== "undefined" && localStorage.getItem("telnum")?.slice(1) || ""
-
-    const settings = {
-        dots: false,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 2000,
-        arrows: false,
-    };
 
     const handleOnError = (event: any, name: string) => {
         event.target.src =  `https://placehold.co/210x150/black/white/jpg/?text=${name}`;
@@ -192,12 +181,6 @@ export default function SelectProSectionPage() {
                     if(data.game_url.status === 1) {
                         const { url } = data.game_url.data
                         window.location.href = url
-                        // Swal.fire({
-                        //     title: "เล่นได้",
-                        //     icon: "success",
-                        //     timer: 1000,
-                        //     showConfirmButton: false
-                        // })
                     }else {
                         Swal.fire({
                             title: "Info",
@@ -224,13 +207,13 @@ export default function SelectProSectionPage() {
     }
 
     useEffect(() => {
-        setProviders("all")
         fetchProvider()
     }, [type])
 
     useEffect(() => {
         fetchGame()
         setPages({ page: 1, limit: 24 })
+        console.log(providers)
     }, [providers, providerLists])
 
     useEffect(() => {
@@ -240,6 +223,8 @@ export default function SelectProSectionPage() {
     return(
         <Container>
             <FixWidth>
+
+                {/* // Select Category */}
                 <DivGridType>
                     <BoxType isActive={type === "live"} onClick={() => setType("live")}>
                         <BoxTypeSpan>CASINO</BoxTypeSpan>
@@ -261,82 +246,91 @@ export default function SelectProSectionPage() {
                     </BoxType>
                 </DivGridType>
 
-                <DivGridPro>
-                    <BoxPro isActive={providers === "all"} onClick={() => setProviders("all")}>
-                        <BoxProSpan>
-                            TOTAL GAME
-                        </BoxProSpan>
-                    </BoxPro>
-
-                    {
-                        providerLists.map((item, index) => (
-                            <BoxPro key={index} isActive={providers === item.name} onClick={() => setProviders(item.name)}>
+                {/* Select Provider */}
+                {
+                    type !== "" && (
+                        <DivGridPro>
+                            {/* <BoxPro isActive={providers === "all"} onClick={() => setProviders("all")}>
                                 <BoxProSpan>
-                                    {item.name}
+                                    TOTAL GAME
                                 </BoxProSpan>
-                            </BoxPro>
-                        ))
-                    }
+                            </BoxPro> */}
 
-                </DivGridPro>
+                            {
+                                providerLists.map((item, index) => (
+                                    <BoxPro key={index} isActive={providers === item.name} onClick={() => setProviders(item.name)}>
+                                        <BoxProSpan>
+                                            {item.name}
+                                        </BoxProSpan>
+                                    </BoxPro>
+                                ))
+                            }
 
-                <DivFlexGame>
+                        </DivGridPro>
+                    )
+                }
 
-                    {/* Recreate Bar with Pagination */}
-                    <DivTitle>
-                        <Title>
-                            <TextTitle>provider {type}</TextTitle>
-                        </Title>
-                        <LineTitle />
-                        <PageControl>
-                            <BackBtn onClick={() => pages.page != 1 && setPages({ page: pages.page-1, limit: 24 })}><AiOutlineCaretLeft size={14} /></BackBtn>
-                            <CurrentPage>{ pages.page }/{ Math.floor(gameLists.length / pages.limit) == 0 ? "1" : Math.floor(gameLists.length / pages.limit) }</CurrentPage>
-                            <NextBtn onClick={() => gameLists.length > 24 && setPages({ page: pages.page+1, limit: 24 })}><AiOutlineCaretRight size={14} /></NextBtn>
-                        </PageControl>
-                    </DivTitle>
+                {/* Game List */}
 
-                    {/* Game List */}
-                    <DivGrid>
+                {
+                    providers !== "" &&
+                    (
+                        <DivFlexGame>
+                            <DivTitle>
+                                <Title>
+                                    <TextTitle>provider {type}</TextTitle>
+                                </Title>
+                                <LineTitle />
+                                <PageControl>
+                                    <BackBtn onClick={() => pages.page != 1 && setPages({ page: pages.page-1, limit: 24 })}><AiOutlineCaretLeft size={14} /></BackBtn>
+                                    <CurrentPage>{ pages.page }/{ Math.floor(gameLists.length / pages.limit) == 0 ? "1" : Math.floor(gameLists.length / pages.limit) }</CurrentPage>
+                                    <NextBtn onClick={() => gameLists.length > 24 && setPages({ page: pages.page+1, limit: 24 })}><AiOutlineCaretRight size={14} /></NextBtn>
+                                </PageControl>
+                            </DivTitle>
 
-                        {/* Add Slider with pageination */}
-                        {
-                            gameLists.length >= 2 ? gameLists.slice(Math.floor((pages.page - 1) * pages.limit), Math.floor((pages.page - 1) * pages.limit + pages.limit)).map((item, index) => (
-                                <GridFr key={index} onClick={() => launchGame(item.game_code, item.provider_id)}>
-                                    <DivPicPro>
-                                        <PicPro loading="lazy" src={item.pic_url ? item.pic_url : `https://placehold.co/210x150/black/white?text=${item.provider_id}`} />
-                                    </DivPicPro>
-                                    <BoxText>
-                                        {
-                                            type === "live" ?
-                                            `Lobby ${item.provider_id}`
-                                            :
-                                            item.name
-                                        }
-                                    </BoxText>
-                                    <GoldPic />
-                                </GridFr>
-                            ))
-                            :
-                            gameLists.map((item, index) => (
-                                <GridFr key={index} onClick={() => launchGame(item.game_code, item.provider_id)}>
-                                    <DivPicPro>
-                                        <PicPro loading="lazy" src={item.pic_url ? item.pic_url : `https://placehold.co/210x150/black/white?text=${item.provider_id}`} />
-                                    </DivPicPro>
-                                    <BoxText>
-                                        {
-                                            type === "live" ?
-                                            `Lobby ${item.provider_id}`
-                                            :
-                                            item.name
-                                        }
-                                    </BoxText>
-                                    <GoldPic />
-                                </GridFr>
-                            ))
-                        }
 
-                    </DivGrid>
-                </DivFlexGame>
+                            <DivGrid>
+
+                                {
+                                    gameLists.length >= 2 ? gameLists.slice(Math.floor((pages.page - 1) * pages.limit), Math.floor((pages.page - 1) * pages.limit + pages.limit)).map((item, index) => (
+                                        <GridFr key={index} onClick={() => launchGame(item.game_code, item.provider_id)}>
+                                            <DivPicPro>
+                                                <PicPro loading="lazy" src={item.pic_url ? item.pic_url : `https://placehold.co/210x150/black/white?text=${item.provider_id}`} />
+                                            </DivPicPro>
+                                            <BoxText>
+                                                {
+                                                    type === "live" ?
+                                                    `Lobby ${item.provider_id}`
+                                                    :
+                                                    item.name
+                                                }
+                                            </BoxText>
+                                            <GoldPic />
+                                        </GridFr>
+                                    ))
+                                    :
+                                    gameLists.map((item, index) => (
+                                        <GridFr key={index} onClick={() => launchGame(item.game_code, item.provider_id)}>
+                                            <DivPicPro>
+                                                <PicPro loading="lazy" src={item.pic_url ? item.pic_url : `https://placehold.co/210x150/black/white?text=${item.provider_id}`} />
+                                            </DivPicPro>
+                                            <BoxText>
+                                                {
+                                                    type === "live" ?
+                                                    `Lobby ${item.provider_id}`
+                                                    :
+                                                    item.name
+                                                }
+                                            </BoxText>
+                                            <GoldPic />
+                                        </GridFr>
+                                    ))
+                                }
+
+                            </DivGrid>
+                        </DivFlexGame>
+                    )
+                }
 
             </FixWidth>
         </Container>
@@ -494,6 +488,7 @@ const DivGridType = styled.div`
 
 const BoxType = styled.div<{ isActive: boolean }>`
     cursor: pointer;
+    border: 1px solid #000;
     width: 100%;
     height: auto;
     aspect-ratio: 92/47;
@@ -508,6 +503,7 @@ const BoxType = styled.div<{ isActive: boolean }>`
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: border 300ms;
 
     ${props => props.isActive && `border: 1px solid #ECD559;`}
     
@@ -555,6 +551,7 @@ const DivGridPro = styled.div`
 
 const BoxPro = styled.div<{ isActive: boolean }>`
     cursor: pointer;
+    border: 1px solid #000;
     min-width: 150px;
     width: 150px;
     height: auto;
@@ -569,6 +566,8 @@ const BoxPro = styled.div<{ isActive: boolean }>`
     display: flex;
     justify-content: center;
     align-items: center;
+
+    transition: border 300ms;
 
     ${props => props.isActive && `border: 1px solid #ECD559;`}
     

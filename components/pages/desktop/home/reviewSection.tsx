@@ -152,8 +152,11 @@ const Box = styled.div<{ opacity: string }>`
 
     position: absolute;
 
-    ${props => props.opacity === "true" && `opacity: 1;`}
-    ${props => props.opacity === "false" && `opacity: 0.4;`}
+    ${props => props.opacity == "true" ?
+        `opacity: 1;`
+    :
+        `opacity: 0.4;`
+    }
     
 `
 
