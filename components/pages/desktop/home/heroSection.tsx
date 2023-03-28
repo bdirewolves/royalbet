@@ -48,15 +48,39 @@ export default function HeroSection () {
                     </Content>
                     {/* Button */}
                     <ContainerButton data-aos="fade-up" data-aos-duration="500">
-                        <Button isBorder>
+                        <GoldButton>
                             สมัครบาคาร่า
-                        </Button>
+                        </GoldButton>
                     </ContainerButton>
                 </TextContent>
             </DivFlexRow>
         </Container>
     )
 }
+
+const GoldButton = styled.button`
+    font-family: "Prompt";
+    border: none;
+    border-radius: 5px;
+    width: 116px;
+    height: 30px;
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    
+    background: linear-gradient(90deg, #D2BB6E 0%, #F6E79A 100%);
+    
+    transition-duration: 300ms;
+    cursor: pointer;
+    color: #000;
+
+    &:hover {
+        box-shadow: rgba(255, 255, 255, 1) 0px 0px 10px;
+        transition-duration: 300ms;
+    }
+`
 
 const DivFlexRow = styled.div`
     width: 100%;
@@ -121,6 +145,8 @@ const TextContent = styled.div`
     background-image: url(/assets/img/homepage/H1BG.jpg);
     background-repeat: no-repeat;
     background-size: 100% 100%;
+
+    color: #EFE7A7;
 
     @media (min-width: 1280px) {
         width: 480px;

@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
 import { slotHomepage } from "@/constants/casino";
+import { BsFillPlayFill } from "react-icons/bs"
 
 interface IProviders {
     id: number;
@@ -29,9 +30,6 @@ export default function GameSlotSection () {
         autoplaySpeed: 2000,
         arrows: false,
     };
-
-    const oddCasinos = casinoContent.casino.filter((_, index) => index % 2 !== 0);
-    const evenCasinos = casinoContent.casino.filter((_, index) => index % 2 === 0);
 
     const [ providers, setProviders ] = useState<IProviders[]>([])
     const router = useRouter()
@@ -74,7 +72,9 @@ export default function GameSlotSection () {
                                             <BoxText>
                                                 {item.name}
                                             </BoxText>
-                                            <GoldPic />
+                                            <GoldPic>
+                                                <BsFillPlayFill color="#000" size={20} />
+                                            </GoldPic>
                                         </GridFr>
                                     ))
                                 }
@@ -226,4 +226,8 @@ const GoldPic = styled.div`
     border-radius: 10px 0px;
 
     z-index: 3;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `

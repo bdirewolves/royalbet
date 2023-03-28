@@ -8,6 +8,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { casinoHomePage } from "@/constants/casino";
+import { BsFillPlayFill } from "react-icons/bs"
 
 interface IProviders {
     id: number;
@@ -69,7 +70,9 @@ export default function GameCasinoSection () {
                                                 />
                                             </DivPicPro>
                                             <BoxText>{item.name}</BoxText>
-                                            <GoldPic />
+                                            <GoldPic>
+                                                <BsFillPlayFill color="#000" size={20} />
+                                            </GoldPic>
                                         </GridFr>
                                     ))
                                 }
@@ -184,4 +187,8 @@ const GoldPic = styled.div`
     border-radius: 10px 0px;
 
     z-index: 3;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `
