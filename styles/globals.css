@@ -172,6 +172,10 @@ span {
   margin: 0% !important;
 } */
 
+video::-internal-media-controls-overlay-cast-button {
+  display: none;
+}
+
 em {
   font-family: 'Prompt', sans-serif;
   font-style: normal;

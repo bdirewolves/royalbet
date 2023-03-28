@@ -163,8 +163,8 @@ export default function Navbar({ modalPage, setModalPage, showHamburger, setShow
 
                                 <FlexRowRe>
                                     <GifList>
-                                        <GifLive autoPlay muted loop src="/assets/video/live.mp4" onClick={() => router.push("https://www.livescore.com/en/")}  />
-                                        <GifSpin autoPlay muted loop src="/assets/video/spin.mp4" />
+                                        <GifLive disableRemotePlayback autoPlay muted loop src="/assets/video/live.mp4" onClick={() => router.push("https://www.livescore.com/en/")}  />
+                                        <GifSpin disableRemotePlayback autoPlay muted loop src="/assets/video/spin.mp4" />
                                     </GifList>
                                     <DivButton>
                                         <Ham onClick={() => setShowHamburger(!showHamburger)}>
