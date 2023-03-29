@@ -877,6 +877,7 @@ const DivGridPro = styled.div`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     justify-content: center;
+    justify-items: center;
     align-items: center;
 
     gap: 10px;
@@ -887,6 +888,10 @@ const DivGridPro = styled.div`
     
     &::-webkit-scrollbar {
         display: none;
+    }
+
+    @media (min-width: 480px) {
+        grid-template-columns: repeat(3, 1fr);
     }
 
     @media (min-width: 744px) {
