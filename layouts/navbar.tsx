@@ -316,7 +316,6 @@ const Profile = styled.div`
 `
 
 const FlexRowRe = styled.div`
-    padding-right: 20px;
     width: 100%;
     height: 100%;
 
