@@ -21,12 +21,12 @@ export default function CasinoPage() {
             <Content>
                 <CasinoTopSectionPage />
                 <DivFlexRe>
+                    <SelectProSectionPage />
                     <DivFlex>
                         <SportSectionPage />
                         <GameCasinoSection />
                         <GameSlotSection />
                     </DivFlex>
-                    <SelectProSectionPage />
                 </DivFlexRe>
             </Content>
         </>
@@ -80,8 +80,4 @@ const DivFlexRe = styled.div`
     align-items: center;
 
     gap: 10px;
-
-    @media (min-width: 744px) {
-        flex-direction: column-reverse;
-    }
 `
