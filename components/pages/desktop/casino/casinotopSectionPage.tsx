@@ -65,11 +65,14 @@ const DivGrid = styled.div`
 `
 
 const GridFrBanner = styled.div`
+    border-radius: 5px;
     width: 100%;
     height: auto;
     aspect-ratio: 320/104;
 
     background: #100F14;
+
+    box-shadow: rgba(255, 255, 255, 0.35) 0px 5px 15px;
 
     @media (min-width: 1280px) {
         grid-area: 1 / 1 / 2 / 4;
@@ -195,15 +198,18 @@ const GridFrJak = styled.div`
 `
 
 const DivJack = styled.div`
+    border-radius: 5px;
     width: 100%;
     height: auto;
     aspect-ratio: 1/1;
     max-width: 320px;
     
     background: #100F14;
+    box-shadow: rgba(255, 255, 255, 0.35) 0px 5px 15px;
 `
 
 const DivAds = styled.div`
+    border-radius: 5px;
     width: 100%;
     height: auto;
     aspect-ratio: 1/1;
@@ -212,6 +218,7 @@ const DivAds = styled.div`
     display: none;
     
     background: #100F14; 
+    box-shadow: rgba(255, 255, 255, 0.35) 0px 5px 15px;
 
     @media (min-width: 425px) {
         max-width: 320px;

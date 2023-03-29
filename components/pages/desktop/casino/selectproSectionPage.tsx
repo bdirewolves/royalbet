@@ -5,7 +5,7 @@ import { AuthContext } from "@/pages/_app";
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
-import { AiOutlineCaretLeft, AiOutlineCaretRight, AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
+import { AiOutlineCaretLeft, AiOutlineCaretRight, AiFillCaretRight, AiFillCaretLeft } from "react-icons/ai";
 import styled from "styled-components";
 import Swal from "sweetalert2";
 import Slider from "react-slick";
@@ -40,16 +40,27 @@ export default function SelectProSectionPage() {
     const [ providerLists, setProviderLists ] = useState<IProviders[]>([])
     const [ gameLists, setGameLists ] = useState<IGames[]>([])
     const [ pages, setPages ] = useState<ILimit>({ page: 1, limit: 24 })
+    const [ active, setActive ] = useState<string>("all")
     const router = useRouter()
     const { userAccess, userData, telnum } = useContext(AuthContext)
     const phone = typeof window !== "undefined" && localStorage.getItem("telnum")?.slice(1) || ""
 
-    const handleOnError = (event: any, name: string) => {
-        event.target.src =  `https://placehold.co/210x150/black/white/jpg/?text=${name}`;
-    }
+    const [ openTypeList, setOpenTypeList ] = useState(false)
+    const [ openGameList, setOpenGameList ] = useState(false)
+    const [ openProviderList, setOpenProviderList ] = useState(false)
+    const [ typeList, setTypeList ] = useState<string[]>([])
 
+
+    
     const fetchProvider = async () => {
         try {
+            
+            //TODO onSelect Type == casino
+            //TODO onSelect Type == sport
+            //TODO onSelect Type == esport
+            //TODO onSelect Type == lotto
+            //TODO onSelect Type == esport
+
             const tmp_providers: IProviders[] = await axios.get(`${process.env.API_URL}/gfservice/provider`).then((res) => res.data.data)
             const filters = tmp_providers.filter((item) => item.type === type)
             setProviderLists(filters)  
@@ -206,6 +217,124 @@ export default function SelectProSectionPage() {
         }
     }
 
+    const slide = async (position: string) => {
+        if(position == "right") {
+            //@ts-ignore
+            document.getElementById("type").scrollLeft -= 20
+        }else if(position == "left") {
+            //@ts-ignore
+            document.getElementById("type").scrollLeft += 20
+        }
+    }
+
+    // setOpenTypeList(true)
+    // setTypeList(["All Game Type", "Slot", "Fishing", "Arcade", "Table", "Bingo", "Lotto"])
+
+    //TODO check casino type
+    const checkSteper = async (type: string) => {
+        switch(type) {
+            case "live":
+                {
+                    setType(type)
+                    const tmp: IGames[] = await axios.get(`${process.env.API_URL}/gfservice/gamelist/type/${type}`).then((res) => res.data.data.gameList.flatMap((inner: any) => inner))
+                    const find_lobby = tmp.filter((item) => item.name.includes("lobby") || item.name.includes("Lobby") || item.name.includes("Live") || item.name.includes("live") )
+                    setOpenGameList(true)
+                    setOpenProviderList(false)
+                    setOpenTypeList(false)
+                    setGameLists(find_lobby)
+                    break;
+                }
+            case "sport":
+                {
+                    setType(type)
+                    const tmp: IGames[] = await axios.get(`${process.env.API_URL}/gfservice/gamelist/type/${type}`).then((res) => res.data.data.gameList.flatMap((inner: any) => inner))
+                    const find_lobby = tmp.filter((item) => item.name.includes("lobby") || item.name.includes("Lobby") || item.name.includes("Live") || item.name.includes("live") )
+                    setOpenGameList(true)
+                    setOpenProviderList(false)
+                    setOpenTypeList(false)
+                    setGameLists(find_lobby)
+                    break;
+                }
+            case "esport":
+                {
+                    setType(type)
+                    const tmp: IGames[] = await axios.get(`${process.env.API_URL}/gfservice/gamelist/type/${type}`).then((res) => res.data.data.gameList.flatMap((inner: any) => inner))
+                    const find_lobby = tmp.filter((item) => item.name.includes("lobby") || item.name.includes("Lobby") || item.name.includes("Live") || item.name.includes("live") )
+                    setOpenGameList(true)
+                    setOpenProviderList(false)
+                    setOpenTypeList(false)
+                    setGameLists(find_lobby)
+                    break;
+                }
+            case "lotto":
+                {
+                    setType(type)
+                    const tmp: IGames[] = await axios.get(`${process.env.API_URL}/gfservice/gamelist/type/${type}`).then((res) => res.data.data.gameList.flatMap((inner: any) => inner))
+                    const find_lobby = tmp.filter((item) => item.name.includes("lobby") || item.name.includes("Lobby") || item.name.includes("Live") || item.name.includes("live") )
+                    setOpenGameList(true)
+                    setOpenProviderList(false)
+                    setOpenTypeList(false)
+                    setGameLists(find_lobby)
+                    break;
+                }
+            
+            case "slot":
+                {   
+                    setType(type)
+                    const tmp_providers: IProviders[] = await axios.get(`${process.env.API_URL}/gfservice/provider`).then((res) => res.data.data)
+                    const filters = tmp_providers.filter((item) => item.type === type)
+                    setProviderLists(filters) // set Cetegory game etc. slot fishing arcade
+                    setOpenProviderList(true) // Display Provider list
+                    setOpenGameList(false) // Hide game list before select provider
+                    setProviders("") // Set default provider
+                    break;
+                }
+            case "card":
+                {
+                    setType(type)
+                    const tmp_providers: IProviders[] = await axios.get(`${process.env.API_URL}/gfservice/provider`).then((res) => res.data.data)
+                    const filters = tmp_providers.filter((item) => item.type === type)
+                    setProviderLists(filters) // set Cetegory game etc. slot fishing arcade
+                    setOpenProviderList(true) // Display Provider list
+                    setOpenGameList(false) // Hide game list before select provider
+                    setProviders("") // Set default provider
+                    break;
+                }
+            case "keno":
+                {
+                    setType(type)
+                    const tmp_providers: IProviders[] = await axios.get(`${process.env.API_URL}/gfservice/provider`).then((res) => res.data.data)
+                    const filters = tmp_providers.filter((item) => item.type === type)
+                    setProviderLists(filters) // set Cetegory game etc. slot fishing arcade
+                    setOpenProviderList(true) // Display Provider list
+                    setOpenGameList(false) // Hide game list before select provider
+                    setProviders("") // Set default provider
+                    break;
+                }
+            case "fishing":
+                {
+                    setType(type)
+                    const tmp_providers: IProviders[] = await axios.get(`${process.env.API_URL}/gfservice/provider`).then((res) => res.data.data)
+                    const filters = tmp_providers.filter((item) => item.type === type)
+                    setProviderLists(filters) // set Cetegory game etc. slot fishing arcade
+                    setOpenProviderList(true) // Display Provider list
+                    setOpenGameList(false) // Hide game list before select provider
+                    setProviders("") // Set default provider
+                    break;
+                }
+            
+        }
+    }
+
+    const selectProvider = async () => {
+        if(providers != "") {
+            const games: IGames[] = await axios.get(`${process.env.API_URL}/gfservice/gamelist/${providers}`).then((res) =>res.data.data.gameList)
+            setGameLists(games)
+            setOpenGameList(true)
+            setOpenTypeList(true)
+        }
+    }
+
     useEffect(() => {
         fetchProvider()
     }, [type])
@@ -214,7 +343,11 @@ export default function SelectProSectionPage() {
         fetchGame()
         setPages({ page: 1, limit: 24 })
         console.log(providers)
-    }, [providers, providerLists])
+    }, [providerLists])
+
+    useEffect(() => {
+        selectProvider()
+    }, [providers])
 
     useEffect(() => {
         fetchProvider()
@@ -225,34 +358,54 @@ export default function SelectProSectionPage() {
             <FixWidth>
 
                 {/* // Select Category */}
-                <DivGridType>
-                    <BoxType isActive={type === "live"} onClick={() => setType("live")}>
-                        <BoxTypeSpan>CASINO</BoxTypeSpan>
-                    </BoxType>
-                    <BoxType isActive={type === "sport"} onClick={() => setType("sport")}>
-                        <BoxTypeSpan>SPORT</BoxTypeSpan>
-                    </BoxType>
-                    <BoxType isActive={type === "slot"} onClick={() => setType("slot")}>
-                        <BoxTypeSpan>SLOT</BoxTypeSpan>
-                    </BoxType>
-                    <BoxType isActive={type === "esport"} onClick={() => setType("esport")}>
-                        <BoxTypeSpan>E-SPORT</BoxTypeSpan>
-                    </BoxType>
-                    <BoxType isActive={type === "lotto"} onClick={() => setType("lotto")}>
-                        <BoxTypeSpan>LOTTERY</BoxTypeSpan>
-                    </BoxType>
-                    <BoxType isActive={type === "card"} onClick={() => setType("card")}>
-                        <BoxTypeSpan>CARD</BoxTypeSpan>
-                    </BoxType>
-                </DivGridType>
+
+                <BoxContainer>
+                    <BoxNavigate style={{ width: "55px" }}>
+                        <AiFillCaretLeft color="#959595" size={26} />
+                    </BoxNavigate>
+
+                    {/*//! Can do carousel ?  */}
+                    <DivGridType id="type">
+                    
+                        <BoxType isActive={type === "live"} onClick={() => checkSteper("live")}>
+                            <BoxTypeSpan>casino</BoxTypeSpan>
+                        </BoxType>
+                        <BoxType isActive={type === "sport"} onClick={() => checkSteper("sport")}>
+                            <BoxTypeSpan>sport</BoxTypeSpan>
+                        </BoxType>
+                        <BoxType isActive={type === "slot"} onClick={() => checkSteper("slot")}>
+                            <BoxTypeSpan>slot</BoxTypeSpan>
+                        </BoxType>
+                        <BoxType isActive={type === "esport"} onClick={() => checkSteper("esport")}>
+                            <BoxTypeSpan>e-sport</BoxTypeSpan>
+                        </BoxType>
+                        <BoxType isActive={type === "lotto"} onClick={() => checkSteper("lotto")}>
+                            <BoxTypeSpan>lottery</BoxTypeSpan>
+                        </BoxType>
+                        <BoxType isActive={type === "card"} onClick={() => checkSteper("card")}>
+                            <BoxTypeSpan>card</BoxTypeSpan>
+                        </BoxType>
+                        <BoxType isActive={type === "keno"} onClick={() => checkSteper("keno")}>
+                            <BoxTypeSpan>keno</BoxTypeSpan>
+                        </BoxType>
+                        <BoxType isActive={type === "fishing"} onClick={() => checkSteper("fishing")}>
+                            <BoxTypeSpan>fishing</BoxTypeSpan>
+                        </BoxType>
+
+                    </DivGridType>
+
+                    <BoxNavigate style={{ width: "55px" }}>
+                        <AiFillCaretRight color="#959595" size={26} />
+                    </BoxNavigate>
+                </BoxContainer>
 
                 {/* Select Provider */}
                 {
-                    type !== "" && (
+                    openProviderList && (
                         <DivGridPro>
                             {/* <BoxPro isActive={providers === "all"} onClick={() => setProviders("all")}>
                                 <BoxProSpan>
-                                    TOTAL GAME
+                                    All Game Type
                                 </BoxProSpan>
                             </BoxPro> */}
 
@@ -265,77 +418,205 @@ export default function SelectProSectionPage() {
                                     </BoxPro>
                                 ))
                             }
-
                         </DivGridPro>
                     )
                 }
 
-                {/* Game List */}
+                {/* Game Type */}
 
                 {
-                    providers !== "" &&
+                    openTypeList &&
                     (
-                        <DivFlexGame>
-                            <DivTitle>
-                                <Title>
-                                    <TextTitle>provider {type}</TextTitle>
-                                </Title>
-                                <LineTitle />
-                                <PageControl>
-                                    <BackBtn onClick={() => pages.page != 1 && setPages({ page: pages.page-1, limit: 24 })}><AiOutlineCaretLeft size={14} /></BackBtn>
-                                    <CurrentPage>{ pages.page }/{ Math.floor(gameLists.length / pages.limit) == 0 ? "1" : Math.floor(gameLists.length / pages.limit) }</CurrentPage>
-                                    <NextBtn onClick={() => gameLists.length > 24 && setPages({ page: pages.page+1, limit: 24 })}><AiOutlineCaretRight size={14} /></NextBtn>
-                                </PageControl>
-                            </DivTitle>
-
-
-                            <DivGrid>
-
-                                {
-                                    gameLists.length >= 2 ? gameLists.slice(Math.floor((pages.page - 1) * pages.limit), Math.floor((pages.page - 1) * pages.limit + pages.limit)).map((item, index) => (
-                                        <GridFr key={index} onClick={() => launchGame(item.game_code, item.provider_id)}>
-                                            <DivPicPro>
-                                                <PicPro loading="lazy" src={item.pic_url ? item.pic_url : `https://placehold.co/210x150/black/white?text=${item.provider_id}`} />
-                                            </DivPicPro>
-                                            <BoxText>
-                                                {
-                                                    type === "live" ?
-                                                    `Lobby ${item.provider_id}`
-                                                    :
-                                                    item.name
-                                                }
-                                            </BoxText>
-                                            <GoldPic />
-                                        </GridFr>
-                                    ))
-                                    :
-                                    gameLists.map((item, index) => (
-                                        <GridFr key={index} onClick={() => launchGame(item.game_code, item.provider_id)}>
-                                            <DivPicPro>
-                                                <PicPro loading="lazy" src={item.pic_url ? item.pic_url : `https://placehold.co/210x150/black/white?text=${item.provider_id}`} />
-                                            </DivPicPro>
-                                            <BoxText>
-                                                {
-                                                    type === "live" ?
-                                                    `Lobby ${item.provider_id}`
-                                                    :
-                                                    item.name
-                                                }
-                                            </BoxText>
-                                            <GoldPic />
-                                        </GridFr>
-                                    ))
-                                }
-
-                            </DivGrid>
-                        </DivFlexGame>
+                        <GameTypeList>
+                            <GameType isActive={active == "all" ? "true" : "false"} onClick={() => setActive("all")}>
+                                <span>All Game Type</span>
+                            </GameType>
+                            <GameType isActive={active == "slot" ? "true" : "false"} onClick={() => setActive("slot")}>
+                                <span>Slot</span>
+                            </GameType>
+                            <GameType isActive={active == "fish" ? "true" : "false"} onClick={() => setActive("fish")}>
+                                <span>Fishing</span>
+                            </GameType>
+                            <GameType isActive={active == "arcade" ? "true" : "false"} onClick={() => setActive("arcade")}>
+                                <span>Arcade</span>
+                            </GameType>
+                            <GameType isActive={active == "table" ? "true" : "false"} onClick={() => setActive("table")}>
+                                <span>Table</span>
+                            </GameType>
+                            <GameType isActive={active == "bingo" ? "true" : "false"} onClick={() => setActive("bingo")}>
+                                <span>Bingo</span>
+                            </GameType>
+                            <GameType isActive={active == "lotto" ? "true" : "false"} onClick={() => setActive("lotto")}>
+                                <span>Lotto</span>
+                            </GameType>
+                        </GameTypeList>
                     )
                 }
+
+                {/* Game List */}
+                    {
+                        openGameList &&
+                        (
+                            <ContainerDivFlexGame>
+                                <LeftDivFlexGame>
+                                    <AiFillCaretLeft color="#959595" size={26} />
+                                </LeftDivFlexGame>
+                                    <DivFlexGame>
+                                        <DivTitle>
+                                            <Title>
+                                                <TextTitle>provider {type}</TextTitle>
+                                            </Title>
+                                            <LineTitle />
+                                            <PageControl>
+                                                <BackBtn onClick={() => pages.page != 1 && setPages({ page: pages.page-1, limit: 24 })}><AiOutlineCaretLeft size={14} /></BackBtn>
+                                                <CurrentPage>{ pages.page }/{ Math.floor(gameLists.length / pages.limit) == 0 ? "1" : Math.floor(gameLists.length / pages.limit) }</CurrentPage>
+                                                <NextBtn onClick={() => (gameLists.length > 24 && pages.page != Math.floor(gameLists.length / pages.limit)) && setPages({ page: pages.page+1, limit: 24 })}><AiOutlineCaretRight size={14} /></NextBtn>
+                                            </PageControl>
+                                        </DivTitle>
+                                        <DivGrid>
+                                            {
+                                                gameLists.length >= 2 ? gameLists.slice(Math.floor((pages.page - 1) * pages.limit), Math.floor((pages.page - 1) * pages.limit + pages.limit)).map((item, index) => (
+                                                    <GridFr key={index} onClick={() => launchGame(item.game_code, item.provider_id)}>
+                                                        <DivPicPro>
+                                                            <PicPro loading="lazy" src={item.pic_url ? item.pic_url : `https://placehold.co/210x150/black/white?text=${item.provider_id}`} />
+                                                        </DivPicPro>
+                                                        <BoxText>
+                                                            {
+                                                                type === "live" ?
+                                                                `Lobby ${item.provider_id}`
+                                                                :
+                                                                item.name
+                                                            }
+                                                        </BoxText>
+                                                        <GoldPic />
+                                                    </GridFr>
+                                                ))
+                                                :
+                                                gameLists.map((item, index) => (
+                                                    <GridFr key={index} onClick={() => launchGame(item.game_code, item.provider_id)}>
+                                                        <DivPicPro>
+                                                            <PicPro loading="lazy" src={item.pic_url ? item.pic_url : `https://placehold.co/210x150/black/white?text=${item.provider_id}`} />
+                                                        </DivPicPro>
+                                                        <BoxText>
+                                                            {
+                                                                type === "live" ?
+                                                                `Lobby ${item.provider_id}`
+                                                                :
+                                                                item.name
+                                                            }
+                                                        </BoxText>
+                                                        <GoldPic />
+                                                    </GridFr>
+                                                ))
+                                            }
+                                        </DivGrid>
+                                    </DivFlexGame>
+                                <RightDivFlexGame>
+                                    <AiFillCaretRight color="#959595" size={26} />
+                                </RightDivFlexGame>
+                            </ContainerDivFlexGame>
+                        )
+                    }
 
             </FixWidth>
         </Container>
     )
 }
+
+const LeftDivFlexGame = styled.div`
+    border-radius: 5px;
+    width: 55px;
+    height: auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba(0, 0, 0, 0.5);
+
+    @media (max-width: 1439px) {
+        display: none;
+    }
+`
+
+const RightDivFlexGame = styled.div`
+    border-radius: 5px;
+    width: 55px;
+    height: auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba(0, 0, 0, 0.5);
+
+    @media (max-width: 1439px) {
+        display: none;
+    }
+`
+
+const ContainerDivFlexGame = styled.div`
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+`
+
+const GameType = styled.div<{ isActive: string }>`
+    border: 1px solid #100F14;
+    border-radius: 5px;
+    min-width: 150px;
+    width: 150px;
+    height: 40px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+
+    background-color: #100F14;
+    color: #fff;
+    
+    transition-duration: 300ms;
+    
+    cursor: pointer;
+
+    &:hover {
+        border: 1px solid #ECD559;
+    }
+
+    ${props => props.isActive == "true" ?
+        `
+            transition-duration: 300ms;
+            border: none;
+            background: linear-gradient(90deg, #F6E79A 0%, #D2BB6E 100%);
+            color: #000;
+        `
+    : undefined
+    }
+`
+
+const GameTypeList = styled.div`
+    padding: 10px 20px;
+    border-radius: 5px;
+    max-width: 1310px;
+    width: 100%;
+    height: auto;
+    
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+
+    background: rgba(255, 255, 255, 0.1);
+`
+
+const BoxContainer = styled.div`
+    width: 100%;
+    height: auto;
+    display: flex;
+`
 
 const NextBtn = styled.button`
     cursor: pointer;
@@ -458,22 +739,28 @@ const BoxProSpan = styled.span`
 `
 
 const BoxTypeSpan = styled.span`
-    color: #fff;
     font-size: 18px;
     font-weight: 700;
+    text-transform: uppercase;
 `
 
 const DivGridType = styled.div`
+    margin: auto;
     width: 100%;
     height: auto;
     max-width: 650px;
 
-    display: grid;
-    grid-template-columns: repeat(3, 2fr);
-    justify-content: center;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
 
+    overflow-x: scroll;
+
     gap: 10px;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
 
     @media (min-width: 1280px) {
         max-width: 1164.44px;
@@ -486,7 +773,7 @@ const DivGridType = styled.div`
     }
 `
 
-const BoxType = styled.div<{ isActive: boolean }>`
+const BoxNavigate = styled.div`
     cursor: pointer;
     border: 1px solid #000;
     width: 100%;
@@ -504,8 +791,44 @@ const BoxType = styled.div<{ isActive: boolean }>`
     justify-content: center;
     align-items: center;
     transition: border 300ms;
+    
+    &:hover{
+        border: 1px solid #ECD559;
+    }
 
-    ${props => props.isActive && `border: 1px solid #ECD559;`}
+    @media (max-width: 1439px) {
+        display: none;
+    }
+`
+
+const BoxType = styled.div<{ isActive?: boolean }>`
+    cursor: pointer;
+    border: 1px solid #000;
+    min-width: 209px;
+    min-height: 69px;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 92/47;
+
+    border-radius: 5px;
+
+    margin: 0 auto;
+
+    background: #100F14;
+    color: #fff;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: border 300ms;
+
+    ${props => props.isActive == true ? `
+        border: 1px solid #ECD559;
+        transition-duration: 300ms;
+        border: none;
+        background: linear-gradient(90deg, #F6E79A 0%, #D2BB6E 100%);
+        color: #000 !important;
+    `: undefined}
     
     &:hover{
         border: 1px solid #ECD559;
@@ -517,35 +840,40 @@ const BoxType = styled.div<{ isActive: boolean }>`
 `
 
 const DivGridPro = styled.div`
+    margin: 10px auto;
+    padding: 10px 20px;
+    border-radius: 5px;
     width: 100%;
     height: auto;
     max-width: 650px;
 
-    display: flex;
-    /* grid-template-columns: repeat(3, 3fr); */
-    justify-content: flex-start;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    justify-content: center;
     align-items: center;
 
     gap: 10px;
 
-    overflow-x: scroll;
+    overflow-x: hidden;
+    
+    background: rgba(255, 255, 255, 0.1);
     
     &::-webkit-scrollbar {
         display: none;
     }
 
     @media (min-width: 744px) {
-        /* grid-template-columns: repeat(4, 2fr); */
+        grid-template-columns: repeat(4, 1fr);
     }
 
     @media (min-width: 1280px) {
         max-width: 1164.44px;
-
-        /* grid-template-columns: repeat(8, 1fr); */
+        grid-template-columns: repeat(6, 1fr);
     }
 
     @media (min-width: 1440px) {
         max-width: 1310px;
+        grid-template-columns: repeat(8, 1fr);
     }
 `
 
