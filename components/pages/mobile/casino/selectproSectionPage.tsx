@@ -831,8 +831,7 @@ const BoxType = styled.div<{ isActive?: boolean }>`
     border: 1px solid #000;
     min-width: 145px;
     width: 100%;
-    min-height: 49px;
-    height: auto;
+    height: 49px;
     aspect-ratio: 92/47;
     
     border-radius: 5px;
@@ -875,7 +874,7 @@ const DivGridPro = styled.div`
     max-width: 650px;
 
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     justify-content: center;
     justify-items: center;
     align-items: center;
@@ -891,11 +890,11 @@ const DivGridPro = styled.div`
     }
 
     @media (min-width: 480px) {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(4, 1fr);
     }
 
     @media (min-width: 744px) {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(5, 1fr);
     }
 
     @media (min-width: 1280px) {
@@ -912,9 +911,8 @@ const DivGridPro = styled.div`
 const BoxPro = styled.div<{ isActive: boolean }>`
     cursor: pointer;
     border: 1px solid #000;
-    min-width: 150px;
-    width: 150px;
-    height: auto;
+    width: 93px;
+    height: 36px;
     aspect-ratio: 86/28;
 
     border-radius: 5px;
@@ -959,6 +957,7 @@ const DivFlexGame = styled.div`
 `
 
 const DivGrid = styled.div`
+    padding: 0 10px;
     width: 100%;
     height: auto;
 
@@ -988,7 +987,7 @@ const GridFr = styled.div`
     cursor: pointer;
     width: 100%;
     height: auto;
-    aspect-ratio: 145/130;
+    aspect-ratio: 145/103;
 
     position: relative;
     overflow: hidden;
