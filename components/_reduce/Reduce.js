@@ -40,7 +40,7 @@ export const FixWidth = styled.div`
     justify-content: center;
     align-items: center;
 
-    gap: 10px;
+    /* gap: 10px; */
 `
 
 export const Pictitle = styled.img`

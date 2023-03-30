@@ -50,11 +50,19 @@ export default function SelectProSectionPage() {
     const [ typeList, setTypeList ] = useState<string[]>([])
 
     const settings = {
-        dos: true,
+        dots: false,
         slidesToShow: 1,
         rows: 2,
-        slidesPerRow: 2,
+        slidesPerRow: 3,
         arrows: false,
+        responsive: [
+            {
+                breakpoint: 744,
+                settings: {
+                    slidesPerRow: 2
+                }
+            }
+        ]
     }
     
     const fetchProvider = async () => {
@@ -358,56 +366,56 @@ export default function SelectProSectionPage() {
                             <SliderContainer>
                                 <Slider {...settings}>
                                     <div>
-                                        <DivBoxType>
+                                        <DivBoxType order={1}>
                                             <BoxType isActive={type === "live"} onClick={() => checkSteper("live")}>
                                                 <BoxTypeSpan>casino</BoxTypeSpan>
                                             </BoxType>
                                         </DivBoxType>
                                     </div>
                                     <div>
-                                        <DivBoxType>
+                                        <DivBoxType order={2}>
                                             <BoxType isActive={type === "sport"} onClick={() => checkSteper("sport")}>
                                                 <BoxTypeSpan>sport</BoxTypeSpan>
                                             </BoxType>
                                         </DivBoxType>
                                     </div>
                                     <div>
-                                        <DivBoxType>
+                                        <DivBoxType order={3}>
                                             <BoxType isActive={type === "slot"} onClick={() => checkSteper("slot")}>
                                                 <BoxTypeSpan>slot</BoxTypeSpan>
                                             </BoxType>
                                         </DivBoxType>
                                     </div>
                                     <div>
-                                        <DivBoxType>
+                                        <DivBoxType order={4}>
                                             <BoxType isActive={type === "esport"} onClick={() => checkSteper("esport")}>
                                                 <BoxTypeSpan>e-sport</BoxTypeSpan>
                                             </BoxType>
                                         </DivBoxType>
                                     </div>
                                     <div>
-                                        <DivBoxType>
+                                        <DivBoxType order={5}>
                                             <BoxType isActive={type === "lotto"} onClick={() => checkSteper("lotto")}>
                                                 <BoxTypeSpan>lottery</BoxTypeSpan>
                                             </BoxType>
                                         </DivBoxType>
                                     </div>
                                     <div>
-                                        <DivBoxType>
+                                        <DivBoxType order={6}>
                                             <BoxType isActive={type === "card"} onClick={() => checkSteper("card")}>
                                                 <BoxTypeSpan>card</BoxTypeSpan>
                                             </BoxType>
                                         </DivBoxType>
                                     </div>
                                     <div>
-                                        <DivBoxType>
+                                        <DivBoxType order={7}>
                                             <BoxType isActive={type === "keno"} onClick={() => checkSteper("keno")}>
                                                 <BoxTypeSpan>keno</BoxTypeSpan>
                                             </BoxType>
                                         </DivBoxType>
                                     </div>
                                     <div>
-                                        <DivBoxType>
+                                        <DivBoxType order={8}>
                                             <BoxType isActive={type === "fishing"} onClick={() => checkSteper("fishing")}>
                                                 <BoxTypeSpan>fishing</BoxTypeSpan>
                                             </BoxType>
@@ -597,7 +605,7 @@ const ContainerDivFlexGame = styled.div`
 const GameType = styled.div<{ isActive: string }>`
     border: 1px solid #100F14;
     border-radius: 5px;
-    min-width: 93px;
+    min-width: 85px;
     width: 93px;
     height: 30px;
 
@@ -631,7 +639,7 @@ const GameType = styled.div<{ isActive: string }>`
 const GameTypeList = styled.div`
     padding: 10px 20px;
     border-radius: 5px;
-    max-width: 1310px;
+    max-width: 650px;
     width: 100%;
     height: auto;
     
@@ -639,11 +647,16 @@ const GameTypeList = styled.div`
     justify-content: flex-start;
     align-items: center;
     gap: 10px;
+    overflow-x: scroll;
 
     background: rgba(255, 255, 255, 0.1);
 
     &::-webkit-scrollbar {
         display: none;
+    }
+
+    @media (min-width: 1280px) {
+        max-width: 1310px;
     }
 `
 
@@ -782,8 +795,6 @@ const DivGridType = styled.div`
 
     gap: 10px;
 
-    background: #202020;
-
     &::-webkit-scrollbar {
         display: none;
     }
@@ -827,15 +838,92 @@ const BoxNavigate = styled.div`
     }
 `
 
-const DivBoxType = styled.div`
-    padding: 10px;
+const DivBoxType = styled.div<{ order: number }>`
+    padding-top: 5px;
+    padding-bottom: 5px;
+
     width: 100%;
     height: 100%;
+
+    ${props => props.order == 1 && `
+        padding-left: 20px;
+        padding-right: 5px;
+
+        @media (min-width: 744px) {
+            padding-left: 0px;
+            padding-right: 5px;
+        }
+    `}
+    ${props => props.order == 2 && `
+        padding-left: 5px;
+        padding-right: 20px;
+
+        @media (min-width: 744px) {
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+    `}
+    ${props => props.order == 3 && `
+        padding-left: 20px;
+        padding-right: 5px;
+
+        @media (min-width: 744px) {
+            padding-left: 5px;
+            padding-right: 0px;
+        }
+    `}
+    ${props => props.order == 4 && `
+        padding-left: 5px;
+        padding-right: 20px;
+
+        @media (min-width: 744px) {
+            padding-left: 0px;
+            padding-right: 5px;
+        }
+    `}
+    ${props => props.order == 5 && `
+        padding-left: 20px;
+        padding-right: 5px;
+
+        @media (min-width: 744px) {
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+    `}
+    ${props => props.order == 6 && `
+        padding-left: 5px;
+        padding-right: 20px;
+        
+        @media (min-width: 744px) {
+            padding-left: 5px;
+            padding-right: 0px;
+        }
+    `}
+    ${props => props.order == 7 && `
+        padding-left: 20px;
+        padding-right: 5px;
+
+        @media (min-width: 744px) {
+            padding-left: 0px;
+            padding-right: 5px;
+        }
+    `}
+    ${props => props.order == 8 && `
+        padding-left: 5px;
+        padding-right: 20px;
+
+        @media (min-width: 744px) {
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+    `}
 `
 
 const BoxType = styled.div<{ isActive?: boolean }>`
-    border: 1px solid #000;
-    min-width: 145px;
+
+    border: 1px solid #100F14;
+
+    min-width: 135px;
     width: 100%;
     height: 49px;
     aspect-ratio: 92/47;
@@ -895,12 +983,12 @@ const DivGridPro = styled.div`
         display: none;
     }
 
-    @media (min-width: 480px) {
+    /* @media (min-width: 480px) {
         grid-template-columns: repeat(4, 1fr);
-    }
+    } */
 
     @media (min-width: 744px) {
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(4, 1fr);
     }
 
     @media (min-width: 1280px) {
@@ -917,7 +1005,8 @@ const DivGridPro = styled.div`
 const BoxPro = styled.div<{ isActive: boolean }>`
     cursor: pointer;
     border: 1px solid #000;
-    width: 93px;
+    min-width: 85px;
+    width: 100%;
     height: 36px;
     aspect-ratio: 86/28;
 
@@ -925,18 +1014,22 @@ const BoxPro = styled.div<{ isActive: boolean }>`
 
     /* margin: auto; */
 
-    background: #100F14;
-
     display: flex;
     justify-content: center;
     align-items: center;
+    
+    transition: 300ms;
 
-    transition: border 300ms;
+    background: #100F14;
 
     ${props => props.isActive && `border: 1px solid #ECD559;`}
     
     &:hover{
         border: 1px solid #ECD559;
+    }
+
+    @media (min-width: 744px) {
+        height: 40px
     }
 `
 
