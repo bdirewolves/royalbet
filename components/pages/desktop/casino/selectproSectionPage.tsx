@@ -4,7 +4,7 @@ import { casinoContent } from "@/constants/casino";
 import { AuthContext } from "@/pages/_app";
 import axios from "axios";
 import { useRouter } from "next/router";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { AiOutlineCaretLeft, AiOutlineCaretRight, AiFillCaretRight, AiFillCaretLeft } from "react-icons/ai";
 import styled from "styled-components";
 import Swal from "sweetalert2";
@@ -50,17 +50,31 @@ export default function SelectProSectionPage() {
     const [ openProviderList, setOpenProviderList ] = useState(false)
     const [ typeList, setTypeList ] = useState<string[]>([])
 
+    const sliderRef = useRef<Slider>(null);
 
+    const next = () => {
+        if (sliderRef.current) {
+            sliderRef.current.slickNext();
+        }
+    };
+    
+    const previous = () => {
+        if (sliderRef.current) {
+            sliderRef.current.slickPrev();
+        }
+    };
+
+    const settings = {
+        dots: false,
+        arrows: false,
+        infinite: false,
+        speed: 500,
+        slidesToShow: 6,
+        slidesToScroll: 1
+    }
     
     const fetchProvider = async () => {
         try {
-            
-            //TODO onSelect Type == casino
-            //TODO onSelect Type == sport
-            //TODO onSelect Type == esport
-            //TODO onSelect Type == lotto
-            //TODO onSelect Type == esport
-
             const tmp_providers: IProviders[] = await axios.get(`${process.env.API_URL}/gfservice/provider`).then((res) => res.data.data)
             const filters = tmp_providers.filter((item) => item.type === type)
             setProviderLists(filters)  
@@ -217,19 +231,6 @@ export default function SelectProSectionPage() {
         }
     }
 
-    const slide = async (position: string) => {
-        if(position == "right") {
-            //@ts-ignore
-            document.getElementById("type").scrollLeft -= 20
-        }else if(position == "left") {
-            //@ts-ignore
-            document.getElementById("type").scrollLeft += 20
-        }
-    }
-
-    // setOpenTypeList(true)
-    // setTypeList(["All Game Type", "Slot", "Fishing", "Arcade", "Table", "Bingo", "Lotto"])
-
     //TODO check casino type
     const checkSteper = async (type: string) => {
         switch(type) {
@@ -360,41 +361,73 @@ export default function SelectProSectionPage() {
                 {/* // Select Category */}
 
                 <BoxContainer>
-                    <BoxNavigate style={{ width: "55px" }}>
+                    <BoxNavigate onClick={previous} style={{ width: "55px" }}>
                         <AiFillCaretLeft color="#959595" size={26} />
                     </BoxNavigate>
 
                     {/*//! Can do carousel ?  */}
-                    <DivGridType id="type">
-                    
-                        <BoxType isActive={type === "live"} onClick={() => checkSteper("live")}>
-                            <BoxTypeSpan>casino</BoxTypeSpan>
-                        </BoxType>
-                        <BoxType isActive={type === "sport"} onClick={() => checkSteper("sport")}>
-                            <BoxTypeSpan>sport</BoxTypeSpan>
-                        </BoxType>
-                        <BoxType isActive={type === "slot"} onClick={() => checkSteper("slot")}>
-                            <BoxTypeSpan>slot</BoxTypeSpan>
-                        </BoxType>
-                        <BoxType isActive={type === "esport"} onClick={() => checkSteper("esport")}>
-                            <BoxTypeSpan>e-sport</BoxTypeSpan>
-                        </BoxType>
-                        <BoxType isActive={type === "lotto"} onClick={() => checkSteper("lotto")}>
-                            <BoxTypeSpan>lottery</BoxTypeSpan>
-                        </BoxType>
-                        <BoxType isActive={type === "card"} onClick={() => checkSteper("card")}>
-                            <BoxTypeSpan>card</BoxTypeSpan>
-                        </BoxType>
-                        <BoxType isActive={type === "keno"} onClick={() => checkSteper("keno")}>
-                            <BoxTypeSpan>keno</BoxTypeSpan>
-                        </BoxType>
-                        <BoxType isActive={type === "fishing"} onClick={() => checkSteper("fishing")}>
-                            <BoxTypeSpan>fishing</BoxTypeSpan>
-                        </BoxType>
+                    <DivGridTypeContainer>
+                        <Slider ref={sliderRef} {...settings}>
+                            <div>
+                                <BoxTypeContainer>
+                                    <BoxType isActive={type === "live"} onClick={() => checkSteper("live")}>
+                                        <BoxTypeSpan>casino</BoxTypeSpan>
+                                    </BoxType>
+                                </BoxTypeContainer>
+                            </div>
+                            <div>
+                                <BoxTypeContainer>
+                                    <BoxType isActive={type === "sport"} onClick={() => checkSteper("sport")}>
+                                        <BoxTypeSpan>sport</BoxTypeSpan>
+                                    </BoxType>
+                                </BoxTypeContainer>
+                            </div>
+                            <div>
+                                <BoxTypeContainer>
+                                    <BoxType isActive={type === "slot"} onClick={() => checkSteper("slot")}>
+                                        <BoxTypeSpan>slot</BoxTypeSpan>
+                                    </BoxType>
+                                </BoxTypeContainer>
+                            </div>
+                            <div>
+                                <BoxTypeContainer>
+                                    <BoxType isActive={type === "esport"} onClick={() => checkSteper("esport")}>
+                                        <BoxTypeSpan>e-sport</BoxTypeSpan>
+                                    </BoxType>
+                                </BoxTypeContainer>
+                            </div>
+                            <div>
+                                <BoxTypeContainer>
+                                    <BoxType isActive={type === "lotto"} onClick={() => checkSteper("lotto")}>
+                                        <BoxTypeSpan>lottery</BoxTypeSpan>
+                                    </BoxType>
+                                </BoxTypeContainer>
+                            </div>
+                            <div>
+                                <BoxTypeContainer>
+                                    <BoxType isActive={type === "card"} onClick={() => checkSteper("card")}>
+                                        <BoxTypeSpan>card</BoxTypeSpan>
+                                    </BoxType>
+                                </BoxTypeContainer>
+                            </div>
+                            <div>
+                                <BoxTypeContainer>
+                                    <BoxType isActive={type === "keno"} onClick={() => checkSteper("keno")}>
+                                        <BoxTypeSpan>keno</BoxTypeSpan>
+                                    </BoxType>
+                                </BoxTypeContainer>
+                            </div>
+                            <div>
+                                <BoxTypeContainer>
+                                    <BoxType isActive={type === "fishing"} onClick={() => checkSteper("fishing")}>
+                                        <BoxTypeSpan>fishing</BoxTypeSpan>
+                                    </BoxType>
+                                </BoxTypeContainer>
+                            </div>
+                        </Slider>
+                    </DivGridTypeContainer>
 
-                    </DivGridType>
-
-                    <BoxNavigate style={{ width: "55px" }}>
+                    <BoxNavigate onClick={next} style={{ width: "55px" }}>
                         <AiFillCaretRight color="#959595" size={26} />
                     </BoxNavigate>
                 </BoxContainer>
@@ -403,12 +436,6 @@ export default function SelectProSectionPage() {
                 {
                     openProviderList && (
                         <DivGridPro>
-                            {/* <BoxPro isActive={providers === "all"} onClick={() => setProviders("all")}>
-                                <BoxProSpan>
-                                    All Game Type
-                                </BoxProSpan>
-                            </BoxPro> */}
-
                             {
                                 providerLists.map((item, index) => (
                                     <BoxPro key={index} isActive={providers === item.name} onClick={() => setProviders(item.name)}>
@@ -429,7 +456,7 @@ export default function SelectProSectionPage() {
                     (
                         <GameTypeList>
                             <GameType isActive={active == "all" ? "true" : "false"} onClick={() => setActive("all")}>
-                                <span>All Game Type</span>
+                                <span>All Game</span>
                             </GameType>
                             <GameType isActive={active == "slot" ? "true" : "false"} onClick={() => setActive("slot")}>
                                 <span>Slot</span>
@@ -458,13 +485,13 @@ export default function SelectProSectionPage() {
                         openGameList &&
                         (
                             <ContainerDivFlexGame>
-                                <LeftDivFlexGame>
+                                <LeftDivFlexGame onClick={() => pages.page != 1 && setPages({ page: pages.page-1, limit: 24 })}>
                                     <AiFillCaretLeft color="#959595" size={26} />
                                 </LeftDivFlexGame>
                                     <DivFlexGame>
                                         <DivTitle>
                                             <Title>
-                                                <TextTitle>provider {type}</TextTitle>
+                                                <TextTitle>{type}</TextTitle>
                                             </Title>
                                             <LineTitle />
                                             <PageControl>
@@ -511,7 +538,7 @@ export default function SelectProSectionPage() {
                                             }
                                         </DivGrid>
                                     </DivFlexGame>
-                                <RightDivFlexGame>
+                                <RightDivFlexGame onClick={() => (gameLists.length > 24 && pages.page != Math.floor(gameLists.length / pages.limit)) && setPages({ page: pages.page+1, limit: 24 })}>
                                     <AiFillCaretRight color="#959595" size={26} />
                                 </RightDivFlexGame>
                             </ContainerDivFlexGame>
@@ -522,6 +549,16 @@ export default function SelectProSectionPage() {
         </Container>
     )
 }
+
+const BoxTypeContainer = styled.div`
+    padding: 5px;
+    width: 100%;
+    height: auto;
+`
+
+const DivGridTypeContainer = styled.div`
+    width: 90%;
+`
 
 const LeftDivFlexGame = styled.div`
     border-radius: 5px;
@@ -796,16 +833,16 @@ const BoxNavigate = styled.div`
         border: 1px solid #ECD559;
     }
 
-    @media (max-width: 1439px) {
+    /* @media (max-width: 1439px) {
         display: none;
-    }
+    } */
 `
 
 const BoxType = styled.div<{ isActive?: boolean }>`
     cursor: pointer;
     border: 1px solid #000;
-    min-width: 209px;
-    min-height: 69px;
+    max-width: 209px;
+    max-height: 69px;
     width: 100%;
     height: auto;
     aspect-ratio: 92/47;
