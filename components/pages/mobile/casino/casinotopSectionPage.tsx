@@ -36,12 +36,6 @@ export default function CasinoTopSectionPage() {
                                 </DivPicPro>
                                 <BoxText />
                             </DivGame>
-                            <DivGame1>
-                                <DivPicPro>
-                                    <PicPro src="/assets/img/test.png" />
-                                </DivPicPro>
-                                <BoxText />
-                            </DivGame1>
                         </DivFlex>
                     </GridFrPopu>
                     <GridFrJak>

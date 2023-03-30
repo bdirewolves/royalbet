@@ -647,6 +647,22 @@ const GameTypeList = styled.div`
     gap: 10px;
 
     background: rgba(255, 255, 255, 0.1);
+
+    @media (max-width: 1439px) {
+        gap: 39px;
+        max-width: 1164px;
+        overflow-x: scroll;
+    }
+
+    @media (max-width: 1279px) {
+        padding: 10px;
+        gap: 10px;
+        max-width: 650px;
+    }
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
 `
 
 const BoxContainer = styled.div`

@@ -25,7 +25,7 @@ export default function SportSectionPage() {
     )
 }
 const DivGrid = styled.div`
-    width: 100%;
+    width: 95%;
     height: auto;
     max-width: 650px;
 

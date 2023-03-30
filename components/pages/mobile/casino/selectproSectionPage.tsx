@@ -471,7 +471,7 @@ export default function SelectProSectionPage() {
                     )
                 }
 
-                {/* Game List */}
+                    {/* Game List */}
                     {
                         openGameList &&
                         (
@@ -529,9 +529,11 @@ export default function SelectProSectionPage() {
                                             }
                                         </DivGrid>
                                     </DivFlexGame>
+
                                 <RightDivFlexGame>
                                     <AiFillCaretRight color="#959595" size={26} />
                                 </RightDivFlexGame>
+
                             </ContainerDivFlexGame>
                         )
                     }
@@ -637,7 +639,6 @@ const GameTypeList = styled.div`
     justify-content: flex-start;
     align-items: center;
     gap: 10px;
-    overflow-x: scroll;
 
     background: rgba(255, 255, 255, 0.1);
 
