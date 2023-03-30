@@ -24,13 +24,19 @@ export default function CasinoTopSectionPage() {
                     <GridFrPopu>
                         <TitletypePage header="POPULAR GAME" />
                         <DivFlex>
-                            <DivGame>
+                            <DivGame isTablet="false">
                                 <DivPicPro>
                                     <PicPro src="/assets/img/test.png" />
                                 </DivPicPro>
                                 <BoxText />
                             </DivGame>
-                            <DivGame>
+                            <DivGame isTablet="false">
+                                <DivPicPro>
+                                    <PicPro src="/assets/img/test.png" />
+                                </DivPicPro>
+                                <BoxText />
+                            </DivGame>
+                            <DivGame isTablet="true">
                                 <DivPicPro>
                                     <PicPro src="/assets/img/test.png" />
                                 </DivPicPro>
@@ -104,7 +110,7 @@ const ContainerCarousel = styled.div`
     height: auto;
 `
 
-const DivGame = styled.div`
+const DivGame = styled.div<{ isTablet: string }>`
     width: 100%;
     height: auto;
     aspect-ratio: 145/122.06;
@@ -120,6 +126,20 @@ const DivGame = styled.div`
     overflow: hidden;
 
     border: 1.01266px solid #959595;
+
+    transition: 300ms;
+
+    ${props => props.isTablet == "true" &&
+        `
+            @media (max-width: 743px) {
+                display: none;
+            }
+        `
+    }
+
+    @media (min-width: 744px) {
+        
+    }
 `
 
 const DivGame1 = styled.div`
