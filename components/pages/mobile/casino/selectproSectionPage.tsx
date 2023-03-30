@@ -447,7 +447,7 @@ export default function SelectProSectionPage() {
                     (
                         <GameTypeList>
                             <GameType isActive={active == "all" ? "true" : "false"} onClick={() => setActive("all")}>
-                                <span>All Game Type</span>
+                                <span>All Game</span>
                             </GameType>
                             <GameType isActive={active == "slot" ? "true" : "false"} onClick={() => setActive("slot")}>
                                 <span>Slot</span>
@@ -595,9 +595,9 @@ const ContainerDivFlexGame = styled.div`
 const GameType = styled.div<{ isActive: string }>`
     border: 1px solid #100F14;
     border-radius: 5px;
-    min-width: 150px;
-    width: 150px;
-    height: 40px;
+    min-width: 93px;
+    width: 93px;
+    height: 30px;
 
     display: flex;
     justify-content: center;
@@ -637,8 +637,13 @@ const GameTypeList = styled.div`
     justify-content: flex-start;
     align-items: center;
     gap: 10px;
+    overflow-x: scroll;
 
     background: rgba(255, 255, 255, 0.1);
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
 `
 
 const BoxContainer = styled.div`
