@@ -68,7 +68,7 @@ export default function NavbarMobile ({ modalPage, setModalPage, showHamburger, 
                     <MenuList>
                         <MenuItem onClick={() => checkAccess("information")}>
                             <DivIcon>
-                                <Icon size={16} src="/assets/img/icon/user.svg" />
+                                <Icon size={24} src="/assets/img/icon/user.svg" />
                             </DivIcon>
                             <Span>
                                 โปรไฟล์
@@ -76,7 +76,7 @@ export default function NavbarMobile ({ modalPage, setModalPage, showHamburger, 
                         </MenuItem>
                         <MenuItem onClick={() => checkAccess("statement")}>
                             <DivIcon>
-                                <Icon isActive={current == 2} size={16} src="/assets/img/icon/transactions.svg" />
+                                <Icon isActive={current == 2} size={24} src="/assets/img/icon/transactions.svg" />
                             </DivIcon>
                             <Span>
                                 ประวัติธุรกรรม
@@ -92,7 +92,7 @@ export default function NavbarMobile ({ modalPage, setModalPage, showHamburger, 
                         </MenuItem>
                         <MenuItem onClick={() => checkAccess("deposit")}>
                             <DivIcon>
-                                <Icon isActive={current == 3} src="/assets/img/icon/transfer.svg" />
+                                <Icon isActive={current == 3} size={28} src="/assets/img/icon/transfer.svg" />
                             </DivIcon>
                             <Span>
                                 ฝาก-ถอน
@@ -100,7 +100,7 @@ export default function NavbarMobile ({ modalPage, setModalPage, showHamburger, 
                         </MenuItem>
                         <MenuItem onClick={() => checkAccess("contact")}>
                             <DivIcon>
-                                <Icon isActive={current == 4} src="/assets/img/icon/contact.svg" />
+                                <Icon isActive={current == 4} size={38} src="/assets/img/icon/contact.svg" />
                             </DivIcon>
                             <Span>
                                 ติดต่อแอดมิน
@@ -191,7 +191,7 @@ const Statusbar = styled.div`
 const Background = styled.div`
     padding-bottom: 10px;
     width: 100%;
-    height: 60px;
+    height: 65px;
 
     position: fixed;
     bottom: 0;
@@ -231,8 +231,12 @@ const MenuList = styled.div`
     
     transition: gap 300ms;
 
+    @media (min-width: 375px) {
+        max-width: max-content;
+    }
+
     @media (min-width: 430px) {
-        gap: 30px;
+        gap: 10px;
     }
 `
 
@@ -245,6 +249,11 @@ const MenuItem = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    transition: 300ms;
+
+    @media (min-width: 375px) {
+        width: 74px;
+    }
 `
 
 const DivIcon = styled.div`
@@ -260,7 +269,7 @@ const DivIcon = styled.div`
 `
 
 const Icon = styled.img<{ isActive?: boolean, size?: number }>`
-    width: ${props => props.size && props.size};
+    width: ${props => props.size && props.size}px;
     height: auto;
     mix-blend-mode: luminosity;
     object-fit: contain;
@@ -283,22 +292,28 @@ const Span = styled.span`
     text-align: center;
 
     color: #FFFFFF;
+
+    transition: 300ms ease;
+
+    @media (min-width: 375px) {
+        font-size: 12px;
+    }
 `
 
 const Gravity = keyframes`
     0%, 100% {
-        transform: translateY(-20%);
+        transform: translateY(-30%);
     }
     50% {
-        transform: translateY(-30%);
+        transform: translateY(-35%);
     }
 `
 
 const IconAnimation = styled.img`
     width: auto;
-    height: 40px;
+    height: 50px;
     
     //cubic-bezier(0.310, 0.440, 0.445, 1.650)
-    animation: ${Gravity} 3s cubic-bezier(0.310, 0.440, 0.445, 1.650) infinite;
+    animation: ${Gravity} 2.5s cubic-bezier(0.310, 0.440, 0.445, 1.650) infinite;
 
 `

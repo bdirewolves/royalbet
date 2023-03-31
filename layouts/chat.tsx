@@ -4,7 +4,7 @@ import Link from "next/link"
 
 export default function Chat() {
     return(
-        <Link href="/">
+        <Link href="https://line.me/">
             <DivChat>
                     <DivPicChat>
                         <PicChat src="/assets/img/navbarMobile/Chat.png"/>

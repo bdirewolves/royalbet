@@ -67,7 +67,7 @@ export default function SelectProSectionPage() {
     const settings = {
         dots: false,
         arrows: false,
-        infinite: false,
+        infinite: true,
         speed: 500,
         slidesToShow: 6,
         slidesToScroll: 1

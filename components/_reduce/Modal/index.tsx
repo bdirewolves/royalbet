@@ -56,6 +56,7 @@ const TextLogout = styled.p`
     letter-spacing: -0.011em;
 
     color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
 `
 
 const DivFlexLogout = styled.div`

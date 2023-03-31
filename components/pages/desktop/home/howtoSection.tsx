@@ -1,7 +1,9 @@
 import { Container } from "@/components/_reduce/Reduce";
+import { useRouter } from "next/router";
 import styled from "styled-components";
 
 export default function HowtoSection(){
+    const router = useRouter()
     return(
         <Container>
             <DivGrid >
@@ -30,7 +32,7 @@ export default function HowtoSection(){
                     </Text>
                 </Gridfr1>
                 <Gridfr2>
-                    <ButtonGold>
+                    <ButtonGold onClick={() => router.push("/howto")}>
                         <TextButton>อ่านเพิ่มเติม</TextButton>
                     </ButtonGold>
                 </Gridfr2>
@@ -166,6 +168,7 @@ const ButtonGold = styled.div`
     align-items: center;
     
     background: linear-gradient(90deg, #D2BB6E 0%, #F6E79A 100%);
+    cursor: pointer;
 `
 
 const Dothow = styled.img`

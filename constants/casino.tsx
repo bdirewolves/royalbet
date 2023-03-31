@@ -2,51 +2,63 @@
 export const slotHomepage = [
     {
         name: "Treasures of Aztec",
-        img: "/assets/img/homepage/slot/slot-1.jpg"
+        img: "/assets/img/homepage/slot/slot-1.jpg",
+        game_code: ""
     },
     {
         name: "Buffalo Win",
-        img: "/assets/img/homepage/slot/slot-2.jpg"
+        img: "/assets/img/homepage/slot/slot-2.jpg",
+        game_code: ""
     },
     {
         name: "Rooster Rumble",
-        img: "/assets/img/homepage/slot/slot-3.jpg"
+        img: "/assets/img/homepage/slot/slot-3.jpg",
+        game_code: ""
     },
     {
         name: "Monkey King",
-        img: "/assets/img/homepage/slot/slot-4.jpg"
+        img: "/assets/img/homepage/slot/slot-4.jpg",
+        game_code: ""
     },
     {
         name: "Spaceman",
-        img: "/assets/img/homepage/slot/slot-5.jpg"
+        img: "/assets/img/homepage/slot/slot-5.jpg",
+        game_code: ""
     },
     {
         name: "Sweet Bonanza",
-        img: "/assets/img/homepage/slot/slot-6.jpg"
+        img: "/assets/img/homepage/slot/slot-6.jpg",
+        game_code: ""
     },
     {
         name: "Sugar Rush",
-        img: "/assets/img/homepage/slot/slot-7.jpg"
+        img: "/assets/img/homepage/slot/slot-7.jpg",
+        game_code: ""
     },
     {
         name: "Lucky Piggy",
-        img: "/assets/img/homepage/slot/slot-8.jpg"
+        img: "/assets/img/homepage/slot/slot-8.jpg",
+        game_code: ""
     },
     {
         name: "Money train 2",
-        img: "/assets/img/homepage/slot/slot-9.jpg"
+        img: "/assets/img/homepage/slot/slot-9.jpg",
+        game_code: ""
     },
     {
         name: "the Dog house",
-        img: "/assets/img/homepage/slot/slot-10.jpg"
+        img: "/assets/img/homepage/slot/slot-10.jpg",
+        game_code: ""
     },
     {
         name: "Wild West Gold",
-        img: "/assets/img/homepage/slot/slot-11.jpg"
+        img: "/assets/img/homepage/slot/slot-11.jpg",
+        game_code: ""
     },
     {
         name: "Bigger Bass",
-        img: "/assets/img/homepage/slot/slot-12.jpg"
+        img: "/assets/img/homepage/slot/slot-12.jpg",
+        game_code: ""
     },
 ]
 

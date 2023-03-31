@@ -17,7 +17,7 @@ export default function BlogSection() {
                             {
                                 BlogContent.reverse().slice(0, 1).map((item, index) => (
                                     <div key={index} >
-                                        <Link href="/m/blog">
+                                        <Link href="/blog">
                                             <Box>
                                                 <PicBox src={item.img} />
                                             </Box>

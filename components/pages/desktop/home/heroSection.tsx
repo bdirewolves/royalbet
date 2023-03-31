@@ -6,8 +6,10 @@ import Link from "next/link";
 import Button from "@/components/_reduce/Button";
 import { Container } from "@/components/_reduce/Reduce";
 import { promotionFebruary } from "@/constants/promotion";
+import { useRouter } from "next/router";
 
 export default function HeroSection () {
+    const router = useRouter()
     const settings = {
         dots: false,
         infinite: true,
@@ -48,7 +50,7 @@ export default function HeroSection () {
                     </Content>
                     {/* Button */}
                     <ContainerButton data-aos="fade-up" data-aos-duration="500">
-                        <GoldButton>
+                        <GoldButton onClick={() => router.push("/casino")}>
                             เล่นเกมส์
                         </GoldButton>
                     </ContainerButton>
