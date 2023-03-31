@@ -22,8 +22,14 @@ export default function CasinoTopSectionPage() {
                <DivGrid>
                 <GridFrBanner src="/assets/img/banner/mockup-1.jpg" />
                     <GridFrJak>
-                        <DivJack src="/assets/img/banner/mockup-square-1.jpg" />
-                        <DivAds src="/assets/img/banner/mockup-square-2.jpg" />
+                        <DivJack>
+                            <JackHead>บาคาร่าเว็บตรง RoyalBet65</JackHead>
+                            <JackContent>“royalbet” คุณจะสามารถสมัครบาคาร่า และ สามารถเล่น บาคาร่าด้วยระบบออโต้ผ่านทางหน้าเว็บไซต์ได้จากทุกช่องทาง อยู่ที่ไหนก็สามารถเล่นได้ มีครบทุกค่ายดัง SA Game | Pretty Gaming Baccarat | Sexy Baccarat หรือ เซ็กซี่ บาคาร่า</JackContent>
+                            <GoldButton>
+                                <span>แอดไลน์</span>
+                            </GoldButton>
+                        </DivJack>
+                        <DivAds src="/assets/img/banner/add-line.jpg" />
                     </GridFrJak>
                     <GridFrPopu>
                         <TitletypePage header="POPULAR GAME" />
@@ -59,6 +65,52 @@ export default function CasinoTopSectionPage() {
         </Container>
     )
 }
+
+const GoldButton = styled.button`
+    margin: 20px auto 0 auto;
+    border: none;
+    width: 129px;
+    height: 28.07px;
+    border-radius: 5px;
+
+    font-family: 'Prompt';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13.8153px;
+    line-height: 21px;
+    text-align: center;
+    /* identical to box height */
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #000000;
+
+    background: linear-gradient(90deg, #F6E79A 0%, #D2BB6E 100%);
+`
+
+const JackContent = styled.p`
+    font-family: 'Prompt';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+
+    color: #FFFFFF;
+`
+
+const JackHead = styled.h2`
+    font-family: 'Prompt';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 42px;
+    text-align: center;
+
+    color: #EFE7A7;
+`
 
 const DivGrid = styled.div`
     width: 100%;
@@ -135,10 +187,13 @@ const DivGame = styled.div<{ isTablet: string }>`
 
     transition: 300ms;
 
+    visibility: visible;
+
     ${props => props.isTablet == "true" &&
         `
             @media (max-width: 743px) {
                 display: none;
+                visibility: hidden;
             }
         `
     }
@@ -190,13 +245,16 @@ const GridFrJak = styled.div`
     }
 `
 
-const DivJack = styled.img`
+const DivJack = styled.div`
+    padding: 50px 16px;
     width: 100%;
     height: auto;
-    aspect-ratio: 1/1;
-    max-width: 320px;
     
     background: #100F14;  
+
+    background: url(/assets/img/banner/bg-banner-casino.jpg);
+    background-size: cover;
+    background-position: center;
 `
 
 const DivAds = styled.img`
@@ -205,15 +263,16 @@ const DivAds = styled.img`
     aspect-ratio: 1/1;
     max-width: 425px;
 
-    display: none;
     visibility: hidden;
+    display: none;
     
     background: #100F14; 
 
-    @media (min-width: 425px) {
+    @media (min-width: 744px) {
         max-width: 320px;
         
-        display: block;
+        visibility: visible;
+        display: inline-flex;
     }
 `
 

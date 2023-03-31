@@ -38,14 +38,39 @@ export default function CasinoTopSectionPage() {
                         </DivFlex>
                     </GridFrPopu>
                     <GridFrJak>
-                        <DivJack src="/assets/img/banner/mockup-square-1.jpg" />
-                        <DivAds src="/assets/img/banner/mockup-square-2.jpg" />
+                        <DivJack>
+                            <JackHead>บาคาร่าเว็บตรง RoyalBet65</JackHead>
+                            <JackContent>“royalbet” คุณจะสามารถสมัครบาคาร่า และ สามารถเล่น บาคาร่าด้วยระบบออโต้ผ่านทางหน้าเว็บไซต์ได้จากทุกช่องทาง อยู่ที่ไหนก็สามารถเล่นได้ มีครบทุกค่ายดัง SA Game | Pretty Gaming Baccarat | Sexy Baccarat หรือ เซ็กซี่ บาคาร่า</JackContent>
+                        </DivJack>
+                        <DivAds src="/assets/img/banner/add-line.jpg" />
                     </GridFrJak>
                </DivGrid>
            </FixWidth>
         </Container>
     )
 }
+
+const JackContent = styled.p`
+    font-family: 'Prompt';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+
+    color: #FFFFFF;
+`
+
+const JackHead = styled.h2`
+    font-family: 'Prompt';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 42px;
+    text-align: center;
+
+    color: #EFE7A7;
+`
 
 const DivGrid = styled.div`
     width: 100%;
@@ -203,7 +228,8 @@ const GridFrJak = styled.div`
     }
 `
 
-const DivJack = styled.img`
+const DivJack = styled.div`
+    padding: 50px 16px;
     border-radius: 5px;
     width: 100%;
     height: auto;
@@ -212,6 +238,10 @@ const DivJack = styled.img`
     
     background: #100F14;
     box-shadow: rgba(255, 255, 255, 0.35) 0px 5px 15px;
+
+    background: url(/assets/img/banner/bg-banner-casino.jpg);
+    background-size: cover;
+    background-position: center;
 `
 
 const DivAds = styled.img`
