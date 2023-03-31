@@ -200,7 +200,11 @@ const Flexmenu = styled.div`
     justify-content: center;
     align-items: center;
     
-    gap: 30px;
+    gap: 10px;
+
+    @media (max-width: 1023px) {
+        gap: 30px;
+    }
 `
 
 const FlexFr = styled.div`
@@ -231,7 +235,7 @@ const Textmenu1 = styled.p`
     font-family: 'Prompt';
     font-style: normal;
     font-weight: 400;
-    font-size: 18px;
+    font-size: 14px;
     line-height: 18px;
     display: flex;
     align-items: center;

@@ -1,7 +1,7 @@
 import React, { Dispatch, SetStateAction, useContext } from 'react'
 import styled from 'styled-components'
 import { AiFillLock, AiOutlineClose, AiOutlineHistory, AiOutlineNotification, AiOutlineUser, AiOutlineUsergroupAdd,  } from "react-icons/ai"
-import { IoIosSettings } from "react-icons/io";
+import { BiLogOut } from "react-icons/bi";
 import { AuthContext } from '@/pages/_app';
 import { HiCash } from 'react-icons/hi';
 import Affilate from './affilate';
@@ -101,10 +101,19 @@ export default function Main(props: IProps) {
                         </DivFlexMenu>
                         <GoldLine />
                     </GridFr>
+                    <GridFr onClick={handleLogout} style={{ gridColumn: "3" }}>
+                        <DivFlexMenu>
+                            <BoxMenu>
+                                <BiLogOut size={32} color="#9DA3AD" />
+                            </BoxMenu>
+                            <TextMenu>ออกจากระบบ</TextMenu>
+                        </DivFlexMenu>
+                        <GoldLine />
+                    </GridFr>
                 </Gridmenu>
-                <DivFlexLogout onClick={handleLogout}>
+                {/* <DivFlexLogout onClick={handleLogout}>
                     <TextLogout>ออกจากระบบ</TextLogout>
-                </DivFlexLogout>
+                </DivFlexLogout> */}
                 
             </Modal>
             <Overlay onClick={() => props.setModalPage({ name: "", element: null })} />

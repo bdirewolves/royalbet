@@ -6,6 +6,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
 import { AiOutlineCaretLeft, AiOutlineCaretRight, AiFillCaretRight, AiFillCaretLeft } from "react-icons/ai";
+import { BsFillPlayFill } from "react-icons/bs"
 import styled from "styled-components";
 import Swal from "sweetalert2";
 import Slider from "react-slick";
@@ -514,7 +515,9 @@ export default function SelectProSectionPage() {
                                                                 item.name
                                                             }
                                                         </BoxText>
-                                                        <GoldPic />
+                                                        <GoldPic>
+                                                            <BsFillPlayFill color="#000" size={20} />
+                                                        </GoldPic>
                                                     </GridFr>
                                                 ))
                                                 :
@@ -531,7 +534,9 @@ export default function SelectProSectionPage() {
                                                                 item.name
                                                             }
                                                         </BoxText>
-                                                        <GoldPic />
+                                                        <GoldPic>
+                                                            <BsFillPlayFill color="#000" size={20} />
+                                                        </GoldPic>
                                                     </GridFr>
                                                 ))
                                             }
@@ -1136,6 +1141,10 @@ const GoldPic = styled.div`
     position: absolute;
     right: 0;
     bottom: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     background: linear-gradient(90deg, #D2BB6E 0%, #F6E79A 100%);
     border-radius: 5px 0px;

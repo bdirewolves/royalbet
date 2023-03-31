@@ -7,33 +7,39 @@ export default function CasinoTopSectionPage() {
         <Container>
            <FixWidth>
                <DivGrid>
-                    <GridFrBanner />
+                    <GridFrBanner src="/assets/img/banner/mockup-1.jpg" />
                     <GridFrPopu>
                         <TitletypePage header="POPULAR GAME" />
                         <DivFlex>
                             <DivGame>
                                 <DivPicPro>
-                                    <PicPro src="/assets/img/test.png" />
+                                    <PicPro src="/assets/img/homepage/slot/slot-8.jpg" />
                                 </DivPicPro>
-                                <BoxText />
+                                <BoxText>
+                                    <p>Lucky Piggy</p>
+                                </BoxText>
                             </DivGame>
                             <DivGame>
                                 <DivPicPro>
-                                    <PicPro src="/assets/img/test.png" />
+                                    <PicPro src="/assets/img/homepage/slot/slot-6.jpg" />
                                 </DivPicPro>
-                                <BoxText />
+                                <BoxText>
+                                    <p>Sweet Bonanza</p>
+                                </BoxText>
                             </DivGame>
                             <DivGame1>
                                 <DivPicPro>
-                                    <PicPro src="/assets/img/test.png" />
+                                    <PicPro src="/assets/img/homepage/slot/slot-9.jpg" />
                                 </DivPicPro>
-                                <BoxText />
+                                <BoxText>
+                                    <p>Money Train 2</p>
+                                </BoxText>
                             </DivGame1>
                         </DivFlex>
                     </GridFrPopu>
                     <GridFrJak>
-                        <DivJack />
-                        <DivAds />
+                        <DivJack src="/assets/img/banner/mockup-square-1.jpg" />
+                        <DivAds src="/assets/img/banner/mockup-square-2.jpg" />
                     </GridFrJak>
                </DivGrid>
            </FixWidth>
@@ -64,7 +70,7 @@ const DivGrid = styled.div`
     }
 `
 
-const GridFrBanner = styled.div`
+const GridFrBanner = styled.img`
     border-radius: 5px;
     width: 100%;
     height: auto;
@@ -197,7 +203,7 @@ const GridFrJak = styled.div`
     }
 `
 
-const DivJack = styled.div`
+const DivJack = styled.img`
     border-radius: 5px;
     width: 100%;
     height: auto;
@@ -208,7 +214,7 @@ const DivJack = styled.div`
     box-shadow: rgba(255, 255, 255, 0.35) 0px 5px 15px;
 `
 
-const DivAds = styled.div`
+const DivAds = styled.img`
     border-radius: 5px;
     width: 100%;
     height: auto;
@@ -242,15 +248,21 @@ const PicPro = styled.img`
 `
 
 const BoxText = styled.div`
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 2;
+
+    padding-left: 10px;
     width: 100%;
     height: auto;
     aspect-ratio: 145/17.26;
 
-    position: absolute;
-    left: 0;
-    bottom: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 
-    z-index: 2;
+    font-size: 18px;
 
     background: linear-gradient(180deg, #3E3E3E 0%, #100F14 100%);
 `

@@ -69,7 +69,7 @@ export default function Register(props: IProps) {
         } catch (error) {
 
         }
-    }
+    };
 
     const formStep1 = useFormik({
         initialValues: {
@@ -89,7 +89,7 @@ export default function Register(props: IProps) {
                     showConfirmButton: false
                 })
             }
-
+            
             return errors
         },
         onSubmit: async (values) => {
@@ -809,6 +809,7 @@ const GoldButton = styled.button`
     border: none;
     width: 100%;
     height: 29px;
+    min-height: 29px;
 
     display: flex;
     flex-direction: row;
@@ -845,6 +846,7 @@ const ButtonCopy = styled.button`
     cursor: pointer;
     width: 100%;
     height: 29px;
+    min-height: 29px;
 
     display: flex;
     flex-direction: row;
