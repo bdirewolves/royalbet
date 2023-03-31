@@ -15,17 +15,7 @@ export default function Document() {
       </head>
       <body>
         <div id={'globalLoader'}>
-          <div className="banter-loader">
-            <div className="banter-loader__box"></div>
-            <div className="banter-loader__box"></div>
-            <div className="banter-loader__box"></div>
-            <div className="banter-loader__box"></div>
-            <div className="banter-loader__box"></div>
-            <div className="banter-loader__box"></div>
-            <div className="banter-loader__box"></div>
-            <div className="banter-loader__box"></div>
-            <div className="banter-loader__box"></div>
-          </div>
+          <img src="/assets/img/logo.png" alt="" />
         </div>
         <Main />
         <NextScript />

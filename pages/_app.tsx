@@ -173,7 +173,16 @@ export default function App({ Component, pageProps }: AppProps) {
       GetOrder();
       checkAuth();
       const loader = document.getElementById("globalLoader");
-      if (loader) loader.style.display = "none";
+      if (loader) {
+        loader.style.opacity = "0";
+        loader.style.visibility = "hidden";
+
+        /*
+            visibility: visible;
+            opacity: 1;
+            transition: visibility 0.2s, opacity 0.2s linear;
+        */
+      }
     }
     AOS.init()
   }, []);
