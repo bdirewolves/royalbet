@@ -116,28 +116,22 @@ export const casinoHomePage = [
 export const casinoContent = {
     show: [
         {
-            img: "/assets/img/card/provider/picsbobet-m.png",
-            bgimg: "/assets/img/card/bg/iconsbobet-m.png"
+            img: "/assets/img/icon/icon-1.webp"
         },
         {
-            img: "/assets/img/card/provider/picdigmaan-m.png",
-            bgimg: "/assets/img/card/bg/icondigmaan-m.png"
+            img: "/assets/img/icon/icon-2.webp"
         },
         {
-            img: "/assets/img/card/provider/picibc-m.png",
-            bgimg: "/assets/img/card/bg/iconibc-m.png"
+            img: "/assets/img/icon/icon-3.webp"
         },
         {
-            img: "/assets/img/card/provider/picaksport-m.png",
-            bgimg: "/assets/img/card/bg/iconaksport-m.png"
+            img: "/assets/img/icon/icon-4.webp"
         },
         {
-            img: "/assets/img/card/provider/picsbo-m.png",
-            bgimg: "/assets/img/card/bg/iconsbo-m.png"
+            img: "/assets/img/icon/icon-5.webp"
         },
         {
-            img: "/assets/img/card/provider/picts911-m.png",
-            bgimg: "/assets/img/card/bg/iconts911-m.png"
+            img: "/assets/img/icon/icon-6.webp"
         },
     ],
     providergs: [

@@ -9,12 +9,7 @@ export default function CasinoSection() {
                 <DivGrid>
                     {
                         casinoContent.show.map((item, index) => (
-                            <BoxContainer key={index}>
-                                <PicBox src={item.bgimg} />
-                                <DivPicPro>
-                                    <PicPro src={item.img} />
-                                </DivPicPro>
-                            </BoxContainer>
+                            <BoxContainer key={index} bg={item.img} />
                         ))
                     }
                 </DivGrid>
@@ -60,7 +55,7 @@ const PicPro = styled.img`
     height: 100%;
 `
 
-const BoxContainer = styled.div`
+const BoxContainer = styled.div<{ bg?: string }>`
     width: 100%;
     height: auto;
     aspect-ratio: 93/55.15;
@@ -73,10 +68,16 @@ const BoxContainer = styled.div`
 
     overflow: hidden;
 
-    &:hover ${PicPro} {
-        filter: brightness(1);
-        transition-duration: 300ms;
-        transform: scale(1.15);
+    background-image: url(${props => props.bg && props.bg});
+    background-size: 110% 110%;
+    background-position: center;
+
+    transition: 300ms ease-out;
+
+    cursor: pointer;
+
+    &:hover {
+        background-size: 140% 140%;
     }
 `
 

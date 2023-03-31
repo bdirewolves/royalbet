@@ -10,12 +10,7 @@ export default function CasinoSection() {
                 <DivGrid>
                     {
                         casinoContent.show.map((item, index) => (
-                            <BoxContainer key={index}>
-                                <PicBox src={item.bgimg} />
-                                <DivPicPro>
-                                    <PicPro src={item.img} />
-                                </DivPicPro>
-                            </BoxContainer>
+                            <BoxContainer key={index} bg={item.img} />
                         ))
                     }
                 </DivGrid>
@@ -66,7 +61,7 @@ const PicPro = styled.img`
     height: 100%;
 `
 
-const BoxContainer = styled.div`
+const BoxContainer = styled.div<{ bg?: string }>`
     position: relative;
     
     margin: 0 auto;
@@ -80,10 +75,16 @@ const BoxContainer = styled.div`
 
     cursor: pointer;
 
-    &:hover ${PicPro} {
-        filter: brightness(1);
-        transform: scale(1.15);
-        transition-duration: 300ms;
+    background-image: url(${props => props.bg && props.bg});
+    background-size: 110% 110%;
+    background-position: center;
+
+    transition: 300ms ease-out;
+
+    cursor: pointer;
+
+    &:hover {
+        background-size: 140% 140%;
     }
 `
 

@@ -11,12 +11,7 @@ export default function SportSectionPage() {
                 <DivGrid>
                     {
                         casinoContent.show.map((item, index) => (
-                            <BoxContainer key={index}>
-                                <PicBox src={item.bgimg} />
-                                <DivPicPro>
-                                    <PicPro src={item.img} />
-                                </DivPicPro>
-                            </BoxContainer>
+                            <BoxContainer key={index} bg={item.img} />
                         ))
                     }
                 </DivGrid>
@@ -38,7 +33,7 @@ const DivGrid = styled.div`
 
 `
 
-const BoxContainer = styled.div`
+const BoxContainer = styled.div<{ bg?: string }>`
     width: 100%;
     height: auto;
     aspect-ratio: 93/55.15;
@@ -49,7 +44,17 @@ const BoxContainer = styled.div`
 
     margin: 0 auto;
 
-    background-color: grey;
+    background-image: url(${props => props.bg && props.bg});
+    background-size: 110% 110%;
+    background-position: center;
+
+    transition: 300ms ease-out;
+
+    cursor: pointer;
+
+    &:hover {
+        background-size: 140% 140%;
+    }
 `
 
 const PicBox = styled.img`
