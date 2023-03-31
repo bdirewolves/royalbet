@@ -17,7 +17,7 @@ export default `
   visibility: visible;
   opacity: 1;
   transition: visibility 0.3s, opacity 0.2s linear;
-  transition-delay: .3s;
+  transition-delay: .5s;
 
   background-color: #000;
 }
