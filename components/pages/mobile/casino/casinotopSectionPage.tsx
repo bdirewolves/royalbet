@@ -20,33 +20,39 @@ export default function CasinoTopSectionPage() {
         <Container>
            <FixWidth>
                <DivGrid>
-                    <GridFrBanner />
+                <GridFrBanner src="/assets/img/banner/mockup-1.jpg" />
                     <GridFrPopu>
                         <TitletypePage header="POPULAR GAME" />
                         <DivFlex>
                             <DivGame isTablet="false">
                                 <DivPicPro>
-                                    <PicPro src="/assets/img/test.png" />
+                                    <PicPro src="/assets/img/homepage/slot/slot-8.jpg" />
                                 </DivPicPro>
-                                <BoxText />
+                                <BoxText>
+                                    <p>Lucky Piggy</p>
+                                </BoxText>
                             </DivGame>
                             <DivGame isTablet="false">
                                 <DivPicPro>
-                                    <PicPro src="/assets/img/test.png" />
+                                    <PicPro src="/assets/img/homepage/slot/slot-6.jpg" />
                                 </DivPicPro>
-                                <BoxText />
+                                <BoxText>
+                                    <p>Sweet Bonanza</p>
+                                </BoxText>
                             </DivGame>
                             <DivGame isTablet="true">
                                 <DivPicPro>
-                                    <PicPro src="/assets/img/test.png" />
+                                    <PicPro src="/assets/img/homepage/slot/slot-9.jpg" />
                                 </DivPicPro>
-                                <BoxText />
+                                <BoxText>
+                                    <p>Money Train 2</p>
+                                </BoxText>
                             </DivGame>
                         </DivFlex>
                     </GridFrPopu>
                     <GridFrJak>
-                        <DivJack />
-                        <DivAds />
+                        <DivJack src="/assets/img/banner/mockup-square-1.jpg" />
+                        <DivAds src="/assets/img/banner/mockup-square-2.jpg" />
                     </GridFrJak>
                </DivGrid>
            </FixWidth>
@@ -67,7 +73,7 @@ const DivGrid = styled.div`
     gap: 10px;
 `
 
-const GridFrBanner = styled.div`
+const GridFrBanner = styled.img`
     width: 100%;
     height: auto;
     aspect-ratio: 320/104;
@@ -184,7 +190,7 @@ const GridFrJak = styled.div`
     }
 `
 
-const DivJack = styled.div`
+const DivJack = styled.img`
     width: 100%;
     height: auto;
     aspect-ratio: 1/1;
@@ -193,7 +199,7 @@ const DivJack = styled.div`
     background: #100F14;  
 `
 
-const DivAds = styled.div`
+const DivAds = styled.img`
     width: 100%;
     height: auto;
     aspect-ratio: 1/1;
