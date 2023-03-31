@@ -158,7 +158,7 @@ const Modal = styled.div`
 
     @media (max-width: 1024px) {
         width: 100vw;
-        height: 89vh;
+        height: 100vh;
 
         top: 50px;
         left: 0;
@@ -176,6 +176,10 @@ const BgGrey = styled.div`
     z-index: 1;
 
     background: #121116;
+
+    @media (max-width: 1024px) {
+        width: 100vw;
+    }
 `
 
 const DivFlexHead = styled.div`
@@ -193,7 +197,7 @@ const TextHead = styled.p`
     font-family: 'Prompt';
     font-style: normal;
     font-weight: 700;
-    font-size: 14px;
+    font-size: 18px;
     line-height: 22px;
     display: flex;
     align-items: center;
@@ -250,6 +254,7 @@ const Gridmenu = styled.div`
 `
 
 const GridFr = styled.div`
+    cursor: pointer;
     width: 100%;
     height: auto;
 
@@ -281,8 +286,8 @@ const BoxMenu = styled.div`
 const TextMenu = styled.p`
     font-family: 'Prompt';
     font-style: normal;
-    font-weight: 300;
-    font-size: 10px;
+    font-weight: 400;
+    font-size: 12px;
     line-height: 150%;
 
     color: rgba(255, 255, 255, 0.8);
@@ -309,6 +314,16 @@ const DivFlexLogout = styled.div`
     align-items: center;
 
     gap: 5px;
+
+    transform: translateY(-120px);
+
+    @media (min-width: 744px) {
+        transform: translateY(-60px);
+    }
+
+    @media (min-width: 1024px) {
+        transform: unset;
+    }
 `
 
 const TextLogout = styled.p`

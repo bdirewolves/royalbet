@@ -350,11 +350,11 @@ const HamburgerItem = styled.button`
     font-family: 'Prompt';
     font-style: normal;
     font-weight: 400;
-    font-size: 14px;
+    font-size: 18px;
     line-height: 21px;
     text-align: center;
     
-    color: #999999;     
+    color: #fff;     
     
     background: none;
 

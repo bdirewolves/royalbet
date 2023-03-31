@@ -214,6 +214,16 @@ const DivFlexLogout = styled.div`
     align-items: center;
 
     gap: 5px;
+
+    transform: translateY(-120px);
+
+    @media (min-width: 744px) {
+        transform: translateY(-60px);
+    }
+
+    @media (min-width: 1024px) {
+        transform: unset;
+    }
 `
 
 
@@ -227,7 +237,7 @@ const TextHead = styled.p`
     font-family: 'Prompt';
     font-style: normal;
     font-weight: 700;
-    font-size: 14px;
+    font-size: 18px;
     line-height: 22px;
     display: flex;
     align-items: center;
@@ -276,7 +286,7 @@ const Modal = styled.div`
 
     @media (max-width: 1024px) {
         width: 100vw;
-        height: 89vh;
+        height: 100vh;
 
         top: 50px;
         left: 0;
