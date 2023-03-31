@@ -33,12 +33,13 @@ interface IBanks {
 }
 
 export default function Register(props: IProps) {
-    const [ steps, setSteps ] = useState(3)
+    const [ steps, setSteps ] = useState(1)
     const [ banks, setBanks ] = useState<IBanks[]>([])
     const [ otpCode, setOtpCode ] = useState('');
     const { setUserAccess } = useContext(AuthContext)
     const [ telnum, setTelnum ] = useState("")
     const otpRefs = useRef<Array<HTMLInputElement> | null>([])
+    const [ miniModal, setMiniModal ] = useState<boolean>(false)
 
     const handleKeyUp = (index: number, event: React.KeyboardEvent<HTMLInputElement>) => {
         const input = otpRefs.current?.[index];
@@ -74,36 +75,63 @@ export default function Register(props: IProps) {
         initialValues: {
             telnum: ""
         },
+        validateOnChange: false,
+        validateOnBlur: false,
+        validate: (values) => {
+            const errors: { telnum?: string } = {}
+            
+            if(!values.telnum) {
+                errors.telnum = "กรุณากรอกเบอร์โทรศัพท์"
+                Swal.fire({
+                    title: "กรุณากรอกเบอร์โทรศัพท์",
+                    icon: "info",
+                    timer: 1000,
+                    showConfirmButton: false
+                })
+            }
+
+            return errors
+        },
         onSubmit: async (values) => {
             //? /auth/preRegister
-            await axios.post(`${process.env.API_URL}/auth/preRegister`,
-                {
-                    telnum: values.telnum
-                }
-            ).then((response) => {
-                const { data } = response
-                if (data.status == "success") {
-                    Swal.fire({
-                        title: "success",
-                        text: "OTP ถูกส่งเรียบร้อย",
-                        icon: "success",
-                        timer: 1000,
-                        showConfirmButton: false
-                    }).then(() => {
-                        setSteps(steps + 1)
-                        setTelnum(values.telnum)
-                        formStep2.values.telnum = values.telnum
-                    })
-                } else {
-                    Swal.fire({
-                        title: "Error",
-                        text: data.message,
-                        icon: "error",
-                        timer: 1000,
-                        showConfirmButton: false
-                    })
-                }
-            })
+
+            if(!/^[0-9]+$/.test(values.telnum)) {
+                Swal.fire({
+                    title: "กรุณากรอกเบอร์โทรศัพท์ให้ถูกต้อง",
+                    icon: "info",
+                    timer: 1000,
+                    showConfirmButton: false
+                })
+            }else {
+                await axios.post(`${process.env.API_URL}/auth/preRegister`,
+                    {
+                        telnum: values.telnum
+                    }
+                ).then((response) => {
+                    const { data } = response
+                    if (data.status == "success") {
+                        Swal.fire({
+                            title: "success",
+                            text: "OTP ถูกส่งเรียบร้อย",
+                            icon: "success",
+                            timer: 1000,
+                            showConfirmButton: false
+                        }).then(() => {
+                            setSteps(steps + 1)
+                            setTelnum(values.telnum)
+                            formStep2.values.telnum = values.telnum
+                        })
+                    } else {
+                        Swal.fire({
+                            title: "Error",
+                            text: data.message,
+                            icon: "error",
+                            timer: 1000,
+                            showConfirmButton: false
+                        })
+                    }
+                })
+            }
 
         }
     })
@@ -112,6 +140,21 @@ export default function Register(props: IProps) {
         initialValues: {
             telnum: telnum,
             pin: otpCode
+        },
+        validateOnChange: false,
+        validateOnBlur: false,
+        validate: (values) => {
+            const errors: { pin?: string } = {}
+            if(!values.pin) {
+                errors.pin = "กรุณากรอกรหัส OTP"
+                Swal.fire({
+                    title: "กรุณากรอกรหัส OTP",
+                    icon: "info",
+                    timer: 1000,
+                    showConfirmButton: false
+                })
+            }
+            return errors
         },
         onSubmit: async (values) => {
             try {
@@ -155,6 +198,7 @@ export default function Register(props: IProps) {
         }
     })
 
+    
     const formStep3 = useFormik({
         initialValues: {
             telnum: formStep1.values.telnum,
@@ -162,10 +206,56 @@ export default function Register(props: IProps) {
             confirm_password: "",
             banknum: "",
             bankname: "NONE",
-            policy: "false"
+            policy: []
+        },
+        validateOnChange: false,
+        validateOnBlur: false,
+        validate: (values) => {
+            const errors: { password?: string; banknum?: string; bankname?: string; policy?: string } = {}
+
+            if(values.policy.length == 0) {
+                errors.policy = "required policy"
+                Swal.fire({
+                    title: "กรุณายอมรับข้อตกลง",
+                    icon: "info",
+                    timer: 1000,
+                    showConfirmButton: false
+                })
+            }
+
+            if(values.password !== values.confirm_password) {
+                errors.password = "รหัสผ่านไม่ตรงกัน"
+                Swal.fire({
+                    title: "กรุณากรอกรหัสผ่านให้ตรงกัน",
+                    icon: "info",
+                    timer: 1000,
+                    showConfirmButton: false
+                })
+            }
+
+            if(!values.banknum) {
+                errors.banknum = "กรุณากรอกเลขบัญชี"
+                Swal.fire({
+                    title: "กรุณากรอกเลขบัญชี",
+                    icon: "info",
+                    timer: 1000,
+                    showConfirmButton: false
+                })
+            }
+
+            if(!values.bankname) {
+                errors.bankname = "กรุณาเลือกบัญชีธนาคาร"
+                Swal.fire({
+                    title: "กรุณาเลือกบัญชีธนาคาร",
+                    icon: "info",
+                    timer: 1000,
+                    showConfirmButton: false
+                })
+            }
+            
+            return errors
         },
         onSubmit: async (values) => {
-            setSteps(steps + 1)
             try {
                 await axios.post(`${process.env.API_URL}/auth/register`,
                     {
@@ -213,9 +303,12 @@ export default function Register(props: IProps) {
                     timer: 1000,
                     showConfirmButton: false
                 })
+            }finally {
+                setSteps(steps + 1)
             }
         }
     })
+
 
     useEffect(() => {
         fetchBanks()
@@ -351,7 +444,7 @@ export default function Register(props: IProps) {
                                     <option value="NONE" defaultChecked disabled>เลือกธนาคาร</option>
                                     {
                                         banks.map((item, index) => (
-                                            <option key={index} value={item.code}>{item.name}</option>
+                                            item.name !== "NON BANK" && <option key={index} value={item.code}>{item.name}</option>
                                         ))
                                     }
                                 </SelectBox>
@@ -360,10 +453,10 @@ export default function Register(props: IProps) {
 
                                 <DivAllow>
                                     <DivTextAllow>
-                                        <input type="checkbox" name="policy" value={formStep3.values.policy} onChange={formStep3.handleChange} />
+                                        <input type="checkbox" name="policy" value="checked" checked={formStep3.values.policy.length > 0 ? true : false} onChange={formStep3.handleChange} />
                                         <TextAllow htmlFor="policy">ข้าพเจ้าเห็นด้วย</TextAllow>
                                     </DivTextAllow>
-                                    <TextAllow2>เงื่อนไขและข้อตกลง</TextAllow2>
+                                    <TextAllow2 onClick={() => setMiniModal(true)}>เงื่อนไขและข้อตกลง</TextAllow2>
                                 </DivAllow>
                                 <GoldButton onClick={formStep3.submitForm}>
                                     <TextButton>สมัครสมาชิก</TextButton>
@@ -402,6 +495,37 @@ export default function Register(props: IProps) {
                     )
                 }
 
+                    {
+                        miniModal && 
+                        (
+                            <>
+                                <MiniModal>
+                                    <MiniModalContainer>
+                                        <IconX onClick={() => setMiniModal(false)}>
+                                            <AiOutlineClose size={20} />
+                                        </IconX>
+                                        {/* Content */}
+                                        <MiniModalContent>
+                                            <MiniModalHeader>รายละเอียดโปรโมชั่น</MiniModalHeader>
+                                            <MiniModalDesc>
+                                                <li>1. หมายเลขโทรศัพท์ที่ใช้ต้องสามารถรับข้อความได้เพราะระบบจำเป็นต้องส่งรหัสยืนยันไปทางหมายเลขของท่านมิเช่นนั้นจะไม่สามารถทำรายการต่างๆ ได้</li>
+                                                <li>2. ชื่อ-นามสกุล จะต้องตรงกับข้อมูลบัญชี มิเช่นนั้นจะไม่สามารถทำรายการต่างๆ ได้</li>
+                                                <li>3. ต้องใช้บัญชีที่สมัครฝากเงินเท่านั้น</li>
+                                                <li>4. ถ้าเกิดข้อผิดพลาดของระบบให้ทำการแจ้งพนักงานทันที</li>
+                                                <li>5. สมาชิก 1 คน ต่อ 1 ไอดีเท่านั้น กรณีตรวจพบว่ามีการสมัครหลายไอดีทางรอขอสงวนสิทธิ์การถอน ทุกกรณี</li>
+                                            </MiniModalDesc>
+                                        </MiniModalContent>
+                                        <DivTextAllow>
+                                            <input type="checkbox" name="policy" value="checked" checked={formStep3.values.policy.length > 0 ? true : false} onChange={formStep3.handleChange} />
+                                            <TextAllow htmlFor="policy">ข้าพเจ้าเห็นด้วย</TextAllow>
+                                        </DivTextAllow>
+                                    </MiniModalContainer>
+                                </MiniModal>
+                                <OverlayMiniModal onClick={() => setMiniModal(false)} />
+                            </>
+                        )
+                    }
+
                 <Contactme>
                     <TextLine>LINE : Royalbet </TextLine>
                     <DivSo>
@@ -419,6 +543,87 @@ export default function Register(props: IProps) {
 
     )
 }
+
+const Container = styled.div`
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+`
+
+const OverlayMiniModal = styled.div`
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 450px;
+`
+
+const MiniModalDesc = styled.ol`
+    width: 270px;
+    height: 203px;
+    font-family: 'Prompt';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 18px;
+    text-align: left;
+
+    color: rgba(255, 255, 255, 0.8);
+`
+
+const MiniModalHeader = styled.h2`
+    font-family: 'Prompt';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #FFFFFF;
+`
+
+const MiniModalContent = styled.div`
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    overflow-y: scroll;
+`
+
+const MiniModalContainer = styled.div`
+    position: relative;
+
+    padding: 40px 15px;
+    width: 100%;
+    height: 100%;
+`
+
+const MiniModal = styled.div`
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+
+    border-radius: 10px;
+    width: 300px;
+    height: 380px;
+    overflow: hidden;
+
+    background: #090909;
+    box-shadow: rgba(255, 255, 255, 0.24) 0px 3px 8px;
+`
 
 const TextDetailCom = styled.p`
     font-family: 'Prompt';
@@ -451,11 +656,14 @@ const SelectBox = styled.select`
     padding: 5px;
     width: 100%;
     height: 36px;
+    min-height: 36px;
 
     background: #060606;
     /* color: rgba(255, 255, 255, 0.5); */
     color: #fff;
     border-radius: 5px;
+
+    -webkit-appearance: none;
 
     &:focus {
         outline: none;
@@ -775,6 +983,7 @@ const DivAllow = styled.div`
 `
 
 const DivTextAllow = styled.div`
+    margin: auto;
     width: 106px;
     height: 28px;
 
