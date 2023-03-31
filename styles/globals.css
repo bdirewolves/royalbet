@@ -454,3 +454,11 @@ em {
 }
 
 
+.slick-dots {
+  bottom: -20px !important;
+}
+
+.slick-dots li {
+  margin: 0 !important;
+}
+

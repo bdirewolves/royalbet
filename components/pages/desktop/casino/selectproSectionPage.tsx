@@ -485,9 +485,7 @@ export default function SelectProSectionPage() {
                         openGameList &&
                         (
                             <ContainerDivFlexGame>
-                                <LeftDivFlexGame onClick={() => pages.page != 1 && setPages({ page: pages.page-1, limit: 24 })}>
-                                    <AiFillCaretLeft color="#959595" size={26} />
-                                </LeftDivFlexGame>
+                                
                                     <DivFlexGame>
                                         <DivTitle>
                                             <Title>
@@ -500,47 +498,53 @@ export default function SelectProSectionPage() {
                                                 <NextBtn onClick={() => (gameLists.length > 24 && pages.page != Math.floor(gameLists.length / pages.limit)) && setPages({ page: pages.page+1, limit: 24 })}><AiOutlineCaretRight size={14} /></NextBtn>
                                             </PageControl>
                                         </DivTitle>
-                                        <DivGrid>
-                                            {
-                                                gameLists.length >= 2 ? gameLists.slice(Math.floor((pages.page - 1) * pages.limit), Math.floor((pages.page - 1) * pages.limit + pages.limit)).map((item, index) => (
-                                                    <GridFr key={index} onClick={() => launchGame(item.game_code, item.provider_id)}>
-                                                        <DivPicPro>
-                                                            <PicPro loading="lazy" src={item.pic_url ? item.pic_url : `https://placehold.co/210x150/black/white?text=${item.provider_id}`} />
-                                                        </DivPicPro>
-                                                        <BoxText>
-                                                            {
-                                                                type === "live" ?
-                                                                `Lobby ${item.provider_id}`
-                                                                :
-                                                                item.name
-                                                            }
-                                                        </BoxText>
-                                                        <GoldPic />
-                                                    </GridFr>
-                                                ))
-                                                :
-                                                gameLists.map((item, index) => (
-                                                    <GridFr key={index} onClick={() => launchGame(item.game_code, item.provider_id)}>
-                                                        <DivPicPro>
-                                                            <PicPro loading="lazy" src={item.pic_url ? item.pic_url : `https://placehold.co/210x150/black/white?text=${item.provider_id}`} />
-                                                        </DivPicPro>
-                                                        <BoxText>
-                                                            {
-                                                                type === "live" ?
-                                                                `Lobby ${item.provider_id}`
-                                                                :
-                                                                item.name
-                                                            }
-                                                        </BoxText>
-                                                        <GoldPic />
-                                                    </GridFr>
-                                                ))
-                                            }
-                                        </DivGrid>
+
+                                        <FlexWithNavigate>
+                                            <LeftDivFlexGame onClick={() => pages.page != 1 && setPages({ page: pages.page-1, limit: 24 })}>
+                                                <AiFillCaretLeft color="#959595" size={26} />
+                                            </LeftDivFlexGame>
+                                            <DivGrid>
+                                                {
+                                                    gameLists.length >= 2 ? gameLists.slice(Math.floor((pages.page - 1) * pages.limit), Math.floor((pages.page - 1) * pages.limit + pages.limit)).map((item, index) => (
+                                                        <GridFr key={index} onClick={() => launchGame(item.game_code, item.provider_id)}>
+                                                            <DivPicPro>
+                                                                <PicPro loading="lazy" src={item.pic_url ? item.pic_url : `https://placehold.co/210x150/black/white?text=${item.provider_id}`} />
+                                                            </DivPicPro>
+                                                            <BoxText>
+                                                                {
+                                                                    type === "live" ?
+                                                                    `Lobby ${item.provider_id}`
+                                                                    :
+                                                                    item.name
+                                                                }
+                                                            </BoxText>
+                                                            <GoldPic />
+                                                        </GridFr>
+                                                    ))
+                                                    :
+                                                    gameLists.map((item, index) => (
+                                                        <GridFr key={index} onClick={() => launchGame(item.game_code, item.provider_id)}>
+                                                            <DivPicPro>
+                                                                <PicPro loading="lazy" src={item.pic_url ? item.pic_url : `https://placehold.co/210x150/black/white?text=${item.provider_id}`} />
+                                                            </DivPicPro>
+                                                            <BoxText>
+                                                                {
+                                                                    type === "live" ?
+                                                                    `Lobby ${item.provider_id}`
+                                                                    :
+                                                                    item.name
+                                                                }
+                                                            </BoxText>
+                                                            <GoldPic />
+                                                        </GridFr>
+                                                    ))
+                                                }
+                                            </DivGrid>
+                                            <RightDivFlexGame onClick={() => (gameLists.length > 24 && pages.page != Math.floor(gameLists.length / pages.limit)) && setPages({ page: pages.page+1, limit: 24 })}>
+                                                <AiFillCaretRight color="#959595" size={26} />
+                                            </RightDivFlexGame>
+                                        </FlexWithNavigate>
                                     </DivFlexGame>
-                                <RightDivFlexGame onClick={() => (gameLists.length > 24 && pages.page != Math.floor(gameLists.length / pages.limit)) && setPages({ page: pages.page+1, limit: 24 })}>
-                                    <AiFillCaretRight color="#959595" size={26} />
-                                </RightDivFlexGame>
                             </ContainerDivFlexGame>
                         )
                     }
@@ -549,6 +553,13 @@ export default function SelectProSectionPage() {
         </Container>
     )
 }
+
+const FlexWithNavigate = styled.div`
+    width: 100%;
+    height: auto;
+    
+    display: flex;
+`
 
 const BoxTypeContainer = styled.div`
     padding: 5px;
@@ -976,7 +987,6 @@ const BoxPro1 = styled.div`
 const DivFlexGame = styled.div`
     width: 100%;
     height: auto;
-    max-width: 650px;
 
     display: flex;
     flex-direction: column;
@@ -985,13 +995,7 @@ const DivFlexGame = styled.div`
 
     gap: 10px;
 
-    @media (min-width: 1280px) {
-        max-width: 1164.44px;
-    }
-
-    @media (min-width: 1440px) {
-        max-width: 1310px;
-    }
+    //TODO!!
 `
 
 const DivGrid = styled.div`
@@ -1018,6 +1022,7 @@ const DivGrid = styled.div`
     @media (min-width: 1440px) {
         max-width: 1310px;
     }
+    
 `
 
 const GridFr = styled.div`

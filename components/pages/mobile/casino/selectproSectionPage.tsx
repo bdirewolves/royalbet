@@ -50,7 +50,7 @@ export default function SelectProSectionPage() {
     const [ typeList, setTypeList ] = useState<string[]>([])
 
     const settings = {
-        dots: false,
+        dots: true,
         slidesToShow: 1,
         rows: 2,
         slidesPerRow: 3,
@@ -553,7 +553,7 @@ export default function SelectProSectionPage() {
 
 const SliderContainer = styled.div`
     width: 100%;
-    height: auto;
+    height: 135px;
 `
 
 const DivFlex = styled.div`
