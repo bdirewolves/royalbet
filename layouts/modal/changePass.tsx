@@ -33,9 +33,9 @@ function ChangePass(props: IProps) {
                 {/* <BgGrey /> */}
 
                 <DivFlexHead>
-                    <TfiAngleLeft style={{ cursor: "pointer" }} size={16} color="Grey" onClick={() => props.setModalPage({ name: "menu", element: null })} />
+                    <TfiAngleLeft style={{ cursor: "pointer" }} size={22} color="Grey" onClick={() => props.setModalPage({ name: "menu", element: null })} />
                     <TextHead>เปลี่ยนรหัสผ่าน</TextHead>
-                    <AiOutlineClose style={{ cursor: "pointer" }} size={14.67} color="Grey" onClick={() => props.setModalPage({ name: "", element: null })} />
+                    <AiOutlineClose style={{ cursor: "pointer" }} size={22} color="Grey" onClick={() => props.setModalPage({ name: "", element: null })} />
                 </DivFlexHead>
                 
                 <FlexMains>

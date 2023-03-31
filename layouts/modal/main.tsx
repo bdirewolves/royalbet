@@ -37,8 +37,8 @@ export default function Main(props: IProps) {
                 <BgGrey />
                 <DivFlexHead>
                     <TextHead>โปรไฟล์</TextHead>
-                    <CloseBtn >
-                        <AiOutlineClose style={{ cursor: "pointer" }} size={15} color="Grey" onClick={() => props.setModalPage({ name: "", element: null })} />
+                    <CloseBtn>
+                        <AiOutlineClose style={{ cursor: "pointer" }} size={22} color="Grey" onClick={() => props.setModalPage({ name: "", element: null })} />
                     </CloseBtn>
                 </DivFlexHead>
 
@@ -291,6 +291,10 @@ const TextMenu = styled.p`
     line-height: 150%;
 
     color: rgba(255, 255, 255, 0.8);
+
+    @media (max-width: 1023px) {
+        font-size: 14px;
+    }
 `
 
 const GoldLine = styled.div`

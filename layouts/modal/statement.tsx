@@ -89,9 +89,9 @@ export default function Statement(props: IProps) {
             <Modal>
                 <BgGrey />
                 <DivFlexHead>
-                    <TfiAngleLeft style={{ cursor: "pointer" }} size={16} color="Grey" onClick={() => props.setModalPage({ name: "menu", element: null })} />
+                    <TfiAngleLeft style={{ cursor: "pointer" }} size={22} color="Grey" onClick={() => props.setModalPage({ name: "menu", element: null })} />
                     <TextHead>ประวัติธุรกรรม</TextHead>
-                    <AiOutlineClose style={{ cursor: "pointer" }} size={14.67} color="Grey" onClick={() => props.setModalPage({ name: "", element: null })} />
+                    <AiOutlineClose style={{ cursor: "pointer" }} size={22} color="Grey" onClick={() => props.setModalPage({ name: "", element: null })} />
                 </DivFlexHead>
                 <Flexmenu>
 
@@ -270,6 +270,10 @@ export default function Statement(props: IProps) {
 const NullText = styled.p`
     font-size: 12px;
     color: #fff;
+
+    @media (max-width: 1023px) {
+        font-size: 14px;
+    }
 `
 
 const Overlay = styled.div`
@@ -422,6 +426,10 @@ const TextButtonType = styled.p`
     text-align: center;
 
     color: #FFFFFF;
+
+    @media (max-width: 1023px) {
+        font-size: 16px;
+    }
 `
 
 const FlexTransaction = styled.div`

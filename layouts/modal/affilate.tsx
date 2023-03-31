@@ -31,9 +31,9 @@ export default function Affilate(props: IProps) {
                 <Container>
                     <BgGrey />
                     <DivFlexHead>
-                        <TfiAngleLeft style={{ cursor: "pointer" }} size={16} color="Grey" onClick={() => props.setModalPage({ name: "menu", element: null })} />
+                        <TfiAngleLeft style={{ cursor: "pointer" }} size={22} color="Grey" onClick={() => props.setModalPage({ name: "menu", element: null })} />
                         <TextHead>แนะนำเพือน</TextHead>
-                        <AiOutlineClose style={{ cursor: "pointer" }} size={14.67} color="Grey" onClick={() => props.setModalPage({ name: "", element: null })} />
+                        <AiOutlineClose style={{ cursor: "pointer" }} size={22} color="Grey" onClick={() => props.setModalPage({ name: "", element: null })} />
                     </DivFlexHead>
                     <Flexmenu>
                         <DivTextmenu>
@@ -321,6 +321,10 @@ const Textmenu = styled.p`
     text-align: center;
 
     color: #FFFFFF;
+
+    @media (max-width: 1023px) {
+        font-size: 16px;
+    }
 `
 
 const FlexFr = styled.div`
@@ -353,6 +357,10 @@ const TextSmall = styled.p`
     line-height: 150%;
 
     color: rgba(255, 255, 255, 0.8);
+
+    @media (max-width: 1023px) {
+        font-size: 14px;
+    }
 `
 
 const TextBig = styled.p`
@@ -366,6 +374,10 @@ const TextBig = styled.p`
     text-align: center;
 
     color: #FFFFFF;
+
+    @media (max-width: 1023px) {
+        font-size: 18px;
+    }
 
 `
 
@@ -411,6 +423,10 @@ const TextButton = styled.p`
     text-align: center;
 
     color: #000000;
+
+    @media (max-width: 1023px) {
+        font-size: 16px;
+    }
 `
 
 const TextButtonCopy = styled.p`
@@ -424,6 +440,10 @@ const TextButtonCopy = styled.p`
     text-align: center;
 
     color: #FFFFFF;
+
+    @media (max-width: 1023px) {
+        font-size: 16px;
+    }
 `
 
 const DivTextRemem = styled.button`
@@ -451,6 +471,10 @@ const TextRemem = styled.p`
     text-align: center;
 
     color: #FFFFFF;
+
+    @media (max-width: 1023px) {
+        font-size: 14px;
+    }
 `
 
 const TextRemem1 = styled.p`
@@ -465,6 +489,10 @@ const TextRemem1 = styled.p`
     color: #FFFFFF;
 
     opacity: 0.5;
+
+    @media (max-width: 1023px) {
+        font-size: 14px;
+    }
 `
 
 const TextRemem2 = styled.p`
@@ -480,9 +508,14 @@ const TextRemem2 = styled.p`
     color: #FFFFFF;
 
     opacity: 0.3;
+
+    @media (max-width: 1023px) {
+        font-size: 14px;
+    }
 `
 
 const DivFlexLogout = styled.div`
+    margin-top: 20px;
     cursor: pointer;
     width: 86px;
     height: 24px;
@@ -497,6 +530,10 @@ const DivFlexLogout = styled.div`
     align-items: center;
 
     gap: 5px;
+
+    @media (max-width: 1023px) {
+        font-size: 14px;
+    }
 `
 
 const TextLogout = styled.p`
@@ -510,5 +547,9 @@ const TextLogout = styled.p`
     letter-spacing: -0.011em;
 
     color: rgba(255, 255, 255, 0.8);
+
+    @media (max-width: 1023px) {
+        font-size: 14px;
+    }
 `
 

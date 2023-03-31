@@ -31,9 +31,9 @@ export default function Promotion(props: IProps) {
                 <Container>
                     <BgGrey />
                     <DivFlexHead>
-                        <TfiAngleLeft style={{ cursor: "pointer" }} size={16} color="Grey" onClick={() => props.setModalPage({ name: "menu", element: null })} />
+                        <TfiAngleLeft style={{ cursor: "pointer" }} size={22} color="Grey" onClick={() => props.setModalPage({ name: "menu", element: null })} />
                         <TextHead>รับโปรโมชั่น</TextHead>
-                        <AiOutlineClose style={{ cursor: "pointer" }} size={14.67} color="Grey" onClick={() => props.setModalPage({ name: "", element: null })} />
+                        <AiOutlineClose style={{ cursor: "pointer" }} size={22} color="Grey" onClick={() => props.setModalPage({ name: "", element: null })} />
                     </DivFlexHead>
                     <Flexmenu>
                         <DivTextmenu>
@@ -316,6 +316,10 @@ const Textmenu = styled.p`
     text-align: center;
 
     color: #FFFFFF;
+
+    @media (max-width: 1023px) {
+        font-size: 16px;
+    }
 `
 
 const Box = styled.div`
@@ -352,6 +356,10 @@ const TextButton = styled.p`
     text-align: center;
 
     color: #000000;
+
+    @media (max-width: 1023px) {
+        font-size: 16px;
+    }
 `
 
 
@@ -379,6 +387,10 @@ const TextRemem = styled.p`
     text-align: center;
 
     color: #FFFFFF;
+
+    @media (max-width: 1023px) {
+        font-size: 14px;
+    }
 `
 
 const TextRemem1 = styled.p`
@@ -395,6 +407,10 @@ const TextRemem1 = styled.p`
     color: #FFFFFF;
 
     opacity: 0.3;
+
+    @media (max-width: 1023px) {
+        font-size: 14px;
+    }
 `
 
 const DivFlexLogout = styled.div`
@@ -413,7 +429,7 @@ const DivFlexLogout = styled.div`
 
     gap: 5px;
 
-    transform: translateY(-120px);
+    transform: translateY(-130px);
 
     @media (min-width: 744px) {
         transform: translateY(-60px);
@@ -435,4 +451,8 @@ const TextLogout = styled.p`
     letter-spacing: -0.011em;
 
     color: rgba(255, 255, 255, 0.8);
+
+    @media (max-width: 1023px) {
+        font-size: 15px;
+    }
 `

@@ -30,9 +30,9 @@ export default function Information(props: IProps) {
             <Modal>
                 <BgGrey />
                 <DivFlexHead>
-                    <TfiAngleLeft style={{ cursor: "pointer" }} size={16} color="Grey" onClick={() => props.setModalPage({ name: "menu", element: null })} />
+                    <TfiAngleLeft style={{ cursor: "pointer" }} size={22} color="Grey" onClick={() => props.setModalPage({ name: "menu", element: null })} />
                     <TextHead>ข้อมูลส่วนตัว</TextHead>
-                    <AiOutlineClose style={{ cursor: "pointer" }} size={14.67} color="Grey" onClick={() => props.setModalPage({ name: "", element: null })} />
+                    <AiOutlineClose style={{ cursor: "pointer" }} size={22} color="Grey" onClick={() => props.setModalPage({ name: "", element: null })} />
                 </DivFlexHead>
                 <DivFlexinfo>
                     <Boxinfo src="/assets/img/users/profile.png" />
@@ -58,9 +58,9 @@ export default function Information(props: IProps) {
                         <Textmenu1>รู้จักเราจาก : - </Textmenu1>
                     </FlexFr>
                 </Flexmenu>
-                <DivFlexLogout onClick={handleLogout}>
+                {/* <DivFlexLogout onClick={handleLogout}>
                     <TextLogout>ออกจากระบบ</TextLogout>
-                </DivFlexLogout>
+                </DivFlexLogout> */}
             </Modal>
             <Overlay onClick={() => props.setModalPage({ name: "", element: null })} />
         </>
@@ -184,9 +184,14 @@ const Textinfo = styled.p`
     align-items: center;
 
     color: #FFFFFF;
+
+    @media (max-width: 1023px) {
+        font-size: 20px;
+    }
 `
 
 const Flexmenu = styled.div`
+    margin-top: 20px;
     width: 80%;
     height: auto;
 
@@ -195,7 +200,7 @@ const Flexmenu = styled.div`
     justify-content: center;
     align-items: center;
     
-    gap: 5px;
+    gap: 30px;
 `
 
 const FlexFr = styled.div`
@@ -216,19 +221,27 @@ const Textmenu = styled.p`
     color: #FFFFFF;
 
     opacity: 0.5;
+
+    @media (max-width: 1023px) {
+        font-size: 18px;
+    }
 `
 
 const Textmenu1 = styled.p`
     font-family: 'Prompt';
     font-style: normal;
     font-weight: 400;
-    font-size: 14px;
+    font-size: 18px;
     line-height: 18px;
     display: flex;
     align-items: center;
 
     padding-left: 15px;
     color: #515151;
+
+    @media (max-width: 1023px) {
+        font-size: 16px;
+    }
 `
 
 const DivFlexLogout = styled.div`
@@ -247,7 +260,7 @@ const DivFlexLogout = styled.div`
 
     gap: 5px;
 
-    transform: translateY(-120px);
+    transform: translateY(-130px);
 
     @media (min-width: 744px) {
         transform: translateY(-60px);
@@ -262,7 +275,7 @@ const TextLogout = styled.p`
     font-family: 'Prompt';
     font-style: normal;
     font-weight: 500;
-    font-size: 12px;
+    font-size: 15px;
     line-height: 18px;
     display: flex;
     align-items: center;

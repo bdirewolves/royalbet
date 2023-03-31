@@ -257,9 +257,9 @@ export default function Deposit(props: IProps) {
             <Modal>
                 <BgGrey />
                 <DivFlexHead>
-                    <TfiAngleLeft style={{ cursor: "pointer" }} size={16} color="Grey" onClick={() => props.setModalPage({ name: "menu", element: null })} />
+                    <TfiAngleLeft style={{ cursor: "pointer" }} size={22} color="Grey" onClick={() => props.setModalPage({ name: "menu", element: null })} />
                     <TextHead>ฝาก - ถอน</TextHead>
-                    <AiOutlineClose style={{ cursor: "pointer" }} size={14.67} color="Grey" onClick={() => props.setModalPage({ name: "", element: null })} />
+                    <AiOutlineClose style={{ cursor: "pointer" }} size={22} color="Grey" onClick={() => props.setModalPage({ name: "", element: null })} />
                 </DivFlexHead>
 
                 <FlexButton>
@@ -597,7 +597,7 @@ const Textmenu = styled.p`
     font-family: 'Prompt';
     font-style: normal;
     font-weight: 500;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 21px;
     text-align: center;
 
@@ -630,7 +630,7 @@ const TextDetail = styled.p`
     font-family: 'Prompt';
     font-style: normal;
     font-weight: 400;
-    font-size: 12px;
+    font-size: 16px;
     line-height: 18px;
     display: flex;
     align-items: center;
@@ -656,7 +656,7 @@ const TextRemark = styled.p`
     font-family: 'Prompt';
     font-style: normal;
     font-weight: 275;
-    font-size: 12px;
+    font-size: 16px;
     line-height: 18px;
     display: flex;
     align-items: center;
@@ -694,7 +694,7 @@ const TextButtonCopy = styled.p`
    font-family: 'Prompt';
     font-style: normal;
     font-weight: 500;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 21px;
     display: flex;
     align-items: center;
@@ -722,7 +722,7 @@ const TextButton = styled.p`
     font-family: 'Prompt';
     font-style: normal;
     font-weight: 500;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 21px;
     display: flex;
     align-items: center;
@@ -738,7 +738,7 @@ const TextTransfer = styled.button`
     font-family: 'Prompt';
     font-style: normal;
     font-weight: 300;
-    font-size: 12px;
+    font-size: 14px;
     line-height: 18px;
     display: flex;
     align-items: center;
@@ -751,7 +751,7 @@ const TextRemark2 = styled.p`
     font-family: 'Prompt';
     font-style: normal;
     font-weight: 275;
-    font-size: 12px;
+    font-size: 14px;
     line-height: 18px;
     text-align: center;
 
@@ -774,7 +774,7 @@ const TextDetailMoney = styled.p`
     font-family: 'Prompt';
     font-style: normal;
     font-weight: 300;
-    font-size: 10px;
+    font-size: 14px;
     line-height: 150%;
     /* identical to box height, or 15px */
 
@@ -790,7 +790,7 @@ const TextDetailMoney2 = styled.p`
     font-family: 'Prompt';
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 20px;
     line-height: 24px;
     display: flex;
     align-items: center;

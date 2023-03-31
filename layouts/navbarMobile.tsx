@@ -10,6 +10,7 @@ import Swal from "sweetalert2";
 import Button from "@/components/_reduce/Button";
 import Login from "./modal/login";
 import Register from "./modal/register";
+import Main from "./modal/main";
 
 interface IPage {
     name: string;
@@ -43,7 +44,7 @@ export default function NavbarMobile ({ modalPage, setModalPage, showHamburger, 
             })
         }else{
             switch(name) {
-                case "information": setModalPage({ name: "information", element: <Information modalPage={modalPage} setModalPage={setModalPage} /> });
+                case "menu": setModalPage({ name: "menu", element: <Main modalPage={modalPage} setModalPage={setModalPage} /> });
                     break;
                 case "statement": setModalPage({ name: "statement", element: <Statement modalPage={modalPage} setModalPage={setModalPage} /> });
                     break;
@@ -66,7 +67,7 @@ export default function NavbarMobile ({ modalPage, setModalPage, showHamburger, 
                 userAccess ?
                 (
                     <MenuList>
-                        <MenuItem onClick={() => checkAccess("information")}>
+                        <MenuItem onClick={() => checkAccess("menu")}>
                             <DivIcon>
                                 <Icon size={24} src="/assets/img/icon/user.svg" />
                             </DivIcon>
@@ -194,7 +195,7 @@ const Background = styled.div`
     height: 65px;
 
     position: fixed;
-    bottom: 0;
+    bottom: -1px;
     left: 0;
     z-index: 999;
 
