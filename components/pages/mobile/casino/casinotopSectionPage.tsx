@@ -21,6 +21,10 @@ export default function CasinoTopSectionPage() {
            <FixWidth>
                <DivGrid>
                 <GridFrBanner src="/assets/img/banner/mockup-1.jpg" />
+                    <GridFrJak>
+                        <DivJack src="/assets/img/banner/mockup-square-1.jpg" />
+                        <DivAds src="/assets/img/banner/mockup-square-2.jpg" />
+                    </GridFrJak>
                     <GridFrPopu>
                         <TitletypePage header="POPULAR GAME" />
                         <DivFlex>
@@ -50,10 +54,6 @@ export default function CasinoTopSectionPage() {
                             </DivGame>
                         </DivFlex>
                     </GridFrPopu>
-                    <GridFrJak>
-                        <DivJack src="/assets/img/banner/mockup-square-1.jpg" />
-                        <DivAds src="/assets/img/banner/mockup-square-2.jpg" />
-                    </GridFrJak>
                </DivGrid>
            </FixWidth>
         </Container>
@@ -206,6 +206,7 @@ const DivAds = styled.img`
     max-width: 425px;
 
     display: none;
+    visibility: hidden;
     
     background: #100F14; 
 
