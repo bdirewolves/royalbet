@@ -33,7 +33,7 @@ interface IBanks {
 }
 
 export default function Register(props: IProps) {
-    const [ steps, setSteps ] = useState(1)
+    const [ steps, setSteps ] = useState(3)
     const [ banks, setBanks ] = useState<IBanks[]>([])
     const [ otpCode, setOtpCode ] = useState('');
     const { setUserAccess } = useContext(AuthContext)
