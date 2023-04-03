@@ -45,7 +45,7 @@ const DivGrid = styled.div`
 const Box = styled.div`
     width: 100%;
     height: auto;
-    aspect-ratio: 300/177.78;
+    aspect-ratio: 1/1;
     max-width: 650px;
 
     background-color: #100F14;
