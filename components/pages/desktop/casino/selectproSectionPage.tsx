@@ -331,6 +331,7 @@ export default function SelectProSectionPage() {
     const selectProvider = async () => {
         if(providers != "") {
             const games: IGames[] = await axios.get(`${process.env.API_URL}/gfservice/gamelist/${providers}`).then((res) =>res.data.data.gameList)
+            setPages({ page: 1, limit: 24 })
             setGameLists(games)
             setOpenGameList(true)
             setOpenTypeList(true)
@@ -508,7 +509,7 @@ export default function SelectProSectionPage() {
                                                     gameLists.length >= 2 ? gameLists.slice(Math.floor((pages.page - 1) * pages.limit), Math.floor((pages.page - 1) * pages.limit + pages.limit)).map((item, index) => (
                                                         <GridFr key={index} onClick={() => launchGame(item.game_code, item.provider_id)}>
                                                             <DivPicPro>
-                                                                <PicPro loading="lazy" src={item.pic_url ? item.pic_url : `https://placehold.co/210x150/black/white?text=${item.provider_id}`} />
+                                                                <PicPro loading="lazy" src={item.pic_url ? item.pic_url : `https://placehold.co/210x150/black/white?text=${item.game_code}`} />
                                                             </DivPicPro>
                                                             <BoxText>
                                                                 {

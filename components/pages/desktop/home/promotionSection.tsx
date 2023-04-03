@@ -13,7 +13,7 @@ export default function PromotionSection() {
                 <Titletype header="PROMOTION" subhead="โปรโมชั่นทั้งหมด" onClick={() => router.push("/promotion")} />
                 <DivFlex>
                     {
-                        promotionFebruary.squre.reverse().slice(0, 2).map((item, index) => (
+                        promotionFebruary.top.reverse().slice(0, 2).map((item, index) => (
                             <Box key={index}>
                                 <Link href="/promotion">
                                     <PicBox src={item.img} alt={item.alt}/>

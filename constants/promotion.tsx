@@ -23,13 +23,19 @@ export const promotionFebruary = {
     ],
     squre: [
         {
-            img: "/assets/img/promotion/promotion_1.jpg",
+            img: "/assets/img/promotion/promotion-1-sq.jpg",
             alt: "frist deposit get 50% bonus",
             title: "ฝากเงินครั้งแรกรับโบนัส 50% รับเครดิตสูงสุด 30,000 บาท",
             desc: "50% โปรสมัครสมาชิกใหม่ รับเครดิตสูงสุด 10,000 บาท (ยอดฝากสูงสุด 20,000 บาท) ฝากขั้นต่ำ 300 บาท รับได้เฉพาะ สมัครใหม่เท่านั้น"
         },
         {
-            img: "/assets/img/promotion/promotion_2.jpg",
+            img: "/assets/img/promotion/promotion-2-sq.jpg",
+            alt: "deposit 7 day over 10,000 get 1,000 bonus",
+            title: "ทุก 7 วัน ฝากครบ 10,000 รับเพิ่ม 1,000",
+            desc: "มีการฝากตั้งแต่วันที่ 1-7 /2/2023 รวมกัน 10,000 รับโบนัสเพิ่มทันที 1,000"
+        },
+        {
+            img: "/assets/img/promotion/promotion-3-sq.jpg",
             alt: "deposit 7 day over 10,000 get 1,000 bonus",
             title: "ทุก 7 วัน ฝากครบ 10,000 รับเพิ่ม 1,000",
             desc: "มีการฝากตั้งแต่วันที่ 1-7 /2/2023 รวมกัน 10,000 รับโบนัสเพิ่มทันที 1,000"

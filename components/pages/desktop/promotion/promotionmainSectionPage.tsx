@@ -9,7 +9,7 @@ export default function PromotionMainSectionPage() {
             <FixWidth>
                 <DivFlex>
                     {
-                        promotionFebruary.squre.reverse().slice(0, 2).map((item, index) => (
+                        promotionFebruary.top.reverse().slice(0, 2).map((item, index) => (
                         <Box key={index}>
                             <Link href="/m/promotion">
                                 <PicBox src={item.img} alt={item.alt}/>

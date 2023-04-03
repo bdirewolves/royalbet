@@ -35,8 +35,9 @@ const DivGrid = styled.div`
     grid-template-columns: repeat(1, 3fr);
     justify-content: center;
     align-items: center;
+    justify-items: center;
 
-    gap: 10px;
+    gap: 20px;
 
     @media (min-width: 744px) {
         grid-template-columns: repeat(2, 2fr);
@@ -56,14 +57,14 @@ const DivGrid = styled.div`
 const Box = styled.div`
     width: 100%;
     height: auto;
-    aspect-ratio: 300/177.78;
-    max-width: 650px;
+    aspect-ratio: 1/1;
+    max-width: 423px;
 
     background-color: #100F14;
 
-    &:hover{
+    /* &:hover{
         opacity: 0.5;
-    }
+    } */
 `
 
 const Box1 = styled.div`
