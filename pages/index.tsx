@@ -90,7 +90,7 @@ export default function Home() {
       
       <NewsSection />
 
-      <Content>
+      <Content style={{ paddingBottom: "40px" }}>
 
         <ReviewSection />
 

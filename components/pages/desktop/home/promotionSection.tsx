@@ -12,15 +12,16 @@ export default function PromotionSection() {
             <FixWidth>
                 <Titletype header="PROMOTION" subhead="โปรโมชั่นทั้งหมด" onClick={() => router.push("/promotion")} />
                 <DivFlex>
-                    {
-                        promotionFebruary.top.reverse().slice(0, 2).map((item, index) => (
-                            <Box key={index}>
-                                <Link href="/promotion">
-                                    <PicBox src={item.img} alt={item.alt}/>
-                                </Link>
-                            </Box>
-                        ))
-                    }
+                    <Box>
+                        <Link href="/promotion">
+                            <PicBox src="/assets/img/promotion/new/promotion_1.jpg" alt="" />
+                        </Link>
+                    </Box>
+                    <Box>
+                        <Link href="/promotion">
+                            <PicBox src="/assets/img/promotion/new/promotion_2.jpg" alt="" />
+                        </Link>
+                    </Box>
                 </DivFlex>
             </FixWidth>
         </Container>

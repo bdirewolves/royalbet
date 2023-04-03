@@ -7,7 +7,7 @@ export default function CasinoTopSectionPage() {
         <Container>
            <FixWidth>
                <DivGrid>
-                    <GridFrBanner src="/assets/img/banner/mockup-1.jpg" />
+                    <GridFrBanner src="/assets/img/banner/banner_casino.jpg" />
                     <GridFrPopu>
                         <TitletypePage header="POPULAR GAME" />
                         <DivFlex>
