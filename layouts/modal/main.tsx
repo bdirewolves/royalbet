@@ -259,7 +259,12 @@ const Gridmenu = styled.div`
     justify-content: center;
     align-items: center;
     
-    gap: 10px;
+    gap: 20px;
+
+    @media (max-width: 1023px) {
+        gap: 40px 0px;
+    }
+
 `
 
 const GridFr = styled.div`
