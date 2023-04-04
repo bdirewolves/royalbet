@@ -509,7 +509,7 @@ export default function SelectProSectionPage() {
                                                     gameLists.length >= 2 ? gameLists.slice(Math.floor((pages.page - 1) * pages.limit), Math.floor((pages.page - 1) * pages.limit + pages.limit)).map((item, index) => (
                                                         <GridFr key={index} onClick={() => launchGame(item.game_code, item.provider_id)}>
                                                             <DivPicPro>
-                                                                <PicPro loading="lazy" src={item.pic_url ? item.pic_url : `https://placehold.co/210x150/black/white?text=${item.game_code}`} />
+                                                                <PicPro loading="lazy" src={item.pic_url ? item.pic_url : `https://placehold.co/210x150/black/white?text=${item.provider_id}`} />
                                                             </DivPicPro>
                                                             <BoxText>
                                                                 {
@@ -958,7 +958,9 @@ const BoxPro = styled.div<{ isActive: boolean }>`
 
     /* margin: auto; */
 
-    background: #100F14;
+    background: url(/assets/img/bg-provider.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 
     display: flex;
     justify-content: center;
