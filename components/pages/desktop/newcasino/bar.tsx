@@ -111,6 +111,7 @@ const Container = styled.div`
 
     gap: 10px;
     padding-top: 10px;
+    padding-bottom: 70px;
 
     overflow: scroll;
 
