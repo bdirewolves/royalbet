@@ -5,7 +5,7 @@ export default function Bar(){
         <Container>
             <Box>
                 <DivImgBox>
-                    <ImgBox />
+                    <ImgBox src="/assets/img/barnewgame/barnewgame10.webp" />
                 </DivImgBox>
                 <DivText>
                     <TextEng>HOT GAME</TextEng>
@@ -14,7 +14,7 @@ export default function Bar(){
             </Box>
             <Box>
                 <DivImgBox>
-                    <ImgBox />
+                    <ImgBox src="/assets/img/barnewgame/barnewgame9.webp" />
                 </DivImgBox>
                 <DivText>
                     <TextEng>CASINO</TextEng>
@@ -23,7 +23,7 @@ export default function Bar(){
             </Box>
             <Box>
                 <DivImgBox>
-                    <ImgBox />
+                    <ImgBox src="/assets/img/barnewgame/barnewgame8.webp" />
                 </DivImgBox>
                 <DivText>
                     <TextEng>SLOT</TextEng>
@@ -32,7 +32,7 @@ export default function Bar(){
             </Box>
             <Box>
                 <DivImgBox>
-                    <ImgBox />
+                    <ImgBox src="/assets/img/barnewgame/barnewgame7.webp" />
                 </DivImgBox>
                 <DivText>
                     <TextEng>CARDS</TextEng>
@@ -41,7 +41,7 @@ export default function Bar(){
             </Box>
             <Box>
                 <DivImgBox>
-                    <ImgBox />
+                    <ImgBox src="/assets/img/barnewgame/barnewgame6.webp" />
                 </DivImgBox>
                 <DivText>
                     <TextEng>FISHING</TextEng>
@@ -50,7 +50,7 @@ export default function Bar(){
             </Box>
             <Box>
                 <DivImgBox>
-                    <ImgBox />
+                    <ImgBox src="/assets/img/barnewgame/barnewgame5.webp" />
                 </DivImgBox>
                 <DivText>
                     <TextEng>LOTTO</TextEng>
@@ -59,7 +59,7 @@ export default function Bar(){
             </Box>
             <Box>
                 <DivImgBox>
-                    <ImgBox />
+                    <ImgBox src="/assets/img/barnewgame/barnewgame4.webp" />
                 </DivImgBox>
                 <DivText>
                     <TextEng>TRADING</TextEng>
@@ -68,7 +68,7 @@ export default function Bar(){
             </Box>
             <Box>
                 <DivImgBox>
-                    <ImgBox />
+                    <ImgBox src="/assets/img/barnewgame/barnewgame3.webp" />
                 </DivImgBox>
                 <DivText>
                     <TextEng>SPORT</TextEng>
@@ -77,7 +77,7 @@ export default function Bar(){
             </Box>
             <Box>
                 <DivImgBox>
-                    <ImgBox />
+                    <ImgBox src="/assets/img/barnewgame/barnewgame2.webp" />
                 </DivImgBox>
                 <DivText>
                     <TextEng>E-SPORT</TextEng>
@@ -86,7 +86,7 @@ export default function Bar(){
             </Box>
             <Box>
                 <DivImgBox>
-                    <ImgBox />
+                    <ImgBox src="/assets/img/barnewgame/barnewgame1.webp" />
                 </DivImgBox>
                 <DivText>
                     <TextEng>KENO</TextEng>
