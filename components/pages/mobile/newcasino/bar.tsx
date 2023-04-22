@@ -130,7 +130,7 @@ const Box = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 10px 11.0946px;
+    padding: 10px;
     gap: 8px;
 
     background: linear-gradient(180deg, #202020 0%, #100F14 100%);
