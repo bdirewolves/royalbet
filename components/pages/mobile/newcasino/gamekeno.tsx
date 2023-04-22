@@ -40,9 +40,4 @@ const GridBox = styled.div`
     @media (min-width: 744px) {
         grid-template-columns: repeat(3, 1fr);
     }
-
-
-    @media (min-width: 1440px) {
-        grid-template-columns: repeat(6, 1fr);
-    }
 `
