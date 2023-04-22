@@ -129,3 +129,22 @@ export const DivDot = styled.div`
     display: flex;
     justify-content: space-between;
 `
+
+export const ContainerGameSection = styled.section`
+    width: calc(100vw - 90px);
+    height: auto;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    margin-left: 90px;
+    gap: 10px;
+
+    @media (min-width: 744px) {
+        width: calc(100vw - 250px);
+
+        margin-left: 250px;
+    }
+`
