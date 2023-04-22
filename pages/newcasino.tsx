@@ -43,45 +43,45 @@ export default function NewCasino(){
                 </>
 
                 {/* //casinogame// */}
-                {/* <>
+                <>
                     <CasinoGame />
-                </> */}
+                </>
 
                 {/* //slotgame// */}
-                {/* <>
+                <>
                     <SlotProviderGame />
                     <GameSlot />
-                </> */}
+                </>
 
                 {/* //cardgame// */}
-                {/* <>
+                <>
                     <GameCard />
-                </> */}
+                </>
 
                 {/* //fishgame// */}
-                {/* <>
+                <>
                     <GameFish />
-                </> */}
+                </>
 
                 {/* //lottogame// */}
-                {/* <>
+                <>
                     <GameLotto />
-                </> */}
+                </>
 
                 {/* //tradegame// */}
-                {/* <>
+                <>
                     <GameTrade />
-                </> */}
+                </>
 
                 {/* //sportgame// */}
-                {/* <>
+                <>
                     <GameSport />
-                </> */}
+                </>
 
                 {/* //kenogame// */}
-                {/* <>
+                <>
                     <GameKeno />
-                </> */}
+                </>
             </Content>
         </>
     )
