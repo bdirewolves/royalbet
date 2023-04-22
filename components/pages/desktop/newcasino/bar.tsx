@@ -119,6 +119,8 @@ const Container = styled.div`
 
     @media (min-width: 744px) {
         width: 250px;
+
+        padding-bottom: 10px;
     }
 `
 
