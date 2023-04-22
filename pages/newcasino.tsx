@@ -29,8 +29,8 @@ export default function NewCasino(){
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
+            <Background src="/assets/img/BGnewcasino.jpg" />
             <Content>
-                <BG />
                 <Bar />
 
                 {/* //Gamehit// */}
@@ -87,6 +87,20 @@ export default function NewCasino(){
     )
 }
 
+const Background = styled.img`
+  width: 100vw;
+  height: 100vh;
+
+  position: fixed;
+  top: 0;
+  right: 0;
+  
+  z-index: 0;
+
+  object-fit: cover;
+  object-position: right;
+`
+
 const Content = styled.main`
     width: 100%;
     height: auto;
@@ -104,20 +118,4 @@ const Content = styled.main`
     @media (min-width: 744px) {
         gap: 16px;
     }
-` 
-
-const BG = styled.div`
-    width: 100%;
-    height: 100%;
-
-    position: fixed;
-    top: 0;
-    left: 0;
-
-    background-image: url(/assets/img/BGnewcasino.jpg);
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-
-    z-index: -1;
 `
