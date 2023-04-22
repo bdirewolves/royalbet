@@ -183,11 +183,15 @@ const TextThai = styled.p`
     font-family: 'Prompt';
     font-style: normal;
     font-weight: 400;
-    font-size: 12px;
+    font-size: 10px;
     line-height: 18px;
     text-align: center;
 
     color: #FFFFFF;
+
+    @media (min-width: 744px) {
+        font-size: 12px;
+    }
 `
 
 const TextEng = styled.p`
