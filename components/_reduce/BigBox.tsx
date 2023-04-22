@@ -23,7 +23,7 @@ export default function Bigbox({ namegame , imggame}: Bigbox) {
 
 const DivBox = styled.div`    
     width: 100%;
-    height: auto;
+    height: fit-content;
 
     display: flex;
     flex-direction: column;
