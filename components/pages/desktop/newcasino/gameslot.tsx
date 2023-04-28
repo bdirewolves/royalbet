@@ -41,7 +41,7 @@ export default function GameSlot({ provider }: { provider: string }){
             <GridBox>
                 {
                     games.map((item, index) => (
-                        <Bigbox key={index} imggame={`/assets/img/icon/game/${provider}/${item.name}.png`} namegame={item.name} />
+                        <Bigbox key={index} imggame={`/assets/img/icon/game/${provider}/${item.game_code}.png`} imggameblur={`/assets/img/icon/game/${provider}/${item.game_code}.png`} namegame={item.name}/>
                     ))
                 }
             </GridBox>
