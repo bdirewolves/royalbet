@@ -4,7 +4,7 @@ import { ReactNode, useState } from "react";
 
 export default function GameSlotFull(){
 
-    const [ provider , setProvider ] = useState<ReactNode>(GameSlotProvider)
+    const [ provider , setProvider ] = useState<ReactNode>()
 
     return (
         <>
