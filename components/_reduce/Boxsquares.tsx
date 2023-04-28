@@ -4,7 +4,7 @@ import { ImgHTMLAttributes } from "react";
 interface Boxsquares {
 
     namegame?: string;
-    imggame?: ImgHTMLAttributes<HTMLImageElement>;
+    imggame?: string;
     onClick?: () => void;
 }
 
@@ -12,7 +12,7 @@ export default function Boxsquares({ namegame , imggame}: Boxsquares) {
     return(
         <DivBox>
             <DivImgBox>
-                <ImgBox {...imggame}/>
+                <ImgBox src={imggame}/>
             </DivImgBox>
             <DivTextBox>
                 <TextBox>{namegame}</TextBox>

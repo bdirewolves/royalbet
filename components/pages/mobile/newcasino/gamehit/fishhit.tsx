@@ -3,21 +3,11 @@ import TitleGame from "@/components/_reduce/TitileGame";
 import Bigbox from "@/components/_reduce/BigBox";
 import { ContainerGameSection } from "@/components/_reduce/Reduce"
 
-export default function GameKeno(){
+export default function FishHit(){
     return(
         <ContainerGameSection>
-            <TitleGame header="คีโน" subheader=""/>
+            <TitleGame header="เกมส์ตกปลาออนไลน์์ ยอดนิยม" subheader=""/>
             <GridBox>
-                <Bigbox namegame="NAME"/>
-                <Bigbox namegame="NAME"/>
-                <Bigbox namegame="NAME"/>
-                <Bigbox namegame="NAME"/>
-                <Bigbox namegame="NAME"/>
-                <Bigbox namegame="NAME"/>
-                <Bigbox namegame="NAME"/>
-                <Bigbox namegame="NAME"/>
-                <Bigbox namegame="NAME"/>
-                <Bigbox namegame="NAME"/>
                 <Bigbox namegame="NAME"/>
                 <Bigbox namegame="NAME"/>
                 <Bigbox namegame="NAME"/>
@@ -36,8 +26,7 @@ const GridBox = styled.div`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
 
-
     @media (min-width: 744px) {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(4, 1fr);
     }
 `

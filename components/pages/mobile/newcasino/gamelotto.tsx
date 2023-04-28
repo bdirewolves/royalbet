@@ -6,7 +6,7 @@ import { ContainerGameSection } from "@/components/_reduce/Reduce"
 export default function GameLotto(){
     return(
         <ContainerGameSection>
-            <TitleGame header="หวย"/>
+            <TitleGame header="หวย" subheader=""/>
             <GridBox>
                 <HorizontalBox namegame="NAME"/>
                 <HorizontalBox namegame="NAME"/>

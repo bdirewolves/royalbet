@@ -6,7 +6,7 @@ import { ContainerGameSection } from "@/components/_reduce/Reduce"
 export default function GameSlot(){
     return(
         <ContainerGameSection>
-            <TitleGame header="Ambslot"/>
+            <TitleGame search header="Ambslot" subheader="" />
             <GridBox>
                 <Bigbox namegame="NAME"/>
                 <Bigbox namegame="NAME"/>

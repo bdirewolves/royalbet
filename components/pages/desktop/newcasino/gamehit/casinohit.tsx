@@ -3,15 +3,11 @@ import TitleGame from "@/components/_reduce/TitileGame";
 import HorizontalBox from "@/components/_reduce/HorizontalBox";
 import { ContainerGameSection } from "@/components/_reduce/Reduce"
 
-export default function GameTrade(){
+export default function CasinoHit(){
     return(
         <ContainerGameSection>
-            <TitleGame header="เทรดดิ้ง" subheader=""/>
+            <TitleGame header="คนสิโนออนไลน์ ยอดนิยม" subheader=""/>
             <GridBox>
-                <HorizontalBox namegame="NAME"/>
-                <HorizontalBox namegame="NAME"/>
-                <HorizontalBox namegame="NAME"/>
-                <HorizontalBox namegame="NAME"/>
                 <HorizontalBox namegame="NAME"/>
                 <HorizontalBox namegame="NAME"/>
                 <HorizontalBox namegame="NAME"/>
@@ -27,7 +23,6 @@ const GridBox = styled.div`
 
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-
 
     @media (min-width: 1440px) {
         grid-template-columns: repeat(4, 1fr);

@@ -1,9 +1,25 @@
+import { ReactNode } from "react";
 import styled from "styled-components";
+import GameHit from "./gamehit";
+import GameCasino from "./gamecasino";
+import GameSlot from "./gameslot";
+import GameCard from "./gamecard";
+import GameFish from "./gamefish";
+import GameLotto from "./gamelotto";
+import GameTrade from "./gametrade";
+import GameSport from "./gamesport";
+import GameKeno from "./gamekeno";
+import GameEsport from "./gameesport";
 
-export default function Bar(){
+interface IBar {
+    typegame: ReactNode;
+    setTypegame: React.Dispatch<React.SetStateAction<React.ReactNode>>;
+}
+
+export default function Bar({ typegame , setTypegame }:IBar){
     return(
         <Container>
-            <Box>
+            <Box onClick={()=> setTypegame(<GameHit/>)}>
                 <DivImgBox>
                     <ImgBox src="/assets/img/barnewgame/barnewgame10.webp" />
                 </DivImgBox>
@@ -12,7 +28,7 @@ export default function Bar(){
                     <TextThai>ยอดนิยม</TextThai>
                 </DivText>
             </Box>
-            <Box>
+            <Box onClick={()=> setTypegame(<GameCasino/>)}>
                 <DivImgBox>
                     <ImgBox src="/assets/img/barnewgame/barnewgame9.webp" />
                 </DivImgBox>
@@ -21,7 +37,7 @@ export default function Bar(){
                     <TextThai>คาสิโนสด</TextThai>
                 </DivText>
             </Box>
-            <Box>
+            <Box onClick={()=> setTypegame(<GameSlot/>)}>
                 <DivImgBox>
                     <ImgBox src="/assets/img/barnewgame/barnewgame8.webp" />
                 </DivImgBox>
@@ -30,7 +46,7 @@ export default function Bar(){
                     <TextThai>สล๊อตเกม</TextThai>
                 </DivText>
             </Box>
-            <Box>
+            <Box onClick={()=> setTypegame(<GameCard/>)}>
                 <DivImgBox>
                     <ImgBox src="/assets/img/barnewgame/barnewgame7.webp" />
                 </DivImgBox>
@@ -39,7 +55,7 @@ export default function Bar(){
                     <TextThai>เกมไพ่</TextThai>
                 </DivText>
             </Box>
-            <Box>
+            <Box onClick={()=> setTypegame(<GameFish/>)}>
                 <DivImgBox>
                     <ImgBox src="/assets/img/barnewgame/barnewgame6.webp" />
                 </DivImgBox>
@@ -48,7 +64,7 @@ export default function Bar(){
                     <TextThai>เกมส์ตกปลา</TextThai>
                 </DivText>
             </Box>
-            <Box>
+            <Box onClick={()=> setTypegame(<GameLotto/>)}>
                 <DivImgBox>
                     <ImgBox src="/assets/img/barnewgame/barnewgame5.webp" />
                 </DivImgBox>
@@ -57,7 +73,7 @@ export default function Bar(){
                     <TextThai>หวย</TextThai>
                 </DivText>
             </Box>
-            <Box>
+            <Box onClick={()=> setTypegame(<GameTrade/>)}>
                 <DivImgBox>
                     <ImgBox src="/assets/img/barnewgame/barnewgame4.webp" />
                 </DivImgBox>
@@ -66,7 +82,7 @@ export default function Bar(){
                     <TextThai>เทรดดิ้ง</TextThai>
                 </DivText>
             </Box>
-            <Box>
+            <Box onClick={()=> setTypegame(<GameSport/>)}>
                 <DivImgBox>
                     <ImgBox src="/assets/img/barnewgame/barnewgame3.webp" />
                 </DivImgBox>
@@ -75,7 +91,7 @@ export default function Bar(){
                     <TextThai>กีฬา</TextThai>
                 </DivText>
             </Box>
-            <Box>
+            <Box onClick={()=> setTypegame(<GameEsport/>)}>
                 <DivImgBox>
                     <ImgBox src="/assets/img/barnewgame/barnewgame2.webp" />
                 </DivImgBox>
@@ -84,7 +100,7 @@ export default function Bar(){
                     <TextThai>E-SPORT</TextThai>
                 </DivText>
             </Box>
-            <Box>
+            <Box onClick={()=> setTypegame(<GameKeno/>)}>
                 <DivImgBox>
                     <ImgBox src="/assets/img/barnewgame/barnewgame1.webp" />
                 </DivImgBox>

@@ -6,7 +6,7 @@ import { ContainerGameSection } from "@/components/_reduce/Reduce"
 export default function GameKeno(){
     return(
         <ContainerGameSection>
-            <TitleGame header="คีโน"/>
+            <TitleGame header="คีโน" subheader=""/>
             <GridBox>
                 <Bigbox namegame="NAME"/>
                 <Bigbox namegame="NAME"/>

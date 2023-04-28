@@ -2,12 +2,23 @@ import styled from "styled-components";
 import TitleGame from "@/components/_reduce/TitileGame";
 import HorizontalBox from "@/components/_reduce/HorizontalBox";
 import { ContainerGameSection } from "@/components/_reduce/Reduce"
+import { Dispatch, ReactNode, SetStateAction } from "react";
+import GameSlot from "./gameslot";
 
-export default function GameTrade(){
+interface IProvider {
+    provider: ReactNode;
+    SetProvider: Dispatch<SetStateAction<ReactNode>>;
+}
+
+export default function GameSlotProvider({ provider , SetProvider }: IProvider){
     return(
         <ContainerGameSection>
-            <TitleGame header="เทรดดิ้ง" subheader=""/>
+            <TitleGame header="เกมส์สล๊อต"/>
             <GridBox>
+                <HorizontalBox namegame="NAME" onClick={()=> SetProvider(<GameSlot/>)}/>
+                <HorizontalBox namegame="NAME"/>
+                <HorizontalBox namegame="NAME"/>
+                <HorizontalBox namegame="NAME"/>
                 <HorizontalBox namegame="NAME"/>
                 <HorizontalBox namegame="NAME"/>
                 <HorizontalBox namegame="NAME"/>
@@ -28,8 +39,7 @@ const GridBox = styled.div`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
 
-
-    @media (min-width: 1440px) {
-        grid-template-columns: repeat(4, 1fr);
+    @media (min-width: 744px) {
+        grid-template-columns: repeat(3, 1fr);
     }
 `

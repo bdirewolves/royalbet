@@ -6,7 +6,7 @@ import { ContainerGameSection } from "@/components/_reduce/Reduce"
 export default function GameFish(){
     return(
         <ContainerGameSection>
-            <TitleGame header="เกมส์ตกปลา"/>
+            <TitleGame header="เกมส์ตกปลา" subheader=""/>
             <GridBox>
                 <Bigbox namegame="NAME"/>
                 <Bigbox namegame="NAME"/>

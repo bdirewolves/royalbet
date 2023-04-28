@@ -2,22 +2,12 @@ import styled from "styled-components";
 import Head from "next/head";
 import CheckDevice from "@/services";
 import Bar from "@/components/pages/mobile/newcasino/bar";
-import LottoHit from "@/components/pages/mobile/newcasino/lottohit";
-import CasinoHit from "@/components/pages/mobile/newcasino/casinohit";
-import SlotHit from "@/components/pages/mobile/newcasino/slothit";
-import CardHit from "@/components/pages/mobile/newcasino/cardhit";
-import FishHit from "@/components/pages/mobile/newcasino/fishhit";
-import CasinoGame from "@/components/pages/mobile/newcasino/gamecasino";
-import SlotProviderGame from "@/components/pages/mobile/newcasino/gameslotprovider";
-import GameSlot from "@/components/pages/mobile/newcasino/gameslot";
-import GameCard from "@/components/pages/mobile/newcasino/gamecard";
-import GameFish from "@/components/pages/mobile/newcasino/gamefish";
-import GameLotto from "@/components/pages/mobile/newcasino/gamelotto";
-import GameTrade from "@/components/pages/mobile/newcasino/gametrade";
-import GameSport from "@/components/pages/mobile/newcasino/gamesport";
-import GameKeno from "@/components/pages/mobile/newcasino/gamekeno";
+import { ReactNode, useState } from "react";
+import GameHit from "@/components/pages/mobile/newcasino/gamehit";
 
 export default function NewCasino(){
+
+    const [ typegame , setTypegame ] = useState<ReactNode>(GameHit)
     
     CheckDevice()
 
@@ -31,57 +21,10 @@ export default function NewCasino(){
             </Head>
             <Background src="/assets/img/BGnewcasino.jpg" />
             <Content>
-                <Bar />
+                <Bar typegame={typegame} setTypegame={setTypegame} />
 
-                {/* //Gamehit// */}
-                <>
-                    <LottoHit />
-                    <CasinoHit />
-                    <SlotHit />
-                    <CardHit />
-                    <FishHit />
-                </>
+                    {typegame}
 
-                {/* //casinogame// */}
-                <>
-                    <CasinoGame />
-                </>
-
-                {/* //slotgame// */}
-                <>
-                    <SlotProviderGame />
-                    <GameSlot />
-                </>
-
-                {/* //cardgame// */}
-                <>
-                    <GameCard />
-                </>
-
-                {/* //fishgame// */}
-                <>
-                    <GameFish />
-                </>
-
-                {/* //lottogame// */}
-                <>
-                    <GameLotto />
-                </>
-
-                {/* //tradegame// */}
-                <>
-                    <GameTrade />
-                </>
-
-                {/* //sportgame// */}
-                <>
-                    <GameSport />
-                </>
-
-                {/* //kenogame// */}
-                <>
-                    <GameKeno />
-                </>
             </Content>
         </>
     )

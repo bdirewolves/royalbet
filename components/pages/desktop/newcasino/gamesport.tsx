@@ -6,7 +6,7 @@ import { ContainerGameSection } from "@/components/_reduce/Reduce"
 export default function GameSport(){
     return(
         <ContainerGameSection>
-            <TitleGame header="กีฬา"/>
+            <TitleGame header="กีฬา" subheader=""/>
             <GridBox>
                 <Boxsquares namegame="NAME"/>
                 <Boxsquares namegame="NAME"/>

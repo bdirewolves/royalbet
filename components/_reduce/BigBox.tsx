@@ -4,7 +4,7 @@ import { ImgHTMLAttributes } from "react";
 interface Bigbox {
 
     namegame?: string;
-    imggame?: ImgHTMLAttributes<HTMLImageElement>;
+    imggame?: string;
     onClick?: () => void;
 }
 
@@ -12,7 +12,7 @@ export default function Bigbox({ namegame , imggame}: Bigbox) {
     return(
         <DivBox>
             <DivImgBox>
-                <ImgBox {...imggame}/>
+                <ImgBox src={imggame}/>
             </DivImgBox>
             <DivTextBox>
                 <TextBox>{namegame}</TextBox>
