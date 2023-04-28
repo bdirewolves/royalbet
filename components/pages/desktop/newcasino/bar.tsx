@@ -10,6 +10,7 @@ import GameTrade from "./gametrade";
 import GameSport from "./gamesport";
 import GameKeno from "./gamekeno";
 import GameEsport from "./gameesport";
+import GameSlotProvider from "./gameslotprovider";
 
 interface IBar {
     typegame: ReactNode;
@@ -37,7 +38,8 @@ export default function Bar({ typegame , setTypegame }:IBar){
                     <TextThai>คาสิโนสด</TextThai>
                 </DivText>
             </Box>
-            <Box onClick={()=> setTypegame(<GameSlot/>)}>
+
+            <Box onClick={()=> setTypegame(<GameSlotProvider typegame={typegame} setTypegame={setTypegame} />)}>
                 <DivImgBox>
                     <ImgBox src="/assets/img/barnewgame/barnewgame8.webp" />
                 </DivImgBox>
@@ -46,6 +48,7 @@ export default function Bar({ typegame , setTypegame }:IBar){
                     <TextThai>สล๊อตเกม</TextThai>
                 </DivText>
             </Box>
+            
             <Box onClick={()=> setTypegame(<GameCard/>)}>
                 <DivImgBox>
                     <ImgBox src="/assets/img/barnewgame/barnewgame7.webp" />

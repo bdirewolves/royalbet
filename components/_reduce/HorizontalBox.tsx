@@ -8,9 +8,9 @@ interface HorizontalBox {
     onClick?: () => void;
 }
 
-export default function HorizontalBox({ namegame , imggame}: HorizontalBox) {
+export default function HorizontalBox({ namegame , imggame, onClick}: HorizontalBox) {
     return(
-        <DivBox>
+        <DivBox onClick={onClick}>
             <DivImgBox>
                 <ImgBox src={imggame}/>
             </DivImgBox>
