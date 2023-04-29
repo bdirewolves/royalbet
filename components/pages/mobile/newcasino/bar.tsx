@@ -37,11 +37,7 @@ export default function Bar({ typegame , setTypegame }: IBar){
                     <TextThai>คาสิโนสด</TextThai>
                 </DivText>
             </Box>
-<<<<<<< HEAD
             <Box onClick={()=> setTypegame(<GameSlotProvider typegame={typegame} setTypegame={setTypegame} />)}>
-=======
-            <Box onClick={()=> setTypegame(<GameSlot />)}>
->>>>>>> 85208d41cf1a71a6ff32aa980247e9aea34a6ac1
                 <DivImgBox>
                     <ImgBox src="/assets/img/barnewgame/barnewgame8.webp" />
                 </DivImgBox>
