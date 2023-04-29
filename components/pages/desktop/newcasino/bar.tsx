@@ -2,7 +2,6 @@ import { ReactNode } from "react";
 import styled from "styled-components";
 import GameHit from "./gamehit";
 import GameCasino from "./gamecasino";
-import GameSlot from "./gameslot";
 import GameCard from "./gamecard";
 import GameFish from "./gamefish";
 import GameLotto from "./gamelotto";
@@ -135,6 +134,8 @@ const Container = styled.div`
     overflow: scroll;
 
     background-color: black;
+
+    z-index: 11;
 
     @media (min-width: 744px) {
         width: 250px;

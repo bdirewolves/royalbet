@@ -6,16 +6,19 @@ interface Bigbox {
     namegame?: string;
     imggame?: string;
     imggameblur?: string;
+    bgblock?: boolean;
+    fullimg?: boolean;
     onClick?: () => void;
 }
 
-export default function Bigbox({ namegame , imggame , imggameblur}: Bigbox) {
+export default function Bigbox({ namegame , imggame , imggameblur , fullimg , bgblock }: Bigbox) {
     return(
         <DivBox>
             <DivImgBox>
                 <ImgBoxBlur src={imggameblur}/>
+                <ImgBoxBG src="/assets/img/icon/providers/bgprovider.png" bgblock={bgblock} />
                 <BG/>
-                <ImgBox src={imggame}/>
+                <ImgBox src={imggame} fullimg={fullimg}/>
             </DivImgBox>
             <DivTextBox>
                 <TextBox>{namegame}</TextBox>
@@ -32,7 +35,8 @@ const DivBox = styled.div`
     flex-direction: column;
     align-items: center;
     
-    gap: 8px;
+    gap: 10px;
+    padding-bottom: 10px;
 `
 
 const DivImgBox = styled.div`
@@ -47,7 +51,7 @@ const DivImgBox = styled.div`
     overflow: hidden;
 `
 
-const ImgBox = styled.img`
+const ImgBox = styled.img<{fullimg?: boolean}>`
     width: 100%;
 
     position: absolute;
@@ -55,7 +59,17 @@ const ImgBox = styled.img`
     top: 50%;
     transform: translate(-50%, -50%);
 
-    background-color: #100F14;
+    ${props => props.fullimg ?
+    `
+        width: 100%;
+    `
+    :
+    `
+        width: 90%;
+        
+    `
+    }
+
 `
 
 const ImgBoxBlur = styled.img`
@@ -66,7 +80,27 @@ const ImgBoxBlur = styled.img`
 
     filter: blur(10px);
 
-    background-color: #100F14;
+`
+
+const ImgBoxBG = styled.img<{bgblock?: boolean}>`
+    height: 100%;
+    width: 100%;
+
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);   
+
+    ${props => props.bgblock ?
+    `
+        display: block;
+    `
+    :
+    `
+        display: none;
+        
+    `
+    }
 `
 
 const BG = styled.div`

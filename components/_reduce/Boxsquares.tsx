@@ -5,14 +5,16 @@ interface Boxsquares {
 
     namegame?: string;
     imggame?: string;
+    bgblock?: boolean;
     onClick?: () => void;
 }
 
-export default function Boxsquares({ namegame , imggame}: Boxsquares) {
+export default function Boxsquares({ namegame , imggame , bgblock}: Boxsquares) {
     return(
         <DivBox>
             <DivImgBox>
                 <ImgBox src={imggame}/>
+                <ImgBoxBG src="/assets/img/icon/providers/bgprovider.png" bgblock={bgblock} />
             </DivImgBox>
             <DivTextBox>
                 <TextBox>{namegame}</TextBox>
@@ -28,22 +30,51 @@ const DivBox = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
+
+    gap: 10px;
+    padding-bottom: 10px;
 `
 
 const DivImgBox = styled.div`
     width: 89.3%;
     aspect-ratio: 1/1;
 
+    position: relative;
+
     border: 1px solid #959595;
     border-radius: 4.54687px;
 `
 
 const ImgBox = styled.img`
-    width: 100%;
-    height: 100%;
+    width: 70%;
 
-    background-color: #100F14;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);  
+`
+
+const ImgBoxBG = styled.img<{bgblock?: boolean}>`
+    height: 100%;
+    width: 100%;
+
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);  
+    
+    z-index: -1;
+
+    ${props => props.bgblock ?
+    `
+        display: block;
+    `
+    :
+    `
+        display: none;
+        
+    `
+    }
 `
 
 const DivTextBox = styled.div`

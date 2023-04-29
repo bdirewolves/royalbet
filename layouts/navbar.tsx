@@ -692,9 +692,10 @@ const Statusbar = styled.div`
     align-items: center;
     gap: 9px;
 
-    @media (max-width: 743px) {
+    
+    /* @media (max-width: 743px) {
         display: none;
-    }
+    } */
 `
 
 const NavTop = styled.div`

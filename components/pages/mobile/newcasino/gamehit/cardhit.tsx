@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import TitleGame from "@/components/_reduce/TitileGame";
 import Bigbox from "@/components/_reduce/BigBox";
-import { ContainerGameSection } from "@/components/_reduce/Reduce"
+import { ContainerGameHitSection } from "@/components/_reduce/Reduce"
 
 export default function CardHit(){
     return(
-        <ContainerGameSection>
+        <ContainerGameHitSection>
             <TitleGame header="เกมไพ่ ยอดนิยม" subheader=""/>
             <GridBox>
                 <Bigbox namegame="NAME"/>
@@ -15,7 +15,7 @@ export default function CardHit(){
                 <Bigbox namegame="NAME"/>
                 <Bigbox namegame="NAME"/>
             </GridBox>
-        </ContainerGameSection>
+        </ContainerGameHitSection>
     )
 }
 

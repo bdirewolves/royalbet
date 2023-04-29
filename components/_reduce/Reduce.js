@@ -133,10 +133,30 @@ export const DivDot = styled.div`
 export const ContainerGameSection = styled.section`
     width: calc(100vw - 90px);
     height: auto;
+    min-height: calc(100vh - 20px);
     
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
+    align-items: center;
+
+    margin-left: 90px;
+    gap: 10px;
+
+    @media (min-width: 744px) {
+        width: calc(100vw - 250px);
+
+        margin-left: 250px;
+    }
+`
+
+export const ContainerGameHitSection = styled.section`
+    width: calc(100vw - 90px);
+    height: auto;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
 
     margin-left: 90px;

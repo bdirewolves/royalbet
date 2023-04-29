@@ -20,7 +20,7 @@ interface IProps {
     setTypegame: React.Dispatch<React.SetStateAction<React.ReactNode>>;
 }
 
-export default function GameSlotProvider({ typegame, setTypegame }: any){
+export default function GameSlotProvider({ typegame, setTypegame }: IProps){
     const [ providers, setProviders ] = useState<IProvider[]>([])
     const [ text, setText ] = useState<number>(0)
 
@@ -53,7 +53,7 @@ export default function GameSlotProvider({ typegame, setTypegame }: any){
             <GridBox>
                 {
                     providers.map((item, index) => (
-                        <HorizontalBox key={index} onClick={() => setTypegame(<GameSlot provider={item.name} />)} imggame={`/assets/img/icon/providers/slot/${item.name}.png`} namegame={item.name}/>
+                        <HorizontalBox key={index} bgblock onClick={() => setTypegame(<GameSlot provider={item.name} />)} imggame={`/assets/img/icon/providers/slot/${item.name}.png`} namegame={item.name}/>
                     ))
                 }
             </GridBox>

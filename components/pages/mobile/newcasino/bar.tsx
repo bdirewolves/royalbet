@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { Dispatch, ReactNode, SetStateAction } from "react";
 import GameHit from "./gamehit";
 import GameCasino from "./gamecasino";
-import GameSlot from "./gameslot";
 import GameCard from "./gamecard";
 import GameFish from "./gamefish";
 import GameLotto from "./gamelotto";
@@ -10,10 +9,11 @@ import GameTrade from "./gametrade";
 import GameSport from "./gamesport";
 import GameKeno from "./gamekeno";
 import GameEsport from "./gameesport";
+import GameSlotProvider from "./gameslotprovider";
 
 interface IBar {
-    typegame: ReactNode
-    setTypegame: Dispatch<SetStateAction<ReactNode>>
+    typegame: ReactNode;
+    setTypegame: Dispatch<SetStateAction<ReactNode>>;
 }
 
 export default function Bar({ typegame , setTypegame }: IBar){
@@ -37,7 +37,7 @@ export default function Bar({ typegame , setTypegame }: IBar){
                     <TextThai>คาสิโนสด</TextThai>
                 </DivText>
             </Box>
-            <Box onClick={()=> setTypegame(<GameSlot/>)}>
+            <Box onClick={()=> setTypegame(<GameSlotProvider typegame={typegame} setTypegame={setTypegame} />)}>
                 <DivImgBox>
                     <ImgBox src="/assets/img/barnewgame/barnewgame8.webp" />
                 </DivImgBox>
@@ -132,6 +132,8 @@ const Container = styled.div`
     overflow: scroll;
 
     background-color: black;
+
+    z-index: 11;
 
     @media (min-width: 744px) {
         width: 250px;

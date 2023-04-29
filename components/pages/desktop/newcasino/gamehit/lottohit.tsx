@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import TitleGame from "@/components/_reduce/TitileGame";
 import HorizontalBox from "@/components/_reduce/HorizontalBox";
-import { ContainerGameSection } from "@/components/_reduce/Reduce"
+import { ContainerGameHitSection } from "@/components/_reduce/Reduce"
 
 export default function LottoHit(){
     return(
-        <ContainerGameSection>
+        <ContainerGameHitSection>
             <TitleGame header="หวย ยอดนิยม" subheader=""/>
             <GridBox>
                 <HorizontalBox namegame="NAME"/>
@@ -13,7 +13,7 @@ export default function LottoHit(){
                 <HorizontalBox namegame="NAME"/>
                 <HorizontalBox namegame="NAME"/>
             </GridBox>
-        </ContainerGameSection>
+        </ContainerGameHitSection>
     )
 }
 
