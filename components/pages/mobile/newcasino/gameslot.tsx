@@ -15,7 +15,7 @@ interface IGame {
     createdAt: string;
 }
 
-export default function GameSlot({ provider }: { provider: string }){
+export default function GameSlot({ provider }: { provider?: string }){
     const [ games, setGames ] = useState<IGame[]>([])
     const fetchGameSlot = async () => {
         try {
