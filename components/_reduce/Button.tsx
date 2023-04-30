@@ -5,6 +5,7 @@ interface IButton {
     children: ReactNode;
     isBorder?: boolean;
     color?: string;
+    hidepro?: boolean;
     onClick?: () => void;
 }
 
@@ -16,7 +17,7 @@ export default function Button ({ children, onClick, isBorder, color }: IButton)
     )
 }
 
-const Btn = styled.button<{ isBorder?: boolean, color?: string }>`
+const Btn = styled.button<{ isBorder?: boolean, color?: string, hidepro?: boolean }>`
     border: none;
     width: auto;
     height: auto;
@@ -51,4 +52,19 @@ const Btn = styled.button<{ isBorder?: boolean, color?: string }>`
     ${props => props.color && `
         color: ${props.color} !important;
     `}
+    
+    ${props => props.hidepro ?
+    `
+        display: block;
+    `
+    :
+    `
+        display: none;
+
+        @media (min-width: 744px) {
+            display: block;
+        }
+        
+    `
+    }
 `

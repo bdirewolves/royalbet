@@ -133,9 +133,7 @@ const Container = styled.div`
 
     overflow: scroll;
 
-    background-color: black;
-
-    z-index: 11;
+    background: black;
 
     @media (min-width: 744px) {
         width: 250px;

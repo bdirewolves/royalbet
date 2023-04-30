@@ -74,7 +74,7 @@ export default function Navbar({ modalPage, setModalPage, showHamburger, setShow
                                     (
                                         <Statusbar>
                                             <Profile onClick={() => modalPage.name == "menu" ? setModalPage({ name: "", element: null }) : setModalPage({ name: "menu", element: null }) }>
-                                                <Button color="#fff">
+                                                <Button hidepro color="#fff">
                                                     { userData?.telnum }
                                                 </Button>
                                                 <DivProfileImg>
@@ -304,8 +304,6 @@ const Balance = styled.div`
 const Profile = styled.div`
     width: auto;
     height: 100%;
-
-    display: none;
 
     @media (min-width: 744px) {
         display: flex;

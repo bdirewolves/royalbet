@@ -133,8 +133,6 @@ const Container = styled.div`
 
     background-color: black;
 
-    z-index: 11;
-
     @media (min-width: 744px) {
         width: 250px;
     }
