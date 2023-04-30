@@ -172,7 +172,6 @@ const DivImgBox = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    
 `
 
 const ImgBox = styled.img`
