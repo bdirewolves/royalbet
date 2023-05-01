@@ -55,7 +55,7 @@ export default function GameSlotSection () {
     return(
         <Container>
             <FixWidth>
-                <Titletype header="SLOT" subhead="เกมทั้งหมด" onClick={() => router.push("/casino")} />
+                <Titletype header="SLOT" subhead="เกมทั้งหมด" onClick={() => router.push("/newcasino")} />
                 <ContainerCarousel>
                     <Slider {...settings}>
                         <div>

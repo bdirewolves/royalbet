@@ -50,7 +50,7 @@ export default function HeroSection () {
                     </Content>
                     {/* Button */}
                     <ContainerButton data-aos="fade-up" data-aos-duration="500">
-                        <GoldButton onClick={() => router.push("/casino")}>
+                        <GoldButton onClick={() => router.push("/newcasino")}>
                             เล่นเกมส์
                         </GoldButton>
                     </ContainerButton>
