@@ -11,6 +11,7 @@ interface IProvider {
     name: string;
     wallet_code: string;
     type?: string;
+    provider_id: string;
 }
 
 export default function GameKeno(){
@@ -19,7 +20,7 @@ export default function GameKeno(){
 
     const fetchProviderCard = async () => {
         try {
-            const tmp = await axios.get(`${process.env.API_URL}/gfservice/provider`).then((res) => res.data.data)
+            const tmp = await axios.get(`https://backoffice.royalbet65.com/v1/api/partner/providers`).then((res) => res.data.data)
             const slots = tmp.filter((item: IProvider) => item.type == "keno")
             setProviders(slots)
         } catch (error) {
@@ -45,7 +46,7 @@ export default function GameKeno(){
             <GridBox>
                 {
                     providers.map((item , index) => (
-                        <Bigbox key={index} namegame={item.name} imggame={`assets/img/icon/providers/keno/${item.name}.png`}/>
+                        <Bigbox key={index} namegame={item.name} imggame={`assets/img/icon/providers/keno/${item.provider_id}.png`}/>
                     ))
                 }
             </GridBox>

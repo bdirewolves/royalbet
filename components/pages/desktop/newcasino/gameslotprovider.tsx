@@ -13,6 +13,7 @@ interface IProvider {
     name: string;
     wallet_code: string;
     type?: string;
+    provider_id: string;
 }
 
 interface IProps {
@@ -26,8 +27,12 @@ export default function GameSlotProvider({ typegame, setTypegame }: any){
 
     const fetchProviderSlot = async () => {
         try {
-            const tmp = await axios.get(`${process.env.API_URL}/gfservice/provider`).then((res) => res.data.data)
+            const tmp = await axios.get(`https://backoffice.royalbet65.com/v1/api/partner/providers`).then((res) => res.data.data)
             const slots = tmp.filter((item: IProvider) => item.type == "slot")
+
+            console.log(slots)
+
+
             setProviders(slots)
         } catch (error) {
             Swal.fire({
@@ -53,7 +58,7 @@ export default function GameSlotProvider({ typegame, setTypegame }: any){
             <GridBox>
                 {
                     providers.map((item, index) => (
-                        <HorizontalBox key={index} bgblock onClick={() => setTypegame(<GameSlot provider={item.name} />)} imggame={`/assets/img/icon/providers/slot/${item.name}.png`} namegame={item.name}/>
+                        <HorizontalBox key={index} bgblock onClick={() => setTypegame(<GameSlot provider={item.provider_id} />)} imggame={`/assets/img/icon/providers/slot/${item.provider_id}.png`} namegame={item.name}/>
                     ))
                 }
             </GridBox>
