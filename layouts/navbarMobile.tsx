@@ -50,7 +50,7 @@ export default function NavbarMobile ({ modalPage, setModalPage, showHamburger, 
                     break;
                 case "deposit": setModalPage({ name: "deposit", element: <Deposit modalPage={modalPage} setModalPage={setModalPage} /> })
                     break;
-                case "game": router.push("/casino");
+                case "game": router.push("/newcasino");
                     break;
                 case "contact": router.push("https://line.me");
                     break;

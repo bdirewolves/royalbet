@@ -21,7 +21,8 @@ export default function GameSlot({ provider }: { provider: string }){
     const [ games, setGames ] = useState<IGame[]>([])
     const fetchGameSlot = async () => {
         try {
-            const gamelist = await axios.get(`${process.env.API_URL}/partner/providers/slot`).then((res) => res.data.data.gameList)
+            const gamelist = await axios.get(`https://backoffice.royalbet65.com/v1/api/partner/providers/${provider}/games`).then((res) => res.data.data)
+            // console.log(gamelist)
             setGames(gamelist)
         } catch (error) {
             Swal.fire({

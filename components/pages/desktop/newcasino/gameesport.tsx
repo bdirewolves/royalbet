@@ -11,6 +11,7 @@ interface IProvider {
     name: string;
     wallet_code: string;
     type?: string;
+    provider_id: string;
 }
 
 export default function GameEsport(){
@@ -19,7 +20,7 @@ export default function GameEsport(){
 
     const fetchProviderCard = async () => {
         try {
-            const tmp = await axios.get(`${process.env.API_URL}/partner/providers/esport`).then((res) => res.data.data)
+            const tmp = await axios.get(`https://backoffice.royalbet65.com/v1/api/partner/providers`).then((res) => res.data.data)
             const slots = tmp.filter((item: IProvider) => item.type == "esport")
             setProviders(slots)
         } catch (error) {
@@ -45,7 +46,7 @@ export default function GameEsport(){
             <GridBox>
                 {
                     providers.map((item , index) => (
-                        <Boxsquares key={index} bgblock namegame={item.name} imggame={`assets/img/icon/providers/esport/${item.name}.png`}/>
+                        <Boxsquares key={index} bgblock namegame={item.name} imggame={`assets/img/icon/providers/esport/${item.provider_id}.png`}/>
                     ))
                 }
             </GridBox>

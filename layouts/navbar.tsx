@@ -141,22 +141,22 @@ export default function Navbar({ modalPage, setModalPage, showHamburger, setShow
                         <FlexBox>
                             <Menubar>
                                 <MenuGroup>
-                                    <ListMenu href="/casino">
+                                    <ListMenu href="/newcasino">
                                         <MenuItem>Casino</MenuItem>
                                     </ListMenu>
-                                    <ListMenu href="/casino">
+                                    <ListMenu href="/newcasino">
                                         <MenuItem>Slot</MenuItem>
                                     </ListMenu>
-                                    <ListMenu href="/casino">
+                                    <ListMenu href="/newcasino">
                                         <MenuItem>Sport</MenuItem>
                                     </ListMenu>
-                                    <ListMenu href="/casino">
+                                    <ListMenu href="/newcasino">
                                         <MenuItem>E-Sport</MenuItem>
                                     </ListMenu>
-                                    <ListMenu href="/casino">
+                                    <ListMenu href="/newcasino">
                                         <MenuItem>Lottery</MenuItem>
                                     </ListMenu>
-                                    <ListMenu href="/casino">
+                                    <ListMenu href="/newcasino">
                                         <MenuItem>Games</MenuItem>
                                     </ListMenu>
                                 </MenuGroup>
@@ -180,7 +180,7 @@ export default function Navbar({ modalPage, setModalPage, showHamburger, setShow
                             <HamburgerItem onClick={() => Goto("/")}>
                                 หน้าแรก
                             </HamburgerItem>
-                            <HamburgerItem onClick={() => Goto("/casino")}>
+                            <HamburgerItem onClick={() => Goto("/newcasino")}>
                                 เล่นเกมส์
                             </HamburgerItem>
                             <HamburgerItem onClick={() => setModalPage({ name: "deposit", element: <Deposit modalPage={modalPage} setModalPage={setModalPage} /> })}>
