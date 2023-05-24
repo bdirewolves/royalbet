@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { ImgHTMLAttributes } from "react"; 
 
-interface Bigbox {
+interface BoxAutoHeight {
 
     namegame?: string;
     imggame?: string;
@@ -11,9 +11,9 @@ interface Bigbox {
     onClick?: () => void;
 }
 
-export default function Bigbox({ namegame , imggame , imggameblur , fullimg , bgblock ,onClick }: Bigbox) {
+export default function BoxAutoHeight({ namegame , imggame , imggameblur , fullimg , bgblock ,onClick }: BoxAutoHeight) {
     return(
-        <DivBox onClick={onClick} >
+        <DivBox onClick={onClick}>
             <DivImgBox>
                 <ImgBoxBlur src={imggameblur}/>
                 <ImgBoxBG src="/assets/img/icon/providers/bgprovider.png" bgblock={bgblock} />

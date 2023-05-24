@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import TitleGame from "@/components/_reduce/TitileGame";
 import Bigbox from "@/components/_reduce/BigBox";
+import BoxAutoHeight from "@/components/_reduce/Boxautoheight";
 import { ContainerGameSection } from "@/components/_reduce/Reduce"
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
@@ -16,10 +17,11 @@ interface IGame {
 }
 
 export default function GameSlot({ provider }: { provider: string }){
+    const [ gameLists, setGameLists ] = useState<IGame[]>([])
     const [ games, setGames ] = useState<IGame[]>([])
     const fetchGameSlot = async () => {
         try {
-            const gamelist = await axios.get(`${process.env.API_URL}/gfservice/gamelist/${provider}`).then((res) => res.data.data.gameList)
+            const gamelist = await axios.get(`${process.env.API_URL}/partner/providers/slot`).then((res) => res.data.data.gameList)
             setGames(gamelist)
         } catch (error) {
             Swal.fire({
@@ -31,6 +33,53 @@ export default function GameSlot({ provider }: { provider: string }){
         }
     }
 
+    const launchGame = async (game_code: string) => {
+        try {
+            Swal.fire({
+                title: 'Loading',
+                text: 'Please wait...',
+                allowOutsideClick: false,
+                showConfirmButton: false,
+                didOpen: () => {
+                  Swal.showLoading();
+                }
+            })
+            await axios.post(`${process.env.API_URL}/partner/players/launch`,
+                {
+                    game_code: game_code,
+                    signature: process.env.test_signature
+                },
+                {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem("auth_access")}`
+                    }
+                }
+            ).then((res) => {
+                const { url, message } = res.data.data
+                if(url) {
+                    window.location.href = url
+                }else {
+                    Swal.fire({
+                        title: "Error",
+                        text: message,
+                        icon: "error",
+                        timer: 1500,
+                        showConfirmButton: false
+                    })
+                }
+            })
+            
+        } catch (error) {
+            Swal.fire({
+                title: "Error",
+                text: error as string,
+                icon: "error",
+                timer: 1500,
+                showConfirmButton: false
+            })
+        }
+    }
+
     useEffect(() => {
         fetchGameSlot()
     }, [])
@@ -38,13 +87,13 @@ export default function GameSlot({ provider }: { provider: string }){
     return(
         <ContainerGameSection>
             <TitleGame search header={`${provider}`} subheader="" />
-            <GridBox>
-                {
-                    games.map((item, index) => (
-                        <Bigbox key={index} fullimg imggame={`/assets/img/icon/game/${provider}/${item.game_code}.png`} imggameblur={`/assets/img/icon/game/${provider}/${item.game_code}.png`} namegame={item.name}/>
-                    ))
-                }
-            </GridBox>
+                <GridBox>
+                    {
+                        games.map((item, index) => (
+                            <BoxAutoHeight key={index} onClick={() => launchGame(item.game_code)} fullimg imggame={`/assets/img/icon/game/${provider}/${item.game_code}.png`} imggameblur={`/assets/img/icon/game/${provider}/${item.game_code}.png`} namegame={item.name}/>
+                        ))    
+                    }
+                </GridBox>
         </ContainerGameSection>
     )
 }

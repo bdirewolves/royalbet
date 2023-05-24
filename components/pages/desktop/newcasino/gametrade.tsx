@@ -19,7 +19,7 @@ export default function GameTrade(){
 
     const fetchProviderCard = async () => {
         try {
-            const tmp = await axios.get(`${process.env.API_URL}/gfservice/provider`).then((res) => res.data.data)
+            const tmp = await axios.get(`${process.env.API_URL}/partner/providers/trade`).then((res) => res.data.data)
             const slots = tmp.filter((item: IProvider) => item.type == "trade")
             setProviders(slots)
         } catch (error) {

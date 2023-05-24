@@ -19,7 +19,7 @@ export default function GameEsport(){
 
     const fetchProviderCard = async () => {
         try {
-            const tmp = await axios.get(`${process.env.API_URL}/gfservice/provider`).then((res) => res.data.data)
+            const tmp = await axios.get(`${process.env.API_URL}/partner/providers/esport`).then((res) => res.data.data)
             const slots = tmp.filter((item: IProvider) => item.type == "esport")
             setProviders(slots)
         } catch (error) {

@@ -9,9 +9,9 @@ interface Boxsquares {
     onClick?: () => void;
 }
 
-export default function Boxsquares({ namegame , imggame , bgblock}: Boxsquares) {
+export default function Boxsquares({ namegame , imggame , bgblock ,onClick}: Boxsquares) {
     return(
-        <DivBox>
+        <DivBox onClick={onClick}>
             <DivImgBox>
                 <ImgBox src={imggame}/>
                 <ImgBoxBG src="/assets/img/icon/providers/bgprovider.png" bgblock={bgblock} />
