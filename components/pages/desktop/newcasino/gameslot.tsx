@@ -106,7 +106,11 @@ const GridBox = styled.div`
     display: grid;
     grid-template-columns: repeat(3, 1fr);
 
-    @media (min-width: 1440px) {
+    @media  (min-width: 1024px) {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    @media (min-width: 1280px) {
         grid-template-columns: repeat(6, 1fr);
     }
 `
