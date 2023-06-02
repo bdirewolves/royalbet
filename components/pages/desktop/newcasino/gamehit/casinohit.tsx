@@ -6,7 +6,7 @@ import { ContainerGameHitSection } from "@/components/_reduce/Reduce"
 export default function CasinoHit(){
     return(
         <ContainerGameHitSection>
-            <TitleGame header="คนสิโนออนไลน์ ยอดนิยม" subheader=""/>
+            <TitleGame header="คาสิโนออนไลน์ ยอดนิยม" subheader=""/>
             <GridBox>
                 <HorizontalBox namegame="NAME"/>
                 <HorizontalBox namegame="NAME"/>

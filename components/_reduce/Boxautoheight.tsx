@@ -57,9 +57,9 @@ export default function BoxAutoHeight({ namegame , imggame , imggameblur , fulli
     return(
         <DivBox onClick={onClick}>
             <DivImgBox>
-                <ImgBoxBlur src={imggameblur}/>
+                {/* <ImgBoxBlur src={imggameblur}/>
                 <ImgBoxBG src="/assets/img/icon/providers/bgprovider.png" bgblock={bgblock} />
-                <BG />
+                <BG /> */}
                 <ImgBox src={picture} fullimg={fullimg} onError={handleImageError} />
             </DivImgBox>
             <DivTextBox>
@@ -83,23 +83,22 @@ const DivBox = styled.div`
 
 const DivImgBox = styled.div`
     width: 84%;
-    aspect-ratio: 84.09/113.49;
+    height: auto;
 
     position: relative;
 
-    border: 1px solid #959595;
-    border-radius: 4.54687px;
+    /* border: 1px solid #959595;
+    border-radius: 4.54687px; */
 
     overflow: hidden;
 `
 
 const ImgBox = styled.img<{fullimg?: boolean}>`
     width: 100%;
+    height: 100%;
 
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    border: 1px solid #959595;
+    border-radius: 4.54687px;
 
     ${props => props.fullimg ?
     `
@@ -107,7 +106,7 @@ const ImgBox = styled.img<{fullimg?: boolean}>`
     `
     :
     `
-        width: 90%;
+        width: 100%;
         
     `
     }
