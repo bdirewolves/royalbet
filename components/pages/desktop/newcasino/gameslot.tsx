@@ -91,7 +91,7 @@ export default function GameSlot({ provider }: { provider: string }){
                 <GridBox>
                     {
                         games.map((item, index) => (
-                            <BoxAutoHeight key={index} onClick={() => launchGame(item.game_code)} fullimg imggame={`/assets/img/icon/game/${provider}/${item.game_code}.png`} imggameblur={`/assets/img/icon/game/${provider}/${item.game_code}.png`} namegame={item.name}/>
+                            <BoxAutoHeight key={index} onClick={() => launchGame(item.game_code)} fullimg provider={provider} game_code={item.game_code} imggame={`/assets/img/icon/game/${provider}/${item.game_code}.png`} imggameblur={`/assets/img/icon/game/${provider}/${item.game_code}.png`} namegame={item.name}/>
                         ))    
                     }
                 </GridBox>

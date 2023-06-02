@@ -58,7 +58,13 @@ export default function GameSlotProvider({ typegame, setTypegame }: any){
             <GridBox>
                 {
                     providers.map((item, index) => (
-                        <HorizontalBox key={index} bgblock onClick={() => setTypegame(<GameSlot provider={item.provider_id} />)} imggame={`/assets/img/icon/providers/slot/${item.provider_id}.png`} namegame={item.name}/>
+                        <HorizontalBox 
+                            key={index} 
+                            bgblock
+                            onClick={() => setTypegame(<GameSlot provider={item.provider_id} />)} 
+                            imggame={`/assets/img/icon/providers/slot/${item.provider_id}.png`} 
+                            namegame={item.name}
+                        />
                     ))
                 }
             </GridBox>

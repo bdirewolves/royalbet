@@ -66,7 +66,6 @@ const ImgBox = styled.img<{fullimg?: boolean}>`
     :
     `
         width: 90%;
-        
     `
     }
 

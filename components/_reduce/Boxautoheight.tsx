@@ -1,5 +1,15 @@
 import styled from "styled-components";
-import { ImgHTMLAttributes } from "react"; 
+import { ImgHTMLAttributes, useEffect, useState } from "react"; 
+import AWS from "aws-sdk"
+
+AWS.config.update({
+    signatureVersion: 'v4',
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    region: process.env.AWS_REGION
+});
+
+const s3 = new AWS.S3();
 
 interface BoxAutoHeight {
 
@@ -9,16 +19,48 @@ interface BoxAutoHeight {
     bgblock?: boolean;
     fullimg?: boolean;
     onClick?: () => void;
+    game_code: string;
+    provider: string;
 }
 
-export default function BoxAutoHeight({ namegame , imggame , imggameblur , fullimg , bgblock ,onClick }: BoxAutoHeight) {
+export default function BoxAutoHeight({ namegame , imggame , imggameblur , fullimg , bgblock ,onClick, game_code, provider }: BoxAutoHeight) {
+    const [ picture, setPicture ] = useState("")
+
+    const handleImageError = () => {
+        setPicture(`https://placehold.co/210x150/black/white?text=${provider}`);
+    };
+
+    const fetch = async () => {
+        try {
+            const params = {
+                Bucket: "company.x",
+                Key: `${provider}/${game_code}.png`,
+                Expires: 60,
+            }
+            await s3.getSignedUrlPromise('getObject', params)
+            .then((res) => {
+                console.log(res)
+                setPicture(res)
+            })
+            .catch(() => {
+                setPicture(`https://placehold.co/210x150/black/white?text=${provider}`)
+            })
+            
+        } catch (error) {
+            setPicture(`https://placehold.co/210x150/black/white?text=${provider}`)
+        }
+    }
+
+    useEffect(() => {
+        fetch()
+    }, [])
     return(
         <DivBox onClick={onClick}>
             <DivImgBox>
                 <ImgBoxBlur src={imggameblur}/>
                 <ImgBoxBG src="/assets/img/icon/providers/bgprovider.png" bgblock={bgblock} />
-                <BG/>
-                <ImgBox src={imggame} fullimg={fullimg}/>
+                <BG />
+                <ImgBox src={picture} fullimg={fullimg} onError={handleImageError} />
             </DivImgBox>
             <DivTextBox>
                 <TextBox>{namegame}</TextBox>
