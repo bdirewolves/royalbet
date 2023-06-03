@@ -46,7 +46,7 @@ export default function GameCasino(){
             <GridBox>
                 {
                     providers.map((item ,index) => (
-                        <HorizontalBox key={index} bgblock namegame={item.name} imggame={`assets/img/icon/providers/casino/${item.provider_id}.png`}/>
+                        <HorizontalBox key={index} bgblock namegame={item.name} provider={item.provider_id} imggame={`assets/img/icon/providers/casino/${item.provider_id}.png`}/>
                     ))
                 }
             </GridBox>

@@ -1,5 +1,15 @@
 import styled from "styled-components";
-import { ImgHTMLAttributes } from "react"; 
+import { ImgHTMLAttributes, useEffect, useState } from "react"; 
+import AWS from "aws-sdk"
+
+AWS.config.update({
+    signatureVersion: 'v4',
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    region: process.env.AWS_REGION
+});
+
+const s3 = new AWS.S3();
 
 interface HorizontalBox {
 
@@ -8,13 +18,55 @@ interface HorizontalBox {
     bgblock?: boolean;
     fullimg?: boolean;
     onClick?: () => void;
+    provider: string;
 }
 
-export default function HorizontalBox({ namegame , imggame , bgblock , fullimg , onClick}: HorizontalBox) {
+export default function HorizontalBox({ namegame , imggame , bgblock , fullimg , onClick, provider}: HorizontalBox) {
+    const [ picture, setPicture ] = useState("")
+
+    const handleImageError = async () => {
+        setPicture(`https://placehold.co/210x150/black/white?text=${provider}`);
+        // const params = {
+        //     Bucket: "company.x",
+        //     Key: `logoprovider/logopic/${provider}.png`,
+        //     Expires: 60,
+        // }
+        // await s3.getSignedUrlPromise('getObject', params)
+        // .then((res) => {
+        //     console.log(res)
+        //     setPicture(res)
+        // })
+    };
+
+    const fetch = async () => {
+        try {
+            const params = {
+                Bucket: "company.x",
+                Key: `logoprovider/logogif/${provider}.gif`,
+                Expires: 60,
+            }
+            await s3.getSignedUrlPromise('getObject', params)
+            .then((res) => {
+                console.log(res)
+                setPicture(res)
+            })
+            .catch(() => {
+                setPicture(`https://placehold.co/210x150/black/white?text=${provider}`)
+            })
+            
+        } catch (error) {
+            setPicture(`https://placehold.co/210x150/black/white?text=${provider}`)
+        }
+    }
+
+    useEffect(() => {
+        fetch()
+    }, [])
+
     return(
         <DivBox onClick={onClick}>
             <DivImgBox>
-                <ImgBox src={imggame} fullimg={fullimg}/>
+                <ImgBox src={picture} onError={handleImageError} fullimg={fullimg}/>
                 <ImgBoxBG src="/assets/img/icon/providers/bgprovider.png" bgblock={bgblock} />
             </DivImgBox>
             <DivTextBox>
@@ -56,6 +108,19 @@ const ImgBox = styled.img <{fullimg?: boolean}>`
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);  
+
+    ${props => props.fullimg ?
+    `
+        width: 60%;
+        height: 55%;
+    `
+    :
+    `
+        width: 100%;
+        height: 100%;
+        
+    `
+    }
 `
 
 const ImgBoxBG = styled.img<{bgblock?: boolean}>`

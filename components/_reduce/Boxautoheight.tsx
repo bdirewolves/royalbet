@@ -34,7 +34,7 @@ export default function BoxAutoHeight({ namegame , imggame , imggameblur , fulli
         try {
             const params = {
                 Bucket: "company.x",
-                Key: `${provider}/${game_code}.png`,
+                Key: `games/${provider}/${game_code}.png`,
                 Expires: 60,
             }
             await s3.getSignedUrlPromise('getObject', params)
@@ -71,11 +71,12 @@ export default function BoxAutoHeight({ namegame , imggame , imggameblur , fulli
 
 const DivBox = styled.div`    
     width: 100%;
-    height: fit-content;
+    height: 100%;
 
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
     
     gap: 10px;
     padding-bottom: 10px;
@@ -83,7 +84,7 @@ const DivBox = styled.div`
 
 const DivImgBox = styled.div`
     width: 84%;
-    height: auto;
+    height: 100%;
 
     position: relative;
 
