@@ -18,7 +18,7 @@ interface HorizontalBox {
     bgblock?: boolean;
     fullimg?: boolean;
     onClick?: () => void;
-    provider: string;
+    provider?: string;
 }
 
 export default function HorizontalBox({ namegame , imggame , bgblock , fullimg , onClick, provider}: HorizontalBox) {
